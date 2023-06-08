@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
 import TopNav from "./components/TopNav/topNav";
+import BrowseTasks from "./components/BrowseTasks/browseTasks";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <div>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/browse" element={<BrowseTasks />} />
           </Routes>
         </div>
       </BrowserRouter>

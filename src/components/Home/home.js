@@ -1,7 +1,10 @@
+import { Link } from "react-router-dom";
+
 export default function Home() {
   return (
     <div>
-      <p>Home page content</p>
+      <p>Post a Task</p>
+      <Link to="/browse">Volunteer</Link>
     </div>
   );
 }
