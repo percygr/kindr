@@ -5,14 +5,13 @@ export default function SuccessPage() {
   return (
   <div>
     <p>This is the success page</p>
-    <HeartIcon />
+      <HeartIcon />
     <Link to='/'>
-    <button>Home</button>
+      <button>Home</button>
     </Link>
     <Link to='/mytasks'>
-    <button>My Tasks</button>
+      <button>My Tasks</button>
     </Link>
-    
   </div>
     );
-}
+} 
