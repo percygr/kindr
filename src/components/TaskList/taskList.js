@@ -1,4 +1,5 @@
 import TaskCard from "../TaskCard/taskCard";
+//const filteredTasks = onlyAvailable ? tasks.filter(task => task.status_id === 1) : tasks;
 
 export default function TaskList({ tasks, onlyAvailable }) {
   return (
