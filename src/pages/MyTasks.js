@@ -4,7 +4,7 @@ export default function MyTasksPage() {
   return (
     <div>
       <p>This is the My Tasks page</p>
-      <Browse />
+      <Browse showCategories={false} />
     </div>
   );
 }

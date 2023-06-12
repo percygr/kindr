@@ -5,8 +5,8 @@ export default function CreateTaskPage() {
   return (
     <div>
       <p>This is the create a task page</p>
-      <CategoryScroll  />
-      <TaskInfo />
+      <CategoryScroll />
+      <TaskInfo isEditable={true} />
     </div>
   );
 }

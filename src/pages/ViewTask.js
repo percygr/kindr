@@ -4,7 +4,7 @@ export default function ViewTaskPage() {
   return (
     <div>
       <p>This is the view a task page</p>
-      <TaskInfo />
+      <TaskInfo isEditable={false} />
     </div>
   );
 }
