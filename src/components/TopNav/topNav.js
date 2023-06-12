@@ -7,7 +7,7 @@ export default function TopNav() {
     <div>
       <Navbar bg="info, myGradient" variant="dark">
         <Navbar.Brand>
-          <img src="{logo}" width="40px" height="25px" />. Kindr
+          <img src={logo} height="35px" />
         </Navbar.Brand>
         <Nav>
          <Nav.Link to="/"> Home</Nav.Link>
