@@ -1,4 +1,4 @@
-import Browse from "../components/BrowseTasks/browseTasks";
+import TaskList from "../components/TaskList/taskList";
 import CategoryScroll from "../components/CategoryScroll/categoryScroll";
 
 export default function BrowsePage() {
@@ -6,7 +6,7 @@ export default function BrowsePage() {
     <div>
       <p>Browse Tasks Page</p>
       <CategoryScroll />
-      <Browse />
+      <TaskList />
     </div>
   );
 }

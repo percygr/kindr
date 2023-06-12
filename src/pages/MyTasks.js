@@ -1,10 +1,10 @@
-import Browse from "../components/BrowseTasks/browseTasks";
+import TaskList from "../components/TaskList/taskList";
 
 export default function MyTasksPage() {
   return (
     <div>
       <p>This is the My Tasks page</p>
-      <Browse showCategories={false} />
+      <TaskList showCategories={false} />
     </div>
   );
 }
