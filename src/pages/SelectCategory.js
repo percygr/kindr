@@ -1,5 +1,14 @@
+import { Link } from "react-router-dom";
 import CategoryTiles from "../components/CategoryTiles/categoryTiles.js";
 
-export default function SelectCategory() {
-  return <CategoryTiles />;
+export default function SelectCategoryPage() {
+  return (
+    <div>
+  <CategoryTiles />
+  <Link to="/create"> 
+  <button>Next</button>
+  </Link>
+  
+  </div>
+  )
 }
