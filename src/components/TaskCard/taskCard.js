@@ -1,12 +1,16 @@
 import { Link } from "react-router-dom";
 
-export default function TaskCard() {
-    return (
-      <div>
-        <Link to="/view">
-        <p>Task Card Preview</p>
-        </Link>
-      </div>
-    );
-  }
-  
+export default function TaskCard({ task }) {
+  console.log("task card", task);
+  return (
+    <div>
+      <Link to="/view">
+        <p>Title: {task.title}</p>
+        <p>Duration: {task.duration}</p>
+        <p>Category: {task.category_id}</p>
+        <p>Location: {task.location}</p>
+        <p>Creator ID: {task.creator_id}</p>
+      </Link>
+    </div>
+  );
+}
