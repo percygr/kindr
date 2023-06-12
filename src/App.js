@@ -1,9 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Home from "./pages/Home";
+import HomePage from "./pages/Home";
 import TopNav from "./components/TopNav/topNav";
-import BrowseTasks from "./components/BrowseTasks/browseTasks";
-import CategoryTiles from "./components/CategoryTiles/categoryTiles";
+import BrowsePage from "./pages/Browse";
+import CategoryTilesPage from "./pages/SelectCategory";
 
 function App() {
   return (
@@ -14,10 +14,9 @@ function App() {
         </nav>
         <div>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/browse" element={<BrowseTasks />} />
-            <Route path="/SelectCategory" element={<CategoryTiles />} />
-
+            <Route path="/" element={<HomePage />} />
+            <Route path="/browse" element={<BrowsePage />} />
+            <Route path="/SelectCategory" element={<CategoryTilesPage />} />
           </Routes>
         </div>
       </BrowserRouter>

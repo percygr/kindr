@@ -1,5 +1,5 @@
 import CategoryTiles from "../components/CategoryTiles/categoryTiles.js";
 
-export default function SelectCategory() {
+export default function SelectCategoryPage() {
   return <CategoryTiles />;
 }

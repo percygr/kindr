@@ -1,5 +1,10 @@
 import Browse from "../components/BrowseTasks/browseTasks";
 
-export default function Browse() {
-  return <Browse />;
+export default function BrowsePage() {
+  return (
+    <div>
+      <p>Select a category</p>
+      <Browse />
+    </div>
+  );
 }
