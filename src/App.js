@@ -27,11 +27,11 @@ function App() {
   }, []);
 
   async function getTasks() {
-    let { data: tasks, error } = await supabase.from("tasks").select("*");
+    let { data, error } = await supabase.from("tasks").select("*");
     if (error) {
       console.log("error", error);
     }
-    setTasks(tasks);
+    setTasks(data);
   }
 
   return (
