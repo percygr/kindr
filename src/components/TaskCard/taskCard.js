@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 export default function TaskCard({ task }) {
-  console.log("task card", task);
   return (
     <div>
       <Link to="/view">
