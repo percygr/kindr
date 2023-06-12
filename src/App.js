@@ -1,4 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { createClient } from "@supabase/supabase-js";
+import { Auth } from "@supabase/auth-ui-react";
+import { ThemeSupa } from "@supabase/auth-ui-shared";
+import { useState, useEffect } from "react";
 import "./App.css";
 import HomePage from "./pages/Home";
 import TopNav from "./components/TopNav/topNav";
@@ -10,7 +14,26 @@ import SuccessPage from "./pages/Success";
 import MyTasksPage from "./pages/MyTasks";
 import BottomNav from "./components/BottomNav/bottomNav";
 
+const supabase = createClient(
+  process.env.REACT_APP_SUPABASE_URL,
+  process.env.REACT_APP_SUPABASE_KEY
+);
+
 function App() {
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    getTasks();
+  }, []);
+
+  async function getTasks() {
+    let { data, error } = await supabase.from("tasks").select("*");
+    if (error) {
+      console.log("error", error);
+    }
+    setTasks(data);
+  }
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -20,12 +43,12 @@ function App() {
         <div>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/browse" element={<BrowsePage />} />
+            <Route path="/browse" element={<BrowsePage tasks={tasks} />} />
             <Route path="/categories" element={<CategoryTilesPage />} />
             <Route path="/create" element={<CreateTaskPage />} />
             <Route path="/view" element={<ViewTaskPage />} />
             <Route path="/success" element={<SuccessPage />} />
-            <Route path="/mytasks" element={<MyTasksPage />} />
+            <Route path="/mytasks" element={<MyTasksPage tasks={tasks} />} />
           </Routes>
         </div>
         <nav>
