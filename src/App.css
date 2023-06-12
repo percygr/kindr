@@ -1,10 +1,104 @@
+/* 01 TYPOGRAPHY SYSTEM */
+
+
+/* Main font: 
+@import url("https://use.typekit.net/ycz4yvq.css");
+
+Mobile Font sizes (px)
+11 / 16 / 30 
+
+Desktop Font sizes (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 64 / 86
+
+
+
+- Font weights
+Default: 400
+Medium: 500
+Semi-bold: 600
+Bold: 700
+
+- Line heights
+Default: 1
+Small: 1.05
+Medium: 1.2
+Paragraph default: 1.6
+Large: 1.8
+
+- Letter spacing
+-0.5px
+0.75px
+
+--- 02: COLORS
+
+- Primary: #01BBE4
+
+- Secondary:
+#FFFFFF 
+#85F291
+#CAF1F9
+#FDB645
+
+- Accents:
+- Greys
+
+#888
+#767676 (lightest grey allowed on #fff)
+#6f6f6f (lightest grey allowed on #fdf2e9)
+#555
+#333
+
+--- 05 SHADOWS
+
+0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
+
+--- 06 BORDER-RADIUS
+
+Default: 9px
+Medium: 11px
+
+--- 07 WHITESPACE
+
+- Spacing system (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128 */
+
+.myGradient {
+  background: rgb(1,187,228);
+background: linear-gradient(90deg, rgba(1,187,228,1) 62%, rgba(1,228,216,1) 88%, rgba(133,242,145,1) 100%);
+}
+
 .App {
   text-align: center;
 }
 
-nav {
-  background-color: #06cae8;
-  height: 50px;
-  padding: 10px;
+h1 {
+  font-family: "futura-pt-bold", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 24pt;
+}
+
+.small-text {
+  font-family: "futura-pt", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 11pt;
+}
+
+.medium-text {
+  font-family: "futura-pt", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 16pt;
+}
+
+button {
+  width: 150px;
+  height: 37px;
+  background: #01BBE4;
+  border-radius: 30px;
+  margin: 10px;
+  border: none;
   color: white;
+  font-size: 16pt;
 }
