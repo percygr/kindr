@@ -8,7 +8,7 @@ export default function HomePage() {
         <button className="button">Post a Task</button>
       </Link>
       <Link to="/browse">
-        <button className="button">Volunteer</button>
+        <button className="button-green">Volunteer</button>
       </Link>
     </div>
   );

@@ -61,11 +61,25 @@ Medium: 11px
 
 - Spacing system (px)
 2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128 */
+
+:root{
+  --primary-background-colour: #FFFFFF;
+  --primary-blue: #01BBE4;
+  --primary-green: #85F291;
+  --secondary-blue: #CAF1F9;
+  --in-progress: #FDB645;
+  --text-colour: #000000;
+  --gradient: linear-gradient(90deg, rgba(1,187,228,1) 62%, rgba(1,228,216,1) 88%, rgba(133,242,145,1) 100%);
+  }
+
+/*Font*/
 @import url("https://use.typekit.net/ycz4yvq.css");
 
+/* Header Gradient */
 .myGradient {
-  background: rgb(1,187,228);
-background: linear-gradient(90deg, rgba(1,187,228,1) 62%, rgba(1,228,216,1) 88%, rgba(133,242,145,1) 100%);
+  background: var(--primary-blue);
+/* background: linear-gradient(90deg, rgba(1,187,228,1) 62%, rgba(1,228,216,1) 88%, rgba(133,242,145,1) 100%); */
+background: var(--gradient)
 }
 
 .App {
@@ -93,33 +107,47 @@ h1 {
   font-size: 16pt;
 }
 
+/* Buttons */
 .button {
   width: 150px;
   height: 37px;
-  background: #01BBE4;
+  background: var(--primary-blue);
   border-radius: 30px;
   margin: 10px;
   border: none;
-  color: white;
+  color: var(--primary-background-colour);
   font-size: 16pt;
 }
 
+.button-green {
+  width: 150px;
+  height: 37px;
+  background: var(--primary-green);
+  border-radius: 30px;
+  margin: 10px;
+  border: none;
+  color: var(--primary-background-colour);
+  font-size: 16pt;
+}
+
+/* Task List */
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+/* Task Cards */
 .task-card {
 display: flex;
 flex-direction: column;
-background-color: white ;
+background-color: var(--primary-background-colour) ;
 border-radius: 10%;
 box-shadow: 3px 5px 10px rgb(0 0 0 / 0.2);
 padding: 5%;
 margin: 2%;
 width: 200pt;
-color: black;
+color: var(--text-colour);
 font-family: "futura-pt", sans-serif;
 font-weight: 500;
 font-style: normal;
@@ -128,8 +156,6 @@ font-size: 11pt;
 
 #logo {
   margin: 5%;
-
-
 }
 
 #hearticon { 

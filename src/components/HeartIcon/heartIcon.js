@@ -1,5 +1,4 @@
-import hearticon from '/Users/sisl/Documents/SCHOOL_OF_CODE_LEARNING/KINDR/src/imgs/icons/heart-icon.png'
-
+import hearticon from '../../imgs/icons/heart-icon.png'
 export default function HeartIcon() {
     return (
       <div>
