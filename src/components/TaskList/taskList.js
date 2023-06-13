@@ -6,7 +6,7 @@ export default function TaskList({ tasks, onlyAvailable }) {
     : tasks;
 
   return (
-    <div>
+    <div className="container">
       <p>This is the task list of all the task cards</p>
       {filteredTasks.map((task) => (
         <div key={task.id}>

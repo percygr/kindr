@@ -5,10 +5,10 @@ export default function HomePage() {
     <div>
       <h1>This is the Home Page</h1>
       <Link to="/categories">
-        <button>Post a Task</button>
+        <button className="button">Post a Task</button>
       </Link>
       <Link to="/browse">
-        <button>Volunteer</button>
+        <button className="button">Volunteer</button>
       </Link>
     </div>
   );

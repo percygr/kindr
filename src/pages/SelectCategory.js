@@ -6,7 +6,7 @@ export default function SelectCategoryPage() {
     <div>
   <CategoryTiles />
   <Link to="/create"> 
-  <button>Next</button>
+  <button className="button">Next</button>
   </Link>
   
   </div>

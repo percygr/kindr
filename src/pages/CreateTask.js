@@ -9,7 +9,7 @@ export default function CreateTaskPage() {
       <CategoryScroll />
       <TaskInfo isEditable={true} />
       <Link to='/success'>
-        <button>Submit</button>
+        <button className="button">Submit</button>
       </Link>
     </div>
   );
