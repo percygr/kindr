@@ -1,4 +1,5 @@
 import TaskCard from "../TaskCard/taskCard";
+import { useBootstrapBreakpoints } from "react-bootstrap/esm/ThemeProvider";
 
 export default function TaskList({ tasks, onlyAvailable }) {
   const filteredTasks = onlyAvailable
@@ -6,13 +7,12 @@ export default function TaskList({ tasks, onlyAvailable }) {
     : tasks;
 
   return (
-    <div className="container">
-      <p>This is the task list of all the task cards</p>
-      {filteredTasks.map((task) => (
-        <div key={task.id}>
+    <div className="tasklist-container">
+        {filteredTasks.map((task) => (
+        <div className='card-container' key={task.id}>
           <TaskCard task={task} />
         </div>
       ))}
-    </div>
+      </div>
   );
 }

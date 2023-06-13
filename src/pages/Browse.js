@@ -3,7 +3,7 @@ import CategoryScroll from "../components/CategoryScroll/categoryScroll";
 
 export default function BrowsePage({ tasks }) {
   return (
-    <div>
+    <div className='browse-container'>
       <p>Browse Tasks Page</p>
       <CategoryScroll />
       <TaskList tasks={tasks} onlyAvailable={true} />
