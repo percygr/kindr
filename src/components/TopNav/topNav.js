@@ -8,33 +8,24 @@ export default function TopNav() {
   return (
     <div>
       <Navbar bg="info, myGradient" variant="dark">
-        <Navbar.Brand>
-          <img src={logo} height="35px" alt="logo" />
-        </Navbar.Brand>
+        <img src={logo} height="35px" alt="logo" />
+
         <Nav>
-          <Nav.Link>
-            <Link className="not-ugly" to="/">
-              Home
-            </Link>
-          </Nav.Link>
+          <Link className="not-ugly" to="/">
+            Home
+          </Link>
 
-          <Nav.Link>
-            <Link className="not-ugly" to="/create">
-              New Task
-            </Link>
-          </Nav.Link>
+          <Link className="not-ugly" to="/create">
+            New Task
+          </Link>
 
-          <Nav.Link>
-            <Link className="not-ugly" to="/mytasks">
-              My Tasks
-            </Link>
-          </Nav.Link>
+          <Link className="not-ugly" to="/mytasks">
+            My Tasks
+          </Link>
 
-          <Nav.Link>
-            <Link className="not-ugly" to="/my-profile">
-              My Profile
-            </Link>
-          </Nav.Link>
+          <Link className="not-ugly" to="/my-profile">
+            My Profile
+          </Link>
         </Nav>
       </Navbar>
     </div>
