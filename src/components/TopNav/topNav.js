@@ -1,34 +1,33 @@
 import logo from "../../imgs/logo.png";
+import { Link } from "react-router-dom";
 import { Nav, Navbar } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
+
+import "./style.css";
 
 export default function TopNav() {
   return (
     <div>
       <Navbar bg="info, myGradient" variant="dark">
-        <Navbar.Brand>
-          <img src={logo} height="35px" alt="logo" />
-        </Navbar.Brand>
+        <img src={logo} height="35px" alt="logo" />
+
         <Nav>
-          <LinkContainer to="/">
-            <Nav.Link>Home</Nav.Link>
-          </LinkContainer>
+          <Link className="not-ugly" to="/">
+            Home
+          </Link>
 
-          <LinkContainer to="/create">
-            <Nav.Link>New Task</Nav.Link>
-          </LinkContainer>
+          <Link className="not-ugly" to="/create">
+            New Task
+          </Link>
 
-          <LinkContainer to="/mytasks">
-            <Nav.Link>My Tasks</Nav.Link>
-          </LinkContainer>
+          <Link className="not-ugly" to="/mytasks">
+            My Tasks
+          </Link>
 
-          <LinkContainer to="/my-profile">
-            <Nav.Link>My Profile</Nav.Link>
-          </LinkContainer>
+          <Link className="not-ugly" to="/my-profile">
+            My Profile
+          </Link>
         </Nav>
       </Navbar>
-
-      <p>TopNavBar</p>
     </div>
   );
 }
