@@ -12,7 +12,11 @@ export default function CreateTaskPage({
     <div>
       <p>This is the create a task page</p>
       <CategoryScroll category={category} setCategory={setCategory} />
-      <TaskInfo isEditable={true} categoryIcons={categoryIcons} />
+      <TaskInfo
+        isEditable={true}
+        category={category}
+        categoryIcons={categoryIcons}
+      />
       <Link to="/success">
         <button>Submit</button>
       </Link>

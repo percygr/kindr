@@ -1,4 +1,4 @@
-export default function TaskInfo({ isEditable, categoryIcons }) {
+export default function TaskInfo({ isEditable, categoryIcons, category }) {
   console.log(categoryIcons[0]);
   return (
     <div>
@@ -6,7 +6,7 @@ export default function TaskInfo({ isEditable, categoryIcons }) {
         There will be boxes to input task info here - input and display based on
         props
       </p>
-      <img src={categoryIcons[1]} alt="category icon" />
+      <img src={categoryIcons[category -1].image} alt="category icon" />
       <div>Title: </div>
       {isEditable ? <input type="text" /> : <div>Dummy title</div>}
       <div>Description</div>

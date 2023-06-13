@@ -11,6 +11,12 @@ import ViewTaskPage from "./pages/ViewTask";
 import SuccessPage from "./pages/Success";
 import MyTasksPage from "./pages/MyTasks";
 import BottomNav from "./components/BottomNav/bottomNav";
+import tyreIcon from "../src/imgs/icons/tire.png";
+import gardenIcon from "../src/imgs/icons/gardening.png";
+import shopIcon from "../src/imgs/icons/shopping-bags.png";
+import houseWorkIcon from "../src/imgs/icons/house.png";
+import deliveryIcon from "../src/imgs/icons/delivery-truck.png";
+import otherIcon from "../src/imgs/icons/question-mark.png";
 
 const supabase = createClient(
   process.env.REACT_APP_SUPABASE_URL,
@@ -25,12 +31,12 @@ function App() {
   useEffect(() => {
     getTasks();
     setCategoryIcons([
-      { id: 1, path: "../src/imgs/tire.png" },
-      { id: 2, path: "Gardening" },
-      { id: 3, path: "Shopping" },
-      { id: 4, path: "Housework" },
-      { id: 5, path: "Delivery" },
-      { id: 6, path: "Other" },
+      { id: 1, image: tyreIcon },
+      { id: 2, image: gardenIcon },
+      { id: 3, image: shopIcon },
+      { id: 4, image: houseWorkIcon },
+      { id: 5, image: deliveryIcon },
+      { id: 6, image: otherIcon },
     ]);
   }, []);
 
@@ -71,7 +77,10 @@ function App() {
                 />
               }
             />
-            <Route path="/view" element={<ViewTaskPage />} />
+            <Route
+              path="/view"
+              element={<ViewTaskPage categoryIcons={categoryIcons} />}
+            />
             <Route path="/success" element={<SuccessPage />} />
             <Route path="/mytasks" element={<MyTasksPage tasks={tasks} />} />
           </Routes>
