@@ -14,12 +14,12 @@ export default function CategoryTiles({ setCategory, category }) {
     <div>
       <p>Category Tiles goes here</p>
 
-      <button onClick={() => handleCategoryClick(1)}>Transport</button>
-      <button onClick={() => handleCategoryClick(2)}>Gardening</button>
-      <button onClick={() => handleCategoryClick(3)}>Shopping</button>
-      <button onClick={() => handleCategoryClick(4)}>Housework</button>
-      <button onClick={() => handleCategoryClick(5)}>Delivery</button>
-      <button onClick={() => handleCategoryClick(6)}>Other</button>
+      <button className='button' onClick={() => handleCategoryClick(1)}>Transport</button>
+      <button className='button' onClick={() => handleCategoryClick(2)}>Gardening</button>
+      <button className='button' onClick={() => handleCategoryClick(3)}>Shopping</button>
+      <button className='button' onClick={() => handleCategoryClick(4)}>Housework</button>
+      <button className='button' onClick={() => handleCategoryClick(5)}>Delivery</button>
+      <button className='button' onClick={() => handleCategoryClick(6)}>Other</button>
     </div>
   );
 }
