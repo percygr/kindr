@@ -1,10 +1,13 @@
 import TaskList from "../components/TaskList/taskList";
 
-export default function MyTasksPage({ tasks }) {
+export default function MyTasksPage({ tasks, setSelectedTask }) {
   return (
     <div>
-      <p>This is the My Tasks page</p>
-      <TaskList showCategories={false} tasks={tasks} />
+      <TaskList
+        showCategories={false}
+        tasks={tasks}
+        setSelectedTask={setSelectedTask}
+      />
     </div>
   );
 }
