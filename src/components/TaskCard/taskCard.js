@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function TaskCard({ task }) {
   return (
-    <div>
+    <div className="task-card">
       <Link to="/view">
         <p>Title: {task.title}</p>
         <p>Duration: {task.duration}</p>

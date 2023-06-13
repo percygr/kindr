@@ -11,6 +11,7 @@ export default function CreateTaskPage({
   return (
     <div>
       <p>This is the create a task page</p>
+
       <CategoryScroll category={category} setCategory={setCategory} />
       <TaskInfo
         isEditable={true}
@@ -18,7 +19,7 @@ export default function CreateTaskPage({
         categoryIcons={categoryIcons}
       />
       <Link to="/success">
-        <button>Submit</button>
+        <button className="button">Submit</button>
       </Link>
     </div>
   );

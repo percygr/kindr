@@ -25,6 +25,7 @@ const supabase = createClient(
 
 function App() {
   const [tasks, setTasks] = useState([]);
+  const [isMobile, setIsMobile] = useState(false);
   const [category, setCategory] = useState([]);
   const [categoryIcons, setCategoryIcons] = useState([]);
 
@@ -48,11 +49,25 @@ function App() {
     setTasks(data);
   }
 
+  useEffect(() => {
+    const checkScreenWidth = () => {
+      setIsMobile(window.innerWidth <= 500);
+    };
+
+    checkScreenWidth();
+    window.addEventListener('resize', checkScreenWidth);
+  return () => {
+    window.removeEventListener('resize', checkScreenWidth);
+  };
+}, []);
+
+
   return (
     <div className="App">
       <BrowserRouter>
         <nav>
-          <TopNav />
+        {!isMobile && <TopNav />}
+        {/* <TopNav /> */}
         </nav>
         <div>
           <Routes>
@@ -89,7 +104,7 @@ function App() {
           <BottomNav />
         </nav>
       </BrowserRouter>
-    </div>
+      </div>
   );
 }
 

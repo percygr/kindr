@@ -8,7 +8,8 @@ export default function TopNav() {
   return (
     <div>
       <Navbar bg="info, myGradient" variant="dark">
-        <img src={logo} height="35px" alt="logo" />
+
+        <img src={logo} className="logo" height="35px" alt="logo" />
 
         <Nav>
           <Link className="not-ugly" to="/">
