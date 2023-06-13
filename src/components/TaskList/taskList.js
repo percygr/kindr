@@ -1,5 +1,5 @@
 import TaskCard from "../TaskCard/taskCard";
-import { useBootstrapBreakpoints } from "react-bootstrap/esm/ThemeProvider";
+
 
 /*
 Status IDs:
@@ -18,10 +18,10 @@ export default function TaskList({ tasks, onlyAvailable }) {
       {onlyAvailable && <div>{showTasks(tasks, 1)}</div>}
       {!onlyAvailable && (
         <div>
-          <div>Active Tasks</div>
-          {showTasks(tasks, 2)}
-          <div>Completed Tasks</div>
-          {showTasks(tasks, 3)}
+          <h2>Active Tasks</h2>
+          <div className='card-container'>{showTasks(tasks, 2)}</div>
+          <h2>Completed Tasks</h2>
+          <div className='card-container'>{showTasks(tasks, 3)}</div>
         </div>
       )}
     </div>
@@ -33,7 +33,7 @@ function showTasks(tasks, statusId) {
   const filteredTasks = tasks.filter((task) => task.status_id === statusId);
 
   return filteredTasks.map((task) => (
-    <div key={task.id} className='card-container'>
+    <div key={task.id}>
       <TaskCard task={task} />
     </div>
   ));
