@@ -14,7 +14,7 @@ export default function TopNav() {
             <Nav.Link>Home</Nav.Link>
           </LinkContainer>
 
-          <LinkContainer to="/create">
+          <LinkContainer to="/categories">
             <Nav.Link>New Task</Nav.Link>
           </LinkContainer>
 

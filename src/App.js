@@ -19,9 +19,19 @@ const supabase = createClient(
 
 function App() {
   const [tasks, setTasks] = useState([]);
+  const [category, setCategory] = useState([]);
+  const [categoryIcons, setCategoryIcons] = useState([]);
 
   useEffect(() => {
     getTasks();
+    setCategoryIcons([
+      { id: 1, path: "../src/imgs/tire.png" },
+      { id: 2, path: "Gardening" },
+      { id: 3, path: "Shopping" },
+      { id: 4, path: "Housework" },
+      { id: 5, path: "Delivery" },
+      { id: 6, path: "Other" },
+    ]);
   }, []);
 
   async function getTasks() {
@@ -42,8 +52,25 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/browse" element={<BrowsePage tasks={tasks} />} />
-            <Route path="/categories" element={<CategoryTilesPage />} />
-            <Route path="/create" element={<CreateTaskPage />} />
+            <Route
+              path="/categories"
+              element={
+                <CategoryTilesPage
+                  setCategory={setCategory}
+                  category={category}
+                />
+              }
+            />
+            <Route
+              path="/create"
+              element={
+                <CreateTaskPage
+                  category={category}
+                  setCategory={setCategory}
+                  categoryIcons={categoryIcons}
+                />
+              }
+            />
             <Route path="/view" element={<ViewTaskPage />} />
             <Route path="/success" element={<SuccessPage />} />
             <Route path="/mytasks" element={<MyTasksPage tasks={tasks} />} />
