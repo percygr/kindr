@@ -5,15 +5,6 @@ export default function TaskInfo({
   selectedTask,
   tasks,
 }) {
-  console.log(
-    "isEditable",
-    isEditable,
-    "selected task:",
-    selectedTask,
-    "category:",
-    category
-  );
-
   let categoryID = 0;
   let thisTask = {};
 
@@ -21,7 +12,6 @@ export default function TaskInfo({
     categoryID = category - 1;
   } else {
     thisTask = tasks.find((task) => task.id === selectedTask);
-    console.log("thisTask:", thisTask);
     categoryID = thisTask.category_id - 1;
   }
 
