@@ -1,6 +1,7 @@
 import logo from "../../imgs/logo.png";
 import { Nav, Navbar } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import { Link } from "react-router-dom";
 
 export default function TopNav() {
   return (
@@ -11,19 +12,19 @@ export default function TopNav() {
         </Navbar.Brand>
         <Nav>
           <LinkContainer to="/">
-            <Nav.Link>Home</Nav.Link>
+            <Nav.Link as={Link}>Home</Nav.Link>
           </LinkContainer>
 
           <LinkContainer to="/categories">
-            <Nav.Link>New Task</Nav.Link>
+            <Nav.Link as={Link}>New Task</Nav.Link>
           </LinkContainer>
 
           <LinkContainer to="/mytasks">
-            <Nav.Link>My Tasks</Nav.Link>
+            <Nav.Link as={Link}>My Tasks</Nav.Link>
           </LinkContainer>
 
           <LinkContainer to="/my-profile">
-            <Nav.Link>My Profile</Nav.Link>
+            <Nav.Link as={Link}>My Profile</Nav.Link>
           </LinkContainer>
         </Nav>
       </Navbar>
