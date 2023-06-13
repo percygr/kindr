@@ -12,19 +12,27 @@ export default function TopNav() {
         </Navbar.Brand>
         <Nav>
           <LinkContainer to="/">
-            <Nav.Link as={Link}>Home</Nav.Link>
+            <Nav.Link as={Link} href="/">
+              Home
+            </Nav.Link>
           </LinkContainer>
 
           <LinkContainer to="/categories">
-            <Nav.Link as={Link}>New Task</Nav.Link>
+            <Nav.Link as={Link} href="/categories">
+              New Task
+            </Nav.Link>
           </LinkContainer>
 
           <LinkContainer to="/mytasks">
-            <Nav.Link as={Link}>My Tasks</Nav.Link>
+            <Nav.Link as={Link} href="/mytasks">
+              My Tasks
+            </Nav.Link>
           </LinkContainer>
 
           <LinkContainer to="/my-profile">
-            <Nav.Link as={Link}>My Profile</Nav.Link>
+            <Nav.Link as={Link} href="/my-profile">
+              My Profile
+            </Nav.Link>
           </LinkContainer>
         </Nav>
       </Navbar>
