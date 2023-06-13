@@ -11,6 +11,12 @@ import ViewTaskPage from "./pages/ViewTask";
 import SuccessPage from "./pages/Success";
 import MyTasksPage from "./pages/MyTasks";
 import BottomNav from "./components/BottomNav/bottomNav";
+import tyreIcon from "../src/imgs/icons/tire.png";
+import gardenIcon from "../src/imgs/icons/gardening.png";
+import shopIcon from "../src/imgs/icons/shopping-bags.png";
+import houseWorkIcon from "../src/imgs/icons/house.png";
+import deliveryIcon from "../src/imgs/icons/delivery-truck.png";
+import otherIcon from "../src/imgs/icons/question-mark.png";
 
 const supabase = createClient(
   process.env.REACT_APP_SUPABASE_URL,
@@ -20,9 +26,19 @@ const supabase = createClient(
 function App() {
   const [tasks, setTasks] = useState([]);
   const [isMobile, setIsMobile] = useState(false);
+  const [category, setCategory] = useState([]);
+  const [categoryIcons, setCategoryIcons] = useState([]);
 
   useEffect(() => {
     getTasks();
+    setCategoryIcons([
+      { id: 1, image: tyreIcon },
+      { id: 2, image: gardenIcon },
+      { id: 3, image: shopIcon },
+      { id: 4, image: houseWorkIcon },
+      { id: 5, image: deliveryIcon },
+      { id: 6, image: otherIcon },
+    ]);
   }, []);
 
   async function getTasks() {
@@ -57,9 +73,29 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/browse" element={<BrowsePage tasks={tasks} />} />
-            <Route path="/categories" element={<CategoryTilesPage />} />
-            <Route path="/create" element={<CreateTaskPage />} />
-            <Route path="/view" element={<ViewTaskPage />} />
+            <Route
+              path="/categories"
+              element={
+                <CategoryTilesPage
+                  setCategory={setCategory}
+                  category={category}
+                />
+              }
+            />
+            <Route
+              path="/create"
+              element={
+                <CreateTaskPage
+                  category={category}
+                  setCategory={setCategory}
+                  categoryIcons={categoryIcons}
+                />
+              }
+            />
+            <Route
+              path="/view"
+              element={<ViewTaskPage categoryIcons={categoryIcons} />}
+            />
             <Route path="/success" element={<SuccessPage />} />
             <Route path="/mytasks" element={<MyTasksPage tasks={tasks} />} />
           </Routes>
