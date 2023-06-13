@@ -53,7 +53,7 @@ function App() {
           <BottomNav />
         </nav>
       </BrowserRouter>
-    </div>
+      </div>
   );
 }
 
