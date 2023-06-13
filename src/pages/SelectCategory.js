@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import CategoryTiles from "../components/CategoryTiles/categoryTiles.js";
 
 export default function SelectCategoryPage({ setCategory, category }) {
