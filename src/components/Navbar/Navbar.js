@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import "./navbar.css";
-import logo from "../../imgs/logo.png";
+import logo from "../../imgs/logos/logo.png";
 import profilePic from "../../imgs/icons/man.png";
 
 function Navbar() {
