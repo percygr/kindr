@@ -16,7 +16,7 @@ import shopIcon from "../src/imgs/icons/shopping-bags.png";
 import houseWorkIcon from "../src/imgs/icons/house.png";
 import deliveryIcon from "../src/imgs/icons/delivery-truck.png";
 import otherIcon from "../src/imgs/icons/question-mark.png";
-import Navbar from "./components/Navbar/Navbar"
+import Navbar from "./components/Navbar/Navbar";
 
 const supabase = createClient(
   process.env.REACT_APP_SUPABASE_URL,
@@ -50,27 +50,25 @@ function App() {
     setTasks(data);
   }
 
-//   useEffect(() => {
-//     const checkScreenWidth = () => {
-//       setIsMobile(window.innerWidth <= 500);
-//     };
+  //   useEffect(() => {
+  //     const checkScreenWidth = () => {
+  //       setIsMobile(window.innerWidth <= 500);
+  //     };
 
-//     checkScreenWidth();
-//     window.addEventListener('resize', checkScreenWidth);
-//   return () => {
-//     window.removeEventListener('resize', checkScreenWidth);
-//   };
-// }, []);
-
+  //     checkScreenWidth();
+  //     window.addEventListener('resize', checkScreenWidth);
+  //   return () => {
+  //     window.removeEventListener('resize', checkScreenWidth);
+  //   };
+  // }, []);
 
   return (
     <div className="App">
       <BrowserRouter>
-
         {/* {!isMobile && <TopNav />}
         <TopNav /> */}
-        < Navbar />
-        
+        <Navbar />
+
         <div>
           <Routes>
             <Route path="/" element={<HomePage />} />
@@ -79,20 +77,20 @@ function App() {
               element={
                 <BrowsePage
                   tasks={tasks}
-                  selectedTask={selectedTask}
                   setSelectedTask={setSelectedTask}
                   categoryIcons={categoryIcons}
                 />
               }
             />
             <Route
-              path="/categories"
+              path="/mytasks"
               element={
-                <CategoryTilesPage
-                  setCategory={setCategory}
-                  category={category}
-                />
+                <MyTasksPage tasks={tasks} setSelectedTask={setSelectedTask} />
               }
+            />
+            <Route
+              path="/categories"
+              element={<CategoryTilesPage setCategory={setCategory} />}
             />
             <Route
               path="/create"
@@ -115,12 +113,6 @@ function App() {
               }
             />
             <Route path="/success" element={<SuccessPage />} />
-            <Route
-              path="/mytasks"
-              element={
-                <MyTasksPage tasks={tasks} setSelectedTask={setSelectedTask} />
-              }
-            />
           </Routes>
         </div>
       </BrowserRouter>

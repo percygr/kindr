@@ -7,29 +7,19 @@ Status IDs:
 3: Completed
 */
 
-export default function TaskList({
-  tasks,
-  onlyAvailable,
-  selectedTask,
-  setSelectedTask,
-  categoryIcons,
-}) {
+export default function TaskList({ tasks, onlyAvailable, setSelectedTask }) {
   return (
     <div className="tasklist-container">
-      {onlyAvailable && (
-        <div>
-          {showTasks(tasks, 1, selectedTask, setSelectedTask, categoryIcons)}
-        </div>
-      )}
+      {onlyAvailable && <div>{showTasks(tasks, 1, setSelectedTask)}</div>}
       {!onlyAvailable && (
         <div>
           <h2>Active Tasks</h2>
           <div className="card-container">
-            {showTasks(tasks, 2, selectedTask, setSelectedTask, categoryIcons)}
+            {showTasks(tasks, 2, setSelectedTask)}
           </div>
           <h2>Completed Tasks</h2>
           <div className="card-container">
-            {showTasks(tasks, 3, selectedTask, setSelectedTask, categoryIcons)}
+            {showTasks(tasks, 3, setSelectedTask)}
           </div>
         </div>
       )}
@@ -38,24 +28,12 @@ export default function TaskList({
 }
 
 // show only tasks of one status id
-function showTasks(
-  tasks,
-  statusId,
-  selectedTask,
-  setSelectedTask,
-  categoryIcons
-) {
+function showTasks(tasks, statusId, setSelectedTask) {
   const filteredTasks = tasks.filter((task) => task.status_id === statusId);
 
   return filteredTasks.map((task) => (
     <div key={task.id}>
-      <TaskCard
-        task={task}
-        tasks={tasks}
-        selectedTask={selectedTask}
-        setSelectedTask={setSelectedTask}
-        categoryIcons={categoryIcons}
-      />
+      <TaskCard task={task} setSelectedTask={setSelectedTask} />
     </div>
   ));
 }

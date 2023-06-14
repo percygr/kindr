@@ -2,11 +2,11 @@
 import { createClient } from "@supabase/supabase-js";
 
 export default function TaskInfo({
-  isEditable,
-  categoryIcons,
-  category,
-  selectedTask,
-  tasks,
+  isEditable, // false if view only, true if new task
+  categoryIcons, // array of icon links, indexed 0-5
+  category, // chosen in cateroryTiles, only used when isEditable is true
+  selectedTask, // task ID of clicked TaskCard, only used when isEditable is false
+  tasks, // array of all tasks, only used when isEditable is false
 }) {
   let categoryID = 0;
   let thisTask = {};
@@ -15,8 +15,6 @@ export default function TaskInfo({
     process.env.REACT_APP_SUPABASE_URL,
     process.env.REACT_APP_SUPABASE_KEY
   );
-
-  console.log(isEditable);
 
   if (isEditable) {
     categoryID = category - 1;
