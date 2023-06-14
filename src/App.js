@@ -85,7 +85,11 @@ function App() {
             <Route
               path="/mytasks"
               element={
-                <MyTasksPage tasks={tasks} setSelectedTask={setSelectedTask} />
+                <MyTasksPage
+                  tasks={tasks}
+                  setSelectedTask={setSelectedTask}
+                  categoryIcons={categoryIcons}
+                />
               }
             />
             <Route
@@ -113,7 +117,6 @@ function App() {
               }
             />
             <Route path="/success" element={<SuccessPage />} />
-
           </Routes>
         </div>
       </BrowserRouter>

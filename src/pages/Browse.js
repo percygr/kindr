@@ -9,6 +9,7 @@ export default function BrowsePage({ tasks, setSelectedTask, categoryIcons }) {
         tasks={tasks}
         onlyAvailable={true}
         setSelectedTask={setSelectedTask}
+        categoryIcons={categoryIcons}
       />
     </div>
   );
