@@ -14,6 +14,7 @@ export default function TaskCard({
   selectedTask,
   categoryIcons,
 }) {
+  console.log(selectedTask);
   const navigate = useNavigate();
   function handleSelectTask(taskId) {
     return () => {
@@ -24,22 +25,24 @@ export default function TaskCard({
     };
   }
 
-  
   return (
-      <div onClick={handleSelectTask(task.id)} className="task-card">
+    <div onClick={handleSelectTask(task.id)} className="task-card">
+      <div className="image">
+        <img
+          className="category-icon"
+          src={categoryIcons[task.category_id - 1].image}
+          alt="task-icon"
+        />
+      </div>
 
-        <div className = "image" >
-      <img className = "category-icon" src ={categoryIcons[1].image} alt = "task-icon" /> 
-        </div>
-
-        <div className = "card-info">
+      <div className="card-info">
         {/* <p>Id: {task.id}</p> */}
         <h2>Title: {task.title}</h2>
         <p>Duration: {task.duration}</p>
         {/* <p>Category: {task.category_id}</p> */}
         <p>Location: {task.location}</p>
         <p>Creator ID: {task.creator_id}</p>
-        </div> 
       </div>
+    </div>
   );
 }

@@ -1,22 +1,45 @@
 //import { is } from "@babel/types";
+import { createClient } from "@supabase/supabase-js";
 
 export default function TaskInfo({
-  isEditable,
-  categoryIcons,
-  category,
-  selectedTask,
-  tasks,
+  isEditable, // false if view only, true if new task
+  categoryIcons, // array of icon links, indexed 0-5
+  category, // chosen in categoryTiles, only used when isEditable is true
+  selectedTask, // task ID of clicked TaskCard, only used when isEditable is false
+  tasks, // array of all tasks, only used when isEditable is false
 }) {
   let categoryID = 0;
   let thisTask = {};
 
-  console.log(isEditable);
+  const supabase = createClient(
+    process.env.REACT_APP_SUPABASE_URL,
+    process.env.REACT_APP_SUPABASE_KEY
+  );
 
   if (isEditable) {
     categoryID = category - 1;
   } else {
     thisTask = tasks.find((task) => task.id === selectedTask);
     categoryID = thisTask.category_id - 1;
+  }
+
+  async function writeTask() {
+    // write to database
+    const { error } = await supabase.from("tasks").insert({
+      title: "insert test - title",
+      description: "description - insert test",
+      location: "location - insert test",
+      duration: "duration - insert test",
+      creator_id: 1,
+      category_id: 1,
+      status_id: 1,
+    });
+
+    if (error) {
+      console.log("error", error);
+    }
+
+    //redirect to thank you page
   }
 
   return (
@@ -44,6 +67,11 @@ export default function TaskInfo({
       {isEditable ? <input type="text" /> : <div>{thisTask.creator_id}</div>}
       <div>Contact Number: </div>
       {isEditable ? <input type="text" /> : <div>123-4567</div>}
+      {isEditable && (
+        <button className="button" onClick={() => writeTask()}>
+          Submit
+        </button>
+      )}
     </div>
   );
 }
