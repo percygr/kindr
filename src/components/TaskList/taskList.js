@@ -59,6 +59,7 @@ function showTasks(
         selectedTask={selectedTask}
         setSelectedTask={setSelectedTask}
         categoryIcons={categoryIcons}
+        // categoryID = {categoryID}
       />
     </div>
   ));

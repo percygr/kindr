@@ -1,7 +1,7 @@
 //import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function CategoryTiles({ setCategory, category }) {
+export default function CategoryTiles({ setCategory }) {
   const navigate = useNavigate();
 
   function handleCategoryClick(categoryId) {

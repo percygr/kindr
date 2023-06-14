@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import TaskInfo from "../components/TaskInfo/taskInfo";
 import CategoryScroll from "../components/CategoryScroll/categoryScroll";
 //import { useEffect } from "react";
@@ -16,9 +15,6 @@ export default function CreateTaskPage({
         category={category}
         categoryIcons={categoryIcons}
       />
-      <Link to="/success">
-        <button className="button">Submit</button>
-      </Link>
     </div>
   );
 }
