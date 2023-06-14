@@ -1,5 +1,8 @@
 //import { is } from "@babel/types";
 import { createClient } from "@supabase/supabase-js";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+
 
 export default function TaskInfo({
   isEditable, // false if view only, true if new task
@@ -8,6 +11,15 @@ export default function TaskInfo({
   selectedTask, // task ID of clicked TaskCard, only used when isEditable is false
   tasks, // array of all tasks, only used when isEditable is false
 }) {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [location, setLocation] = useState("");
+  const [duration, setDuration] = useState("");
+  //const [creatorName, setCreatorName] = useState("");
+  //const [contactNumber, setContactNumber] = useState("");
+
+  const navigate = useNavigate();
+
   let categoryID = 0;
   let thisTask = {};
 
@@ -26,20 +38,55 @@ export default function TaskInfo({
   async function writeTask() {
     // write to database
     const { error } = await supabase.from("tasks").insert({
-      title: "insert test - title",
-      description: "description - insert test",
-      location: "location - insert test",
-      duration: "duration - insert test",
+      title: title,
+      description: description,
+      location: location,
+      duration: duration,
       creator_id: 1,
-      category_id: 1,
+      category_id: category,
       status_id: 1,
     });
 
     if (error) {
       console.log("error", error);
     }
+    navigate(`/success`);
+  }
 
-    //redirect to thank you page
+  async function acceptTask() {
+    const { error } = await supabase
+      .from("tasks")
+      .update({ status_id: 2 })
+      .match({ id: thisTask.id });
+
+    if (error) {
+      console.log("error", error);
+    }
+    navigate(`/success`);
+  }
+
+  async function completeTask() {
+    const { error } = await supabase
+      .from("tasks")
+      .update({ status_id: 3 })
+      .match({ id: thisTask.id });
+
+    if (error) {
+      console.log("error", error);
+    }
+    navigate(`/success`);
+  }
+
+  async function deleteTask() {
+    const { error } = await supabase
+      .from("tasks")
+      .delete()
+      .eq ('id', thisTask.id) ;
+
+    if (error) {
+      console.log("error", error);
+    }
+    navigate(`/mytasks`);
   }
 
   return (
@@ -49,12 +96,29 @@ export default function TaskInfo({
         alt="category icon"
         width="250"
       />
-      <div>ID: </div>
-      {isEditable ? <input type="text" /> : <div>{thisTask.id}</div>}
+
       <div>Title: </div>
-      {isEditable ? <input type="text" /> : <div>{thisTask.title}</div>}
+      {isEditable ? (
+        <input
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="Enter a short title"
+        />
+      ) : (
+        <div>{thisTask.title}</div>
+      )}
       <div>Description: </div>
-      {isEditable ? <input type="text" /> : <div>{thisTask.description}</div>}
+      {isEditable ? (
+        <input
+          type="text"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          placeholder="Enter a description"
+        />
+      ) : (
+        <div>{thisTask.description}</div>
+      )}
       {!isEditable && (
         <div>
           <div>Date Posted:</div>
@@ -62,16 +126,58 @@ export default function TaskInfo({
         </div>
       )}
       <div>Location: </div>
-      {isEditable ? <input type="text" /> : <div>{thisTask.location}</div>}
-      <div>Name: </div>
-      {isEditable ? <input type="text" /> : <div>{thisTask.creator_id}</div>}
-      <div>Contact Number: </div>
-      {isEditable ? <input type="text" /> : <div>123-4567</div>}
+      {isEditable ? (
+        <input
+          type="text"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+          placeholder="Enter a location"
+        />
+      ) : (
+        <div>{thisTask.location}</div>
+      )}
+      <div>Duration: </div>
+      {isEditable ? (
+        <input
+          type="text"
+          value={duration}
+          onChange={(e) => setDuration(e.target.value)}
+          placeholder="Enter a duration"
+        />
+      ) : (
+        <div>{thisTask.duration}</div>
+      )}
+
+      {!isEditable && (
+        <div>
+          <div>Name: </div>
+          {thisTask.creator_id}
+        </div>
+      )}
+      <div>Contact Information: </div>
+      {isEditable ? <div>number / email</div> : <div>number / email</div>}
       {isEditable && (
         <button className="button" onClick={() => writeTask()}>
           Submit
         </button>
       )}
+
+      {!isEditable && thisTask.status_id === 1 && (
+        <button className="button" onClick={() => acceptTask()}>
+          Accept
+        </button>
+      )}
+      {!isEditable && thisTask.status_id === 2 && (
+        <button className="button" onClick={() => completeTask()}>
+          Complete!
+        </button>
+      )}
+      {!isEditable && thisTask.status_id === 3 && (
+        <button className="button" onClick={() => deleteTask()}>
+          Delete
+        </button>
+      )}
+
     </div>
   );
 }

@@ -77,20 +77,20 @@ function App() {
               element={
                 <BrowsePage
                   tasks={tasks}
-                  selectedTask={selectedTask}
                   setSelectedTask={setSelectedTask}
                   categoryIcons={categoryIcons}
                 />
               }
             />
             <Route
-              path="/categories"
+              path="/mytasks"
               element={
-                <CategoryTilesPage
-                  setCategory={setCategory}
-                  category={category}
-                />
+                <MyTasksPage tasks={tasks} setSelectedTask={setSelectedTask} />
               }
+            />
+            <Route
+              path="/categories"
+              element={<CategoryTilesPage setCategory={setCategory} />}
             />
             <Route
               path="/create"
@@ -113,16 +113,7 @@ function App() {
               }
             />
             <Route path="/success" element={<SuccessPage />} />
-            <Route
-              path="/mytasks"
-              element={
-                <MyTasksPage
-                  tasks={tasks}
-                  setSelectedTask={setSelectedTask}
-                  categoryIcons={categoryIcons}
-                />
-              }
-            />
+
           </Routes>
         </div>
       </BrowserRouter>
