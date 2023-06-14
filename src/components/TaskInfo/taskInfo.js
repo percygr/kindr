@@ -1,3 +1,5 @@
+//import { is } from "@babel/types";
+
 export default function TaskInfo({
   isEditable,
   categoryIcons,
@@ -7,6 +9,8 @@ export default function TaskInfo({
 }) {
   let categoryID = 0;
   let thisTask = {};
+
+  console.log(isEditable);
 
   if (isEditable) {
     categoryID = category - 1;
