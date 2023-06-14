@@ -17,12 +17,13 @@ export default function TaskList({
   return (
     <div className="tasklist-container">
       {onlyAvailable && (
-        <div>
+        <div className="card-container">
           {showTasks(tasks, 1, selectedTask, setSelectedTask, categoryIcons)}
         </div>
       )}
       {!onlyAvailable && (
         <div>
+          
           <h2>Active Tasks</h2>
           <div className="card-container">
             {showTasks(tasks, 2, selectedTask, setSelectedTask, categoryIcons)}
