@@ -3,20 +3,20 @@ import { createClient } from "@supabase/supabase-js";
 import { useState, useEffect } from "react";
 import "./App.css";
 import HomePage from "./pages/Home";
-import TopNav from "./components/TopNav/topNav";
+// import TopNav from "./components/TopNav/topNav";
 import BrowsePage from "./pages/Browse";
 import CategoryTilesPage from "./pages/SelectCategory";
 import CreateTaskPage from "./pages/CreateTask";
 import ViewTaskPage from "./pages/ViewTask";
 import SuccessPage from "./pages/Success";
 import MyTasksPage from "./pages/MyTasks";
-//import BottomNav from "./components/BottomNav/bottomNav";
 import tyreIcon from "../src/imgs/icons/tire.png";
 import gardenIcon from "../src/imgs/icons/gardening.png";
 import shopIcon from "../src/imgs/icons/shopping-bags.png";
 import houseWorkIcon from "../src/imgs/icons/house.png";
 import deliveryIcon from "../src/imgs/icons/delivery-truck.png";
 import otherIcon from "../src/imgs/icons/question-mark.png";
+import Navbar from "./components/Navbar/Navbar"
 
 const supabase = createClient(
   process.env.REACT_APP_SUPABASE_URL,
@@ -25,7 +25,7 @@ const supabase = createClient(
 
 function App() {
   const [tasks, setTasks] = useState([]);
-  const [isMobile, setIsMobile] = useState(false);
+  // const [isMobile, setIsMobile] = useState(false);
   const [category, setCategory] = useState([]);
   const [categoryIcons, setCategoryIcons] = useState([]);
   const [selectedTask, setSelectedTask] = useState(0);
@@ -50,25 +50,27 @@ function App() {
     setTasks(data);
   }
 
-  useEffect(() => {
-    const checkScreenWidth = () => {
-      setIsMobile(window.innerWidth <= 500);
-    };
+//   useEffect(() => {
+//     const checkScreenWidth = () => {
+//       setIsMobile(window.innerWidth <= 500);
+//     };
 
-    checkScreenWidth();
-    window.addEventListener("resize", checkScreenWidth);
-    return () => {
-      window.removeEventListener("resize", checkScreenWidth);
-    };
-  }, []);
+//     checkScreenWidth();
+//     window.addEventListener('resize', checkScreenWidth);
+//   return () => {
+//     window.removeEventListener('resize', checkScreenWidth);
+//   };
+// }, []);
+
 
   return (
     <div className="App">
       <BrowserRouter>
-        <nav>
-          {!isMobile && <TopNav />}
-          {/* <TopNav /> */}
-        </nav>
+
+        {/* {!isMobile && <TopNav />}
+        <TopNav /> */}
+        < Navbar />
+        
         <div>
           <Routes>
             <Route path="/" element={<HomePage />} />

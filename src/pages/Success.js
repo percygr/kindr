@@ -4,7 +4,7 @@ import HeartIcon from "../components/HeartIcon/heartIcon.js";
 export default function SuccessPage() {
   return (
   <div>
-    <p className="h1">Thanks for posting!</p>
+    <h1>Thanks for posting!</h1>
       <HeartIcon />
     <Link to='/'>
       <button className="button">Home</button>
