@@ -68,50 +68,39 @@ Medium: 11px
   --text-colour: #000000;
   --gradient: linear-gradient(90deg, rgba(1,187,228,1) 62%, rgba(1,228,216,1) 88%, rgba(133,242,145,1) 100%);
   }
-
-
 /* Header Gradient */
 .myGradient {
   background: var(--primary-blue);
 /* background: linear-gradient(90deg, rgba(1,187,228,1) 62%, rgba(1,228,216,1) 88%, rgba(133,242,145,1) 100%); */
 background: var(--gradient)
 }
-
 .App {
   text-align: center;
   /* background: linear-gradient(180deg, rgba(1,187,228,1) 40%, rgba(133,242,145,1) 100%); */
   height: 100vh;
-
 }
-
 /* body {
   background: linear-gradient(180deg, rgba(1,187,228,1) 62%, rgba(1,228,216,1) 88%, rgba(133,242,145,1) 100%);
 } */
-
 h1 {
   font-family: "futura-pt-bold", sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 24pt;
 }
-
-
 p {
   font-family: "futura-pt", sans-serif;
   font-weight: 500;
   font-style: normal;
   font-size: 11pt;
 }
-
-
-h2 { 
+h2 {
   font-family: "futura-pt", sans-serif;
   font-weight: 500;
   font-style: normal;
   font-size: 16pt;
   /* height: 3em; */
 }
-
 .home-buttons {
   display: flex;
   flex-direction: column;
@@ -119,7 +108,6 @@ h2 {
   justify-content: center;
   margin-top: 3rem;
 }
-
 /* Buttons */
 .button {
   width: 150px;
@@ -131,7 +119,6 @@ h2 {
   color: var(--primary-background-colour);
   font-size: 16pt;
 }
-
 .button-blue {
   width: 200px;
   height: 37px;
@@ -142,7 +129,6 @@ h2 {
   color: var(--primary-background-colour);
   font-size: 16pt;
 }
-
 .button-green {
   width: 200px;
   height: 37px;
@@ -152,39 +138,29 @@ h2 {
   border: none;
   color: var(--primary-background-colour);
   font-size: 16pt;
-  
 }
-
- All items in Browse Page 
+ All items in Browse Page
 .browse-container{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
   }
- 
   .browse-container > * {
     margin-left: 4%;
   }
-
-
 /* All task cards in a list */
 .tasklist-container {
   display: grid;
-@media screen and (min-width: 600px) { 
+@media screen and (min-width: 600px) {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 3fr;
-  
 }
 }
-
 .tasklist-container > * {
   width: 90%;
   margin: 0.5%;
-  } 
-
-
+  }
 /* Task Cards */
 .task-card {
 display: flex;
@@ -202,22 +178,17 @@ height: 100%;
 grid-column: 1 3;
 /* padding: 5%; */
 }
-
 .category-icon {
 width: 90%;
 }
-
-.image { 
+.image {
   background-color: var(--secondary-blue);
   width: 30%;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 10px 0px 0px 10px;
-  
-
 }
-
 .card-info {
   display: flex;
   flex-direction: column;
@@ -227,28 +198,20 @@ width: 90%;
   width:75%;
   /* gap: 1rem; */
 }
-
 #logo {
   margin: 5%;
 }
-
-#hearticon { 
+#hearticon {
   max-width: 70%;
   padding: 5%;
 }
-
 .illustrationsHome{
   height: 200px;
   margin-top: 5rem;
-  
-  
 }
-
 .illustrationPost {
   height: 200px;
 }
-
 .illustrationVolunteer {
   height: 200px;
 }
-
