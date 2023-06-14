@@ -20,13 +20,15 @@ function Navbar() {
         <a href="/browse">Browse Tasks</a>
         <a href="/mytasks">My Tasks</a>
         <a href="/my-profile">My Profile</a>
-        <a href="/my-profile">
-          <img src={profilePic} className="profile-pic" alt="Profile"></img>
-        </a>
         <button className="nav-btn nav-close-btn" onClick={showNavbar}>
           <FaTimes />
         </button>
       </nav>
+      <div className="profile-container">
+      <a href="/my-profile">
+        <img src={profilePic} className="profile-pic" alt="Profile" />
+      </a>
+      </div>
       <button className="nav-btn" onClick={showNavbar}>
         <FaBars />
       </button>

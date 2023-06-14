@@ -3,6 +3,7 @@ import { createClient } from "@supabase/supabase-js";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
+
 export default function TaskInfo({
   isEditable, // false if view only, true if new task
   categoryIcons, // array of icon links, indexed 0-5
@@ -49,7 +50,6 @@ export default function TaskInfo({
     if (error) {
       console.log("error", error);
     }
-    //redirect to thank you page
     navigate(`/success`);
   }
 
@@ -161,6 +161,7 @@ export default function TaskInfo({
           Submit
         </button>
       )}
+
       {!isEditable && thisTask.status_id === 1 && (
         <button className="button" onClick={() => acceptTask()}>
           Accept
@@ -176,6 +177,7 @@ export default function TaskInfo({
           Delete
         </button>
       )}
+
     </div>
   );
 }
