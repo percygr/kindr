@@ -15,21 +15,24 @@ export default function TaskList({
   categoryIcons,
 }) {
   return (
-    <div className="tasklist-container">
+    <div>
       {onlyAvailable && (
-        <div className="card-container">
+        <div className = "browse-container">
+        <div className="tasklist-container">
           {showTasks(tasks, 1, selectedTask, setSelectedTask, categoryIcons)}
+        </div>
         </div>
       )}
       {!onlyAvailable && (
-        <div>
-          
+        <div className="browse-container">
+
           <h2>Active Tasks</h2>
-          <div className="card-container">
+          <div className="tasklist-container">
             {showTasks(tasks, 2, selectedTask, setSelectedTask, categoryIcons)}
           </div>
+
           <h2>Completed Tasks</h2>
-          <div className="card-container">
+          <div className="tasklist-container">
             {showTasks(tasks, 3, selectedTask, setSelectedTask, categoryIcons)}
           </div>
         </div>

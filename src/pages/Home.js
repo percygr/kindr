@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import illustrationHome from "../../imgs/illustrations/joy.png";
+import illustrationHome from "../imgs/illustrations/joy.png";
 
 export default function HomePage() {
   return (

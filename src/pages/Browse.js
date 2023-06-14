@@ -8,7 +8,7 @@ export default function BrowsePage({
   categoryIcons,
 }) {
   return (
-    <div className="browse-container">
+    <div>
       <CategoryScroll categoryIcons={categoryIcons} />
       <TaskList
         tasks={tasks}

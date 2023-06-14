@@ -1,34 +1,33 @@
-/* 01 TYPOGRAPHY SYSTEM */
-
+/* DESIGN SYSTEM */
 
 /* Main font: 
 
+@import url("https://use.typekit.net/ycz4yvq.css");
 
+--- TYPOGRAPHY 
 Mobile Font sizes (px)
 11 / 16 / 30 
 
 Desktop Font sizes (px)
 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 64 / 86
 
+/* Main font: 
 
+@import url("https://use.typekit.net/ycz4yvq.css");
 
-- Font weights
-Default: 400
-Medium: 500
-Semi-bold: 600
-Bold: 700
+.small-text {
+  font-family: "futura-pt", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 11pt;
+}
 
-- Line heights
-Default: 1
-Small: 1.05
-Medium: 1.2
-Paragraph default: 1.6
-Large: 1.8
-
-- Letter spacing
--0.5px
-0.75px
-
+.medium-text {
+  font-family: "futura-pt", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 16pt;
+}
 --- 02: COLORS
 
 - Primary: #01BBE4
@@ -38,15 +37,6 @@ Large: 1.8
 #85F291
 #CAF1F9
 #FDB645
-
-- Accents:
-- Greys
-
-#888
-#767676 (lightest grey allowed on #fff)
-#6f6f6f (lightest grey allowed on #fdf2e9)
-#555
-#333
 
 --- 05 SHADOWS
 
@@ -62,19 +52,6 @@ Medium: 11px
 - Spacing system (px)
 2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128 */
 
-/* .phone-container {
-  width: 320px;
-  height: 640px;
-  background-color: #f2f2f2;
-  border-radius: 20px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  
-} */
 
 /* .home {
   background: linear-gradient(180deg, rgba(1,187,228,1) 62%, rgba(1,228,216,1) 88%, rgba(133,242,145,1) 100%);
@@ -92,8 +69,6 @@ Medium: 11px
   --gradient: linear-gradient(90deg, rgba(1,187,228,1) 62%, rgba(1,228,216,1) 88%, rgba(133,242,145,1) 100%);
   }
 
-/*Font*/
-@import url("https://use.typekit.net/ycz4yvq.css");
 
 /* Header Gradient */
 .myGradient {
@@ -120,19 +95,21 @@ h1 {
   font-size: 24pt;
 }
 
-.small-text {
+
+p {
   font-family: "futura-pt", sans-serif;
   font-weight: 500;
   font-style: normal;
   font-size: 11pt;
 }
 
-.medium-text {
+
+/* h2 { 
   font-family: "futura-pt", sans-serif;
   font-weight: 500;
   font-style: normal;
   font-size: 16pt;
-}
+} */
 
 /* Buttons */
 .button {
@@ -157,34 +134,33 @@ h1 {
   font-size: 16pt;
 }
 
+/* page-container */
+
+
+ /* All items in Browse Page */
+.browse-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
 /* All task cards in a list */
 .tasklist-container {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; 
+  margin: 0.5%;
+  width: 80%;
 }
 
 .tasklist-container > *{
   display: flex;
-  flex: 1 1 10em;
-  margin: 10px;
+  flex: 1 1 15em;
+  margin: 0.5%;
   }
 
-  /* All items in Browse Page */
-.browse-container{
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Container for each individual task card */
-.card-container{
-justify-content: center;
-max-width: 100%;
-max-height: 100%;
-}
 
 /* Task Cards */
 .task-card {
@@ -193,15 +169,14 @@ flex-direction: column;
 background-color: var(--primary-background-colour) ;
 border-radius: 10px;
 box-shadow: 3px 5px 10px rgb(0 0 0 / 0.2);
-padding: 5%;
-margin: 2%;
-width: 400pt;
-/* height: 100pt; */
 color: var(--text-colour);
 font-family: "futura-pt", sans-serif;
 font-weight: 500;
 font-style: normal;
 font-size: 11pt;
+width: 100%;
+height: 100%;
+padding: 5%;
 }
 
 #logo {

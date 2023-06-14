@@ -2,7 +2,7 @@ import TaskList from "../components/TaskList/taskList";
 
 export default function MyTasksPage({ tasks, setSelectedTask }) {
   return (
-    <div>
+    <div className = "br">
       <TaskList
         showCategories={false}
         tasks={tasks}
