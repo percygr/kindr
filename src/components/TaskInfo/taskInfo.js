@@ -81,7 +81,7 @@ export default function TaskInfo({
     const { error } = await supabase
       .from("tasks")
       .delete()
-      .match({ id: thisTask.id });
+      .eq ('id', thisTask.id) ;
 
     if (error) {
       console.log("error", error);
