@@ -22,7 +22,7 @@ export default function TaskCard({
     <div className="task-card">
       <div onClick={handleSelectTask(task.id)}>
         <p>Id: {task.id}</p>
-        <p>Title: {task.title}</p>
+        <h2>Title: {task.title}</h2>
         <p>Duration: {task.duration}</p>
         <p>Category: {task.category_id}</p>
         <p>Location: {task.location}</p>

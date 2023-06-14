@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import illustrationHome from "../imgs/illustrations/joy.png";
 
 export default function HomePage() {
   return (
@@ -10,6 +11,7 @@ export default function HomePage() {
       <Link to="/browse">
         <button className="button-green">Volunteer</button>
       </Link>
+      <image className="illustrationHome" src={illustrationHome} alt="illustration" />
     </div>
   );
 }

@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import "./navbar.css";
 import logo from "../../imgs/logos/logo.png";
-import profilePic from "../../imgs/icons/man.png";
+import profilePic from "../../imgs/logos/profile.png";
 
 function Navbar() {
   const navRef = useRef();
