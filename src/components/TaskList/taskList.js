@@ -7,19 +7,33 @@ Status IDs:
 3: Completed
 */
 
-export default function TaskList({ tasks, onlyAvailable, setSelectedTask }) {
+export default function TaskList({
+  tasks,
+  onlyAvailable,
+  selectedTask,
+  setSelectedTask,
+  categoryIcons,
+}) {
   return (
-    <div className="tasklist-container">
-      {onlyAvailable && <div>{showTasks(tasks, 1, setSelectedTask)}</div>}
+    <div>
+      {onlyAvailable && (
+        <div className = "browse-container">
+        <div className="tasklist-container">
+          {showTasks(tasks, 1, selectedTask, setSelectedTask, categoryIcons)}
+        </div>
+        </div>
+      )}
       {!onlyAvailable && (
-        <div>
+        <div className="browse-container">
+
           <h2>Active Tasks</h2>
-          <div className="card-container">
-            {showTasks(tasks, 2, setSelectedTask)}
+          <div className="tasklist-container">
+            {showTasks(tasks, 2, selectedTask, setSelectedTask, categoryIcons)}
           </div>
+
           <h2>Completed Tasks</h2>
-          <div className="card-container">
-            {showTasks(tasks, 3, setSelectedTask)}
+          <div className="tasklist-container">
+            {showTasks(tasks, 3, selectedTask, setSelectedTask, categoryIcons)}
           </div>
         </div>
       )}
@@ -28,12 +42,25 @@ export default function TaskList({ tasks, onlyAvailable, setSelectedTask }) {
 }
 
 // show only tasks of one status id
-function showTasks(tasks, statusId, setSelectedTask) {
+function showTasks(
+  tasks,
+  statusId,
+  selectedTask,
+  setSelectedTask,
+  categoryIcons
+) {
   const filteredTasks = tasks.filter((task) => task.status_id === statusId);
 
   return filteredTasks.map((task) => (
     <div key={task.id}>
-      <TaskCard task={task} setSelectedTask={setSelectedTask} />
+      <TaskCard
+        task={task}
+        tasks={tasks}
+        selectedTask={selectedTask}
+        setSelectedTask={setSelectedTask}
+        categoryIcons={categoryIcons}
+        // categoryID = {categoryID}
+      />
     </div>
   ));
 }

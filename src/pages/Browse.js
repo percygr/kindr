@@ -3,7 +3,7 @@ import CategoryScroll from "../components/CategoryScroll/categoryScroll";
 
 export default function BrowsePage({ tasks, setSelectedTask, categoryIcons }) {
   return (
-    <div className="browse-container">
+    <div>
       <CategoryScroll categoryIcons={categoryIcons} />
       <TaskList
         tasks={tasks}
