@@ -8,7 +8,6 @@ export default function TopNav() {
   return (
     <div>
       <Navbar bg="info, myGradient" variant="dark">
-
         <img src={logo} className="logo" height="35px" alt="logo" />
 
         <Nav>
@@ -16,7 +15,7 @@ export default function TopNav() {
             Home
           </Link>
 
-          <Link className="not-ugly" to="/create">
+          <Link className="not-ugly" to="/categories">
             New Task
           </Link>
 

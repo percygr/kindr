@@ -10,7 +10,6 @@ import CreateTaskPage from "./pages/CreateTask";
 import ViewTaskPage from "./pages/ViewTask";
 import SuccessPage from "./pages/Success";
 import MyTasksPage from "./pages/MyTasks";
-// import BottomNav from "./components/BottomNav/bottomNav";
 import tyreIcon from "../src/imgs/icons/tire.png";
 import gardenIcon from "../src/imgs/icons/gardening.png";
 import shopIcon from "../src/imgs/icons/shopping-bags.png";
@@ -29,6 +28,7 @@ function App() {
   // const [isMobile, setIsMobile] = useState(false);
   const [category, setCategory] = useState([]);
   const [categoryIcons, setCategoryIcons] = useState([]);
+  const [selectedTask, setSelectedTask] = useState(0);
 
   useEffect(() => {
     getTasks();
@@ -66,7 +66,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        
+
         {/* {!isMobile && <TopNav />}
         <TopNav /> */}
         < Navbar />
@@ -74,7 +74,17 @@ function App() {
         <div>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/browse" element={<BrowsePage tasks={tasks} />} />
+            <Route
+              path="/browse"
+              element={
+                <BrowsePage
+                  tasks={tasks}
+                  selectedTask={selectedTask}
+                  setSelectedTask={setSelectedTask}
+                  categoryIcons={categoryIcons}
+                />
+              }
+            />
             <Route
               path="/categories"
               element={
@@ -96,17 +106,25 @@ function App() {
             />
             <Route
               path="/view"
-              element={<ViewTaskPage categoryIcons={categoryIcons} />}
+              element={
+                <ViewTaskPage
+                  categoryIcons={categoryIcons}
+                  selectedTask={selectedTask}
+                  tasks={tasks}
+                />
+              }
             />
             <Route path="/success" element={<SuccessPage />} />
-            <Route path="/mytasks" element={<MyTasksPage tasks={tasks} />} />
+            <Route
+              path="/mytasks"
+              element={
+                <MyTasksPage tasks={tasks} setSelectedTask={setSelectedTask} />
+              }
+            />
           </Routes>
         </div>
-        {/* <nav>
-          <BottomNav />
-        </nav> */}
       </BrowserRouter>
-      </div>
+    </div>
   );
 }
 

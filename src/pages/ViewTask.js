@@ -1,11 +1,14 @@
 import TaskInfo from "../components/TaskInfo/taskInfo";
 
-
-export default function ViewTaskPage({categoryIcons}) {
+export default function ViewTaskPage({ categoryIcons, selectedTask, tasks }) {
   return (
     <div>
-      <p>This is the view a task page</p>
-      <TaskInfo isEditable={false} categoryIcons={categoryIcons}/>
+      <TaskInfo
+        isEditable={false}
+        categoryIcons={categoryIcons}
+        selectedTask={selectedTask}
+        tasks={tasks}
+      />
     </div>
   );
 }

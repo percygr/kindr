@@ -1,27 +1,44 @@
-export default function TaskInfo({ isEditable, categoryIcons, category }) {
-  console.log(categoryIcons[0]);
+export default function TaskInfo({
+  isEditable,
+  categoryIcons,
+  category,
+  selectedTask,
+  tasks,
+}) {
+  let categoryID = 0;
+  let thisTask = {};
+
+  if (isEditable) {
+    categoryID = category - 1;
+  } else {
+    thisTask = tasks.find((task) => task.id === selectedTask);
+    categoryID = thisTask.category_id - 1;
+  }
+
   return (
     <div>
-      <p>
-        There will be boxes to input task info here - input and display based on
-        props
-      </p>
-      <img src={categoryIcons[category -1].image} alt="category icon" />
+      <img
+        src={categoryIcons[categoryID].image}
+        alt="category icon"
+        width="250"
+      />
+      <div>ID: </div>
+      {isEditable ? <input type="text" /> : <div>{thisTask.id}</div>}
       <div>Title: </div>
-      {isEditable ? <input type="text" /> : <div>Dummy title</div>}
-      <div>Description</div>
-      {isEditable ? <input type="text" /> : <div>Dummy description</div>}
+      {isEditable ? <input type="text" /> : <div>{thisTask.title}</div>}
+      <div>Description: </div>
+      {isEditable ? <input type="text" /> : <div>{thisTask.description}</div>}
       {!isEditable && (
         <div>
           <div>Date Posted:</div>
-          <div>1st April</div>
+          <div>{thisTask.created_at}</div>
         </div>
       )}
       <div>Location: </div>
-      {isEditable ? <input type="text" /> : <div>London</div>}
-      <div>Name</div>
-      {isEditable ? <input type="text" /> : <div>John Doe</div>}
-      <div>Contact Number</div>
+      {isEditable ? <input type="text" /> : <div>{thisTask.location}</div>}
+      <div>Name: </div>
+      {isEditable ? <input type="text" /> : <div>{thisTask.creator_id}</div>}
+      <div>Contact Number: </div>
       {isEditable ? <input type="text" /> : <div>123-4567</div>}
     </div>
   );
