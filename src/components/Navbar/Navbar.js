@@ -16,7 +16,7 @@ function Navbar() {
       <img src={logo} className="logo" height="35px" alt="logo" />
       <nav ref={navRef}>
         <a href="/">Home</a>
-        <a href="/categories">New Task</a>
+        {/* <a href="/categories">New Task</a> */}
         <a href="/browse">Browse Tasks</a>
         <a href="/mytasks">My Tasks</a>
         <a href="/my-profile">My Profile</a>
@@ -34,7 +34,6 @@ function Navbar() {
       </button>
     </header>
   );
-  
 }
 
 export default Navbar;
