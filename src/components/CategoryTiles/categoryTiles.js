@@ -1,4 +1,5 @@
 //import { useEffect } from "react";
+import "./categoryTiles.css";
 import { useNavigate } from "react-router-dom";
 
 export default function CategoryTiles({ setCategory, categoryIcons }) {
@@ -25,7 +26,7 @@ export default function CategoryTiles({ setCategory, categoryIcons }) {
       </div>
       <div onClick={() => handleCategoryClick(3)} className="category-item">
         <img src={categoryIcons[2].image} alt="Shopping" />
-        <span>Shopping</span>
+        <span>Shopping</span>ç
       </div>
       <div onClick={() => handleCategoryClick(4)} className="category-item">
         <img src={categoryIcons[3].image} alt="Housework" />
