@@ -36,7 +36,7 @@ export default function TaskCard({
 
       <div className="card-info">
         {/* <p>Id: {task.id}</p> */}
-        <h2>Title: {task.title}</h2>
+        <h2>{task.title}</h2>
         <p>Duration: {task.duration}</p>
         {/* <p>Category: {task.category_id}</p> */}
         <p>Location: {task.location}</p>

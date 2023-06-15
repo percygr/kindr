@@ -3,6 +3,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import "./navbar.css";
 import logo from "../../imgs/logos/logo.png";
 import profilePic from "../../imgs/logos/profile.png";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const navRef = useRef();
@@ -13,7 +14,9 @@ function Navbar() {
 
   return (
     <header>
-      <a href="/"><img src={logo} className="logo" height="35px" alt="logo" /></a>
+      <a href="/">
+        <img src={logo} className="logo" height="35px" alt="logo" />
+      </a>
       <nav ref={navRef}>
         <a href="/">Home</a>
         <a href="/categories">New Task</a>
@@ -25,9 +28,9 @@ function Navbar() {
         </button>
       </nav>
       <div className="profile-container">
-      <a href="/my-profile">
-        <img src={profilePic} className="profile-pic" alt="Profile" />
-      </a>
+        <a href="/my-profile">
+          <img src={profilePic} className="profile-pic" alt="Profile" />
+        </a>
       </div>
       <button className="nav-btn" onClick={showNavbar}>
         <FaBars />

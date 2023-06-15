@@ -255,6 +255,7 @@ width: 90%;
 	align-items: center;
 	text-align: center;
   margin: 50px;
+  cursor: pointer;
   }
   
   .category-item img {
