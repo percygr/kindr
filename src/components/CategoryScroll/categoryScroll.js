@@ -2,16 +2,16 @@ import "./categoryScroll.css";
 
 export default function CategoryScroll({ category, setCategory, categoryIcons }) {
   return (
-    <div >
+    <div className="main-container" >
       <div className="scroll-container">
         
         {categoryIcons.map((categoryIcon) => {  
           return (
-            <div  className = "scroll-icons-container">
-              <img className = "scroll-icons"src = {categoryIcon.image} alt={categoryIcon.name} />
+            <div  className = "image-container">
+              <img className = "images" src={categoryIcon.image} alt={categoryIcon.name} />
             </div>)})}
       </div>
-      <p>This is the category scroll function</p>
+     
       <div>CategoryScroll says: category selected: {category}</div>
     </div>
   );

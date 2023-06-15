@@ -1,23 +1,53 @@
+.main-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .scroll-container {
     display: flex;
-   justify-content: left;
     flex-direction: row;
     overflow-x: auto;
     overflow-y: hidden;
-    height: 1vh;
- 
-
+    height: 8%;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: none;
     scrollbar-width: none;
-}
-
-.scroll-icons{
-    height: 100%;
-   
+    width: 100%;
 
 }
 
-.scroll-icons-container{
- height: 60%;
+.image-container{
+width: 100%;
+height: auto;
+
+}
+
+
+  /* Media query for screens with a maximum width of 600px */
+  @media (max-width: 600px) {
+    .image-container {
+      width: 50%; /* Change the width to 50% when the screen is smaller */
+    }
+  }
+  
+  /* Media query for screens with a maximum width of 400px */
+  @media (max-width: 400px) {
+    .image-container {
+      width: 30%; /* Change the width to 30% when the screen is even smaller */
+    }
+  }
+
+.image-container{
+
+ height: 100px;
+ padding: 5px;
+ margin: 50px;
+ display: flex;
+ justify-content: space-between;
+ 
+}
+
+.images{
+    height:100% ;
 }
