@@ -14,14 +14,21 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
     width: 100%;
+    margin-bottom: 5%;
+    
 
 }
 
 .image-container{
 width: 100%;
 height: auto;
-
+height: 100px;
+padding: 5px;
+margin: 3%;
+display: flex;
+justify-content: space-between;
 }
+
 
 
   /* Media query for screens with a maximum width of 600px */
@@ -38,15 +45,7 @@ height: auto;
     }
   }
 
-.image-container{
 
- height: 100px;
- padding: 5px;
- margin: 50px;
- display: flex;
- justify-content: space-between;
- 
-}
 
 .images{
     height:100% ;

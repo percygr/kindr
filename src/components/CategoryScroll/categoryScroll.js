@@ -1,10 +1,13 @@
 import "./categoryScroll.css";
+import allIcon from "../../imgs/icons/all.png"
 
 export default function CategoryScroll({ category, setCategory, categoryIcons }) {
   return (
     <div className="main-container" >
       <div className="scroll-container">
-        
+        <div className = "image-container">
+        <img className = "images" src ={allIcon} alt = "all-icons"/>
+        </div> 
         {categoryIcons.map((categoryIcon) => {  
           return (
             <div  className = "image-container">
@@ -12,7 +15,7 @@ export default function CategoryScroll({ category, setCategory, categoryIcons })
             </div>)})}
       </div>
      
-      <div>CategoryScroll says: category selected: {category}</div>
+      {/* <div>CategoryScroll says: category selected: {category}</div> */}
     </div>
   );
 }
