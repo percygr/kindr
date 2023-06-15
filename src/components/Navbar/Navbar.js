@@ -13,7 +13,7 @@ function Navbar() {
 
   return (
     <header>
-      <a href="/"><img src={logo} className="logo" height="35px" alt="logo" /></a>
+      <img src={logo} className="logo" height="35px" alt="logo" />
       <nav ref={navRef}>
         <a href="/">Home</a>
         <a href="/categories">New Task</a>
@@ -25,15 +25,16 @@ function Navbar() {
         </button>
       </nav>
       <div className="profile-container">
-      <a href="/my-profile">
-        <img src={profilePic} className="profile-pic" alt="Profile" />
-      </a>
+        <a href="/my-profile">
+          <img src={profilePic} className="profile-pic" alt="Profile" />
+        </a>
       </div>
       <button className="nav-btn" onClick={showNavbar}>
         <FaBars />
       </button>
     </header>
   );
+  
 }
 
 export default Navbar;

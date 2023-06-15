@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 // import delivery from "../../imgs/icons/delivery-truck.png";
 // import other from "../../imgs/icons/question-mark.png";
 
-
 export default function TaskCard({
   task,
   tasks,
@@ -15,8 +14,6 @@ export default function TaskCard({
   selectedTask,
   categoryIcons,
 }) {
-  console.log(selectedTask);
-
   const navigate = useNavigate();
   function handleSelectTask(taskId) {
     return () => {
@@ -39,7 +36,7 @@ export default function TaskCard({
 
       <div className="card-info">
         {/* <p>Id: {task.id}</p> */}
-        <h2>Title: {task.title}</h2>
+        <h2>{task.title}</h2>
         <p>Duration: {task.duration}</p>
         {/* <p>Category: {task.category_id}</p> */}
         <p>Location: {task.location}</p>

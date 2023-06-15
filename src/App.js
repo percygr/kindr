@@ -96,7 +96,12 @@ function App() {
             />
             <Route
               path="/categories"
-              element={<CategoryTilesPage setCategory={setCategory} />}
+              element={
+                <CategoryTilesPage
+                  setCategory={setCategory}
+                  categoryIcons={categoryIcons}
+                />
+              }
             />
             <Route
               path="/create"
