@@ -1,0 +1,23 @@
+.scroll-container {
+    display: flex;
+   justify-content: left;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    height: 1vh;
+ 
+
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scroll-icons{
+    height: 100%;
+   
+
+}
+
+.scroll-icons-container{
+ height: 60%;
+}

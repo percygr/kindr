@@ -1,11 +1,14 @@
+import "./categoryScroll.css";
+
 export default function CategoryScroll({ category, setCategory, categoryIcons }) {
   return (
-    <div>
-      <div>
+    <div >
+      <div className="scroll-container">
+        
         {categoryIcons.map((categoryIcon) => {  
           return (
-            <div>
-              <img src={categoryIcon.image} alt={categoryIcon.name} />
+            <div  className = "scroll-icons-container">
+              <img className = "scroll-icons"src = {categoryIcon.image} alt={categoryIcon.name} />
             </div>)})}
       </div>
       <p>This is the category scroll function</p>
@@ -14,6 +17,7 @@ export default function CategoryScroll({ category, setCategory, categoryIcons })
   );
 }
 
+// import all icon
 
 // take in the categoryIcons prop ✅
 // map over the categoryIcons array
