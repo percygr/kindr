@@ -259,7 +259,7 @@ width: 90%;
   }
   
   .category-item img {
-	width: 100px; /* Adjust the image size as desired */
+	width: 200px; /* Adjust the image size as desired */
   }
   
   /* Media query for mobile devices */
@@ -269,8 +269,12 @@ width: 90%;
 	}
 
   .category-item{
-    margin: 10px;
+    margin: 0px;
   }
+
+  .category-item img {
+    width: 100px; /* Adjust the image size as desired */
+    }
 
   .header{
     margin-bottom: 1.5rem;

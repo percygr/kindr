@@ -1,9 +1,9 @@
+import { Link } from "react-router-dom";
 import { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import "./navbar.css";
 import logo from "../../imgs/logos/logo.png";
 import profilePic from "../../imgs/logos/profile.png";
-import { Link } from "react-router-dom";
 
 function Navbar() {
   const navRef = useRef();
@@ -14,23 +14,23 @@ function Navbar() {
 
   return (
     <header>
-      <a href="/">
+      <Link to="/">
         <img src={logo} className="logo" height="35px" alt="logo" />
-      </a>
+      </Link>
       <nav ref={navRef}>
-        <a href="/">Home</a>
-        <a href="/categories">New Task</a>
-        <a href="/browse">Browse Tasks</a>
-        <a href="/mytasks">My Tasks</a>
-        <a href="/my-profile">My Profile</a>
+        <Link to="/">Home</Link>
+        <Link to="/categories">New Task</Link>
+        <Link to="/browse">Browse Tasks</Link>
+        <Link to="/mytasks">My Tasks</Link>
+        <Link to="/my-profile">My Profile</Link>
         <button className="nav-btn nav-close-btn" onClick={showNavbar}>
           <FaTimes />
         </button>
       </nav>
       <div className="profile-container">
-        <a href="/my-profile">
+        <Link to="/my-profile">
           <img src={profilePic} className="profile-pic" alt="Profile" />
-        </a>
+        </Link>
       </div>
       <button className="nav-btn" onClick={showNavbar}>
         <FaBars />
