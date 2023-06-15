@@ -76,6 +76,8 @@ function App() {
               path="/browse"
               element={
                 <BrowsePage
+                  category={category}
+                  setCategory={setCategory}
                   tasks={tasks}
                   setSelectedTask={setSelectedTask}
                   categoryIcons={categoryIcons}
