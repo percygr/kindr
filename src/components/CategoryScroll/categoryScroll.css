@@ -14,7 +14,7 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
     width: 100%;
-    margin-bottom: 5%;
+    margin-bottom: 1rem;
     
 
 }
@@ -31,20 +31,7 @@ justify-content: space-between;
 
 
 
-  /* Media query for screens with a maximum width of 600px */
-  @media (max-width: 600px) {
-    .image-container {
-      width: 50%; /* Change the width to 50% when the screen is smaller */
-    }
-  }
-  
-  /* Media query for screens with a maximum width of 400px */
-  @media (max-width: 400px) {
-    .image-container {
-      width: 30%; /* Change the width to 30% when the screen is even smaller */
-    }
-  }
-
+ 
 
 
 .images{
