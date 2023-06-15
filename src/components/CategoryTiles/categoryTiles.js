@@ -1,7 +1,7 @@
 //import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function CategoryTiles({ setCategory }) {
+export default function CategoryTiles({ setCategory, categoryIcons }) {
   const navigate = useNavigate();
 
   function handleCategoryClick(categoryId) {
@@ -13,25 +13,36 @@ export default function CategoryTiles({ setCategory }) {
   return (
     <div>
       <h1>Please select a category for this task</h1>
-
-      <button className="button" onClick={() => handleCategoryClick(1)}>
-        Transport
-      </button>
-      <button className="button" onClick={() => handleCategoryClick(2)}>
-        Gardening
-      </button>
-      <button className="button" onClick={() => handleCategoryClick(3)}>
-        Shopping
-      </button>
-      <button className="button" onClick={() => handleCategoryClick(4)}>
-        Housework
-      </button>
-      <button className="button" onClick={() => handleCategoryClick(5)}>
-        Delivery
-      </button>
-      <button className="button" onClick={() => handleCategoryClick(6)}>
-        Other
-      </button>
+      <div className="category-container">
+        <div className="category-container-top">
+          <div onClick={() => handleCategoryClick(1)} className="category-item">
+            <img src={categoryIcons[0].image} width="150" />
+            Transport
+          </div>
+          <div onClick={() => handleCategoryClick(2)} className="category-item">
+            <img src={categoryIcons[1].image} width="150" />
+            Gardening
+          </div>
+          <div onClick={() => handleCategoryClick(3)} className="category-item">
+            <img src={categoryIcons[2].image} width="150" />
+            Shopping
+          </div>
+        </div>
+        <div className="category-container-bottom">
+          <div onClick={() => handleCategoryClick(4)} className="category-item">
+            <img src={categoryIcons[3].image} width="150" />
+            Housework
+          </div>
+          <div onClick={() => handleCategoryClick(5)} className="category-item">
+            <img src={categoryIcons[4].image} width="150" />
+            Delivery
+          </div>
+          <div onClick={() => handleCategoryClick(6)} className="category-item">
+            <img src={categoryIcons[5].image} width="150" />
+            Other
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

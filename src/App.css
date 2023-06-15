@@ -234,9 +234,23 @@ width: 90%;
 .illustrationVolunteer {
   height: 200px;
 }
+.category-container-top, .category-container-bottom  {
+  display: grid;
+  @media screen and (min-width: 600px) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 3fr;
+  }
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
 
-.success{
-
-
-
+.category-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 2rem;
+  cursor: pointer;
 }
