@@ -9,7 +9,11 @@ export default function CreateTaskPage({
 }) {
   return (
     <div>
-      <CategoryScroll category={category} setCategory={setCategory} />
+      <CategoryScroll
+        category={category}
+        setCategory={setCategory}
+        categoryIcons={categoryIcons}
+      />
       <TaskInfo
         isEditable={true}
         category={category}
