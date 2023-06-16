@@ -1,4 +1,5 @@
 import hearticon from '../../imgs/icons/heart-icon.png'
+
 export default function HeartIcon() {
     return (
       <div>

@@ -30,7 +30,7 @@
   }
 
     .category-item:hover {
-        background-color: #f8fcff;
+        background-color: #85F291;
         transition: 0.3s;
         transform: translateY(-0.1rem);
     }
