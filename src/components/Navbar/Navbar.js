@@ -14,10 +14,12 @@ function Navbar() {
 
   return (
     <header>
-     <a href="/"><img src={logo} className="logo" height="35px" alt="logo" /></a>
+      <a href="/">
+        <img src={logo} className="logo" height="35px" alt="logo" />
+      </a>
       <nav ref={navRef}>
         <a href="/">Home</a>
-        {/* <a href="/categories">New Task</a> */}
+        <a href="/categories">New Task</a>
         <a href="/browse">Browse Tasks</a>
         <a href="/mytasks">My Tasks</a>
         <a href="/FAQpage">FAQ Page</a>

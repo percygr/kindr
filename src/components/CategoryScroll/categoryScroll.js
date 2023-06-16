@@ -9,9 +9,9 @@ export default function CategoryScroll({
   return (
     <div className="main-container">
       <div className="scroll-container">
-        <div className="image-container">
+        {/* <div className="image-container">
           <img className="images" src={allIcon} alt="all-icons" />
-        </div>
+        </div> */}
         {categoryIcons.map((categoryIcon) => {
           return (
             <div className="image-container" key={categoryIcon.id}>

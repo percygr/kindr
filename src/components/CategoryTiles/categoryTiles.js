@@ -38,6 +38,10 @@ export default function CategoryTiles({ setCategory, categoryIcons }) {
           <div onClick={() => handleCategoryClick(6)} className="category-item">
             <img src={categoryIcons[5].image} alt="Other" />
             <span>Other</span>
+            </div>
+          <div onClick={() => handleCategoryClick(7)} className="category-item">
+            <img src={categoryIcons[6].image} alt="All" />
+            <span>Other</span>
           </div>
         </div>
       </div>

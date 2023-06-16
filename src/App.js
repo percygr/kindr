@@ -16,8 +16,10 @@ import shopIcon from "../src/imgs/icons/shopping-bags.png";
 import houseWorkIcon from "../src/imgs/icons/house.png";
 import deliveryIcon from "../src/imgs/icons/delivery-truck.png";
 import otherIcon from "../src/imgs/icons/question-mark.png";
+import allIcon from "../src/imgs/icons/all.png";
 import Navbar from "./components/Navbar/Navbar";
 import FAQPage from "./pages/FAQpage";
+
 
 const supabase = createClient(
   process.env.REACT_APP_SUPABASE_URL,
@@ -40,6 +42,8 @@ function App() {
       { id: 4, image: houseWorkIcon },
       { id: 5, image: deliveryIcon },
       { id: 6, image: otherIcon },
+      { id: 7, image: allIcon}
+
     ]);
   }, []);
 
@@ -71,7 +75,7 @@ function App() {
       <BrowserRouter>
         {/* {!isMobile && <TopNav />}
         <TopNav /> */}
-        <Navbar categoryIcons={categoryIcons} />
+        <Navbar />
 
         <div>
           <Routes>
