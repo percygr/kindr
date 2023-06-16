@@ -17,6 +17,7 @@ import houseWorkIcon from "../src/imgs/icons/house.png";
 import deliveryIcon from "../src/imgs/icons/delivery-truck.png";
 import otherIcon from "../src/imgs/icons/question-mark.png";
 import Navbar from "./components/Navbar/Navbar";
+import FAQPage from "./pages/FAQpage";
 
 const supabase = createClient(
   process.env.REACT_APP_SUPABASE_URL,
@@ -129,6 +130,9 @@ function App() {
               }
             />
             <Route path="/success" element={<SuccessPage />} />
+            <Route
+              path="/FAQpage"
+              element={<FAQPage />}/>
           </Routes>
         </div>
       </BrowserRouter>

@@ -20,7 +20,9 @@ function Navbar() {
         {/* <a href="/categories">New Task</a> */}
         <a href="/browse">Browse Tasks</a>
         <a href="/mytasks">My Tasks</a>
+        <a href="/FAQpage">FAQ Page</a>
         <a href="/my-profile">My Profile</a>
+  
         <button className="nav-btn nav-close-btn" onClick={showNavbar}>
           <FaTimes />
         </button>
