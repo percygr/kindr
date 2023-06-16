@@ -1,7 +1,7 @@
 //import { is } from "@babel/types";
 import { createClient } from "@supabase/supabase-js";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function TaskInfo({
   isEditable, // false if view only, true if new task
@@ -15,8 +15,13 @@ export default function TaskInfo({
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
   const [duration, setDuration] = useState("");
+  const [isDisabled, setIsDisabled] = useState(true);
   //const [creatorName, setCreatorName] = useState("");
   //const [contactNumber, setContactNumber] = useState("");
+
+  useEffect(() => {
+    setIsDisabled(!title || !description || !location || !duration);
+  }, [title, description, location, duration]);
 
   const navigate = useNavigate();
 
@@ -134,12 +139,12 @@ export default function TaskInfo({
       <div>Contact Information: </div>
       {isEditable ? <div>number / email</div> : <div>number / email</div>}
       {isEditable && (
-        <button className="button" onClick={() => writeTask()}>
+        <button onClick={() => writeTask()} disabled={!title || !description || !location || !duration} className={isDisabled ? "disable-button" : "button"}>
           Submit
         </button>
       )}
 
-      {!isEditable && thisTask.status_id === 1 && (
+           {!isEditable && thisTask.status_id === 1 && (
         <button className="button" onClick={() => updateStatusID(2)}>
           Accept
         </button>
@@ -157,3 +162,4 @@ export default function TaskInfo({
     </div>
   );
 }
+
