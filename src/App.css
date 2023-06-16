@@ -140,6 +140,7 @@ h2 {
   border: none;
   color: #000;
   font-size: 16pt;
+  margin-top: 3%;
 }
 .button-green {
   width: 200px;
@@ -150,6 +151,7 @@ h2 {
   border: none;
   color: #000;
   font-size: 16pt;
+  margin-top: 3rem;
 }
 
 .disable-button{
@@ -245,6 +247,11 @@ width: 90%;
 }
 .illustrationVolunteer {
   height: 200px;
+}
+
+.gif {
+  height: 200px;
+  margin-top: 5rem;
 }
 
 

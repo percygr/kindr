@@ -76,19 +76,21 @@ export default function TaskInfo({
       <img
         src={categoryIcons[categoryID].image}
         alt="category icon"
-        width="250"
+        width="150"
       />
-
+  
       <div>Title: </div>
       {isEditable ? (
-        <input
+        <div className="blue-bar">
+          <input
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Enter a short title"
         />
+        </div>
       ) : (
-        <div>{thisTask.title}</div>
+        <div className="blue-bar">{thisTask.title}</div>
       )}
       <div>Description: </div>
       {isEditable ? (
