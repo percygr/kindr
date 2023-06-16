@@ -2,11 +2,16 @@
 .category-container {
 	display: flex;
 	justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 2rem;
 
   }
   
   .category-container-inner {
 	display: grid;
+  justify-content: center;
+  align-items: center;
 	grid-template-columns: repeat(3, 1fr);
 	gap: 10px;
 	max-width: 800px; /* Optional: Adjust the maximum width of the grid */
@@ -16,18 +21,17 @@
 
 .category-item {
   display: flex;
-	flex-direction: column;
-	align-items: center;
-	text-align: center;
-  margin: 50px;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   cursor: pointer;
-  box-shadow: 3px 5px 10px rgb(0 0 0 / 0.2);
-
-    border-radius: 10px;
-  width: 100%;
+  box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 20px; /* Adjust the padding value to increase or decrease white space */
   border: 10px solid transparent;
+}
 
-  }
 
     .category-item:hover {
         background-color: #85F291;
@@ -36,7 +40,8 @@
     }
   
   .category-item img {
-	width: 200px; /* Adjust the image size as desired */
+    max-width: 100%;
+  /* Adjust the image size as desired */
   }
   
   /* Media query for mobile devices */
