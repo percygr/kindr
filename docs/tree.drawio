@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="KoFbq5BxId9IJix-_67S" name="Page-1">
-        <mxGraphModel dx="1261" dy="439" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1261" dy="573" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -46,7 +46,7 @@
                 <mxCell id="5" value="CreateTask" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="540" y="190" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="13" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="6" target="9" edge="1">
+                <mxCell id="13" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;startArrow=none;" parent="1" source="66" target="9" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="6" value="ViewTask" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -56,15 +56,15 @@
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="7" value="TaskList" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="150" y="380" width="120" height="60" as="geometry"/>
+                    <mxGeometry x="150" y="340" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="8" value="TaskCard" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="150" y="510" width="120" height="60" as="geometry"/>
+                    <mxGeometry x="150" y="490" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="9" value="TaskInfo" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="590" y="370" width="120" height="60" as="geometry"/>
+                    <mxGeometry x="600" y="420" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="20" style="edgeStyle=none;html=1;" parent="1" source="18" target="19" edge="1">
+                <mxCell id="20" style="edgeStyle=none;html=1;startArrow=none;" parent="1" source="59" target="19" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="18" value="SelectCategory" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -101,7 +101,7 @@
                     <mxGeometry x="370" y="140" width="120" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="47" value="categoryIcons" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="600" y="80" width="120" height="30" as="geometry"/>
+                    <mxGeometry x="500" y="80" width="120" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="48" value="category&lt;br&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="530" y="150" width="120" height="30" as="geometry"/>
@@ -110,10 +110,58 @@
                     <mxGeometry x="690" y="150" width="60" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="50" value="selectedTask" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="600" y="100" width="120" height="30" as="geometry"/>
+                    <mxGeometry x="500" y="100" width="120" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="52" value="categoryIcons" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                <mxCell id="52" value="categoryIcons" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="180" y="160" width="120" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="53" value="getTasks" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="660" y="130" width="120" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="54" value="task" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="210" y="410" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="55" value="setSelectedTask" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="220" y="430" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="56" value="categoryIcons" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="200" y="450" width="120" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="58" value="categoryIcons" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="380" y="160" width="120" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="60" value="" style="edgeStyle=none;html=1;endArrow=none;" edge="1" parent="1" source="18" target="59">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="440" y="250" as="sourcePoint"/>
+                        <mxPoint x="440" y="370" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="59" value="setCategory" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="380" y="300" width="120" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="61" value="categoryIcons" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="380" y="320" width="120" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="62" value="categoryIcons" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="600" y="320" width="120" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="63" value="category&lt;br&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="600" y="340" width="120" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="64" value="selectedTask" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="600" y="360" width="120" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="65" value="tasks" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="630" y="300" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="67" value="" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;" edge="1" parent="1" source="6" target="66">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="719.5" y="250" as="sourcePoint"/>
+                        <mxPoint x="660" y="420" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="66" value="getTasks" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="600" y="380" width="120" height="30" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>

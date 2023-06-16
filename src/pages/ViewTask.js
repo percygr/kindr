@@ -1,6 +1,11 @@
 import TaskInfo from "../components/TaskInfo/taskInfo";
 
-export default function ViewTaskPage({ categoryIcons, selectedTask, tasks }) {
+export default function ViewTaskPage({
+  categoryIcons,
+  selectedTask,
+  tasks,
+  getTasks,
+}) {
   return (
     <div>
       <TaskInfo
@@ -8,6 +13,7 @@ export default function ViewTaskPage({ categoryIcons, selectedTask, tasks }) {
         categoryIcons={categoryIcons}
         selectedTask={selectedTask}
         tasks={tasks}
+        getTasks={getTasks}
       />
     </div>
   );

@@ -3,13 +3,13 @@ import { createClient } from "@supabase/supabase-js";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-
 export default function TaskInfo({
   isEditable, // false if view only, true if new task
   categoryIcons, // array of icon links, indexed 0-5
-  category, // chosen in categoryTiles, only used when isEditable is true
-  selectedTask, // task ID of clicked TaskCard, only used when isEditable is false
+  category, // the category chosen in categoryTiles - used when creating a new task
+  selectedTask, // task ID of clicked TaskCard - used when viewing a task
   tasks, // array of all tasks, only used when isEditable is false
+  getTasks, // function to refresh task list
 }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -50,43 +50,20 @@ export default function TaskInfo({
     if (error) {
       console.log("error", error);
     }
+    getTasks();
     navigate(`/success`);
   }
 
-  async function acceptTask() {
+  async function updateStatusID(newStatusID) {
     const { error } = await supabase
       .from("tasks")
-      .update({ status_id: 2 })
+      .update({ status_id: newStatusID })
       .match({ id: thisTask.id });
-
     if (error) {
       console.log("error", error);
     }
+    getTasks();
     navigate(`/success`);
-  }
-
-  async function completeTask() {
-    const { error } = await supabase
-      .from("tasks")
-      .update({ status_id: 3 })
-      .match({ id: thisTask.id });
-
-    if (error) {
-      console.log("error", error);
-    }
-    navigate(`/success`);
-  }
-
-  async function deleteTask() {
-    const { error } = await supabase
-      .from("tasks")
-      .delete()
-      .eq ('id', thisTask.id) ;
-
-    if (error) {
-      console.log("error", error);
-    }
-    navigate(`/mytasks`);
   }
 
   return (
@@ -163,21 +140,20 @@ export default function TaskInfo({
       )}
 
       {!isEditable && thisTask.status_id === 1 && (
-        <button className="button" onClick={() => acceptTask()}>
+        <button className="button" onClick={() => updateStatusID(2)}>
           Accept
         </button>
       )}
       {!isEditable && thisTask.status_id === 2 && (
-        <button className="button" onClick={() => completeTask()}>
+        <button className="button" onClick={() => updateStatusID(3)}>
           Complete!
         </button>
       )}
       {!isEditable && thisTask.status_id === 3 && (
-        <button className="button" onClick={() => deleteTask()}>
+        <button className="button" onClick={() => updateStatusID(4)}>
           Delete
         </button>
       )}
-
     </div>
   );
 }

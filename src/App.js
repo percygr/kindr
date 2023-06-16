@@ -43,7 +43,10 @@ function App() {
   }, []);
 
   async function getTasks() {
-    let { data, error } = await supabase.from("tasks").select("*");
+    let { data, error } = await supabase
+      .from("tasks")
+      .select("*")
+      .order("id", { ascending: false });
     if (error) {
       console.log("error", error);
     }
@@ -68,7 +71,7 @@ function App() {
       <BrowserRouter>
         {/* {!isMobile && <TopNav />}
         <TopNav /> */}
-        <Navbar />
+        <Navbar categoryIcons={categoryIcons} />
 
         <div>
           <Routes>
@@ -121,6 +124,7 @@ function App() {
                   categoryIcons={categoryIcons}
                   selectedTask={selectedTask}
                   tasks={tasks}
+                  getTasks={getTasks}
                 />
               }
             />
