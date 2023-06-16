@@ -1,5 +1,5 @@
 import "./categoryScroll.css";
-import allIcon from "../../imgs/icons/all.png";
+//import allIcon from "../../imgs/icons/all.png";
 
 export default function CategoryScroll({
   category,

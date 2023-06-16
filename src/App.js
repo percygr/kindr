@@ -15,8 +15,8 @@ import gardenIcon from "../src/imgs/icons/gardening.png";
 import shopIcon from "../src/imgs/icons/shopping-bags.png";
 import houseWorkIcon from "../src/imgs/icons/house.png";
 import deliveryIcon from "../src/imgs/icons/delivery-truck.png";
-import otherIcon from "../src/imgs/icons/question-mark.png";
-import allIcon from "../src/imgs/icons/all.png";
+import otherIcon from "../src/imgs/icons/other2.png";
+//import allIcon from "../src/imgs/icons/all.png";
 import Navbar from "./components/Navbar/Navbar";
 import FAQPage from "./pages/FAQpage";
 
@@ -42,7 +42,7 @@ function App() {
       { id: 4, image: houseWorkIcon },
       { id: 5, image: deliveryIcon },
       { id: 6, image: otherIcon },
-      { id: 7, image: allIcon}
+      //{ id: 7, image: allIcons}
 
     ]);
   }, []);

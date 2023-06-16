@@ -19,7 +19,7 @@ function Navbar() {
       </a>
       <nav ref={navRef}>
         <a href="/">Home</a>
-        <a href="/categories">New Task</a>
+        {/* <a href="/categories">New Task</a> */}
         <a href="/browse">Browse Tasks</a>
         <a href="/mytasks">My Tasks</a>
         <a href="/FAQpage">FAQ Page</a>
