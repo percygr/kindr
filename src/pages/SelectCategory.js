@@ -1,13 +1,8 @@
 //import { Link } from "react-router-dom";
-import CategoryTiles from "../components/CategoryTiles/categoryTiles.js";
+import CategoryTiles from "../components/CategoryTiles/categoryTiles";
 
-export default function SelectCategoryPage({ setCategory, categoryIcons }) {
+export default function CategoryTilesPage({ setCategory, categoryIcons }) {
   return (
-    <div>
-      <CategoryTiles setCategory={setCategory} categoryIcons={categoryIcons} />
-      {/* <Link to="/create">
-        <button>Next</button>
-      </Link> */}
-    </div>
+    <CategoryTiles setCategory={setCategory} categoryIcons={categoryIcons} />
   );
 }
