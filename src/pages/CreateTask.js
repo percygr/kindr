@@ -6,6 +6,7 @@ export default function CreateTaskPage({
   category,
   setCategory,
   categoryIcons,
+  getTasks,
 }) {
   return (
     <div>
@@ -18,6 +19,7 @@ export default function CreateTaskPage({
         isEditable={true}
         category={category}
         categoryIcons={categoryIcons}
+        getTasks={getTasks}
       />
     </div>
   );

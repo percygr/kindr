@@ -67,7 +67,6 @@ function App() {
 
   return (
     <div className="App">
-     
       <BrowserRouter>
         {/* {!isMobile && <TopNav />}
         <TopNav /> */}
@@ -114,6 +113,7 @@ function App() {
                   category={category}
                   setCategory={setCategory}
                   categoryIcons={categoryIcons}
+                  getTasks={getTasks}
                 />
               }
             />
