@@ -1,6 +1,23 @@
-.blue-bar{
-    background-color: var(--primary-blue);
-   
 
-    
+.info-container {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    /* background-color: var(--secondary-blue); */
+    max-width: 500px;
+    justify-content: center;
+    align-items: center;
 }
+.category-logo {
+    margin-bottom: 2rem;
+}
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 1px solid var(--primary-blue);
+    background-color: var(--secondary-blue);
+  }
+

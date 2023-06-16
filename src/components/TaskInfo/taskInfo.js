@@ -2,6 +2,7 @@
 import { createClient } from "@supabase/supabase-js";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import "./TaskInfo.css";
 
 export default function TaskInfo({
   isEditable, // false if view only, true if new task
@@ -74,63 +75,82 @@ export default function TaskInfo({
   return (
     <div>
       <img
+        className="category-logo"
         src={categoryIcons[categoryID].image}
         alt="category icon"
         width="150"
       />
-  
-      <div>Title: </div>
-      {isEditable ? (
-        <div className="blue-bar">
-          <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="Enter a short title"
-        />
-        </div>
-      ) : (
-        <div className="blue-bar">{thisTask.title}</div>
-      )}
-      <div>Description: </div>
-      {isEditable ? (
-        <input
-          type="text"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          placeholder="Enter a description"
-        />
-      ) : (
-        <div>{thisTask.description}</div>
-      )}
+
+      <div className="info-container">
+        {/* <div className="info-text">Title: </div> */}
+        {isEditable ? (
+          <div>
+            <input
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="Enter a short title"
+            />
+          </div>
+        ) : (
+          <div>{thisTask.title}</div>
+        )}
+      </div>
+
+      <div className="info-container">
+        {/* <div>Description: </div> */}
+        {isEditable ? (
+          <div>
+            <input
+              type="text"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              placeholder="Enter a description"
+            />
+          </div>
+        ) : (
+          <div>{thisTask.description}</div>
+        )}
+      </div>
+
       {!isEditable && (
         <div>
           <div>Date Posted:</div>
           <div>{thisTask.created_at}</div>
         </div>
       )}
-      <div>Location: </div>
-      {isEditable ? (
-        <input
-          type="text"
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-          placeholder="Enter a location"
-        />
-      ) : (
-        <div>{thisTask.location}</div>
-      )}
-      <div>Duration: </div>
-      {isEditable ? (
-        <input
-          type="text"
-          value={duration}
-          onChange={(e) => setDuration(e.target.value)}
-          placeholder="Enter a duration"
-        />
-      ) : (
-        <div>{thisTask.duration}</div>
-      )}
+
+      <div className="info-container">
+        {/* <div>Duration: </div> */}
+        {isEditable ? (
+          <div>
+            <input
+              type="text"
+              value={duration}
+              onChange={(e) => setDuration(e.target.value)}
+              placeholder="Enter a duration"
+            />
+          </div>
+        ) : (
+          <div>{thisTask.duration}</div>
+        )}
+      </div>
+
+      <div className="info-container">
+        {/* <div>Location: </div> */}
+        {isEditable ? (
+          <div>
+            <input
+              type="text"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              placeholder="Enter a location"
+            />
+          </div>
+        ) : (
+          <div>{thisTask.location}</div>
+        )}
+      </div>
 
       {!isEditable && (
         <div>
@@ -138,15 +158,22 @@ export default function TaskInfo({
           {thisTask.creator_id}
         </div>
       )}
-      <div>Contact Information: </div>
-      {isEditable ? <div>number / email</div> : <div>number / email</div>}
+      <div className="info-container">
+        <div>Contact Information: </div>
+        {isEditable ? <div>number / email</div> : <div>number / email</div>}
+      </div>
+
       {isEditable && (
-        <button onClick={() => writeTask()} disabled={!title || !description || !location || !duration} className={isDisabled ? "disable-button" : "button"}>
+        <button
+          onClick={() => writeTask()}
+          disabled={!title || !description || !location || !duration}
+          className={isDisabled ? "disable-button" : "button"}
+        >
           Submit
         </button>
       )}
 
-           {!isEditable && thisTask.status_id === 1 && (
+      {!isEditable && thisTask.status_id === 1 && (
         <button className="button" onClick={() => updateStatusID(2)}>
           Accept
         </button>
@@ -164,4 +191,3 @@ export default function TaskInfo({
     </div>
   );
 }
-
