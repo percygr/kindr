@@ -49,13 +49,18 @@ function showTasks(tasks, statusId, setSelectedTask, categoryIcons) {
   const filteredTasks = tasks.filter((task) => task.status_id === statusId);
 
   return filteredTasks.map((task) => (
-    <>
+    <FragmentWrapper key={task.id}>
       <TaskCard
         task={task}
         setSelectedTask={setSelectedTask}
         categoryIcons={categoryIcons}
-        // categoryID = {categoryID}
       />
-    </>
+    </FragmentWrapper>
   ));
+}
+
+// this seems to be the only way to add a key to the TaskCard component
+// without using a div or other element that would break the styling
+function FragmentWrapper({ children }) {
+  return children;
 }
