@@ -11,7 +11,11 @@ export default function TaskCard({ task, setSelectedTask, categoryIcons }) {
   }
 
   return (
-    <div onClick={handleSelectTask(task.id)} className="task-card">
+    <div
+      onClick={handleSelectTask(task.id)}
+      className="task-card"
+      key={task.id}
+    >
       <div className="image">
         <img
           className="category-icon"

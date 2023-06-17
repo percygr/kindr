@@ -15,30 +15,29 @@ export default function TaskList({
   categoryIcons,
 }) {
   return (
-    <div>
+    <div className="browse-page">
       {onlyAvailable && (
         <div className="browse-container">
-          <div className="tasklist-container">
-            {showTasks(tasks, 1, setSelectedTask, categoryIcons)}
-          </div>
+          {showTasks(tasks, 1, setSelectedTask, categoryIcons)}
         </div>
       )}
       {!onlyAvailable && (
-        <div className="browse-container">
-          {tasks.some((task) => task.status_id === 2) && <h2>Active Tasks</h2>}
+        <>
+          {tasks.some((task) => task.status_id === 2) && (
+            <div className="browse-title">Active Tasks</div>
+          )}
 
-          <div className="tasklist-container">
+          <div className="browse-container">
             {showTasks(tasks, 2, setSelectedTask, categoryIcons)}
           </div>
 
           {tasks.some((task) => task.status_id === 3) && (
-            <h2>Completed Tasks</h2>
+            <div className="browse-title">Completed Tasks</div>
           )}
-
-          <div className="tasklist-container">
+          <div className="browse-container">
             {showTasks(tasks, 3, setSelectedTask, categoryIcons)}
           </div>
-        </div>
+        </>
       )}
     </div>
   );
@@ -50,13 +49,13 @@ function showTasks(tasks, statusId, setSelectedTask, categoryIcons) {
   const filteredTasks = tasks.filter((task) => task.status_id === statusId);
 
   return filteredTasks.map((task) => (
-    <div key={task.id}>
+    <>
       <TaskCard
         task={task}
         setSelectedTask={setSelectedTask}
         categoryIcons={categoryIcons}
         // categoryID = {categoryID}
       />
-    </div>
+    </>
   ));
 }
