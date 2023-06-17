@@ -10,7 +10,7 @@ export default function HomePage() {
       <div className="home-text">
       <h1>How would you like to spread kindness today?</h1>
       <h2>Post a task that you need help with or volunteer to help</h2>
-      </div>
+      
       {/* <img src={Gif} alt="gif"className = "gif"/> */}
         <div className="home-buttons">
         <Link to="/categories">
@@ -19,6 +19,7 @@ export default function HomePage() {
         <Link to="/browse">
           <button className="button-green">Volunteer</button>
         </Link>
+        </div>
       </div>
       <div className="illustrationsHome">
         <img

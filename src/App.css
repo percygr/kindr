@@ -124,63 +124,66 @@ h2 {
   background: url("./imgs/desktop/bg1.png");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: -4rem center;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: left;
+  align-items: left;
   text-align: left;
+  
+  
 }
 
 .home-text {
-  margin-left: 60%; /* Adjust this value to control the distance from the right-hand side */
-  margin-bottom: 2rem; /* Add margin-bottom to create space between text and buttons */
+  margin-left: 55%; /* Adjust this value to control the distance from the right-hand side */
+  margin-bottom: 1rem; /* Add margin-bottom to create space between text and buttons */
+  max-width: 600px;
+  padding-top: 10%;
 }
 
 .home-buttons {
   display: flex;
   flex-direction: column;
-  margin-left: 20%; /* Adjust this value to control the distance from the right-hand side */
+  margin-left: 0%; /* Adjust this value to control the distance from the right-hand side */
   align-items: flex-start; /* Change to align items to the left */
   justify-content: left;
-  margin-top: 1rem; /* Adjust this value to control the distance between text and buttons */
+  margin-top: 3rem; /* Adjust this value to control the distance between text and buttons */
 }
 
 
 .button-blue {
-  width: 200px;
-  height: 37px;
+  width: 250px;
+  height: 50px;
   background: var(--primary-blue);
   border-radius: 30px;
   border: none;
   color: #000;
   font-size: 16pt;
-  margin-top: 3%;
-  margin-left: 40%;
+  margin-left: 0%;
 }
 .button-green {
-  width: 200px;
-  height: 37px;
+  width: 250px;
+  height: 50px;
   background: var(--primary-green);
   border-radius: 30px;
   border: none;
   color: #000;
   font-size: 16pt;
-  margin-top: 3rem;
-  margin-left: 40%;
+  margin-top: 2rem;
+  margin-left: 0%;
 }
 
 .illustrationsHome{
-  height: 200px;
-  margin-top: 5rem;
-  margin-left: 40%;
+  height: 100vh;
+  margin-top: 1rem;
+  margin-left: 70%;
 }
 .illustrationPost {
-  height: 200px;
+  height: 30vh;
 }
 .illustrationVolunteer {
-  height: 200px;
+  height: 30vh;
 }
 
 .gif {
