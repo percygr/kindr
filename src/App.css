@@ -174,10 +174,10 @@ h2 {
   padding: 0 20px;
   row-gap: 20px; /* Add vertical gap between the cards */
 } 
-.browse-container > * {
+/* .browse-container > * {
   margin-left: 4%;
   margin-right: 4%;
-}
+} */
 .browse-title {
   font-style: normal;
   font-size: 24pt;
@@ -191,6 +191,7 @@ h2 {
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px; /* Add a gap between the columns */
     justify-items: center; /* Center the items horizontally */
+    padding: 0 30px;
   }
 
   .tasklist-container {
