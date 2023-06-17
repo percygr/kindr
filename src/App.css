@@ -288,6 +288,13 @@ width: 90%;
 }
 
 
+.create {
+  background: url("./imgs/desktop/bg6.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 10ç0vh;
 
+}
 
 

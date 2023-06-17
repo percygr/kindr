@@ -9,7 +9,7 @@ export default function CreateTaskPage({
   getTasks,
 }) {
   return (
-    <div>
+    <div className="create">
       {/* <CategoryScroll
         category={category}
         setCategory={setCategory}
