@@ -69,6 +69,7 @@ background-size: cover;
   --text-colour: #000000;
   --gradient: linear-gradient(90deg, rgba(1,187,228,1) 62%, rgba(1,228,216,1) 88%, rgba(133,242,145,1) 100%);
   }
+
 /* Header Gradient */
 .myGradient {
   background: var(--primary-blue);
@@ -85,15 +86,6 @@ background: var(--gradient)
   background-size: cover;
 }
 
-/* @media only screen and (max-width: 600px) {
-  .App {
-    background-image: none;
-  }
-} */
-
-/* body {
-  background: linear-gradient(180deg, rgba(1,187,228,1) 62%, rgba(1,228,216,1) 88%, rgba(133,242,145,1) 100%);
-} */
 h1 {
   font-family: "futura-pt-bold", sans-serif;
   font-weight: 700;
@@ -105,6 +97,7 @@ p {
   font-weight: 500;
   font-style: normal;
   font-size: 11pt;
+  margin: none;
 }
 h2 {
   font-family: "futura-pt", sans-serif;
@@ -113,13 +106,90 @@ h2 {
   font-size: 16pt;
   /* height: 3em; */
 }
+
+
+/* @media only screen and (max-width: 600px) {
+  .App {
+    background-image: none;
+  }
+} */
+
+/* body {
+  background: linear-gradient(180deg, rgba(1,187,228,1) 62%, rgba(1,228,216,1) 88%, rgba(133,242,145,1) 100%);
+} */
+
+
+/* homepage */
+.home {
+  background: url("./imgs/desktop/bg1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+}
+
+.home-text {
+  margin-left: 60%; /* Adjust this value to control the distance from the right-hand side */
+  margin-bottom: 2rem; /* Add margin-bottom to create space between text and buttons */
+}
+
 .home-buttons {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 3rem;
+  margin-left: 20%; /* Adjust this value to control the distance from the right-hand side */
+  align-items: flex-start; /* Change to align items to the left */
+  justify-content: left;
+  margin-top: 1rem; /* Adjust this value to control the distance between text and buttons */
 }
+
+
+.button-blue {
+  width: 200px;
+  height: 37px;
+  background: var(--primary-blue);
+  border-radius: 30px;
+  border: none;
+  color: #000;
+  font-size: 16pt;
+  margin-top: 3%;
+  margin-left: 40%;
+}
+.button-green {
+  width: 200px;
+  height: 37px;
+  background: var(--primary-green);
+  border-radius: 30px;
+  border: none;
+  color: #000;
+  font-size: 16pt;
+  margin-top: 3rem;
+  margin-left: 40%;
+}
+
+.illustrationsHome{
+  height: 200px;
+  margin-top: 5rem;
+  margin-left: 40%;
+}
+.illustrationPost {
+  height: 200px;
+}
+.illustrationVolunteer {
+  height: 200px;
+}
+
+.gif {
+  height: 200px;
+  margin-top: 5rem;
+}
+
+
+
 /* Buttons */
 .button {
   width: 150px;
@@ -130,28 +200,6 @@ h2 {
   border: none;
   color: var(--primary-background-colour);
   font-size: 16pt;
-}
-.button-blue {
-  width: 200px;
-  height: 37px;
-  background: var(--primary-blue);
-  border-radius: 30px;
-  margin: 10px;
-  border: none;
-  color: #000;
-  font-size: 16pt;
-  margin-top: 3%;
-}
-.button-green {
-  width: 200px;
-  height: 37px;
-  background: var(--primary-green);
-  border-radius: 30px;
-  margin: 10px;
-  border: none;
-  color: #000;
-  font-size: 16pt;
-  margin-top: 3rem;
 }
 
 .disable-button{
@@ -238,21 +286,8 @@ width: 90%;
   max-width: 70%;
   padding: 5%;
 }
-.illustrationsHome{
-  height: 200px;
-  margin-top: 5rem;
-}
-.illustrationPost {
-  height: 200px;
-}
-.illustrationVolunteer {
-  height: 200px;
-}
 
-.gif {
-  height: 200px;
-  margin-top: 5rem;
-}
+
 
 
 
