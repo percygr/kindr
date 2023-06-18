@@ -73,7 +73,7 @@ export default function TaskInfo({
   }
 
   return (
-    <div>
+    <div className="all-info">
       <img
         className="category-logo"
         src={categoryIcons[categoryID].image}

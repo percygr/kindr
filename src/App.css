@@ -329,7 +329,7 @@ width: 90%;
 }
 
 
-.create {
+.create-task {
   background: url("./imgs/desktop/bg6.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -337,4 +337,28 @@ width: 90%;
   height: 100vh;
 }
 
+.view-task {
+  background: url("./imgs/desktop/bg6.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.faq {
+  background: url("./imgs/desktop/bg7.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.faq-text {
+  margin-right: auto;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  max-width: 1000px;
+  padding-top: 3%;
+  text-align: left;
+}
 

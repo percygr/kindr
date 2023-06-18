@@ -1,8 +1,9 @@
 export default function FAQPage() {
     return (
-      <div>
+      <div className="faq">
     
-    <h1>What is the purpose of Kindr?</h1>
+    <div className="faq-text">
+      <h1>What is the purpose of Kindr?</h1>
 
     Many people feel like they would like to offer some help in their local area when they have a spare hour or two at the weekends, but don’t always know where this may be most needed. Many people could sometimes benefit from a friendly face assisting them with a task that is too much to complete on their own.
 
@@ -30,6 +31,7 @@ export default function FAQPage() {
 
     We believe that people are kind
 
+    </div>
     </div>
     );
   }
