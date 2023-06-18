@@ -91,6 +91,9 @@ h1 {
   font-weight: 700;
   font-style: normal;
   font-size: 24pt;
+  text-align: left;
+  margin: none;
+
 }
 p {
   font-family: "futura-pt", sans-serif;
@@ -98,6 +101,8 @@ p {
   font-style: normal;
   font-size: 11pt;
   margin: none;
+ 
+  text-align: left;
 }
 h2 {
   font-family: "futura-pt", sans-serif;
@@ -131,13 +136,43 @@ h2 {
   justify-content: left;
   align-items: left;
   text-align: left;
+}
+
+@media (max-width: 600px) {
+  .home {
+    background: none;
+    justify-content: center;
+  }
+  h1 {
+    text-align: center;
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  .home-text {
+    margin-left: none;
+    margin-right: none;
+    text-align: center;
+  }
   
+  .home-buttons {
+    align-items: center;
+    text-align: center;
+    margin-top: 3rem;
+  }
   
+  .illustrationsHome {
+    margin-left: none;
+    margin-right: none;
+    height: 100px;
+  }
 }
 
 .home-text {
-  margin-left: 55%; /* Adjust this value to control the distance from the right-hand side */
-  margin-bottom: 1rem; /* Add margin-bottom to create space between text and buttons */
+  margin-left: 55%;
+  margin-bottom: 1rem;
   max-width: 600px;
   padding-top: 10%;
 }
@@ -145,12 +180,11 @@ h2 {
 .home-buttons {
   display: flex;
   flex-direction: column;
-  margin-left: 0%; /* Adjust this value to control the distance from the right-hand side */
-  align-items: flex-start; /* Change to align items to the left */
+  margin-left: 0%;
+  align-items: flex-start;
   justify-content: left;
-  margin-top: 3rem; /* Adjust this value to control the distance between text and buttons */
+  margin-top: 3rem;
 }
-
 
 .button-blue {
   width: 250px;
@@ -162,6 +196,7 @@ h2 {
   font-size: 16pt;
   margin-left: 0%;
 }
+
 .button-green {
   width: 250px;
   height: 50px;
@@ -174,17 +209,20 @@ h2 {
   margin-left: 0%;
 }
 
-.illustrationsHome{
+.illustrationsHome {
   height: 100vh;
   margin-top: 1rem;
   margin-left: 70%;
 }
+
 .illustrationPost {
   height: 30vh;
 }
+
 .illustrationVolunteer {
   height: 30vh;
 }
+
 
 .gif {
   height: 200px;
@@ -205,7 +243,7 @@ h2 {
   font-size: 16pt;
 }
 
-.disable-button{
+.disable-button {
   width: 150px;
   height: 37px;
   background: #C4C4C4;
@@ -296,8 +334,7 @@ width: 90%;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: 10ç0vh;
-
+  height: 100vh;
 }
 
 

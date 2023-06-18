@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import illustrationPost from "../imgs/illustrations/post.png";
 import illustrationVolunteer from "../imgs/illustrations/joy.png";
+
 //import Gif from "../imgs/gif/plant.gif";
 //import Background from "../imgs/desktop/bg6.png";
 

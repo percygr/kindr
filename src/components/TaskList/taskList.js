@@ -25,12 +25,12 @@ export default function TaskList({
       )}
       {!onlyAvailable && (
         <div className="browse-container">
-          <h2>Active Tasks</h2>
+          <h1>Active Tasks</h1>
           <div className="tasklist-container">
             {showTasks(tasks, 2, setSelectedTask, categoryIcons)}
           </div>
 
-          <h2>Completed Tasks</h2>
+          <h1>Completed Tasks</h1>
           <div className="tasklist-container">
             {showTasks(tasks, 3, setSelectedTask, categoryIcons)}
           </div>
