@@ -20,7 +20,6 @@ import otherIcon from "../src/imgs/icons/other2.png";
 import Navbar from "./components/Navbar/Navbar";
 import FAQPage from "./pages/FAQpage";
 
-
 const supabase = createClient(
   process.env.REACT_APP_SUPABASE_URL,
   process.env.REACT_APP_SUPABASE_KEY
@@ -43,7 +42,6 @@ function App() {
       { id: 5, image: deliveryIcon },
       { id: 6, image: otherIcon },
       //{ id: 7, image: allIcons}
-
     ]);
   }, []);
 
@@ -84,8 +82,6 @@ function App() {
               path="/browse"
               element={
                 <BrowsePage
-                  category={category}
-                  setCategory={setCategory}
                   tasks={tasks}
                   setSelectedTask={setSelectedTask}
                   categoryIcons={categoryIcons}
@@ -116,7 +112,6 @@ function App() {
               element={
                 <CreateTaskPage
                   category={category}
-                  setCategory={setCategory}
                   categoryIcons={categoryIcons}
                   getTasks={getTasks}
                 />
@@ -134,9 +129,7 @@ function App() {
               }
             />
             <Route path="/success" element={<SuccessPage />} />
-            <Route
-              path="/FAQpage"
-              element={<FAQPage />}/>
+            <Route path="/FAQpage" element={<FAQPage />} />
           </Routes>
         </div>
       </BrowserRouter>
