@@ -327,7 +327,7 @@ h2 {
 }
 
 
-}
+
 .task-card:hover {
   background-color: #e6f3fc;
   /* background-color: #527189; */
@@ -359,7 +359,7 @@ h2 {
 }
 
 
-}
+
 #logo {
   margin: 5%;
 }
@@ -443,7 +443,6 @@ h2 {
 }
 
 
-.create-task {
 
 .success { 
   margin: 5%;
