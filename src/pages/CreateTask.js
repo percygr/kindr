@@ -4,7 +4,7 @@ import TaskInfo from "../components/TaskInfo/taskInfo";
 
 export default function CreateTaskPage({ category, categoryIcons, getTasks }) {
   return (
-    <div>
+    <div className="create-task">
       {/* <CategoryScroll
         category={category}
         setCategory={setCategory}

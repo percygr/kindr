@@ -65,6 +65,7 @@ background-size: cover;
   --secondary-blue: #caf1f9;
   --in-progress: #fdb645;
   --text-colour: #000000;
+
   --gradient: linear-gradient(
     90deg,
     rgba(1, 187, 228, 1) 62%,
@@ -72,6 +73,7 @@ background-size: cover;
     rgba(133, 242, 145, 1) 100%
   );
 }
+
 /* Header Gradient */
 .myGradient {
   background: var(--primary-blue);
@@ -88,6 +90,33 @@ background-size: cover;
   background-size: cover;
 }
 
+h1 {
+  font-family: "futura-pt-bold", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 24pt;
+  text-align: left;
+  margin: none;
+
+}
+p {
+  font-family: "futura-pt", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 11pt;
+  margin: none;
+ 
+  text-align: left;
+}
+h2 {
+  font-family: "futura-pt", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 16pt;
+  /* height: 3em; */
+}
+
+
 /* @media only screen and (max-width: 600px) {
   .App {
     background-image: none;
@@ -97,32 +126,115 @@ background-size: cover;
 /* body {
   background: linear-gradient(180deg, rgba(1,187,228,1) 62%, rgba(1,228,216,1) 88%, rgba(133,242,145,1) 100%);
 } */
-h1 {
-  font-family: "futura-pt-bold", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  font-size: 24pt;
+
+
+/* homepage */
+.home {
+  background: url("./imgs/desktop/bg1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: -4rem center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+  text-align: left;
 }
-p {
-  font-family: "futura-pt", sans-serif;
-  font-weight: 500;
-  font-style: normal;
-  font-size: 11pt;
+
+@media (max-width: 600px) {
+  .home {
+    background: none;
+    justify-content: center;
+  }
+  h1 {
+    text-align: center;
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  .home-text {
+    margin-left: none;
+    margin-right: none;
+    text-align: center;
+  }
+  
+  .home-buttons {
+    align-items: center;
+    text-align: center;
+    margin-top: 3rem;
+  }
+  
+  .illustrationsHome {
+    margin-left: none;
+    margin-right: none;
+    height: 100px;
+  }
 }
-h2 {
-  font-family: "futura-pt", sans-serif;
-  font-weight: 500;
-  font-style: normal;
-  font-size: 16pt;
-  /* height: 3em; */
+
+.home-text {
+  margin-left: 55%;
+  margin-bottom: 1rem;
+  max-width: 600px;
+  padding-top: 10%;
 }
+
 .home-buttons {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  margin-left: 0%;
+  align-items: flex-start;
+  justify-content: left;
   margin-top: 3rem;
 }
+
+.button-blue {
+  width: 250px;
+  height: 50px;
+  background: var(--primary-blue);
+  border-radius: 30px;
+  border: none;
+  color: #000;
+  font-size: 16pt;
+  margin-left: 0%;
+}
+
+.button-green {
+  width: 250px;
+  height: 50px;
+  background: var(--primary-green);
+  border-radius: 30px;
+  border: none;
+  color: #000;
+  font-size: 16pt;
+  margin-top: 2rem;
+  margin-left: 0%;
+}
+
+.illustrationsHome {
+  height: 100vh;
+  margin-top: 1rem;
+  margin-left: 70%;
+}
+
+.illustrationPost {
+  height: 30vh;
+}
+
+.illustrationVolunteer {
+  height: 30vh;
+}
+
+
+.gif {
+  height: 200px;
+  margin-top: 5rem;
+}
+
+
+
 /* Buttons */
 .button {
   width: 150px;
@@ -133,30 +245,6 @@ h2 {
   border: none;
   color: var(--primary-background-colour);
   font-size: 16pt;
-}
-.button-blue {
-  width: 300px;
-  height: 37px;
-  background: var(--primary-blue);
-  border-radius: 30px;
-  margin: 10px;
-  border: none;
-  color: #000;
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-top: 3%;
-}
-.button-green {
-  width: 300px;
-  height: 37px;
-  background: var(--primary-green);
-  border-radius: 30px;
-  margin: 10px;
-  border: none;
-  color: #000;
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-top: 3rem;
 }
 
 .disable-button {
@@ -266,20 +354,38 @@ h2 {
   max-width: 70%;
   padding: 5%;
 }
-.illustrationsHome {
-  height: 200px;
-  margin-top: 5rem;
-}
-.illustrationPost {
-  height: 200px;
-}
-.illustrationVolunteer {
-  height: 200px;
+
+
+.create-task {
+  background: url("./imgs/desktop/bg6.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
 }
 
-.gif {
-  height: 200px;
-  margin-top: 5rem;
+.view-task {
+  background: url("./imgs/desktop/bg6.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
 }
 
+.faq {
+  background: url("./imgs/desktop/bg7.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.faq-text {
+  margin-right: auto;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  max-width: 1000px;
+  padding-top: 3%;
+  text-align: left;
+}
 

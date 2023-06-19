@@ -7,6 +7,7 @@ export default function SuccessPage() {
 
   return (
     <div className="success">
+  
       <Confetti width={windowWidth.width} height={windowHeight.height} />
       <h1>Congratulations - thank you for spreading kindness!</h1>
 

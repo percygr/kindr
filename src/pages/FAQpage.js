@@ -27,7 +27,7 @@ const FAQPage = () => {
     {
       question: "What about security?",
       answer:
-        "Kindr has safety as a top priority We believe that people are kind",
+        "Kindr puts safety as a top priority and we are here to ensure that you feel safe using the site and meeting other users in real life. We believe that most people in the world are kind, but we are aware that occasionally there will be situations where we will need to intervene and take decisive action. Inappropriate behaviour, scams, spam, soliciting, harassment or any other illegal activity will not be tolerated on any level. In all instances, we will conduct an internal review of any complaints received about users either on or off the site. If we decide that this person poses a risk to our community they will be removed from our site permanently. Please do report all instances of antisocial or illegal activity taking place on our site, together we will help create a kinder community.",
     },
   ];
 
@@ -39,3 +39,4 @@ const FAQPage = () => {
 };
 
 export default FAQPage;
+

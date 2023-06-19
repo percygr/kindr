@@ -22,6 +22,7 @@ export default function TaskList({
         </div>
       )}
       {!onlyAvailable && (
+
         <>
           {/* only show title if there are some tasks of that status */}
           {tasks.some((task) => task.status_id === 2) && (
@@ -36,6 +37,7 @@ export default function TaskList({
             <div className="browse-title">Completed Tasks</div>
           )}
           <div className="browse-container">
+
             {showTasks(tasks, 3, setSelectedTask, categoryIcons)}
           </div>
         </>

@@ -7,7 +7,7 @@ export default function ViewTaskPage({
   getTasks,
 }) {
   return (
-    <div>
+    <div className="view-task">
       <TaskInfo
         isEditable={false}
         categoryIcons={categoryIcons}
