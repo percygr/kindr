@@ -2,12 +2,13 @@ import { Link } from "react-router-dom";
 import HeartIcon from "../components/HeartIcon/heartIcon.js";
 import Confetti from "react-confetti";
 
-export default function SuccessPage() {
+export default function SuccessPage({ successPath }) {
   const [windowWidth, windowHeight] = [window.innerWidth, window.innerHeight];
+
+  console.log("successPath", successPath);
 
   return (
     <div className="success">
-  
       <Confetti width={windowWidth.width} height={windowHeight.height} />
       <h1>Congratulations - thank you for spreading kindness!</h1>
 

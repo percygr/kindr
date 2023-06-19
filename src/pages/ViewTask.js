@@ -5,6 +5,7 @@ export default function ViewTaskPage({
   selectedTask,
   tasks,
   getTasks,
+  setSuccessPath,
 }) {
   return (
     <div className="view-task">
@@ -14,6 +15,7 @@ export default function ViewTaskPage({
         selectedTask={selectedTask}
         tasks={tasks}
         getTasks={getTasks}
+        setSuccessPath={setSuccessPath}
       />
     </div>
   );
