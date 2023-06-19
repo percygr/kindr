@@ -1,21 +1,63 @@
 /* DESIGN SYSTEM */
 
 /* Main font: 
+
 @import url("https://use.typekit.net/ycz4yvq.css");
-*/
 
-/* TYPOGRAPHY */
-/* Mobile Font sizes (px) */
-/* 11 / 16 / 30 */
+--- TYPOGRAPHY 
+Mobile Font sizes (px)
+11 / 16 / 30 
 
-/* Desktop Font sizes (px) */
-/* 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 64 / 86 */
+Desktop Font sizes (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 64 / 86
 
 /* Main font: 
-@import url("https://use.typekit.net/ycz4yvq.css");
-*/
 
-/* COLORS */
+@import url("https://use.typekit.net/ycz4yvq.css");
+
+.small-text {
+  font-family: "futura-pt", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 11pt;
+}
+
+.medium-text {
+  font-family: "futura-pt", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 16pt;
+}
+--- 02: COLORS
+
+- Primary: #01BBE4
+
+- Secondary:
+#FFFFFF 
+#85F291
+#CAF1F9
+#FDB645
+
+--- 05 SHADOWS
+
+0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
+
+--- 06 BORDER-RADIUS
+
+Default: 9px
+Medium: 11px
+
+--- 07 WHITESPACE
+
+- Spacing system (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128 */
+
+/* .home {
+  background-image: url("/src/imgs/desktop/bg1.png");
+background-repeat: no-repeat;
+background-size: cover;
+}  */
+
 :root {
   --primary-background-colour: #ffffff;
   --primary-blue: #01bbe4;
@@ -35,17 +77,18 @@
 /* Header Gradient */
 .myGradient {
   background: var(--primary-blue);
+  /* background: linear-gradient(90deg, rgba(1,187,228,1) 62%, rgba(1,228,216,1) 88%, rgba(133,242,145,1) 100%); */
   background: var(--gradient);
 }
 
-/* App */
 .App {
   text-align: center;
+  /* background: linear-gradient(180deg, rgba(1,187,228,1) 40%, rgba(133,242,145,1) 100%); */
   height: 100vh;
+  /* background-image: url("/src/imgs/desktop/bg6.png"); */
   background-repeat: no-repeat;
   background-size: cover;
 }
-
 
 
 h1 {
@@ -218,7 +261,6 @@ h2 {
 }
 
 
-
  /* All items in Browse Page */
 
 .browse-container {
@@ -230,7 +272,7 @@ h2 {
   row-gap: 20px; /* Add vertical gap between the cards */
 } 
 /* .browse-container > * {
->>>>>>> main
+
   margin-left: 4%;
   margin-right: 4%;
 } */
@@ -282,9 +324,10 @@ h2 {
   cursor: pointer;
 
 
-
 }
 
+
+}
 .task-card:hover {
   background-color: #e6f3fc;
   /* background-color: #527189; */
@@ -295,7 +338,6 @@ h2 {
 .category-icon {
   width: 90%;
 }
-
 .image {
   background-color: var(--secondary-blue);
   width: 30%;
@@ -304,7 +346,6 @@ h2 {
   justify-content: center;
   border-radius: 10px 0px 0px 10px;
 }
-
 .card-info {
   display: flex;
   flex-direction: column;
@@ -317,10 +358,11 @@ h2 {
 
 }
 
+
+}
 #logo {
   margin: 5%;
 }
-
 #hearticon {
   max-width: 70%;
   padding: 5%;
@@ -402,6 +444,17 @@ h2 {
 
 
 .create-task {
+
+.success { 
+  margin: 5%;
+  text-align: center;
+}
+
+.success-text {
+  text-align: center
+}
+
+.create-task {
   background: url("./imgs/desktop/bg6.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -410,11 +463,40 @@ h2 {
 }
 
 .view-task {
+
   background: url("./imgs/desktop/bg6.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   height: 100vh;
+
+}
+
+.view-task {
+  background: url("./imgs/desktop/bg6.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+
+}
+
+.faq {
+  background: url("./imgs/desktop/bg7.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.faq-text {
+  margin-right: auto;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  max-width: 1000px;
+  padding-top: 3%;
+  text-align: left;
+
 }
 
 .faq {
