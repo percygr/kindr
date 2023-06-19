@@ -18,6 +18,7 @@
 }
 
 .image-container{
+    position: relative;
     width: 100%;
     height: auto;
     /* height: 100px; */
@@ -27,6 +28,7 @@
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
+    /* background-color: transparent; */
 }
 
 .images{
@@ -45,4 +47,21 @@
     text-align: center;
     margin-top: 7px;
 }
+/* 
+.selected{
+    background-color: var(--primary-green);
+    border-radius: 5px;
+} */
 
+.image-container.selected::before{
+    content: "";
+    display: block;
+    position: absolute;
+   background-color: var(--primary-green);
+   transition: 0.3s;
+   transform: translateY(-0.5rem);
+   top: 0px;
+   width: calc(100% - 10px);
+   height: 5px;
+   border-radius: 5px;
+}

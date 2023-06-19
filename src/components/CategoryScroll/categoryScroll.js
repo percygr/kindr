@@ -3,38 +3,44 @@ import allIcon from "../../imgs/icons/all.png";
 import { useState } from "react";
 
 export default function CategoryScroll({ categoryIcons, setCategoryFilter }) {
-  const [isActive, setIsActive] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
-  function handleAllClick(categoryId) {
-    setCategoryFilter(categoryId);
-    setIsActive(!isActive);
+  function handleCategoryClick(categoryId) {
+    if (categoryId === 0) {
+      setSelectedCategory(null);
+      setCategoryFilter(categoryId);
+    } else {
+      setSelectedCategory(categoryId);
+      setCategoryFilter(categoryId);
+    }
   }
 
-   return (
+  return (
     <div className="main-container">
       <div className="scroll-container">
-        <div className="image-container" onClick={() => handleAllClick(0)}>
+        <div
+          className={`image-container all-icons ${selectedCategory === null ? "selected" : ""}`}
+          onClick={() => handleCategoryClick(0)}
+        >
           <img className="images" src={allIcon} alt="all-icons" />
         </div>
         {categoryIcons.map((categoryIcon) => {
           return (
             <div
-              className="image-container"
+              className={`image-container ${selectedCategory === categoryIcon.id ? "selected" : ""}`}
               key={categoryIcon.id}
-              onClick={() => handleAllClick(categoryIcon.id)}
+              onClick={() => handleCategoryClick(categoryIcon.id)}
             >
               <img
                 className="images"
                 src={categoryIcon.image}
                 alt={categoryIcon.name}
               />
-              <p className = "category-title">{categoryIcon.name}</p>
+              <p className="category-title">{categoryIcon.name}</p>
             </div>
           );
         })}
       </div>
-
-      {/* <div>CategoryScroll says: category selected: {category}</div> */}
     </div>
   );
 }
