@@ -88,6 +88,7 @@ export default function TaskInfo({
   }
 
   return (
+    <div className='view-card-container'>
     <div className="all-info">
       <img
         className="category-logo"
@@ -108,7 +109,7 @@ export default function TaskInfo({
             />
           </div>
         ) : (
-          <div>{thisTask.title}</div>
+          <div className="task-title">{thisTask.title}</div>
         )}
       </div>
 
@@ -124,15 +125,14 @@ export default function TaskInfo({
             />
           </div>
         ) : (
-          <div>{thisTask.description}</div>
+          <div className='description-container'>{thisTask.description}</div>
         )}
       </div>
 
       {!isEditable && (
         <div>
-          <div>Date Posted:</div>
           <div>
-            {new Date(thisTask.created_at).toLocaleDateString("en-GB", {
+          <strong>Date Posted: </strong>{new Date(thisTask.created_at).toLocaleDateString("en-GB", {
               day: "numeric",
               month: "long",
               year: "numeric",
@@ -153,7 +153,7 @@ export default function TaskInfo({
             />
           </div>
         ) : (
-          <div>{thisTask.duration}</div>
+          <div><strong>Duration: </strong>{thisTask.duration}</div>
         )}
       </div>
 
@@ -169,19 +169,18 @@ export default function TaskInfo({
             />
           </div>
         ) : (
-          <div>{thisTask.location}</div>
+          <div className='location-container'><strong>Location: </strong>{thisTask.location}</div>
         )}
       </div>
 
       {!isEditable && (
         <div>
-          <div>Name: </div>
-          {thisTask.creator_id}
+          <strong>Name: </strong>{thisTask.creator_id}
         </div>
       )}
       <div className="info-container">
-        <div>Contact Information: </div>
-        {isEditable ? <div>number / email</div> : <div>number / email</div>}
+        <div><strong>Contact Information: </strong></div>
+        {isEditable ? <div> number / email</div> : <div>number / email</div>}
       </div>
 
       {isEditable && (
@@ -209,6 +208,7 @@ export default function TaskInfo({
           Delete
         </button>
       )}
+    </div>
     </div>
   );
 }
