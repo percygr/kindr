@@ -9,6 +9,7 @@ const FAQ = ({ faqs }) => {
   };
 
   return (
+    <div className="faq">
     <div className={styles.faqContainer}>
     <h2>Use this page to learn more about Kindr, click the boxes to expand the answer:</h2>
     <br></br>
@@ -30,6 +31,7 @@ const FAQ = ({ faqs }) => {
           )}
         </div>
       ))}
+    </div>
     </div>
   );
 };

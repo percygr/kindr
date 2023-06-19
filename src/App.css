@@ -430,16 +430,17 @@ h2 {
   margin-top: 1rem;
   margin-left: 70%;
   overflow: hidden;
+  margin-bottom: auto;
  
 
 }
 
 .illustrationPost {
-  height: 300px;
+  height: 200px;
 }
 
 .illustrationVolunteer {
-  height: 300px;
+  height: 200px;
 }
 
 
@@ -480,13 +481,6 @@ h2 {
 
 }
 
-.faq {
-  background: url("./imgs/desktop/bg7.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-}
 
 .faq-text {
   margin-right: auto;
@@ -556,7 +550,10 @@ h2 {
     margin-bottom: 1rem;
     max-width: 600px;
     padding-top: 10%;
-    
-    
+
+  }
+
+  .faq{
+    background: none;
   }
 }
