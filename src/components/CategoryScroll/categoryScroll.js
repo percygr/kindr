@@ -1,15 +1,19 @@
 import "./categoryScroll.css";
 import allIcon from "../../imgs/icons/all.png";
+import { useState } from "react";
 
 export default function CategoryScroll({ categoryIcons, setCategoryFilter }) {
-  function handleFilterClick(categoryId) {
+  const [isActive, setIsActive] = useState(false);
+
+  function handleAllClick(categoryId) {
     setCategoryFilter(categoryId);
+    setIsActive(!isActive);
   }
 
-  return (
+   return (
     <div className="main-container">
       <div className="scroll-container">
-        <div className="image-container" onClick={() => handleFilterClick(0)}>
+        <div className="image-container" onClick={() => handleAllClick(0)}>
           <img className="images" src={allIcon} alt="all-icons" />
         </div>
         {categoryIcons.map((categoryIcon) => {
@@ -17,14 +21,14 @@ export default function CategoryScroll({ categoryIcons, setCategoryFilter }) {
             <div
               className="image-container"
               key={categoryIcon.id}
-              onClick={() => handleFilterClick(categoryIcon.id)}
+              onClick={() => handleAllClick(categoryIcon.id)}
             >
               <img
                 className="images"
                 src={categoryIcon.image}
                 alt={categoryIcon.name}
               />
-              <p>{categoryIcon.name}</p>
+              <p className = "category-title">{categoryIcon.name}</p>
             </div>
           );
         })}
