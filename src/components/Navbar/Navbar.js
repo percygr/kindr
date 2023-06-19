@@ -1,9 +1,9 @@
 import { useRef } from "react";
+import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import "./navbar.css";
 import logo from "../../imgs/logos/logo.png";
 import profilePic from "../../imgs/logos/profile.png";
-//import { Link } from "react-router-dom";
 
 function Navbar() {
   const navRef = useRef();
@@ -12,32 +12,48 @@ function Navbar() {
     navRef.current.classList.toggle("responsive_nav");
   };
 
+  // Function to close the navbar
+  const closeNavbar = () => {
+    navRef.current.classList.remove("responsive_nav");
+  };
+
   return (
     <header>
-      <a href="/">
+      <Link to="/" onClick={closeNavbar}>
         <img src={logo} className="logo" height="35px" alt="logo" />
-      </a>
+      </Link>
       <nav ref={navRef}>
-        <a href="/">Home</a>
-        {/* <a href="/categories">New Task</a> */}
-        <a href="/browse">Browse Tasks</a>
-        <a href="/mytasks">My Tasks</a>
-        <a href="/FAQpage">FAQ Page</a>
-        <a href="/my-profile">My Profile</a>
+        <CustomLink to="/" onClick={closeNavbar}>Home</CustomLink>
+        <CustomLink to="/categories" onClick={closeNavbar}>New Task</CustomLink>
+        <CustomLink to="/browse" onClick={closeNavbar}>Browse Tasks</CustomLink>
+        <CustomLink to="/mytasks" onClick={closeNavbar}>My Tasks</CustomLink>
+        <CustomLink to="/FAQpage" onClick={closeNavbar}>FAQ Page</CustomLink>
+        <CustomLink to="/my-profile" onClick={closeNavbar}>My Profile</CustomLink>
   
         <button className="nav-btn nav-close-btn" onClick={showNavbar}>
           <FaTimes />
         </button>
       </nav>
       <div className="profile-container">
-        <a href="/my-profile">
+        <Link to="/my-profile" onClick={closeNavbar}>
           <img src={profilePic} className="profile-pic" alt="Profile" />
-        </a>
+        </Link>
       </div>
       <button className="nav-btn" onClick={showNavbar}>
         <FaBars />
       </button>
     </header>
+  );
+}
+
+function CustomLink({ to, children, onClick, ...props }) {
+  const resolvedPath = useResolvedPath(to);
+  const isActive = useMatch({ path: resolvedPath.pathname, end: true });
+
+  return (
+    <Link to={to} className={isActive ? "active" : ""} onClick={onClick} {...props}>
+      {children}
+    </Link>
   );
 }
 
