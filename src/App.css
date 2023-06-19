@@ -46,15 +46,8 @@
   background-size: cover;
 }
 
-/* @media only screen and (max-width: 600px) {
-  .App {
-    background-image: none;
-  }
-} */
 
-/* body {
-  background: linear-gradient(180deg, rgba(1,187,228,1) 62%, rgba(1,228,216,1) 88%, rgba(133,242,145,1) 100%);
-} */
+
 h1 {
   font-family: "futura-pt-bold", sans-serif;
   font-weight: 700;
@@ -64,7 +57,6 @@ h1 {
   margin: none;
 
 }
-
 p {
   font-family: "futura-pt", sans-serif;
   font-weight: 500;
@@ -74,20 +66,134 @@ p {
  
   text-align: left;
 }
-
 h2 {
   font-family: "futura-pt", sans-serif;
   font-weight: 500;
   font-style: normal;
   font-size: 16pt;
+  /* height: 3em; */
 }
+
+
+/* @media only screen and (max-width: 600px) {
+  .App {
+    background-image: none;
+  }
+} */
+
+/* body {
+  background: linear-gradient(180deg, rgba(1,187,228,1) 62%, rgba(1,228,216,1) 88%, rgba(133,242,145,1) 100%);
+} */
+
+
+/* homepage */
+.home {
+  background: url("./imgs/desktop/bg1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: -4rem center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+  text-align: left;
+}
+
+@media (max-width: 600px) {
+  .home {
+    background: none;
+    justify-content: center;
+  }
+  h1 {
+    text-align: center;
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  .home-text {
+    margin-left: none;
+    margin-right: none;
+    text-align: center;
+  }
+  
+  .home-buttons {
+    align-items: center;
+    text-align: center;
+    margin-top: 3rem;
+  }
+  
+  .illustrationsHome {
+    margin-left: none;
+    margin-right: none;
+    height: 100px;
+  }
+}
+
+.home-text {
+  margin-left: 55%;
+  margin-bottom: 1rem;
+  max-width: 600px;
+  padding-top: 10%;
+}
+
 .home-buttons {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  margin-left: 0%;
+  align-items: flex-start;
+  justify-content: left;
   margin-top: 3rem;
 }
+
+.button-blue {
+  width: 250px;
+  height: 50px;
+  background: var(--primary-blue);
+  border-radius: 30px;
+  border: none;
+  color: #000;
+  font-size: 16pt;
+  margin-left: 0%;
+}
+
+.button-green {
+  width: 250px;
+  height: 50px;
+  background: var(--primary-green);
+  border-radius: 30px;
+  border: none;
+  color: #000;
+  font-size: 16pt;
+  margin-top: 2rem;
+  margin-left: 0%;
+}
+
+.illustrationsHome {
+  height: 100vh;
+  margin-top: 1rem;
+  margin-left: 70%;
+}
+
+.illustrationPost {
+  height: 30vh;
+}
+
+.illustrationVolunteer {
+  height: 30vh;
+}
+
+
+.gif {
+  height: 200px;
+  margin-top: 5rem;
+}
+
+
+
+
 /* Buttons */
 .button {
   width: 150px;
@@ -111,13 +217,20 @@ h2 {
   font-size: 16pt;
 }
 
-All items in Browse Page .browse-container {
+
+
+ /* All items in Browse Page */
+
+.browse-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-.browse-container > * {
+  padding: 0 20px;
+  row-gap: 20px; /* Add vertical gap between the cards */
+} 
+/* .browse-container > * {
+>>>>>>> main
   margin-left: 4%;
   margin-right: 4%;
 } */
@@ -127,10 +240,18 @@ All items in Browse Page .browse-container {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
-/* All task cards in a list */
-.tasklist-container {
-  display: grid;
-  @media screen and (min-width: 600px) {
+
+@media screen and (min-width: 600px) {
+  .browse-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px; /* Add a gap between the columns */
+    justify-items: center; /* Center the items horizontally */
+    padding: 0 30px;
+  }
+
+
+  .tasklist-container {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 3fr;
   } 
@@ -159,7 +280,9 @@ All items in Browse Page .browse-container {
   height: 100%;
   /* grid-column: 1 3; */
   cursor: pointer;
-  /* padding: 5%; */
+
+
+
 }
 
 .task-card:hover {
@@ -187,9 +310,11 @@ All items in Browse Page .browse-container {
   flex-direction: column;
   justify-content: flex-start;
   text-align: left;
-  padding: 5%;
-  width: 75%;
-  /* gap: 1rem; */
+  padding: 2% 5% 5% 5%;
+  width:75%;
+  gap: 0.5rem;
+
+
 }
 
 #logo {
@@ -200,20 +325,157 @@ All items in Browse Page .browse-container {
   max-width: 70%;
   padding: 5%;
 }
+
+
+/* Homepage */
+.home {
+  background: url("./imgs/desktop/bg1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: -4rem center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+  text-align: left;
+}
+
+
+
+.home-text {
+  margin-left: 60%;
+  margin-bottom: 1rem;
+  max-width: 900px;
+  padding-top: 10%;
+  
+}
+
+.home-text {
+  margin-left: 60%;
+  margin-bottom: 1rem;
+  max-width: 900px;
+  padding-top: 10%;
+  
+}
+
+
+
+.button-blue {
+  width: 250px;
+  height: 50px;
+  background: var(--primary-blue);
+  border-radius: 30px;
+  border: none;
+  color: #000;
+  font-size: 16pt;
+  font-weight: 600;
+}
+
+.button-green {
+  width: 250px;
+  height: 50px;
+  background: var(--primary-green);
+  border-radius: 30px;
+  border: none;
+  color: #000;
+  font-size: 16pt;
+  font-weight: 600;
+  margin-top: 2rem;
+}
+
 .illustrationsHome {
-  height: 200px;
-  margin-top: 5rem;
+  margin-top: 1rem;
+  margin-left: 70%;
+  overflow: hidden;
+ 
+
 }
+
 .illustrationPost {
-  height: 200px;
+  height: 300px;
 }
+
 .illustrationVolunteer {
-  height: 200px;
-}
-
-.gif {
-  height: 200px;
-  margin-top: 5rem;
+  height: 300px;
 }
 
 
+.create-task {
+  background: url("./imgs/desktop/bg6.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.view-task {
+  background: url("./imgs/desktop/bg6.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.faq {
+  background: url("./imgs/desktop/bg7.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.faq-text {
+  margin-right: auto;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  max-width: 1000px;
+  padding-top: 3%;
+  text-align: left;
+}
+
+
+
+@media (max-width: 1000px) {
+  .home {
+    background: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .home-buttons {
+    align-items: center;
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  .illustrationsHome {
+    height: auto;
+    margin-top: 1rem;
+    align-items: center;
+    margin-left: 0;
+    padding-top: 5%;
+    
+  }
+  .illustrationPost {
+    height: 200px;
+  }
+  
+  .illustrationVolunteer {
+    height: 200px;
+  }
+
+  .title{
+    text-align: center;
+  }
+  .home-text {
+    /* no margin-left: 60%; */
+    margin: 0;
+    margin-bottom: 1rem;
+    max-width: 600px;
+    padding-top: 10%;
+    
+    
+  }
+}
