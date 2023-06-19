@@ -1,21 +1,30 @@
 import "./categoryScroll.css";
-//import allIcon from "../../imgs/icons/all.png";
+import allIcon from "../../imgs/icons/all.png";
 
-export default function CategoryScroll({ categoryIcons }) {
+export default function CategoryScroll({ categoryIcons, setCategoryFilter }) {
+  function handleFilterClick(categoryId) {
+    setCategoryFilter(categoryId);
+  }
+
   return (
     <div className="main-container">
       <div className="scroll-container">
-        {/* <div className="image-container">
+        <div className="image-container" onClick={() => handleFilterClick(0)}>
           <img className="images" src={allIcon} alt="all-icons" />
-        </div> */}
+        </div>
         {categoryIcons.map((categoryIcon) => {
           return (
-            <div className="image-container" key={categoryIcon.id}>
+            <div
+              className="image-container"
+              key={categoryIcon.id}
+              onClick={() => handleFilterClick(categoryIcon.id)}
+            >
               <img
                 className="images"
                 src={categoryIcon.image}
                 alt={categoryIcon.name}
               />
+              <p>{categoryIcon.name}</p>
             </div>
           );
         })}

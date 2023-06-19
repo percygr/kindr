@@ -31,17 +31,17 @@ function App() {
   const [category, setCategory] = useState([]);
   const [categoryIcons, setCategoryIcons] = useState([]);
   const [selectedTask, setSelectedTask] = useState(0);
+  const [categoryFilter, setCategoryFilter] = useState(0);
 
   useEffect(() => {
     getTasks();
     setCategoryIcons([
-      { id: 1, image: tyreIcon },
-      { id: 2, image: gardenIcon },
-      { id: 3, image: shopIcon },
-      { id: 4, image: houseWorkIcon },
-      { id: 5, image: deliveryIcon },
-      { id: 6, image: otherIcon },
-      //{ id: 7, image: allIcons}
+      { id: 1, image: tyreIcon, name: "Transport" },
+      { id: 2, image: gardenIcon, name: "Gardening" },
+      { id: 3, image: shopIcon, name: "Shopping" },
+      { id: 4, image: houseWorkIcon, name: "Housework" },
+      { id: 5, image: deliveryIcon, name: "Delivery" },
+      { id: 6, image: otherIcon, name: "Other" },
     ]);
   }, []);
 
@@ -85,6 +85,8 @@ function App() {
                   tasks={tasks}
                   setSelectedTask={setSelectedTask}
                   categoryIcons={categoryIcons}
+                  categoryFilter={categoryFilter}
+                  setCategoryFilter={setCategoryFilter}
                 />
               }
             />
