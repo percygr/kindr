@@ -5,15 +5,17 @@ export default function ViewTaskPage({
   selectedTask,
   tasks,
   getTasks,
+  setSuccessPath,
 }) {
   return (
-    <div>
+    <div className="view-task">
       <TaskInfo
         isEditable={false}
         categoryIcons={categoryIcons}
         selectedTask={selectedTask}
         tasks={tasks}
         getTasks={getTasks}
+        setSuccessPath={setSuccessPath}
       />
     </div>
   );

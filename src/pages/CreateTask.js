@@ -2,14 +2,9 @@ import TaskInfo from "../components/TaskInfo/taskInfo";
 //import CategoryScroll from "../components/CategoryScroll/categoryScroll";
 //import { useEffect } from "react";
 
-export default function CreateTaskPage({
-  category,
-  setCategory,
-  categoryIcons,
-  getTasks,
-}) {
+export default function CreateTaskPage({ category, categoryIcons, getTasks }) {
   return (
-    <div>
+    <div className="create-task">
       {/* <CategoryScroll
         category={category}
         setCategory={setCategory}

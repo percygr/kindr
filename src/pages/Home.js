@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
 import illustrationPost from "../imgs/illustrations/post.png";
 import illustrationVolunteer from "../imgs/illustrations/joy.png";
+
 //import Gif from "../imgs/gif/plant.gif";
+//import Background from "../imgs/desktop/bg6.png";
+
 export default function HomePage() {
   return (
+
       <div className="home">
         <div className="home-text">
         <h1 className="title">How would you like to spread kindness today?</h1>
@@ -30,6 +34,8 @@ export default function HomePage() {
             src={illustrationVolunteer}
             alt="illustration"
           />
+
+    
         </div>
       </div>
   );

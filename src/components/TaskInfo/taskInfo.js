@@ -11,6 +11,7 @@ export default function TaskInfo({
   selectedTask, // task ID of clicked TaskCard - used when viewing a task
   tasks, // array of all tasks, only used when isEditable is false
   getTasks, // function to refresh task list
+  setSuccessPath, // function to set path for success page
 }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -56,6 +57,7 @@ export default function TaskInfo({
     if (error) {
       console.log("error", error);
     }
+    // refresh task list
     getTasks();
     navigate(`/success`);
   }
@@ -69,11 +71,24 @@ export default function TaskInfo({
       console.log("error", error);
     }
     getTasks();
-    navigate(`/success`);
+
+    if (newStatusID === 1) {
+      setSuccessPath("created");
+      navigate(`/success`);
+    } else if (newStatusID === 2) {
+      setSuccessPath("accepted");
+      navigate(`/success`);
+    } else if (newStatusID === 3) {
+      setSuccessPath("completed");
+      navigate(`/success`);
+    } else if (newStatusID === 4) {
+      setSuccessPath("archived");
+      navigate(`/mytasks`);
+    }
   }
 
   return (
-    <div>
+    <div className="all-info">
       <img
         className="category-logo"
         src={categoryIcons[categoryID].image}
@@ -116,7 +131,13 @@ export default function TaskInfo({
       {!isEditable && (
         <div>
           <div>Date Posted:</div>
-          <div>{thisTask.created_at}</div>
+          <div>
+            {new Date(thisTask.created_at).toLocaleDateString("en-GB", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            })}
+          </div>
         </div>
       )}
 
@@ -180,7 +201,7 @@ export default function TaskInfo({
       )}
       {!isEditable && thisTask.status_id === 2 && (
         <button className="button" onClick={() => updateStatusID(3)}>
-          Complete!
+          Completed!
         </button>
       )}
       {!isEditable && thisTask.status_id === 3 && (
