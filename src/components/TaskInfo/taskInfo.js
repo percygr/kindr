@@ -56,6 +56,7 @@ export default function TaskInfo({
     if (error) {
       console.log("error", error);
     }
+    // refresh task list
     getTasks();
     navigate(`/success`);
   }
