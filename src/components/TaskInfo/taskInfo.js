@@ -116,7 +116,13 @@ export default function TaskInfo({
       {!isEditable && (
         <div>
           <div>Date Posted:</div>
-          <div>{thisTask.created_at}</div>
+          <div>
+            {new Date(thisTask.created_at).toLocaleDateString("en-GB", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            })}
+          </div>
         </div>
       )}
 
