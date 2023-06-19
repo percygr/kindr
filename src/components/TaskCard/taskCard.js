@@ -21,10 +21,10 @@ export default function TaskCard({ task, setSelectedTask, categoryIcons }) {
       </div>
 
       <div className="card-info">
-        <h2>{task.title}</h2>
-        <p>Duration: {task.duration}</p>
-        <p>Location: {task.location}</p>
-        <p>Creator ID: {task.creator_id}</p>
+        <h2 className='task-title-container'>{task.title}</h2>
+        <p><strong>Duration: </strong>{task.duration}</p>
+        <p><strong>Location: </strong>{task.location}</p>
+        <p><strong>Creator ID: </strong>{task.creator_id}</p>
       </div>
     </div>
   );
