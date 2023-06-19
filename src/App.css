@@ -1,63 +1,21 @@
 /* DESIGN SYSTEM */
 
 /* Main font: 
-
 @import url("https://use.typekit.net/ycz4yvq.css");
+*/
 
---- TYPOGRAPHY 
-Mobile Font sizes (px)
-11 / 16 / 30 
+/* TYPOGRAPHY */
+/* Mobile Font sizes (px) */
+/* 11 / 16 / 30 */
 
-Desktop Font sizes (px)
-10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 64 / 86
+/* Desktop Font sizes (px) */
+/* 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 64 / 86 */
 
 /* Main font: 
-
 @import url("https://use.typekit.net/ycz4yvq.css");
+*/
 
-.small-text {
-  font-family: "futura-pt", sans-serif;
-  font-weight: 500;
-  font-style: normal;
-  font-size: 11pt;
-}
-
-.medium-text {
-  font-family: "futura-pt", sans-serif;
-  font-weight: 500;
-  font-style: normal;
-  font-size: 16pt;
-}
---- 02: COLORS
-
-- Primary: #01BBE4
-
-- Secondary:
-#FFFFFF 
-#85F291
-#CAF1F9
-#FDB645
-
---- 05 SHADOWS
-
-0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
-
---- 06 BORDER-RADIUS
-
-Default: 9px
-Medium: 11px
-
---- 07 WHITESPACE
-
-- Spacing system (px)
-2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128 */
-
-/* .home {
-  background-image: url("/src/imgs/desktop/bg1.png");
-background-repeat: no-repeat;
-background-size: cover;
-}  */
-
+/* COLORS */
 :root {
   --primary-background-colour: #ffffff;
   --primary-blue: #01bbe4;
@@ -72,57 +30,43 @@ background-size: cover;
     rgba(133, 242, 145, 1) 100%
   );
 }
+
 /* Header Gradient */
 .myGradient {
   background: var(--primary-blue);
-  /* background: linear-gradient(90deg, rgba(1,187,228,1) 62%, rgba(1,228,216,1) 88%, rgba(133,242,145,1) 100%); */
   background: var(--gradient);
 }
 
+/* App */
 .App {
   text-align: center;
-  /* background: linear-gradient(180deg, rgba(1,187,228,1) 40%, rgba(133,242,145,1) 100%); */
   height: 100vh;
-  /* background-image: url("/src/imgs/desktop/bg6.png"); */
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-/* @media only screen and (max-width: 600px) {
-  .App {
-    background-image: none;
-  }
-} */
-
-/* body {
-  background: linear-gradient(180deg, rgba(1,187,228,1) 62%, rgba(1,228,216,1) 88%, rgba(133,242,145,1) 100%);
-} */
+/* Typography */
 h1 {
   font-family: "futura-pt-bold", sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 24pt;
 }
+
 p {
   font-family: "futura-pt", sans-serif;
   font-weight: 500;
   font-style: normal;
   font-size: 11pt;
 }
+
 h2 {
   font-family: "futura-pt", sans-serif;
   font-weight: 500;
   font-style: normal;
   font-size: 16pt;
-  /* height: 3em; */
 }
-.home-buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 3rem;
-}
+
 /* Buttons */
 .button {
   width: 150px;
@@ -133,30 +77,6 @@ h2 {
   border: none;
   color: var(--primary-background-colour);
   font-size: 16pt;
-}
-.button-blue {
-  width: 300px;
-  height: 37px;
-  background: var(--primary-blue);
-  border-radius: 30px;
-  margin: 10px;
-  border: none;
-  color: #000;
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-top: 3%;
-}
-.button-green {
-  width: 300px;
-  height: 37px;
-  background: var(--primary-green);
-  border-radius: 30px;
-  margin: 10px;
-  border: none;
-  color: #000;
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-top: 3rem;
 }
 
 .disable-button {
@@ -170,27 +90,35 @@ h2 {
   font-size: 16pt;
 }
 
-All items in Browse Page .browse-container {
+/* All items in Browse Page */
+.browse-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
+
 .browse-container > * {
   margin-left: 4%;
 }
+
 /* All task cards in a list */
 .tasklist-container {
   display: grid;
-  @media screen and (min-width: 600px) {
+}
+
+@media screen and (min-width: 600px) {
+  .tasklist-container {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 3fr;
   }
 }
+
 .tasklist-container > * {
   width: 90%;
   margin: 0.5%;
 }
+
 /* Task Cards */
 .task-card {
   display: flex;
@@ -207,8 +135,8 @@ All items in Browse Page .browse-container {
   height: 100%;
   grid-column: 1 3;
   cursor: pointer;
-  /* padding: 5%; */
 }
+
 .task-card:hover {
   background-color: #f8fcff;
   transition: 0.3s;
@@ -218,6 +146,7 @@ All items in Browse Page .browse-container {
 .category-icon {
   width: 90%;
 }
+
 .image {
   background-color: var(--secondary-blue);
   width: 30%;
@@ -226,6 +155,7 @@ All items in Browse Page .browse-container {
   justify-content: center;
   border-radius: 10px 0px 0px 10px;
 }
+
 .card-info {
   display: flex;
   flex-direction: column;
@@ -233,29 +163,129 @@ All items in Browse Page .browse-container {
   text-align: left;
   padding: 5%;
   width: 75%;
-  /* gap: 1rem; */
 }
+
 #logo {
   margin: 5%;
 }
+
 #hearticon {
   max-width: 70%;
   padding: 5%;
 }
+
+/* Homepage */
+.home {
+  background: url("./imgs/desktop/bg1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: -4rem center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+  text-align: left;
+}
+
+
+
+.home-text {
+  margin-left: 60%;
+  margin-bottom: 1rem;
+  max-width: 900px;
+  padding-top: 10%;
+  
+}
+
+.home-text {
+  margin-left: 60%;
+  margin-bottom: 1rem;
+  max-width: 900px;
+  padding-top: 10%;
+  
+}
+
+
+
+.button-blue {
+  width: 250px;
+  height: 50px;
+  background: var(--primary-blue);
+  border-radius: 30px;
+  border: none;
+  color: #000;
+  font-size: 16pt;
+  font-weight: 600;
+}
+
+.button-green {
+  width: 250px;
+  height: 50px;
+  background: var(--primary-green);
+  border-radius: 30px;
+  border: none;
+  color: #000;
+  font-size: 16pt;
+  font-weight: 600;
+  margin-top: 2rem;
+}
+
 .illustrationsHome {
-  height: 200px;
-  margin-top: 5rem;
+  margin-top: 1rem;
+  margin-left: 70%;
+  overflow: hidden;
+ 
+
 }
+
 .illustrationPost {
-  height: 200px;
+  height: 300px;
 }
+
 .illustrationVolunteer {
-  height: 200px;
-}
-
-.gif {
-  height: 200px;
-  margin-top: 5rem;
+  height: 300px;
 }
 
 
+
+
+@media (max-width: 1000px) {
+  .home {
+    background: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .home-buttons {
+    align-items: center;
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  .illustrationsHome {
+    height: auto;
+    margin-top: 1rem;
+    align-items: center;
+    margin-left: 0;
+    padding-top: 5%;
+    
+  }
+  .illustrationPost {
+    height: 200px;
+  }
+  
+  .illustrationVolunteer {
+    height: 200px;
+  }
+
+  .home-text {
+    /* no margin-left: 60%; */
+    margin: 0;
+    margin-bottom: 1rem;
+    max-width: 600px;
+    padding-top: 10%;
+    
+  }
+}

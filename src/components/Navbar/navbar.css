@@ -18,24 +18,25 @@
 }
 
 header {
+	position: sticky;
+	top: 0;
+	z-index: 100;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	height: 80px;
-	
 	padding: 0 2rem;
 	background: var(--gradient);
 	color: var(--textColor);
-	margin-bottom: 1rem;
+	margin-bottom: 0rem;
 }
-/* this sets the text sizes for the nav links */
+
 nav a {
 	margin: 0 1rem;
 	color: var(--textColor);
 	text-decoration: none;
 	font-size: 1.2rem;
 	font-weight: 700;
-	
 }
 
 nav a:hover {
@@ -59,25 +60,21 @@ header .nav-btn {
 	visibility: hidden;
 	opacity: 0;
 	font-size: 1.8rem;
-	
 }
 
 header div,
 nav {
 	display: flex;
 	align-items: center;
-
 }
 
 nav .active {
-    color: var(--secondaryColor); /* Change color to your preference */
-    /* Add any additional styles you want for the active link */
+    color: var(--secondaryColor);
 }
 
-  
 
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1000px) {
 	header .nav-btn {
 		visibility: visible;
 		opacity: 1;
@@ -96,7 +93,6 @@ nav .active {
 		gap: 1.5rem;
 		background-color: var(--mainColor);
 		transition: 1s;
-		
 	}
 
 	header .responsive_nav {
@@ -111,20 +107,20 @@ nav .active {
 
 	nav a {
 		font-size: 2.5rem;
-	
 	}
 	
-nav ul {
-	padding: 0;
-	margin: 0;
-	list-style: none; /* remove default bullets from ul */
-  }
+	nav ul {
+		padding: 0;
+		margin: 0;
+		list-style: none;
+	}
   
-  nav li {
-	padding: 0;
-	margin: 0;
-  }
+	nav li {
+		padding: 0;
+		margin: 0;
+	}
 }
+
 .profile-container {
 	margin-left: auto;
-  }
+}
