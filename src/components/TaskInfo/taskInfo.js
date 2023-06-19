@@ -11,6 +11,7 @@ export default function TaskInfo({
   selectedTask, // task ID of clicked TaskCard - used when viewing a task
   tasks, // array of all tasks, only used when isEditable is false
   getTasks, // function to refresh task list
+  setSuccessPath, // function to set path for success page
 }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -70,7 +71,20 @@ export default function TaskInfo({
       console.log("error", error);
     }
     getTasks();
-    navigate(`/success`);
+
+    if (newStatusID === 1) {
+      setSuccessPath("created");
+      navigate(`/success`);
+    } else if (newStatusID === 2) {
+      setSuccessPath("accepted");
+      navigate(`/success`);
+    } else if (newStatusID === 3) {
+      setSuccessPath("completed");
+      navigate(`/success`);
+    } else if (newStatusID === 4) {
+      setSuccessPath("archived");
+      navigate(`/mytasks`);
+    }
   }
 
   return (
@@ -187,7 +201,7 @@ export default function TaskInfo({
       )}
       {!isEditable && thisTask.status_id === 2 && (
         <button className="button" onClick={() => updateStatusID(3)}>
-          Complete!
+          Completed!
         </button>
       )}
       {!isEditable && thisTask.status_id === 3 && (

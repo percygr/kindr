@@ -355,6 +355,14 @@ h2 {
   padding: 5%;
 }
 
+.success { 
+  margin: 5%;
+  text-align: center;
+}
+
+.success-text {
+  text-align: center
+}
 
 .create-task {
   background: url("./imgs/desktop/bg6.png");

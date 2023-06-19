@@ -10,6 +10,8 @@ const FAQ = ({ faqs }) => {
 
   return (
     <div className={styles.faqContainer}>
+    <h2>Use this page to learn more about Kindr, click the boxes to expand the answer:</h2>
+    <br></br>
       {faqs.map((faq, index) => (
         <div
           key={index}
