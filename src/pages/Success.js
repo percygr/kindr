@@ -32,7 +32,7 @@ export default function SuccessPage({ successPath }) {
   return (
     <div className="success">
       <Confetti width={windowWidth.width} height={windowHeight.height} />
-      <h1> {successText}</h1>
+      <h1 className="success-text"> {successText}</h1>
 
       <HeartIcon />
       {showHomeButton && (

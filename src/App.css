@@ -360,6 +360,10 @@ h2 {
   text-align: center;
 }
 
+.success-text {
+  text-align: center
+}
+
 .create-task {
   background: url("./imgs/desktop/bg6.png");
   background-repeat: no-repeat;
