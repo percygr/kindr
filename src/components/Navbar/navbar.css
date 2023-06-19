@@ -69,6 +69,14 @@ nav {
 
 }
 
+nav .active {
+    color: var(--secondaryColor); /* Change color to your preference */
+    /* Add any additional styles you want for the active link */
+}
+
+  
+
+
 @media only screen and (max-width: 600px) {
 	header .nav-btn {
 		visibility: visible;
@@ -105,6 +113,17 @@ nav {
 		font-size: 2.5rem;
 	
 	}
+	
+nav ul {
+	padding: 0;
+	margin: 0;
+	list-style: none; /* remove default bullets from ul */
+  }
+  
+  nav li {
+	padding: 0;
+	margin: 0;
+  }
 }
 .profile-container {
 	margin-left: auto;

@@ -1,0 +1,53 @@
+.faqContainer {
+  width: 80%;
+  margin: 0 auto; /* Center the container horizontally */
+}
+
+.faqItem {
+  background: #caf1f9;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.faqItem:hover .question {
+  background: #01bbe4;
+  color: #fff;
+}
+
+/* .faqItem:active .question {
+  background: #01bbe4;
+  color: #fff;
+} */
+
+.faqItem .question {
+  font-weight: 700;
+  padding: 1.5rem;
+  font-size: 2rem; /* Adjust the font size for mobile */
+}
+
+.faqItem .answer {
+  padding: 10px;
+  font-weight: bold; /* Add font-weight property to make the text bold */
+  font-size: 1.5rem; /* Adjust the font size for mobile */
+  display: none; /* Hide the answer by default */
+}
+
+.faqItem.active .answer {
+  display: block; /* Show the answer when the item is active */
+}
+
+@media only screen and (max-width: 600px) {
+  .faqItem .question {
+    font-size: 1rem; /* Increase the font size for desktop */
+    margin-bottom: 5px; /* Add margin-bottom for desktop */
+  }
+
+  .faqItem .answer {
+    font-size: 1rem; /* Increase the font size for desktop */
+  }
+}
+
+
+
