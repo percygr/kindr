@@ -74,15 +74,17 @@ export default function TaskInfo({
 
     if (newStatusID === 1) {
       setSuccessPath("created");
+      navigate(`/success`);
     } else if (newStatusID === 2) {
       setSuccessPath("accepted");
+      navigate(`/success`);
     } else if (newStatusID === 3) {
       setSuccessPath("completed");
+      navigate(`/success`);
     } else if (newStatusID === 4) {
       setSuccessPath("archived");
+      navigate(`/mytasks`);
     }
-
-    navigate(`/success`);
   }
 
   return (
@@ -199,7 +201,7 @@ export default function TaskInfo({
       )}
       {!isEditable && thisTask.status_id === 2 && (
         <button className="button" onClick={() => updateStatusID(3)}>
-          Complete!
+          Completed!
         </button>
       )}
       {!isEditable && thisTask.status_id === 3 && (
