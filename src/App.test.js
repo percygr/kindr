@@ -11,5 +11,5 @@ test("check 'Home' is in the nav bar", () => {
 test("check 'Post a Task' is on the home page", () => {
   render(<App />);
 
-  expect(screen.getByText(/Post a Task/i)).toBeInTheDocument();
+  const buttons = screen.getByRole("button", { name: /Post a Task/i });
 });

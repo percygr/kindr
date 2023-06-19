@@ -170,32 +170,54 @@ h2 {
   font-size: 16pt;
 }
 
-All items in Browse Page .browse-container {
+<
+ /* All items in Browse Page */
+.browse-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-.browse-container > * {
+  padding: 0 20px;
+  row-gap: 20px; /* Add vertical gap between the cards */
+} 
+/* .browse-container > * {
   margin-left: 4%;
+  margin-right: 4%;
+} */
+.browse-title {
+  font-style: normal;
+  font-size: 24pt;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
-/* All task cards in a list */
-.tasklist-container {
-  display: grid;
-  @media screen and (min-width: 600px) {
+
+@media screen and (min-width: 600px) {
+  .browse-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px; /* Add a gap between the columns */
+    justify-items: center; /* Center the items horizontally */
+    padding: 0 30px;
+  }
+
+  .tasklist-container {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 3fr;
-  }
+  } 
 }
+
 .tasklist-container > * {
   width: 90%;
-  margin: 0.5%;
+  margin: 0 auto; /* Center the items horizontally */
 }
+
 /* Task Cards */
 .task-card {
   display: flex;
   flex-direction: row;
+
   background-color: var(--primary-background-colour);
+
   border-radius: 10px;
   box-shadow: 3px 5px 10px rgb(0 0 0 / 0.2);
   color: var(--text-colour);
@@ -205,12 +227,13 @@ All items in Browse Page .browse-container {
   font-size: 11pt;
   width: 100%;
   height: 100%;
-  grid-column: 1 3;
+  /* grid-column: 1 3; */
   cursor: pointer;
-  /* padding: 5%; */
+
 }
 .task-card:hover {
-  background-color: #f8fcff;
+  background-color: #e6f3fc;
+  /* background-color: #527189; */
   transition: 0.3s;
   transform: translateY(-0.1rem);
 }
@@ -231,9 +254,10 @@ All items in Browse Page .browse-container {
   flex-direction: column;
   justify-content: flex-start;
   text-align: left;
-  padding: 5%;
-  width: 75%;
-  /* gap: 1rem; */
+  padding: 2% 5% 5% 5%;
+  width:75%;
+  gap: 0.5rem;
+
 }
 #logo {
   margin: 5%;
