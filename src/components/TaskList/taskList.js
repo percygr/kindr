@@ -13,16 +13,16 @@ export default function TaskList({
   onlyAvailable,
   setSelectedTask,
   categoryIcons,
+  categoryFilter,
 }) {
   return (
     <div className="browse-page">
       {onlyAvailable && (
         <div className="browse-container">
-          {showTasks(tasks, 1, setSelectedTask, categoryIcons)}
+          {showTasks(tasks, 1, setSelectedTask, categoryIcons, categoryFilter)}
         </div>
       )}
       {!onlyAvailable && (
-
         <>
           {/* only show title if there are some tasks of that status */}
           {tasks.some((task) => task.status_id === 2) && (
@@ -30,15 +30,26 @@ export default function TaskList({
           )}
 
           <div className="browse-container">
-            {showTasks(tasks, 2, setSelectedTask, categoryIcons)}
+            {showTasks(
+              tasks,
+              2,
+              setSelectedTask,
+              categoryIcons,
+              categoryFilter
+            )}
           </div>
 
           {tasks.some((task) => task.status_id === 3) && (
             <div className="browse-title">Completed Tasks</div>
           )}
           <div className="browse-container">
-
-            {showTasks(tasks, 3, setSelectedTask, categoryIcons)}
+            {showTasks(
+              tasks,
+              3,
+              setSelectedTask,
+              categoryIcons,
+              categoryFilter
+            )}
           </div>
         </>
       )}
@@ -48,8 +59,25 @@ export default function TaskList({
 
 // show only tasks of one status id
 // but we also need to pass on these other 2 props to the TaskCard component
-function showTasks(tasks, statusId, setSelectedTask, categoryIcons) {
-  const filteredTasks = tasks.filter((task) => task.status_id === statusId);
+function showTasks(
+  tasks,
+  statusId,
+  setSelectedTask,
+  categoryIcons,
+  categoryFilter
+) {
+  let filteredTasks;
+
+  if (statusId === 1 && categoryFilter !== 0) {
+    // show tasks that have a category that matches the category filter
+    filteredTasks = tasks.filter(
+      (task) => task.status_id === 1 && task.category_id === categoryFilter
+    );
+  } else if (categoryFilter === 0) {
+    filteredTasks = tasks.filter((task) => task.status_id === 1);
+  } else {
+    filteredTasks = tasks.filter((task) => task.status_id === statusId);
+  }
 
   return filteredTasks.map((task) => (
     <FragmentWrapper key={task.id}>
