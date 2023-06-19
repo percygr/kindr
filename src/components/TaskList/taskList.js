@@ -67,7 +67,8 @@ function showTasks(
   categoryFilter
 ) {
   let filteredTasks;
-  if (statusId === 1) {
+
+  if (statusId === 1 && categoryFilter !== 0) {
     // show tasks that have a category that matches the category filter
     filteredTasks = tasks.filter(
       (task) => task.status_id === 1 && task.category_id === categoryFilter
