@@ -90,6 +90,7 @@ background-size: cover;
   background-size: cover;
 }
 
+
 h1 {
   font-family: "futura-pt-bold", sans-serif;
   font-weight: 700;
@@ -235,6 +236,7 @@ h2 {
 
 
 
+
 /* Buttons */
 .button {
   width: 150px;
@@ -258,8 +260,9 @@ h2 {
   font-size: 16pt;
 }
 
-<
+
  /* All items in Browse Page */
+
 .browse-container {
   display: flex;
   flex-direction: column;
@@ -269,6 +272,7 @@ h2 {
   row-gap: 20px; /* Add vertical gap between the cards */
 } 
 /* .browse-container > * {
+
   margin-left: 4%;
   margin-right: 4%;
 } */
@@ -287,6 +291,7 @@ h2 {
     justify-items: center; /* Center the items horizontally */
     padding: 0 30px;
   }
+
 
   .tasklist-container {
     grid-template-columns: 1fr 1fr;
@@ -318,6 +323,10 @@ h2 {
   /* grid-column: 1 3; */
   cursor: pointer;
 
+
+}
+
+
 }
 .task-card:hover {
   background-color: #e6f3fc;
@@ -346,6 +355,10 @@ h2 {
   width:75%;
   gap: 0.5rem;
 
+
+}
+
+
 }
 #logo {
   margin: 5%;
@@ -354,6 +367,83 @@ h2 {
   max-width: 70%;
   padding: 5%;
 }
+
+
+/* Homepage */
+.home {
+  background: url("./imgs/desktop/bg1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: -4rem center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+  text-align: left;
+}
+
+
+
+.home-text {
+  margin-left: 60%;
+  margin-bottom: 1rem;
+  max-width: 900px;
+  padding-top: 10%;
+  
+}
+
+.home-text {
+  margin-left: 60%;
+  margin-bottom: 1rem;
+  max-width: 900px;
+  padding-top: 10%;
+  
+}
+
+
+
+.button-blue {
+  width: 250px;
+  height: 50px;
+  background: var(--primary-blue);
+  border-radius: 30px;
+  border: none;
+  color: #000;
+  font-size: 16pt;
+  font-weight: 600;
+}
+
+.button-green {
+  width: 250px;
+  height: 50px;
+  background: var(--primary-green);
+  border-radius: 30px;
+  border: none;
+  color: #000;
+  font-size: 16pt;
+  font-weight: 600;
+  margin-top: 2rem;
+}
+
+.illustrationsHome {
+  margin-top: 1rem;
+  margin-left: 70%;
+  overflow: hidden;
+ 
+
+}
+
+.illustrationPost {
+  height: 300px;
+}
+
+.illustrationVolunteer {
+  height: 300px;
+}
+
+
+.create-task {
 
 .success { 
   margin: 5%;
@@ -373,11 +463,40 @@ h2 {
 }
 
 .view-task {
+
   background: url("./imgs/desktop/bg6.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   height: 100vh;
+
+}
+
+.view-task {
+  background: url("./imgs/desktop/bg6.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+
+}
+
+.faq {
+  background: url("./imgs/desktop/bg7.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.faq-text {
+  margin-right: auto;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  max-width: 1000px;
+  padding-top: 3%;
+  text-align: left;
+
 }
 
 .faq {
@@ -397,3 +516,48 @@ h2 {
   text-align: left;
 }
 
+
+
+@media (max-width: 1000px) {
+  .home {
+    background: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .home-buttons {
+    align-items: center;
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  .illustrationsHome {
+    height: auto;
+    margin-top: 1rem;
+    align-items: center;
+    margin-left: 0;
+    padding-top: 5%;
+    
+  }
+  .illustrationPost {
+    height: 200px;
+  }
+  
+  .illustrationVolunteer {
+    height: 200px;
+  }
+
+  .title{
+    text-align: center;
+  }
+  .home-text {
+    /* no margin-left: 60%; */
+    margin: 0;
+    margin-bottom: 1rem;
+    max-width: 600px;
+    padding-top: 10%;
+    
+    
+  }
+}
