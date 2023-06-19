@@ -32,6 +32,8 @@ function App() {
   const [categoryIcons, setCategoryIcons] = useState([]);
   const [selectedTask, setSelectedTask] = useState(0);
   const [categoryFilter, setCategoryFilter] = useState(0);
+  const [successPath, setSuccessPath] = useState("login");
+
 
   useEffect(() => {
     getTasks();
@@ -116,6 +118,7 @@ function App() {
                   category={category}
                   categoryIcons={categoryIcons}
                   getTasks={getTasks}
+                  setSuccessPath={setSuccessPath}
                 />
               }
             />
@@ -127,10 +130,14 @@ function App() {
                   selectedTask={selectedTask}
                   tasks={tasks}
                   getTasks={getTasks}
+                  setSuccessPath={setSuccessPath}
                 />
               }
             />
-            <Route path="/success" element={<SuccessPage />} />
+            <Route
+              path="/success"
+              element={<SuccessPage successPath={successPath} />}
+            />
             <Route path="/FAQpage" element={<FAQPage />} />
           </Routes>
         </div>

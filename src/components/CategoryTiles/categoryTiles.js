@@ -12,7 +12,7 @@ export default function CategoryTiles({ setCategory, categoryIcons }) {
 
   return (
     <div>
-      <h1 className="category-h1">Please select a category for this task</h1>
+      <h1 className="category-h1">Please select a category for this task:</h1>
       <div className="category-container">
         <div className="category-container-inner">
           <div onClick={() => handleCategoryClick(1)} className="category-item">

@@ -1,6 +1,7 @@
 .faqContainer {
-  width: 80%;
-  margin: 0 auto; /* Center the container horizontally */
+  width: 60%;
+  margin: 1%;
+  text-align: left;
 }
 
 .faqItem {
@@ -22,16 +23,17 @@
 } */
 
 .faqItem .question {
-  font-weight: 700;
+  font-weight: 600;
   padding: 1.5rem;
-  font-size: 2rem; /* Adjust the font size for mobile */
+  font-size: 1.8rem; /* Adjust the font size for mobile */
 }
 
 .faqItem .answer {
   padding: 10px;
-  font-weight: bold; /* Add font-weight property to make the text bold */
+  /* font-weight: bold; Add font-weight property to make the text bold */
   font-size: 1.5rem; /* Adjust the font size for mobile */
   display: none; /* Hide the answer by default */
+  
 }
 
 .faqItem.active .answer {
