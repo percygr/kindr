@@ -9,7 +9,7 @@ export default function HomePage() {
   return (
     <div className="home">
       <div className="home-text">
-      <h1>How would you like to spread kindness today?</h1>
+      <h1>How would you like to spread some kindness today?</h1>
       <h2>Post a task that you need help with or volunteer to help</h2>
       
       {/* <img src={Gif} alt="gif"className = "gif"/> */}
