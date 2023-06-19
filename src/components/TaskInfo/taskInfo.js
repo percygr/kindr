@@ -180,15 +180,14 @@ export default function TaskInfo({
       )}
       <div className="info-container">
         <div><strong>Contact Information: </strong></div>
-        {isEditable ? <div> number / email</div> : <div>number / email</div>}
+        {isEditable ? <div> number / email</div> : <div> number / email</div>}
       </div>
 
       {isEditable && (
         <button
           onClick={() => writeTask()}
           disabled={!title || !description || !location || !duration}
-          className={isDisabled ? "disable-button" : "button"}
-        >
+          className={isDisabled ? "disable-button" : "button"}>
           Submit
         </button>
       )}
