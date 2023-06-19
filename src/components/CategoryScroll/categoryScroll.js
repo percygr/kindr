@@ -1,11 +1,7 @@
 import "./categoryScroll.css";
 //import allIcon from "../../imgs/icons/all.png";
 
-export default function CategoryScroll({
-  category,
-  setCategory,
-  categoryIcons,
-}) {
+export default function CategoryScroll({ categoryIcons }) {
   return (
     <div className="main-container">
       <div className="scroll-container">

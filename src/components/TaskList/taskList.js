@@ -15,26 +15,32 @@ export default function TaskList({
   categoryIcons,
 }) {
   return (
-    <div>
+    <div className="browse-page">
       {onlyAvailable && (
         <div className="browse-container">
-          <div className="tasklist-container">
-            {showTasks(tasks, 1, setSelectedTask, categoryIcons)}
-          </div>
+          {showTasks(tasks, 1, setSelectedTask, categoryIcons)}
         </div>
       )}
       {!onlyAvailable && (
-        <div className="browse-container">
-          <h1>Active Tasks</h1>
-          <div className="tasklist-container">
+
+        <>
+          {/* only show title if there are some tasks of that status */}
+          {tasks.some((task) => task.status_id === 2) && (
+            <div className="browse-title">Active Tasks</div>
+          )}
+
+          <div className="browse-container">
             {showTasks(tasks, 2, setSelectedTask, categoryIcons)}
           </div>
 
-          <h1>Completed Tasks</h1>
-          <div className="tasklist-container">
+          {tasks.some((task) => task.status_id === 3) && (
+            <div className="browse-title">Completed Tasks</div>
+          )}
+          <div className="browse-container">
+
             {showTasks(tasks, 3, setSelectedTask, categoryIcons)}
           </div>
-        </div>
+        </>
       )}
     </div>
   );
@@ -46,13 +52,18 @@ function showTasks(tasks, statusId, setSelectedTask, categoryIcons) {
   const filteredTasks = tasks.filter((task) => task.status_id === statusId);
 
   return filteredTasks.map((task) => (
-    <div key={task.id}>
+    <FragmentWrapper key={task.id}>
       <TaskCard
         task={task}
         setSelectedTask={setSelectedTask}
         categoryIcons={categoryIcons}
-        // categoryID = {categoryID}
       />
-    </div>
+    </FragmentWrapper>
   ));
+}
+
+// this seems to be the only way to add a key to the TaskCard component
+// without using a div or other element that would break the styling
+function FragmentWrapper({ children }) {
+  return children;
 }
