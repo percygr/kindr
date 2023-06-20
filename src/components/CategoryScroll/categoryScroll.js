@@ -23,6 +23,7 @@ export default function CategoryScroll({ categoryIcons, setCategoryFilter }) {
           onClick={() => handleCategoryClick(0)}
         >
           <img className="images" src={allIcon} alt="all-icons" />
+          <p class="category-title">All Categories</p>
         </div>
         {categoryIcons.map((categoryIcon) => {
           return (

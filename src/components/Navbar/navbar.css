@@ -96,8 +96,7 @@ nav .active {
 		gap: 1.5rem;
 		background-color: var(--mainColor);
 		transition: 1s;
-		
-	}
+		z-index: 1;}
 
 	header .responsive_nav {
 		transform: translateY(100vh);
