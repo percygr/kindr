@@ -572,6 +572,6 @@ h2 {
 
 @media screen and (min-width: 600px) {
   .homepage-logo {
-    max-width: 50%;
+    max-width: 30%;
   }
 }

@@ -95,6 +95,7 @@ function App() {
     return (
       <div className="login-page">
         <img src={BlueLogo} alt="logo" className="homepage-logo" />
+        <h2 className="login-title">Welcome to Kindr - Mission Statement here</h2>
         <div className="login-container">
           <Auth
             supabaseClient={supabase}
