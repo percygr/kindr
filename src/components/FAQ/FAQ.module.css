@@ -48,12 +48,29 @@ h2 {
   display: block; /* Show the answer when the item is active */
 }
 
+/* Add the arrow icon */
+.arrow {
+  
+  display: flex;
+    float: right;
+}
+
+.arrowUp {
+  display: flex;
+    float: right;
+}
+
+.arrowDown {
+  display: flex;
+    float: right;
+}
+
 @media only screen and (max-width: 600px) {
   .faqItem .question {
     font-size: 1rem; /* Increase the font size for desktop */
     margin-bottom: 5px; /* Add margin-bottom for desktop */
     text-align: left;
-    min-width: 350px;
+    min-width: 250px;
   }
 
   .faqContainer {
