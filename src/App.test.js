@@ -62,3 +62,16 @@ render(<BrowserRouter>
   // Assert that the correct page has been navigated to
   expect(window.location.pathname).toBe('/');
 });
+
+test('clicking "Browse Tasks" button in the navbar navigates to the browse page', () => {
+  render(
+     <BrowserRouter>
+       <Navbar />
+     </BrowserRouter>
+   );
+   const browseNav = screen.getByText('Browse Tasks');
+   fireEvent.click(browseNav);
+ 
+   // Assert that the correct page has been navigated to
+   expect(window.location.pathname).toBe('/browse');
+ });
