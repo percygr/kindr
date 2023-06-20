@@ -101,6 +101,7 @@ export default function TaskInfo({
         {/* <div className="info-text">Title: </div> */}
         {isEditable ? (
           <div>
+            <div>Title: </div>
             <input
               type="text"
               value={title}
@@ -117,6 +118,7 @@ export default function TaskInfo({
         {/* <div>Description: </div> */}
         {isEditable ? (
           <div>
+            <div>Description: </div>
             <input
               type="text"
               value={description}
@@ -145,6 +147,7 @@ export default function TaskInfo({
         {/* <div>Duration: </div> */}
         {isEditable ? (
           <div>
+            <div>Duration: </div>
             <input
               type="text"
               value={duration}
@@ -161,6 +164,7 @@ export default function TaskInfo({
         {/* <div>Location: </div> */}
         {isEditable ? (
           <div>
+            <div>Location: </div>
             <input
               type="text"
               value={location}
