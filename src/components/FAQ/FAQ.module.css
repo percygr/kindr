@@ -50,8 +50,14 @@ h2 {
     font-size: 1rem; /* Increase the font size for desktop */
     margin-bottom: 5px; /* Add margin-bottom for desktop */
     text-align: left;
+    min-width: 350px;
   }
 
+  .faqContainer {
+    width: 60%;
+    text-align: left;
+    min-width: 350px;
+  }
   .faqItem .answer {
     font-size: 1rem; /* Increase the font size for desktop */
     text-align: left;
