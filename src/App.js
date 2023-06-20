@@ -39,7 +39,7 @@ function App() {
   const [session, setSession] = useState(null);
 
   useEffect(() => {
-    console.log("session", session);
+    //console.log("session", session);
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       if (session) {
@@ -95,7 +95,9 @@ function App() {
     return (
       <div className="login-page">
         <img src={BlueLogo} alt="logo" className="homepage-logo" />
-        <h2 className="login-title">Welcome to Kindr - Mission Statement here</h2>
+        <h2 className="login-title">
+          Welcome to Kindr - Mission Statement here
+        </h2>
         <div className="login-container">
           <Auth
             supabaseClient={supabase}
