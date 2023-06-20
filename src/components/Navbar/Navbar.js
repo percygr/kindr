@@ -5,7 +5,7 @@ import "./navbar.css";
 import logo from "../../imgs/logos/logo.png";
 import profilePic from "../../imgs/logos/profile.png";
 
-function Navbar() {
+function Navbar({ handleLogout }) {
   const navRef = useRef();
 
   const showNavbar = () => {
@@ -23,18 +23,33 @@ function Navbar() {
         <img src={logo} className="logo" height="35px" alt="logo" />
       </Link>
       <nav ref={navRef}>
-        <CustomLink to="/" onClick={closeNavbar}>Home</CustomLink>
-        <CustomLink to="/categories" onClick={closeNavbar}>New Task</CustomLink>
-        <CustomLink to="/browse" onClick={closeNavbar}>Browse Tasks</CustomLink>
-        <CustomLink to="/mytasks" onClick={closeNavbar}>My Tasks</CustomLink>
-        <CustomLink to="/FAQpage" onClick={closeNavbar}>FAQ Page</CustomLink>
-        <CustomLink to="/my-profile" onClick={closeNavbar}>My Profile</CustomLink>
-  
+        <CustomLink to="/" onClick={closeNavbar}>
+          Home
+        </CustomLink>
+        <CustomLink to="/categories" onClick={closeNavbar}>
+          New Task
+        </CustomLink>
+        <CustomLink to="/browse" onClick={closeNavbar}>
+          Browse Tasks
+        </CustomLink>
+        <CustomLink to="/mytasks" onClick={closeNavbar}>
+          My Tasks
+        </CustomLink>
+        <CustomLink to="/FAQpage" onClick={closeNavbar}>
+          FAQ Page
+        </CustomLink>
+        <CustomLink to="/my-profile" onClick={closeNavbar}>
+          My Profile
+        </CustomLink>
+
         <button className="nav-btn nav-close-btn" onClick={showNavbar}>
           <FaTimes />
         </button>
       </nav>
       <div className="profile-container">
+        <button className="button" onClick={handleLogout}>
+          Log Out
+        </button>
         <Link to="/my-profile" onClick={closeNavbar}>
           <img src={profilePic} className="profile-pic" alt="Profile" />
         </Link>
@@ -51,7 +66,12 @@ function CustomLink({ to, children, onClick, ...props }) {
   const isActive = useMatch({ path: resolvedPath.pathname, end: true });
 
   return (
-    <Link to={to} className={isActive ? "active" : ""} onClick={onClick} {...props}>
+    <Link
+      to={to}
+      className={isActive ? "active" : ""}
+      onClick={onClick}
+      {...props}
+    >
       {children}
     </Link>
   );
