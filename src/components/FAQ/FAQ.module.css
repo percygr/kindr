@@ -1,8 +1,12 @@
+h2 {
+  padding: 2%;
+}
+
 .faqContainer {
   width: 60%;
-  margin: 1%;
   text-align: left;
 }
+
 
 .faqItem {
   background: #ffffff;
