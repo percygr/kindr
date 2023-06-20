@@ -1,8 +1,16 @@
 .task-tile-container {
+    padding: none;
     text-align: left;
+    margin: none;
+    align-items: left;
+    border: none;
+
 }
 
-.task-tile-container h1 {
+h2 {
+    padding: none;
     text-align: left;
+    margin: none;
+    align-items: left;
+    border: none;
 }
-

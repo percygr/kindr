@@ -1,5 +1,8 @@
 h2 {
-  padding: 2%;
+  padding: none;
+  text-align: left;
+  margin: none;
+  align-items: left;
 }
 
 .faqContainer {
