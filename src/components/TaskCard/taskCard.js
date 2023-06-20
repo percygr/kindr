@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import "./taskcard.css";
 
 export default function TaskCard({ task, setSelectedTask, categoryIcons }) {
   const navigate = useNavigate();

@@ -37,7 +37,7 @@ const FAQPage = () => {
   ];
 
   return (
-    <div >
+    <div>
       <FAQ faqs={faqs} />
     </div>
   );
