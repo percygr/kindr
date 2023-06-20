@@ -1,5 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { createClient } from "@supabase/supabase-js";
+import { Auth } from "@supabase/auth-ui-react";
+import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { useState, useEffect } from "react";
 import "./App.css";
 import HomePage from "./pages/Home";
@@ -19,6 +21,7 @@ import otherIcon from "../src/imgs/icons/other2.png";
 //import allIcon from "../src/imgs/icons/all.png";
 import Navbar from "./components/Navbar/Navbar";
 import FAQPage from "./pages/FAQpage";
+import BlueLogo from "../src/imgs/logos/blue_text.png";
 
 const supabase = createClient(
   process.env.REACT_APP_SUPABASE_URL,
@@ -33,10 +36,36 @@ function App() {
   const [selectedTask, setSelectedTask] = useState(0);
   const [categoryFilter, setCategoryFilter] = useState(0);
   const [successPath, setSuccessPath] = useState("login");
-
+  const [session, setSession] = useState(null);
 
   useEffect(() => {
-    getTasks();
+    console.log("session", session);
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+      if (session) {
+        // getMessages(session);
+        // getUsers();
+        getTasks();
+        writeCategoryIcons();
+      }
+    });
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+      if (session) {
+        // getMessages(session);
+        // getUsers();
+        getTasks();
+        writeCategoryIcons();
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  function writeCategoryIcons() {
     setCategoryIcons([
       { id: 1, image: tyreIcon, name: "Transport" },
       { id: 2, image: gardenIcon, name: "Gardening" },
@@ -45,7 +74,11 @@ function App() {
       { id: 5, image: deliveryIcon, name: "Delivery" },
       { id: 6, image: otherIcon, name: "Other" },
     ]);
-  }, []);
+  }
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+  };
 
   async function getTasks() {
     let { data, error } = await supabase
@@ -58,92 +91,96 @@ function App() {
     setTasks(data);
   }
 
-  //   useEffect(() => {
-  //     const checkScreenWidth = () => {
-  //       setIsMobile(window.innerWidth <= 500);
-  //     };
-
-  //     checkScreenWidth();
-  //     window.addEventListener('resize', checkScreenWidth);
-  //   return () => {
-  //     window.removeEventListener('resize', checkScreenWidth);
-  //   };
-  // }, []);
-
-  return (
-    <div className="App">
-      <BrowserRouter>
-        {/* {!isMobile && <TopNav />}
-        <TopNav /> */}
-        <Navbar />
-
-        <div>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route
-              path="/browse"
-              element={
-                <BrowsePage
-                  tasks={tasks}
-                  setSelectedTask={setSelectedTask}
-                  categoryIcons={categoryIcons}
-                  categoryFilter={categoryFilter}
-                  setCategoryFilter={setCategoryFilter}
-                />
-              }
-            />
-            <Route
-              path="/mytasks"
-              element={
-                <MyTasksPage
-                  tasks={tasks}
-                  setSelectedTask={setSelectedTask}
-                  categoryIcons={categoryIcons}
-                />
-              }
-            />
-            <Route
-              path="/categories"
-              element={
-                <CategoryTilesPage
-                  setCategory={setCategory}
-                  categoryIcons={categoryIcons}
-                />
-              }
-            />
-            <Route
-              path="/create"
-              element={
-                <CreateTaskPage
-                  category={category}
-                  categoryIcons={categoryIcons}
-                  getTasks={getTasks}
-                  setSuccessPath={setSuccessPath}
-                />
-              }
-            />
-            <Route
-              path="/view"
-              element={
-                <ViewTaskPage
-                  categoryIcons={categoryIcons}
-                  selectedTask={selectedTask}
-                  tasks={tasks}
-                  getTasks={getTasks}
-                  setSuccessPath={setSuccessPath}
-                />
-              }
-            />
-            <Route
-              path="/success"
-              element={<SuccessPage successPath={successPath} />}
-            />
-            <Route path="/FAQpage" element={<FAQPage />} />
-          </Routes>
+  if (!session) {
+    return (
+      <div className="login-page">
+        <img src={BlueLogo} alt="logo" className="homepage-logo" />
+        <div className="login-container">
+          <Auth
+            supabaseClient={supabase}
+            appearance={{ theme: ThemeSupa }}
+            onSignOut={() => setSession(null)}
+            providers={["google", "facebook"]}
+          />
         </div>
-      </BrowserRouter>
-    </div>
-  );
+      </div>
+    );
+  } else {
+    return (
+      <div className="App">
+        <BrowserRouter>
+          {/* {!isMobile && <TopNav />}
+        <TopNav /> */}
+          <Navbar handleLogout={handleLogout} />
+
+          <div>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route
+                path="/browse"
+                element={
+                  <BrowsePage
+                    tasks={tasks}
+                    setSelectedTask={setSelectedTask}
+                    categoryIcons={categoryIcons}
+                    categoryFilter={categoryFilter}
+                    setCategoryFilter={setCategoryFilter}
+                  />
+                }
+              />
+              <Route
+                path="/mytasks"
+                element={
+                  <MyTasksPage
+                    tasks={tasks}
+                    setSelectedTask={setSelectedTask}
+                    categoryIcons={categoryIcons}
+                  />
+                }
+              />
+              <Route
+                path="/categories"
+                element={
+                  <CategoryTilesPage
+                    setCategory={setCategory}
+                    categoryIcons={categoryIcons}
+                  />
+                }
+              />
+              <Route
+                path="/create"
+                element={
+                  <CreateTaskPage
+                    category={category}
+                    categoryIcons={categoryIcons}
+                    getTasks={getTasks}
+                    setSuccessPath={setSuccessPath}
+                  />
+                }
+              />
+              <Route
+                path="/view"
+                element={
+                  <ViewTaskPage
+                    categoryIcons={categoryIcons}
+                    selectedTask={selectedTask}
+                    tasks={tasks}
+                    getTasks={getTasks}
+                    setSuccessPath={setSuccessPath}
+                  />
+                }
+              />
+              <Route
+                path="/success"
+                element={<SuccessPage successPath={successPath} />}
+              />
+              <Route path="/FAQpage" element={<FAQPage />} />
+            </Routes>
+          </div>
+        </BrowserRouter>
+      </div>
+    );
+  }
 }
 
 export default App;

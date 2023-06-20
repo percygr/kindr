@@ -292,11 +292,11 @@ h2 {
     padding: 0 30px;
   }
 
-
   .tasklist-container {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 3fr;
   } 
+
 }
 
 .tasklist-container > * {
@@ -308,9 +308,7 @@ h2 {
 .task-card {
   display: flex;
   flex-direction: row;
-
   background-color: var(--primary-background-colour);
-
   border-radius: 10px;
   box-shadow: 3px 5px 10px rgb(0 0 0 / 0.2);
   color: var(--text-colour);
@@ -322,8 +320,6 @@ h2 {
   height: 100%;
   /* grid-column: 1 3; */
   cursor: pointer;
-
-
 }
 
 
@@ -555,5 +551,27 @@ h2 {
 
   .faq{
     background: none;
+  }
+}
+.login-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* text-align: left; */
+}
+.login-container {
+  width: 400px;
+  max-width: 90%;
+  align-items: center;
+  justify-content: center;
+}
+.homepage-logo {
+  max-width: 90%;
+}
+
+@media screen and (min-width: 600px) {
+  .homepage-logo {
+    max-width: 50%;
   }
 }
