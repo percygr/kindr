@@ -1,6 +1,11 @@
 import TaskList from "../components/TaskList/taskList";
 
-export default function MyTasksPage({ tasks, setSelectedTask, categoryIcons }) {
+export default function MyTasksPage({
+  tasks,
+  setSelectedTask,
+  categoryIcons,
+  userInfo,
+}) {
   return (
     <div className="br">
       <TaskList
@@ -8,6 +13,7 @@ export default function MyTasksPage({ tasks, setSelectedTask, categoryIcons }) {
         tasks={tasks}
         setSelectedTask={setSelectedTask}
         categoryIcons={categoryIcons}
+        userInfo={userInfo}
       />
     </div>
   );
