@@ -381,20 +381,12 @@ h2 {
 
 
 
-.home-text {
-  margin-left: 60%;
-  margin-bottom: 1rem;
-  max-width: 900px;
-  padding-top: 10%;
-  
-}
 
 .home-text {
   margin-left: 60%;
   margin-bottom: 1rem;
   max-width: 900px;
   padding-top: 10%;
-  
 }
 
 
@@ -516,22 +508,6 @@ h2 {
     margin-top: 3rem;
   }
 
-  .illustrationsHome {
-    height: auto;
-    margin-top: 1rem;
-    align-items: center;
-    margin-left: 0;
-    padding-top: 5%;
-    
-  }
-  .illustrationPost {
-    height: 200px;
-  }
-  
-  .illustrationVolunteer {
-    height: 200px;
-  }
-
   .title{
     text-align: center;
   }
@@ -548,11 +524,14 @@ h2 {
     background: none;
   }
 }
+
+/* Login Page */
 .login-page {
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: linear-gradient(180deg, rgba(1,187,228,1) 62%, rgba(1,228,216,1) 88%, rgba(133,242,145,1) 100%); 
   /* text-align: left; */
 }
 .login-container {
@@ -560,15 +539,92 @@ h2 {
   max-width: 90%;
   align-items: center;
   justify-content: center;
+  color: black;
 }
 .homepage-logo {
-  max-width: 90%;
+  max-width: 60%;
+  padding-top: 10%;
 }
 
-@media screen and (min-width: 600px) {
+
+/* phone display */
+@media screen and (max-width: 900px) {
   .homepage-logo {
-    max-width: 30%;
+    max-width: 300px;
   }
+
+  .login-title {
+    display:none
+  }
+
+  .illustrationsHome {
+    height: 0%;
+    margin-top: none;
+    margin-left: 0%;
+  }
+  
+  .illustrationPost {
+    height: 0vh;
+  }
+  
+  .illustrationVolunteer {
+    height: 0vh;
+  }
+  
+
+
+}
+
+/* desktop display */
+@media screen and (min-width: 900px) {
+ 
+  .login-page {
+    background: url("./imgs/desktop/bg1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: -4rem center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    text-align: left;
+  }
+  .login-container{
+    margin-left: 60%;
+    margin-bottom: 1rem;
+    max-width: 900px;
+    padding-top: 0%;
+    
+  }
+  .homepage-logo {
+    max-width: 0%;
+  }
+
+  .login-title {
+    margin-bottom: 1rem;
+    max-width: 900px;
+    padding-top: 10%;
+    font-size: 1.4rem;
+    font-weight: 600;
+   
+  }
+
+  .illustrationsHome {
+    height: 100vh;
+    margin-top: 1rem;
+    margin-left: 70%;
+    
+  }
+  
+  .illustrationPost {
+    height: 30vh;
+  }
+  
+  .illustrationVolunteer {
+    height: 30vh;
+  }
+
 }
 .updateprofile-container {
   margin: auto 0;

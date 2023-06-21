@@ -22,7 +22,9 @@ import otherIcon from "../src/imgs/icons/other2.png";
 //import allIcon from "../src/imgs/icons/all.png";
 import Navbar from "./components/Navbar/Navbar";
 import FAQPage from "./pages/FAQpage";
-import BlueLogo from "../src/imgs/logos/blue_text.png";
+import WhiteLogo from "../src/imgs/logos/white_text.png";
+import illustrationPost from "../src/imgs/illustrations/post.png";
+import illustrationVolunteer from "../src/imgs/illustrations/joy.png";
 
 const supabase = createClient(
   process.env.REACT_APP_SUPABASE_URL,
@@ -99,24 +101,48 @@ function App() {
       console.log("error", error);
     }
     setUserInfo(data[0]);
-    console.log("user info", data[0]);
   }
 
   if (!session) {
     return (
       <div className="login-page">
-        <img src={BlueLogo} alt="logo" className="homepage-logo" />
-        <h2 className="login-title">
-          Welcome to Kindr - Mission Statement here
-        </h2>
+        <img src={WhiteLogo} alt="logo" className="homepage-logo" />
+   
         <div className="login-container">
+        <h2 className="login-title">
+        Kindr connects people to volunteer for tasks in your local community.
+        </h2>
           <Auth
             //redirectTo={window.location.href}
             supabaseClient={supabase}
-            appearance={{ theme: ThemeSupa }}
+            appearance={{ theme: ThemeSupa,
+              variables: {
+                default: {
+                  colors: {
+                    brand: '#01BBE4',
+                    brandAccent: '#0177E4', // hover button and button border colour
+                    messageText: 'black',
+                    inputText: 'black',
+                    inputLabelText: 'black',
+                    inputPlaceholder: 'black',
+                    anchorTextColor: 'black',
+                    anchorTextHoverColor: '#0177E4',
+                    inputBackground: '#E8f0fe',
+                    
+
+                   
+                  },
+                },
+              }, 
+            }}
             onSignOut={() => setSession(null)}
             providers={["google", "facebook"]}
           />
+
+        </div>
+        <div className="illustrationsHome">
+            <img className= "illustrationPost"src={illustrationPost} alt="illustration" />
+            <img className="illustrationVolunteer"src={illustrationVolunteer} alt="illustration" />
         </div>
       </div>
     );
