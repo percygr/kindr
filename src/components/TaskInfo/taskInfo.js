@@ -4,6 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./TaskInfo.css";
 
+const supabase = createClient(
+  process.env.REACT_APP_SUPABASE_URL,
+  process.env.REACT_APP_SUPABASE_KEY
+);
+
 export default function TaskInfo({
   isEditable, // false if view only, true if new task
   categoryIcons, // array of icon links, indexed 0-5
@@ -29,11 +34,6 @@ export default function TaskInfo({
 
   let categoryID = 0;
   let thisTask = {};
-
-  const supabase = createClient(
-    process.env.REACT_APP_SUPABASE_URL,
-    process.env.REACT_APP_SUPABASE_KEY
-  );
 
   if (isEditable) {
     categoryID = category - 1;
@@ -88,130 +88,141 @@ export default function TaskInfo({
   }
 
   return (
-    <div className='view-card-container'>
-    <div className="all-info">
-      <img
-        className="category-logo"
-        src={categoryIcons[categoryID].image}
-        alt="category icon"
-        width="150"
-      />
+    <div className="view-card-container">
+      <div className="all-info">
+        <img
+          className="category-logo"
+          src={categoryIcons[categoryID].image}
+          alt="category icon"
+          width="150"
+        />
 
-      <div className="info-container">
-        {/* <div className="info-text">Title: </div> */}
-        {isEditable ? (
-          <div>
-            <div>Title: </div>
-            <input
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              placeholder="Enter a short title"
-            />
-          </div>
-        ) : (
-          <div className="task-title">{thisTask.title}</div>
-        )}
-      </div>
-
-      <div className="info-container">
-        {/* <div>Description: </div> */}
-        {isEditable ? (
-          <div>
-            <div>Description: </div>
-            <input
-              type="text"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              placeholder="Enter a description"
-            />
-          </div>
-        ) : (
-          <div className='description-container'>{thisTask.description}</div>
-        )}
-      </div>
-
-      {!isEditable && (
-        <div>
-          <div>
-          <strong>Date Posted: </strong>{new Date(thisTask.created_at).toLocaleDateString("en-GB", {
-              day: "numeric",
-              month: "long",
-              year: "numeric",
-            })}
-          </div>
+        <div className="info-container">
+          {/* <div className="info-text">Title: </div> */}
+          {isEditable ? (
+            <div>
+              <div>Title: </div>
+              <input
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder="Enter a short title"
+              />
+            </div>
+          ) : (
+            <div className="task-title">{thisTask.title}</div>
+          )}
         </div>
-      )}
 
-      <div className="info-container">
-        {/* <div>Duration: </div> */}
-        {isEditable ? (
-          <div>
-            <div>Duration: </div>
-            <input
-              type="text"
-              value={duration}
-              onChange={(e) => setDuration(e.target.value)}
-              placeholder="Enter a duration"
-            />
-          </div>
-        ) : (
-          <div><strong>Duration: </strong>{thisTask.duration}</div>
-        )}
-      </div>
-
-      <div className="info-container">
-        {/* <div>Location: </div> */}
-        {isEditable ? (
-          <div>
-            <div>Location: </div>
-            <input
-              type="text"
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
-              placeholder="Enter a location"
-            />
-          </div>
-        ) : (
-          <div className='location-container'><strong>Location: </strong>{thisTask.location}</div>
-        )}
-      </div>
-
-      {!isEditable && (
-        <div>
-          <strong>Name: </strong>{thisTask.creator_id}
+        <div className="info-container">
+          {/* <div>Description: </div> */}
+          {isEditable ? (
+            <div>
+              <div>Description: </div>
+              <input
+                type="text"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                placeholder="Enter a description"
+              />
+            </div>
+          ) : (
+            <div className="description-container">{thisTask.description}</div>
+          )}
         </div>
-      )}
-      <div className="info-container">
-        <div><strong>Contact Information: </strong></div>
-        {isEditable ? <div> number / email</div> : <div> number / email</div>}
+
+        {!isEditable && (
+          <div>
+            <div>
+              <strong>Date Posted: </strong>
+              {new Date(thisTask.created_at).toLocaleDateString("en-GB", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              })}
+            </div>
+          </div>
+        )}
+
+        <div className="info-container">
+          {/* <div>Duration: </div> */}
+          {isEditable ? (
+            <div>
+              <div>Duration: </div>
+              <input
+                type="text"
+                value={duration}
+                onChange={(e) => setDuration(e.target.value)}
+                placeholder="Enter a duration"
+              />
+            </div>
+          ) : (
+            <div>
+              <strong>Duration: </strong>
+              {thisTask.duration}
+            </div>
+          )}
+        </div>
+
+        <div className="info-container">
+          {/* <div>Location: </div> */}
+          {isEditable ? (
+            <div>
+              <div>Location: </div>
+              <input
+                type="text"
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+                placeholder="Enter a location"
+              />
+            </div>
+          ) : (
+            <div className="location-container">
+              <strong>Location: </strong>
+              {thisTask.location}
+            </div>
+          )}
+        </div>
+
+        {!isEditable && (
+          <div>
+            <strong>Name: </strong>
+            {thisTask.creator_id}
+          </div>
+        )}
+        <div className="info-container">
+          <div>
+            <strong>Contact Information: </strong>
+          </div>
+          {isEditable ? <div> number / email</div> : <div> number / email</div>}
+        </div>
+
+        {isEditable && (
+          <button
+            onClick={() => writeTask()}
+            disabled={!title || !description || !location || !duration}
+            className={isDisabled ? "disable-button" : "button"}
+          >
+            Submit
+          </button>
+        )}
+
+        {!isEditable && thisTask.status_id === 1 && (
+          <button className="button" onClick={() => updateStatusID(2)}>
+            Accept
+          </button>
+        )}
+        {!isEditable && thisTask.status_id === 2 && (
+          <button className="button" onClick={() => updateStatusID(3)}>
+            Completed!
+          </button>
+        )}
+        {!isEditable && thisTask.status_id === 3 && (
+          <button className="button" onClick={() => updateStatusID(4)}>
+            Delete
+          </button>
+        )}
       </div>
-
-      {isEditable && (
-        <button
-          onClick={() => writeTask()}
-          disabled={!title || !description || !location || !duration}
-          className={isDisabled ? "disable-button" : "button"}>
-          Submit
-        </button>
-      )}
-
-      {!isEditable && thisTask.status_id === 1 && (
-        <button className="button" onClick={() => updateStatusID(2)}>
-          Accept
-        </button>
-      )}
-      {!isEditable && thisTask.status_id === 2 && (
-        <button className="button" onClick={() => updateStatusID(3)}>
-          Completed!
-        </button>
-      )}
-      {!isEditable && thisTask.status_id === 3 && (
-        <button className="button" onClick={() => updateStatusID(4)}>
-          Delete
-        </button>
-      )}
-    </div>
     </div>
   );
 }

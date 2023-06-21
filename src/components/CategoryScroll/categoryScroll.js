@@ -19,16 +19,20 @@ export default function CategoryScroll({ categoryIcons, setCategoryFilter }) {
     <div className="main-container">
       <div className="scroll-container">
         <div
-          className={`image-container all-icons ${selectedCategory === null ? "selected" : ""}`}
+          className={`image-container all-icons ${
+            selectedCategory === null ? "selected" : ""
+          }`}
           onClick={() => handleCategoryClick(0)}
         >
           <img className="images" src={allIcon} alt="all-icons" />
-          <p class="category-title">All Categories</p>
+          <p className="category-title">All Categories</p>
         </div>
         {categoryIcons.map((categoryIcon) => {
           return (
             <div
-              className={`image-container ${selectedCategory === categoryIcon.id ? "selected" : ""}`}
+              className={`image-container ${
+                selectedCategory === categoryIcon.id ? "selected" : ""
+              }`}
               key={categoryIcon.id}
               onClick={() => handleCategoryClick(categoryIcon.id)}
             >

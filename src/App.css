@@ -570,3 +570,13 @@ h2 {
     max-width: 30%;
   }
 }
+.updateprofile-container {
+  margin: auto 0;
+  width: 400px;
+  max-width: 90%;
+  align-items: center;
+  justify-content: center;
+}
+.updateprofile {
+  margin: auto 0;
+}
