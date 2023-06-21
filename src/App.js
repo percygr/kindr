@@ -101,7 +101,6 @@ function App() {
       console.log("error", error);
     }
     setUserInfo(data[0]);
-    //console.log("user info", data[0]); 
   }
 
   if (!session) {
@@ -114,6 +113,7 @@ function App() {
         Kindr connects people to volunteer for tasks in your local community.
         </h2>
           <Auth
+            //redirectTo={window.location.href}
             supabaseClient={supabase}
             appearance={{ theme: ThemeSupa,
               variables: {
@@ -200,6 +200,7 @@ function App() {
                     categoryIcons={categoryIcons}
                     getTasks={getTasks}
                     setSuccessPath={setSuccessPath}
+                    userInfo={userInfo}
                   />
                 }
               />
@@ -212,6 +213,7 @@ function App() {
                     tasks={tasks}
                     getTasks={getTasks}
                     setSuccessPath={setSuccessPath}
+                    userInfo={userInfo}
                   />
                 }
               />

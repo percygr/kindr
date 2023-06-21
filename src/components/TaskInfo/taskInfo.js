@@ -17,6 +17,7 @@ export default function TaskInfo({
   tasks, // array of all tasks, only used when isEditable is false
   getTasks, // function to refresh task list
   setSuccessPath, // function to set path for success page
+  userInfo, // user info from supabase
 }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -49,7 +50,7 @@ export default function TaskInfo({
       description: description,
       location: location,
       duration: duration,
-      creator_id: 1,
+      creator_id: userInfo.id,
       category_id: category,
       status_id: 1,
     });
@@ -65,7 +66,10 @@ export default function TaskInfo({
   async function updateStatusID(newStatusID) {
     const { error } = await supabase
       .from("tasks")
-      .update({ status_id: newStatusID })
+      .update({ 
+        status_id: newStatusID, 
+        helper_id: userInfo.id 
+      })
       .match({ id: thisTask.id });
     if (error) {
       console.log("error", error);
