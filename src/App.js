@@ -111,7 +111,7 @@ function App() {
         </h2>
         <div className="login-container">
           <Auth
-            redirectTo="https://kindr.netlify.app/"
+            //redirectTo="https://kindr.netlify.app/"
             supabaseClient={supabase}
             appearance={{ theme: ThemeSupa }}
             onSignOut={() => setSession(null)}
