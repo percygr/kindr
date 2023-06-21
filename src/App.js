@@ -107,42 +107,48 @@ function App() {
     return (
       <div className="login-page">
         <img src={WhiteLogo} alt="logo" className="homepage-logo" />
-   
+
         <div className="login-container">
-        <h2 className="login-title">
-        Kindr connects people to volunteer for tasks in your local community.
-        </h2>
+          <h2 className="login-title">
+            Kindr connects people to volunteer for tasks in your local
+            community.
+          </h2>
           <Auth
             //redirectTo={window.location.href}
             supabaseClient={supabase}
-            appearance={{ theme: ThemeSupa,
+            appearance={{
+              theme: ThemeSupa,
               variables: {
                 default: {
                   colors: {
-                    brand: '#01BBE4',
-                    brandAccent: '#0177E4', // hover button and button border colour
-                    messageText: 'black',
-                    inputText: 'black',
-                    inputLabelText: 'black',
-                    inputPlaceholder: 'black',
-                    anchorTextColor: 'black',
-                    anchorTextHoverColor: '#0177E4',
-                    inputBackground: '#E8f0fe',
-                    
-
-                   
+                    brand: "#01BBE4",
+                    brandAccent: "#0177E4", // hover button and button border colour
+                    messageText: "black",
+                    inputText: "black",
+                    inputLabelText: "black",
+                    inputPlaceholder: "black",
+                    anchorTextColor: "black",
+                    anchorTextHoverColor: "#0177E4",
+                    inputBackground: "#E8f0fe",
                   },
                 },
-              }, 
+              },
             }}
             onSignOut={() => setSession(null)}
             providers={["google", "facebook"]}
           />
-
         </div>
         <div className="illustrationsHome">
-            <img className= "illustrationPost"src={illustrationPost} alt="illustration" />
-            <img className="illustrationVolunteer"src={illustrationVolunteer} alt="illustration" />
+          <img
+            className="illustrationPost"
+            src={illustrationPost}
+            alt="illustration"
+          />
+          <img
+            className="illustrationVolunteer"
+            src={illustrationVolunteer}
+            alt="illustration"
+          />
         </div>
       </div>
     );
@@ -182,6 +188,10 @@ function App() {
                     categoryIcons={categoryIcons}
                   />
                 }
+              />
+              <Route
+                path="/editprofile"
+                element={<UpdateProfilePage userInfo={userInfo} />}
               />
               <Route
                 path="/categories"
