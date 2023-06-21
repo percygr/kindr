@@ -22,7 +22,7 @@ import otherIcon from "../src/imgs/icons/other2.png";
 //import allIcon from "../src/imgs/icons/all.png";
 import Navbar from "./components/Navbar/Navbar";
 import FAQPage from "./pages/FAQpage";
-import BlueLogo from "../src/imgs/logos/blue_text.png";
+import WhiteLogo from "../src/imgs/logos/white_text.png";
 
 const supabase = createClient(
   process.env.REACT_APP_SUPABASE_URL,
@@ -99,20 +99,34 @@ function App() {
       console.log("error", error);
     }
     setUserInfo(data[0]);
-    //console.log("user info", data[0]);
+    //console.log("user info", data[0]); 
   }
 
   if (!session) {
     return (
       <div className="login-page">
-        <img src={BlueLogo} alt="logo" className="homepage-logo" />
+        <img src={WhiteLogo} alt="logo" className="homepage-logo" />
         <h2 className="login-title">
           Welcome to Kindr - Mission Statement here
         </h2>
         <div className="login-container">
           <Auth
             supabaseClient={supabase}
-            appearance={{ theme: ThemeSupa }}
+            appearance={{ theme: ThemeSupa,
+              variables: {
+                default: {
+                  colors: {
+                    brand: '#01BBE4',
+                    messageText: 'black',
+                    inputText: 'black',
+                    inputLabelText: 'black',
+                    inputPlaceholder: 'black',
+                    anchorTextColor: 'black',
+                    anchorTextHoverColor: 'black',
+                  },
+                },
+              }, 
+            }}
             onSignOut={() => setSession(null)}
             providers={["google", "facebook"]}
           />

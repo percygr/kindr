@@ -381,13 +381,6 @@ h2 {
 
 
 
-.home-text {
-  margin-left: 60%;
-  margin-bottom: 1rem;
-  max-width: 900px;
-  padding-top: 10%;
-  
-}
 
 .home-text {
   margin-left: 60%;
@@ -548,11 +541,14 @@ h2 {
     background: none;
   }
 }
+
+/* Login Page */
 .login-page {
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: linear-gradient(180deg, rgba(1,187,228,1) 62%, rgba(1,228,216,1) 88%, rgba(133,242,145,1) 100%); 
   /* text-align: left; */
 }
 .login-container {
@@ -560,15 +556,45 @@ h2 {
   max-width: 90%;
   align-items: center;
   justify-content: center;
+  color: black;
 }
 .homepage-logo {
   max-width: 90%;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (max-width: 700px) {
   .homepage-logo {
-    max-width: 30%;
+    max-width: 70%;
   }
+ 
+
+}
+
+@media screen and (min-width: 900px) {
+ 
+  .login-page {
+    background: url("./imgs/desktop/bg1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: -4rem center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    text-align: left;
+  }
+  .login-container{
+    margin-left: 60%;
+    margin-bottom: 1rem;
+    max-width: 900px;
+    padding-top: 10%;
+    
+  }
+  .homepage-logo {
+    max-width: 0%;
+  }
+
 }
 .updateprofile-container {
   margin: auto 0;
