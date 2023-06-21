@@ -14,12 +14,20 @@ export default function TaskList({
   setSelectedTask,
   categoryIcons,
   categoryFilter,
+  userInfo,
 }) {
   return (
     <div className="browse-page">
       {onlyAvailable && (
         <div className="browse-container">
-          {showTasks(tasks, 1, setSelectedTask, categoryIcons, categoryFilter)}
+          {showTasks(
+            tasks,
+            1,
+            setSelectedTask,
+            categoryIcons,
+            categoryFilter,
+            userInfo
+          )}
         </div>
       )}
       {!onlyAvailable && (
@@ -35,7 +43,8 @@ export default function TaskList({
               2,
               setSelectedTask,
               categoryIcons,
-              categoryFilter
+              categoryFilter,
+              userInfo
             )}
           </div>
 
@@ -48,7 +57,8 @@ export default function TaskList({
               3,
               setSelectedTask,
               categoryIcons,
-              categoryFilter
+              categoryFilter,
+              userInfo
             )}
           </div>
         </>
@@ -64,7 +74,8 @@ function showTasks(
   statusId,
   setSelectedTask,
   categoryIcons,
-  categoryFilter
+  categoryFilter,
+  userInfo
 ) {
   let filteredTasks;
 
@@ -76,9 +87,13 @@ function showTasks(
   } else if (categoryFilter === 0) {
     filteredTasks = tasks.filter((task) => task.status_id === 1);
   } else {
-    filteredTasks = tasks.filter((task) => task.status_id === statusId);
+    // this bit might be for just status 2 and 3
+    filteredTasks = tasks.filter(
+      (task) => task.status_id === statusId && task.helper_id === userInfo.id
+    );
   }
 
+  console.log("user info", userInfo);
   return filteredTasks.map((task) => (
     <FragmentWrapper key={task.id}>
       <TaskCard

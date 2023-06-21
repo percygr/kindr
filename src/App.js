@@ -157,10 +157,10 @@ function App() {
     //console.log("loading user info");
     return <div>Loading user information...</div>;
   } else if (userInfo.firstname === null || userInfo.firstname === "") {
-    //console.log("user first name", userInfo.firstname);
     //console.log("user info loaded", userInfo.email);
     return <UpdateProfilePage userInfo={userInfo} />;
   } else {
+    //console.log("user first name", userInfo.firstname);
     return (
       <div className="App">
         <BrowserRouter>
@@ -187,6 +187,7 @@ function App() {
                     tasks={tasks}
                     setSelectedTask={setSelectedTask}
                     categoryIcons={categoryIcons}
+                    userInfo={userInfo}
                   />
                 }
               />
