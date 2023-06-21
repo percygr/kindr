@@ -225,6 +225,14 @@ function App() {
                 }
               />
               <Route
+                path="/editprofile"
+                element={<UpdateProfilePage userInfo={userInfo} />}
+              />
+              <Route
+                path="/my-profile"
+                element={<ProfilePage userInfo={userInfo} />}
+              />
+              <Route
                 path="/success"
                 element={<SuccessPage successPath={successPath} />}
               />
