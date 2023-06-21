@@ -99,7 +99,7 @@ function App() {
       console.log("error", error);
     }
     setUserInfo(data[0]);
-    //console.log("user info", data[0]);
+    console.log("user info", data[0]);
   }
 
   if (!session) {
@@ -111,7 +111,7 @@ function App() {
         </h2>
         <div className="login-container">
           <Auth
-            redirectTo={window.location.href}
+            //redirectTo={window.location.href}
             supabaseClient={supabase}
             appearance={{ theme: ThemeSupa }}
             onSignOut={() => setSession(null)}
