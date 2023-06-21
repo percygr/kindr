@@ -101,7 +101,7 @@ function App() {
     setUserInfo(data[0]);
     //console.log("user info", data[0]);
   }
-  console.log(window.location.href);
+
   if (!session) {
     return (
       <div className="login-page">
@@ -111,7 +111,7 @@ function App() {
         </h2>
         <div className="login-container">
           <Auth
-            //redirectTo="https://kindr.netlify.app/"
+            redirectTo={window.location.href}
             supabaseClient={supabase}
             appearance={{ theme: ThemeSupa }}
             onSignOut={() => setSession(null)}
