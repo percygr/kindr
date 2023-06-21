@@ -111,6 +111,7 @@ function App() {
         </h2>
         <div className="login-container">
           <Auth
+            redirectTo={window.location.href}
             supabaseClient={supabase}
             appearance={{ theme: ThemeSupa }}
             onSignOut={() => setSession(null)}
