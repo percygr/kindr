@@ -118,13 +118,16 @@ function App() {
                 default: {
                   colors: {
                     brand: '#01BBE4',
-                    brandAccent: '#85f291',
+                    brandAccent: '#0177E4', // hover button and button border colour
                     messageText: 'black',
                     inputText: 'black',
                     inputLabelText: 'black',
                     inputPlaceholder: 'black',
                     anchorTextColor: 'black',
-                    anchorTextHoverColor: '#01BBE4',
+                    anchorTextHoverColor: '#0177E4',
+                    inputBackground: '#E8f0fe',
+                    
+
                    
                   },
                 },
