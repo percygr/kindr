@@ -24,7 +24,11 @@ export default function TaskCard({ task, setSelectedTask, categoryIcons }) {
         console.log("error", error);
       } else if (data) {
         const { firstname, surname } = data;
-        setCreatorName(`${firstname} ${surname}`);
+        if (firstname !== null) {
+          setCreatorName(`${firstname} ${surname}`);
+        } else {
+          setCreatorName("");
+        }
       }
     }
 
@@ -37,19 +41,6 @@ export default function TaskCard({ task, setSelectedTask, categoryIcons }) {
       navigate(`/view`);
     };
   }
-
-  // async function getCreatorName(taskId) {
-  //   console.log("taskId", taskId)
-  //   const { data, error } = await supabase
-  //   .from('kindr_users')
-  //   .select('firstname, surname')
-  //   .join('tasks', { 'tasks.creator_id': 'kindr_users.id' })
-  //   .eq('tasks.id', taskId);
-  //   if (error) {
-  //     console.log("error", error);
-  //   }
-  //   return data;
-  // }
 
   return (
     <div onClick={handleSelectTask(task.id)} className="task-card">
