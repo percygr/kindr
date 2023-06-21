@@ -6,6 +6,7 @@ export default function ViewTaskPage({
   tasks,
   getTasks,
   setSuccessPath,
+  userInfo
 }) {
   return (
     <div className="view-task">
@@ -16,6 +17,7 @@ export default function ViewTaskPage({
         tasks={tasks}
         getTasks={getTasks}
         setSuccessPath={setSuccessPath}
+        userInfo={userInfo}
       />
     </div>
   );
