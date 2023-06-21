@@ -543,14 +543,14 @@ h2 {
 }
 .homepage-logo {
   max-width: 60%;
-  padding-top: 5%;
+  padding-top: 10%;
 }
 
 
 
 @media screen and (max-width: 900px) {
   .homepage-logo {
-    max-width: 400px;
+    max-width: 300px;
   }
 
   .login-title {
