@@ -12,7 +12,7 @@ import CreateTaskPage from "./pages/CreateTask";
 import ViewTaskPage from "./pages/ViewTask";
 import SuccessPage from "./pages/Success";
 import MyTasksPage from "./pages/MyTasks";
-import ProfilePage from "./pages/Profile";
+import ProfilePage from "./pages/Profile/Profile.js";
 import UpdateProfilePage from "./pages/UpdateProfile";
 import tyreIcon from "../src/imgs/icons/tire.png";
 import gardenIcon from "../src/imgs/icons/gardening.png";
