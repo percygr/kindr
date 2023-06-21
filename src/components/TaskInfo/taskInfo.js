@@ -60,6 +60,7 @@ export default function TaskInfo({
     }
     // refresh task list
     getTasks();
+    setSuccessPath("created");
     navigate(`/success`);
   }
 
