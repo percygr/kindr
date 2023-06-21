@@ -9,11 +9,11 @@ export default function HomePage({ userInfo }) {
   return (
     <div className="home">
       <div className="home-text">
-        <h1>Hi {userInfo.firstname}!</h1>
+        <h1 className="title">Hi {userInfo.firstname}!</h1>
         <h1 className="title">
           How would you like to spread some kindness today?
         </h1>
-        <h2>Post a task that you need help with or volunteer to help</h2>
+        <h2 className="title">Post a task that you need help with or volunteer to help</h2>
 
         {/* <img src={Gif} alt="gif"className = "gif"/> */}
         <div className="home-buttons">
