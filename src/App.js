@@ -12,6 +12,7 @@ import CreateTaskPage from "./pages/CreateTask";
 import ViewTaskPage from "./pages/ViewTask";
 import SuccessPage from "./pages/Success";
 import MyTasksPage from "./pages/MyTasks";
+import ProfilePage from "./pages/Profile/Profile.js";
 import UpdateProfilePage from "./pages/UpdateProfile";
 import tyreIcon from "../src/imgs/icons/tire.png";
 import gardenIcon from "../src/imgs/icons/gardening.png";
@@ -23,8 +24,8 @@ import otherIcon from "../src/imgs/icons/other2.png";
 import Navbar from "./components/Navbar/Navbar";
 import FAQPage from "./pages/FAQpage";
 import WhiteLogo from "../src/imgs/logos/white_text.png";
-import illustrationPost from "../src/imgs/illustrations/post.png";
-import illustrationVolunteer from "../src/imgs/illustrations/joy.png";
+// import illustrationPost from "../src/imgs/illustrations/post.png";
+// import illustrationVolunteer from "../src/imgs/illustrations/joy.png";
 
 const supabase = createClient(
   process.env.REACT_APP_SUPABASE_URL,
@@ -138,7 +139,7 @@ function App() {
             providers={["google", "facebook"]}
           />
         </div>
-        <div className="illustrationsHome">
+        {/* <div className="illustrationsHome">
           <img
             className="illustrationPost"
             src={illustrationPost}
@@ -149,7 +150,7 @@ function App() {
             src={illustrationVolunteer}
             alt="illustration"
           />
-        </div>
+        </div> */}
       </div>
     );
   } else if (!userInfo) {
@@ -188,10 +189,6 @@ function App() {
                     categoryIcons={categoryIcons}
                   />
                 }
-              />
-              <Route
-                path="/editprofile"
-                element={<UpdateProfilePage userInfo={userInfo} />}
               />
               <Route
                 path="/categories"
