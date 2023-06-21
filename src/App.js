@@ -107,7 +107,7 @@ function App() {
       <div className="login-page">
         <img src={WhiteLogo} alt="logo" className="homepage-logo" />
         <h2 className="login-title">
-          Welcome to Kindr - Mission Statement here
+        Kindr connects people to volunteer for tasks in your local community.
         </h2>
         <div className="login-container">
           <Auth
