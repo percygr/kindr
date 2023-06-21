@@ -39,7 +39,6 @@ function App() {
   const [successPath, setSuccessPath] = useState("login");
   const [session, setSession] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
-  // const [userInfoLoaded, setUserInfoLoaded] = useState(false);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -100,8 +99,7 @@ function App() {
       console.log("error", error);
     }
     setUserInfo(data[0]);
-    console.log("user info", data[0]);
-    // setUserInfoLoaded(true);
+    //console.log("user info", data[0]);
   }
 
   if (!session) {
@@ -133,10 +131,9 @@ function App() {
       <div className="App">
         <BrowserRouter>
           <Navbar handleLogout={handleLogout} />
-          {userInfo && <h1>Hi {userInfo.firstname}!</h1>}
           <div>
             <Routes>
-              <Route path="/" element={<HomePage />} />
+              <Route path="/" element={<HomePage userInfo={userInfo} />} />
               <Route
                 path="/browse"
                 element={
