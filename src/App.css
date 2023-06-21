@@ -387,7 +387,6 @@ h2 {
   margin-bottom: 1rem;
   max-width: 900px;
   padding-top: 10%;
-  
 }
 
 
@@ -572,6 +571,8 @@ h2 {
   .login-title {
     text-align: center;
     max-width: 400px;
+    font-weight: 400;
+  
   }
 }
 
@@ -598,6 +599,14 @@ h2 {
   }
   .homepage-logo {
     max-width: 0%;
+  }
+
+  .login-title {
+    margin-bottom: 1rem;
+    max-width: 900px;
+    padding-top: 10%;
+    font-size: 1.4rem;
+    font-weight: 600;
   }
 
 }

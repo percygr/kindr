@@ -106,10 +106,11 @@ function App() {
     return (
       <div className="login-page">
         <img src={WhiteLogo} alt="logo" className="homepage-logo" />
+   
+        <div className="login-container">
         <h2 className="login-title">
         Kindr connects people to volunteer for tasks in your local community.
         </h2>
-        <div className="login-container">
           <Auth
             supabaseClient={supabase}
             appearance={{ theme: ThemeSupa,
@@ -117,12 +118,14 @@ function App() {
                 default: {
                   colors: {
                     brand: '#01BBE4',
+                    brandAccent: '#85f291',
                     messageText: 'black',
                     inputText: 'black',
                     inputLabelText: 'black',
                     inputPlaceholder: 'black',
                     anchorTextColor: 'black',
-                    anchorTextHoverColor: 'black',
+                    anchorTextHoverColor: '#01BBE4',
+                   
                   },
                 },
               }, 
