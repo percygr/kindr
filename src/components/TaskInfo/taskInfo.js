@@ -26,6 +26,7 @@ export default function TaskInfo({
   const [isDisabled, setIsDisabled] = useState(true);
   //const [creatorName, setCreatorName] = useState("");
   //const [contactNumber, setContactNumber] = useState("");
+  const [creatorName, setCreatorName] = useState("");
 
   useEffect(() => {
     setIsDisabled(!title || !description || !location || !duration);
@@ -42,6 +43,27 @@ export default function TaskInfo({
     thisTask = tasks.find((task) => task.id === selectedTask);
     categoryID = thisTask.category_id - 1;
   }
+
+  async function fetchCreatorName() {
+    const { data, error } = await supabase
+      .from("kindr_users")
+      .select("firstname, surname")
+      .eq("id", thisTask.creator_id)
+      .single();
+
+    if (error) {
+      console.log("error", error);
+    } else if (data) {
+      const { firstname, surname } = data;
+      if (firstname !== null) {
+        setCreatorName(`${firstname} ${surname}`);
+      } else {
+        setCreatorName("");
+      }
+    }
+  }
+
+  fetchCreatorName();
 
   async function writeTask() {
     // write to database
@@ -66,9 +88,9 @@ export default function TaskInfo({
   async function updateStatusID(newStatusID) {
     const { error } = await supabase
       .from("tasks")
-      .update({ 
-        status_id: newStatusID, 
-        helper_id: userInfo.id 
+      .update({
+        status_id: newStatusID,
+        helper_id: userInfo.id,
       })
       .match({ id: thisTask.id });
     if (error) {
@@ -190,8 +212,8 @@ export default function TaskInfo({
 
         {!isEditable && (
           <div>
-            <strong>Name: </strong>
-            {thisTask.creator_id}
+            <strong>Posted by: </strong>
+            {creatorName}
           </div>
         )}
         <div className="info-container">
