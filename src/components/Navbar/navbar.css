@@ -127,3 +127,7 @@ nav ul {
 .profile-container {
 	margin-left: auto;
   }
+
+button {
+	cursor: pointer;
+  }

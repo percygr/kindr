@@ -12,6 +12,7 @@ import CreateTaskPage from "./pages/CreateTask";
 import ViewTaskPage from "./pages/ViewTask";
 import SuccessPage from "./pages/Success";
 import MyTasksPage from "./pages/MyTasks";
+import UpdateProfilePage from "./pages/UpdateProfile";
 import tyreIcon from "../src/imgs/icons/tire.png";
 import gardenIcon from "../src/imgs/icons/gardening.png";
 import shopIcon from "../src/imgs/icons/shopping-bags.png";
@@ -37,16 +38,15 @@ function App() {
   const [categoryFilter, setCategoryFilter] = useState(0);
   const [successPath, setSuccessPath] = useState("login");
   const [session, setSession] = useState(null);
+  const [userInfo, setUserInfo] = useState(null);
 
   useEffect(() => {
-    //console.log("session", session);
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       if (session) {
-        // getMessages(session);
-        // getUsers();
         getTasks();
         writeCategoryIcons();
+        getUsers(session);
       }
     });
 
@@ -55,10 +55,9 @@ function App() {
     } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
       if (session) {
-        // getMessages(session);
-        // getUsers();
         getTasks();
         writeCategoryIcons();
+        getUsers(session);
       }
     });
 
@@ -91,6 +90,18 @@ function App() {
     setTasks(data);
   }
 
+  async function getUsers(session) {
+    let { data, error } = await supabase
+      .from("kindr_users")
+      .select("*")
+      .filter("supabase_id", "eq", session.user.id);
+    if (error) {
+      console.log("error", error);
+    }
+    setUserInfo(data[0]);
+    //console.log("user info", data[0]);
+  }
+
   if (!session) {
     return (
       <div className="login-page">
@@ -108,17 +119,21 @@ function App() {
         </div>
       </div>
     );
+  } else if (!userInfo) {
+    //console.log("loading user info");
+    return <div>Loading user information...</div>;
+  } else if (userInfo.firstname === null || userInfo.firstname === "") {
+    //console.log("user first name", userInfo.firstname);
+    //console.log("user info loaded", userInfo.email);
+    return <UpdateProfilePage userInfo={userInfo} />;
   } else {
     return (
       <div className="App">
         <BrowserRouter>
-          {/* {!isMobile && <TopNav />}
-        <TopNav /> */}
           <Navbar handleLogout={handleLogout} />
-
           <div>
             <Routes>
-              <Route path="/" element={<HomePage />} />
+              <Route path="/" element={<HomePage userInfo={userInfo} />} />
               <Route
                 path="/browse"
                 element={
