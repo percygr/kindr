@@ -23,6 +23,8 @@ import otherIcon from "../src/imgs/icons/other2.png";
 import Navbar from "./components/Navbar/Navbar";
 import FAQPage from "./pages/FAQpage";
 import WhiteLogo from "../src/imgs/logos/white_text.png";
+import illustrationPost from "../src/imgs/illustrations/post.png";
+import illustrationVolunteer from "../src/imgs/illustrations/joy.png";
 
 const supabase = createClient(
   process.env.REACT_APP_SUPABASE_URL,
@@ -136,6 +138,11 @@ function App() {
             onSignOut={() => setSession(null)}
             providers={["google", "facebook"]}
           />
+
+        </div>
+        <div className="illustrationsHome">
+            <img className= "illustrationPost"src={illustrationPost} alt="illustration" />
+            <img className="illustrationVolunteer"src={illustrationVolunteer} alt="illustration" />
         </div>
       </div>
     );
