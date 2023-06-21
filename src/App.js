@@ -174,6 +174,7 @@ function App() {
                     categoryIcons={categoryIcons}
                     getTasks={getTasks}
                     setSuccessPath={setSuccessPath}
+                    userInfo={userInfo}
                   />
                 }
               />
@@ -186,6 +187,7 @@ function App() {
                     tasks={tasks}
                     getTasks={getTasks}
                     setSuccessPath={setSuccessPath}
+                    userInfo={userInfo}
                   />
                 }
               />
