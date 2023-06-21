@@ -40,7 +40,8 @@ return(
 </div>
 
 {/* buttons */}
-<button className ='button-blue' >Edit Profile</button> <button className ='button-green'>Save changes</button>
+<button className ='button-blue' >Edit Profile</button> 
+<button className ='button-green'>Save changes</button>
 
 </div>
 )}
