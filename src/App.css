@@ -547,16 +547,14 @@ h2 {
 }
 
 
-
+/* phone display */
 @media screen and (max-width: 900px) {
   .homepage-logo {
     max-width: 300px;
   }
 
   .login-title {
-    text-align: center;
-    max-width: 400px;
-    font-weight: 400;
+    display:none
   }
 
   .illustrationsHome {
@@ -577,6 +575,7 @@ h2 {
 
 }
 
+/* desktop display */
 @media screen and (min-width: 900px) {
  
   .login-page {
@@ -595,7 +594,7 @@ h2 {
     margin-left: 60%;
     margin-bottom: 1rem;
     max-width: 900px;
-    padding-top: 5%;
+    padding-top: 0%;
     
   }
   .homepage-logo {
@@ -608,12 +607,14 @@ h2 {
     padding-top: 10%;
     font-size: 1.4rem;
     font-weight: 600;
+   
   }
 
   .illustrationsHome {
     height: 100vh;
     margin-top: 1rem;
     margin-left: 70%;
+    
   }
   
   .illustrationPost {
@@ -623,7 +624,6 @@ h2 {
   .illustrationVolunteer {
     height: 30vh;
   }
-  
 
 }
 .updateprofile-container {
