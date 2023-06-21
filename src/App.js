@@ -132,7 +132,6 @@ function App() {
       <div className="App">
         <BrowserRouter>
           <Navbar handleLogout={handleLogout} />
-          Location: {window.location.href}
           <div>
             <Routes>
               <Route path="/" element={<HomePage userInfo={userInfo} />} />
