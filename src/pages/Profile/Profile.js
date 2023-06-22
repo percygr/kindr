@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { createClient } from "@supabase/supabase-js";
 import Usericon from "../../imgs/icons/user.png";
 import contact from "../../imgs/icons/contact.png";
@@ -18,6 +18,17 @@ function ProfilePage({ userInfo }) {
   const [postcode, setPostcode] = useState("");
   const [DOB, setDOB] = useState();
   const [address, setAddress] = useState("");
+
+  useEffect(() => {
+    if (userInfo) {
+      setFirstname(userInfo.firstname);
+      setLastname(userInfo.surname);
+      setContactnumber(userInfo.telephone);
+      setPostcode(userInfo.postcode);
+      setDOB(userInfo.dob);
+      setAddress(userInfo.address);
+    }
+  }, [userInfo]);
 
   async function handleSubmit() {
     const { error } = await supabase
@@ -69,7 +80,7 @@ function ProfilePage({ userInfo }) {
 
           <div className="profile-input-field">
             <img className="icon-size" src={DOB} alt="D.O.B"></img>
-            <label for="date">D.O.B.</label>
+            {/* <label for="date">D.O.B.</label> */}
             <input
               type="date"
               value={DOB}
