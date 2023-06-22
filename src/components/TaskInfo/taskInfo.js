@@ -217,12 +217,15 @@ export default function TaskInfo({
             {creatorName}
           </div>
         )}
+
+        {!isEditable && thisTask.status_id === 2 && ( // contact info only displays on 'active' tasks
         <div className="info-container">
           <div>
             <strong>Contact Information: </strong>
           </div>
           {isEditable ? <div> number / email</div> : <div> number / email</div>}
         </div>
+        )}
 
         {isEditable && (
           <button
