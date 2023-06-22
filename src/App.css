@@ -638,7 +638,9 @@ h2 {
 }
 
 .no-tasks-message {
-  justify-content: center;
+  grid-column-start: 1;
+  grid-column-end: 3;
   color: red;
   font-size: 1.5rem;
+
 }
