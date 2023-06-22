@@ -281,6 +281,7 @@ h2 {
   font-size: 24pt;
   margin-top: 2rem;
   margin-bottom: 2rem;
+  font-weight: 700;
 }
 
 @media screen and (min-width: 600px) {
