@@ -27,6 +27,10 @@ const FAQPage = () => {
         We recommend trying to keep the tasks short and achievable in order to encourage a volunteer to offer their help for them. Try and be as descriptive as possible about the task, and include an accurate estimate for task 'duration' and a clear 'location' so your volunteer knows exactly how to help you out!`,
     },
     {
+      question: "How do you keep my information safe?",
+      answer: `Your information will be safely stored on our database and will not be shared with any third parties. We will only use your information to contact you about your tasks and to send you updates about the site. We do not have access to your password and will never ask you to share it with us. Your contact information will only be shared with the volunteer who has accepted your task, and vice versa,  so that you can arrange a time to meet and complete the task. You have the choice or sharing your phone number or e-mail address, or both, so you are always in charge of the information that you choose to share with other users.`,
+    },
+    {
       question: "What about security?",
       answer: `Kindr puts safety as a top priority and we are here to ensure that you feel safe using the site and meeting other users in real life. 
         
