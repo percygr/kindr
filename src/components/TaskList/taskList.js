@@ -34,7 +34,7 @@ export default function TaskList({
         <>
           {/* only show title if there are some tasks of that status */}
           {tasks.some((task) => task.status_id === 2) && (
-            <div className="browse-title">Active Tasks</div>
+            <div className="browse-title">Active Tasks:</div>
           )}
 
           <div className="browse-container">
@@ -49,7 +49,7 @@ export default function TaskList({
           </div>
 
           {tasks.some((task) => task.status_id === 3) && (
-            <div className="browse-title">Completed Tasks</div>
+            <div className="browse-title">Completed Tasks:</div>
           )}
           <div className="browse-container">
             {showTasks(
