@@ -22,34 +22,33 @@ header {
 	align-items: center;
 	justify-content: space-between;
 	height: 80px;
-	
 	padding: 0 2rem;
 	background: var(--gradient);
 	color: var(--textColor);
-
-}
-/* this sets the text sizes for the nav links */
-nav a {
+	position: relative;
+	z-index: 100; /* Adjust the z-index value as needed */
+  }
+  
+  nav a {
 	margin: 0 1rem;
 	color: var(--textColor);
 	text-decoration: none;
 	font-size: 1.2rem;
 	font-weight: 700;
-	
-}
-
-nav a:hover {
+  }
+  
+  nav a:hover {
 	color: var(--secondaryColor);
-}
-
-.profile-pic {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-header .nav-btn {
+  }
+  
+  .profile-pic {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	object-fit: cover;
+  }
+  
+  header .nav-btn {
 	padding: 5px;
 	cursor: pointer;
 	background: transparent;
@@ -59,75 +58,67 @@ header .nav-btn {
 	visibility: hidden;
 	opacity: 0;
 	font-size: 1.8rem;
-	
-}
-
-header div,
-nav {
+  }
+  
+  header div,
+  nav {
 	display: flex;
 	align-items: center;
-
-}
-
-nav .active {
-    color: var(--secondaryColor); /* Change color to your preference */
-    /* Add any additional styles you want for the active link */
-}
-
+  }
   
-
-
-@media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 1200px) {
 	header .nav-btn {
-		visibility: visible;
-		opacity: 1;
+	  visibility: visible;
+	  opacity: 1;
 	}
-
+  
 	header nav {
-		position: fixed;
-		top: -100vh;
-		left: 0;
-		height: 100%;
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		gap: 1.5rem;
-		background-color: var(--mainColor);
-		transition: 1s;
-		z-index: 1;}
-
+	  position: fixed;
+	  top: -100vh;
+	  left: 0;
+	  height: 100%;
+	  width: 100%;
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	  justify-content: center;
+	  gap: 1.5rem;
+	  background-color: var(--mainColor);
+	  transition: 1s;
+	  z-index: 1;
+	}
+  
 	header .responsive_nav {
-		transform: translateY(100vh);
+	  transform: translateY(100vh);
 	}
-
+  
 	nav .nav-close-btn {
-		position: absolute;
-		top: 2rem;
-		right: 2rem;
+	  position: absolute;
+	  top: 2rem;
+	  right: 2rem;
 	}
-
+  
 	nav a {
-		font-size: 2.5rem;
-	
+	  font-size: 2.5rem;
 	}
-	
-nav ul {
-	padding: 0;
-	margin: 0;
-	list-style: none; /* remove default bullets from ul */
+  
+	nav ul {
+	  padding: 0;
+	  margin: 0;
+	  list-style: none;
+	}
+  
+	nav li {
+	  padding: 0;
+	  margin: 0;
+	}
   }
   
-  nav li {
-	padding: 0;
-	margin: 0;
-  }
-}
-.profile-container {
+  .profile-container {
 	margin-left: auto;
   }
-
-button {
+  
+  button {
 	cursor: pointer;
   }
+  

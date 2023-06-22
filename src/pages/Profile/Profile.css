@@ -1,39 +1,41 @@
+.navbar {
+    position: relative;
+    z-index: 100; /* Adjust the z-index value as needed */
+  }
+  
 .container {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
+    /* width: 100%; */
+  }
 
-.profile-input-field {
-display: flex;
-}
-
-.icon-size {
+ 
+  
+  .profile-input-field {
+    display: flex;
+  }
+  
+  .icon-size {
     height: 38px;
-}
-
-.circle {
-    position: absolute;
-    background: linear-gradient(180deg, rgba(1,187,228,1) 40%, rgba(133,242,145,1) 100%); 
-    height: 500px;
-    width: 500px;
-    clip-path: circle(50% at 50% 50%);
-    top: -25%;
-    z-index: -50;
-    /* transform: translateY(-50%); */
-}
-
-.image-overlay {
-    /* transform: translateY(-200%); */
+  }
+  
+  
+  .image-overlay {
     border-radius: 50%;
-    height: 200px;
-    z-index: -50;
+    top: 0;
+    min-height: 60px;
+    min-width: 60px;
+    width: 10%;
+    z-index: -20;
     background: white;
-    padding: 2%;
+    /* padding: 2%; */
     margin-top: 5%;
-}
-
-.button-blue {
+  }
+  
+  
+  .button-blue {
     width: 250px;
     height: 50px;
     background: var(--primary-blue);
@@ -45,7 +47,7 @@ display: flex;
     margin-top: 0rem;
   }
   
-.button-green {
+  .button-green {
     width: 250px;
     height: 50px;
     background: var(--primary-green);
@@ -55,14 +57,80 @@ display: flex;
     font-size: 16pt;
     margin-top: 2rem;
     margin-left: 0%;
-   
-}
+  }
+  
+  .profile-input-field {
+    display: flex;
+    align-items: center;
+    max-width: 15rem;
+    width: 100%;  /* Full width on small screens */
+    margin-bottom: 20px;
+  }
+  
+  .inputs-container {
+    display: flex;
+    flex-direction: column;  /* Set as column initially for mobile view */
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    width: 80%;  /* Full width on small screens */
+  }
+  .profile-input-field img {
+    margin-right: 10px;
+  }
+  
+  .profile-input-field input {
+    flex-grow: 1;
+  }
+  
+  .button-blue,
+  .button-green {
+    margin-top: 20px;
+    padding: 10px 20px;
+  }
 
-.inputs-container {
-    /* transform: translateY(-120%); */
-    padding: 5%
-}
 
-.inputs-container > * {
-    padding: 5%
-}
+  
+  @media  (min-width: 1200px) {
+    .circle {
+        margin-top: 5%;
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      clip-path: circle(50% at 50% 50%);
+      top: -25%;
+    }
+  
+    .image-overlay {
+      border-radius: 50%;
+      top: 0;
+      min-height: 40px;
+      width: 10%;
+      z-index: -20;
+      background: white;
+      /* padding: 2%; */
+      margin-top: 5%;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .profile-input-field {
+      width: 45%;  /* Adjust to your liking */
+    }
+  
+    .inputs-container {
+      flex-direction: row;  /* Change to row for larger screens */
+      flex-wrap: wrap;
+      width: 50%;  /* Adjust to your liking */
+    }
+    .image-overlay {
+      border-radius: 50%;
+      top: 0;
+      min-height: 40px;
+      width: 10%;
+      z-index: -20;
+      background: white;
+      /* padding: 2%; */
+      margin-top: 5%;
+    }
+  }
