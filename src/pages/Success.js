@@ -11,10 +11,11 @@ export default function SuccessPage({ successPath }) {
   let showMyProfileButton = false
   let showViewTaskButton = false
   let showMyTasksButton = false
+  let showBrowseTasksButton = false
 
   if (successPath === "created") {
     successText = "Thank you for posting a task - a volunteer will be in touch with you soon!"
-    showViewTaskButton = true
+    showBrowseTasksButton = true
     showMyTasksButton = true
   }
   if (successPath === "accepted") {
@@ -55,7 +56,13 @@ export default function SuccessPage({ successPath }) {
 
       {showMyProfileButton && (
       <Link to="/profile"> 
-        <button className="button"> My Profile </button>
+        <button className="button">My Profile</button>
+      </Link>
+      )}
+
+      {showBrowseTasksButton && (
+      <Link to="/browse"> 
+        <button className="button">Browse Tasks</button>
       </Link>
       )}
     </div>
