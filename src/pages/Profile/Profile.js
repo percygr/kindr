@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { createClient } from "@supabase/supabase-js";
 import Usericon from "../../imgs/icons/user.png";
 import contact from "../../imgs/icons/contact.png";
-// import DOB from "../../imgs/icons/DOB.png";
-// import address from "../../imgs/icons/address.png";
+import dateOfBirth from "../../imgs/icons/DOB.png";
+import location from "../../imgs/icons/address.png";
 import "./Profile.css";
 import { v4 as uuidv4 } from "uuid";
 
@@ -105,7 +105,7 @@ function ProfilePage({ userInfo }) {
       <div className="container">
         <img className="image-overlay" src={profileImage} alt="avatar" />
         <div>
-          <input type="file" onChange={handleFileChange} className="button" />
+          <input type="file" onChange={handleFileChange}  />
           <button onClick={handleUpload} className="button">
             Upload
           </button>
@@ -135,8 +135,8 @@ function ProfilePage({ userInfo }) {
           </div>
 
           <div className="profile-input-field">
-            <img className="icon-size" src={DOB} alt="D.O.B"></img>
-            {/* <label for="date">D.O.B.</label> */}
+            <img className="icon-size" src={dateOfBirth} alt="D.O.B"></img>
+            <label for="date">D.O.B.</label>
             <input
               type="date"
               value={DOB}
@@ -155,7 +155,7 @@ function ProfilePage({ userInfo }) {
           </div>
 
           <div className="profile-input-field">
-            <img className="icon-size" src={address} alt="address"></img>
+            <img className="icon-size" src={location} alt="address"></img>
             <input
               type="text"
               placeholder="Address"
