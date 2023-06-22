@@ -4,7 +4,6 @@
     margin: none;
     align-items: left;
     border: none;
-
 }
 
 h2 {
@@ -13,4 +12,15 @@ h2 {
     margin: none;
     align-items: left;
     border: none;
+    font-size: 1.7rem;
+    font-weight: 500;
 }
+
+ /* Media query for screens wider than 900px */
+ @media (max-width: 900px) {
+    h2 {
+        font-size: 1.4rem;
+        font-weight: 500;
+    }
+  }
+
