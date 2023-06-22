@@ -40,6 +40,11 @@ header {
   nav a:hover {
 	color: var(--secondaryColor);
   }
+
+  nav a.active {
+	color: var(--secondaryColor);
+	/* Add any additional styling for the active link */
+  }
   
   .profile-pic {
 	width: 30px;
