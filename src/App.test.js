@@ -5,6 +5,9 @@ import Home from './pages/Home';
 import App from "./App";
 import Navbar from "./components/Navbar/Navbar";
 
+
+// Jest unit testing --->
+
 describe('Navbar component', () => {
 test("check 'Home' is in the nav bar", () => {
   render(<App />);
