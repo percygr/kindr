@@ -13,7 +13,7 @@ import ViewTaskPage from "./pages/ViewTask";
 import SuccessPage from "./pages/Success";
 import MyTasksPage from "./pages/MyTasks";
 import ProfilePage from "./pages/Profile/Profile.js";
-import UpdateProfilePage from "./pages/UpdateProfile";
+// import UpdateProfilePage from "./pages/UpdateProfile";
 import tyreIcon from "../src/imgs/icons/tire.png";
 import gardenIcon from "../src/imgs/icons/gardening.png";
 import shopIcon from "../src/imgs/icons/shopping-bags.png";
@@ -158,7 +158,7 @@ function App() {
     return <div>Loading user information...</div>;
   } else if (userInfo.firstname === null || userInfo.firstname === "") {
     //console.log("user info loaded", userInfo.email);
-    return <UpdateProfilePage userInfo={userInfo} />;
+    return <ProfilePage userInfo={userInfo} />;
   } else {
     //console.log("user first name", userInfo.firstname);
     return (
@@ -225,10 +225,10 @@ function App() {
                   />
                 }
               />
-              <Route
+              {/* <Route
                 path="/editprofile"
                 element={<UpdateProfilePage userInfo={userInfo} />}
-              />
+              /> */}
               <Route
                 path="/my-profile"
                 element={<ProfilePage userInfo={userInfo} />}

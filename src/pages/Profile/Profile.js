@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { createClient } from "@supabase/supabase-js";
 import Usericon from "../../imgs/icons/user.png";
 import contact from "../../imgs/icons/contact.png";
-import DOB from "../../imgs/icons/DOB.png";
-import address from "../../imgs/icons/address.png";
+// import DOB from "../../imgs/icons/DOB.png";
+// import address from "../../imgs/icons/address.png";
 import "./Profile.css";
 
 const supabase = createClient(
@@ -56,7 +56,10 @@ function ProfilePage({ userInfo }) {
     <div>
       <div className="container">
         <img className="image-overlay" src={Usericon} alt="avatar" />
-        <h1>{userInfo.firstname}</h1>
+        <h1>
+          {(userInfo && userInfo.firstname) ||
+            "Hello, you must be new here! Please enter your user details below:"}
+        </h1>
 
         <div className="inputs-container">
           <div className="profile-input-field">
