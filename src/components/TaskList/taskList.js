@@ -91,6 +91,10 @@ function showTasks(
     filteredTasks = tasks.filter(
       (task) => task.status_id === statusId && task.helper_id === userInfo.id
     );
+  } if (filteredTasks.length === 0) {
+    return <div className="no-tasks-message">
+    Oh, it seems there are currently no tasks of this type available!
+    </div>;
   }
 
   console.log("user info", userInfo);

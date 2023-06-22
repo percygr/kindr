@@ -360,7 +360,7 @@ h2 {
   margin: 5%;
 }
 #hearticon {
-  max-width: 70%;
+  max-width: 60%;
   padding: 5%;
 }
 
@@ -635,4 +635,12 @@ h2 {
 }
 .updateprofile {
   margin: auto 0;
+}
+
+.no-tasks-message {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  color: red;
+  font-size: 1.5rem;
+
 }

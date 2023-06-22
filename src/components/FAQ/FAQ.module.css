@@ -1,13 +1,16 @@
 h2 {
   padding: none;
   text-align: left;
-  margin: none;
+  padding-top: 2%;
+  margin-left: 2%;
   align-items: left;
+
 }
 
 .faqContainer {
   width: 60%;
   text-align: left;
+  margin-left: 2%;
 }
 
 
@@ -67,7 +70,7 @@ h2 {
 
 @media only screen and (max-width: 600px) {
   .faqItem .question {
-    font-size: 1rem; /* Increase the font size for desktop */
+    font-size: 1.3rem; /* Increase the font size for desktop */
     margin-bottom: 5px; /* Add margin-bottom for desktop */
     text-align: left;
     min-width: 250px;
