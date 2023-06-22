@@ -13,7 +13,7 @@ import ViewTaskPage from "./pages/ViewTask";
 import SuccessPage from "./pages/Success";
 import MyTasksPage from "./pages/MyTasks";
 import ProfilePage from "./pages/Profile/Profile.js";
-import UpdateProfilePage from "./pages/UpdateProfile";
+// import UpdateProfilePage from "./pages/UpdateProfile";
 import tyreIcon from "../src/imgs/icons/tire.png";
 import gardenIcon from "../src/imgs/icons/gardening.png";
 import shopIcon from "../src/imgs/icons/shopping-bags.png";
@@ -102,7 +102,23 @@ function App() {
     if (error) {
       console.log("error", error);
     }
-    setUserInfo(data[0]);
+    // setUserInfo(data[0]);
+    const user = data[0];
+
+    // Fetch the public URL for user icon
+    const { data: publicUrlData, error: publicUrlError } =
+      await supabase.storage.from("avatars").getPublicUrl(user.avatar_link);
+    if (publicUrlError) {
+      console.log("error", publicUrlError);
+    }
+
+    // Add the public URL to the user object
+    if (publicUrlData && publicUrlData.publicUrl) {
+      user.avatarUrl = publicUrlData.publicUrl;
+    }
+
+    //console.log("user object", user);
+    setUserInfo(user);
   }
 
   if (!session) {
@@ -159,13 +175,13 @@ function App() {
     return <div>Loading user information...</div>;
   } else if (userInfo.firstname === null || userInfo.firstname === "") {
     //console.log("user info loaded", userInfo.email);
-    return <UpdateProfilePage userInfo={userInfo} />;
+    return <ProfilePage userInfo={userInfo} />;
   } else {
     //console.log("user first name", userInfo.firstname);
     return (
       <div className="App">
         <BrowserRouter>
-          <Navbar handleLogout={handleLogout} />
+          <Navbar handleLogout={handleLogout} userInfo={userInfo} />
           <div>
             <Routes>
               <Route path="/" element={<HomePage userInfo={userInfo} />} />
@@ -226,10 +242,10 @@ function App() {
                   />
                 }
               />
-              <Route
+              {/* <Route
                 path="/editprofile"
                 element={<UpdateProfilePage userInfo={userInfo} />}
-              />
+              /> */}
               <Route
                 path="/my-profile"
                 element={<ProfilePage userInfo={userInfo} />}
