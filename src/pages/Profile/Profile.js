@@ -1,48 +1,57 @@
+import React from 'react';
 import Usericon from '../../imgs/icons/user.png'
 import contact from '../../imgs/icons/contact.png'
 import DOB from '../../imgs/icons/DOB.png'
 import address from '../../imgs/icons/address.png'
 import './Profile.css'
 
+
 function ProfilePage() {
-
 return(
-    <div  className = "container">
-{/* header */}
-<div className = "circle"> </div> 
-<img className = "image-overlay" src={Usericon} alt="avatar" />
+    <div> 
+    
+    <div className = "container">
+         
+        <img className = "image-overlay" src={Usericon} alt="avatar" />
+        <h1>Username</h1>
 
-{/* input boxes */}
+        <div className = "inputs-container"> 
 
-<div className = "inputs-container"> 
-<h1>Username</h1>          
+            <div className = "profile-input-field">
+                <img className = "icon-size" src={Usericon} alt="user-icon"></img>
+                <input type="text" placeholder="First Name"/>
+            </div>
 
-<div className = "profile-input-field">
-    <img className = "icon-size" src={Usericon} alt="user-icon"></img>
-    <h2>First Name</h2>
-</div>
+            <div className = "profile-input-field">
+                
+                <input type="text" placeholder="Last Name"/>
+            </div>
 
-<div className = "profile-input-field">
-    <img className = "icon-size" src={DOB} alt="D.O.B"></img>
-    <h2>D.O.B</h2>
-</div>
+            <div className = "profile-input-field">
+                <img className = "icon-size" src={DOB} alt="D.O.B"></img>
+                <label for="date">D.O.B.</label>
+                <input type="date" />
+            </div>
+            <div className = "profile-input-field">
+                <img className = "icon-size" src={contact} alt="contact"></img>
+                <input type="tel" placeholder="Contact number"/>
+            </div>
 
-<div className = "profile-input-field">
-    <img className = "icon-size" src={address} alt="address"></img>
-    <h2>Address</h2>
-</div>
+            <div className = "profile-input-field">
+                <img className = "icon-size" src={address} alt="address"></img>
+                <input type="text" placeholder="Address"/>
+            </div>
+            <div className = "profile-input-field">
+                
+                <input type="text" placeholder="Post Code"/>
+            </div>
 
-<div className = "profile-input-field">
-    <img className = "icon-size" src={contact} alt="contact"></img>
-    <h2>Contact number</h2>
-</div>
+        </div>
 
-</div>
+        <button className ='button-blue' >Edit Profile</button> 
+        <button className ='button-green'>Save changes</button>
 
-{/* buttons */}
-<button className ='button-blue' >Edit Profile</button> 
-<button className ='button-green'>Save changes</button>
-
-</div>
+    </div>
+    </div>
 )}
 export default ProfilePage;
