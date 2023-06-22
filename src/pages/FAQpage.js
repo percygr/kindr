@@ -6,8 +6,8 @@ const FAQPage = () => {
     {
       question: "What is the purpose of Kindr?",
       answer: `Many people feel like they would like to offer some help in their local area when they have a spare hour or two at the weekends, but don't always know where this may be most needed. Many people could sometimes benefit from a friendly face assisting them with a task that is too much to complete on their own. 
-        
-        Kindr offers a quick and convenient way of connecting volunteers to tasks that need completing in their neighbourhood and helping to spread more kindness within communities.`,
+      
+      Kindr offers a quick and convenient way of connecting volunteers to tasks that need completing in their neighbourhood and helping to spread more kindness within communities.`,
     },
     {
       question:
