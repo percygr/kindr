@@ -636,3 +636,9 @@ h2 {
 .updateprofile {
   margin: auto 0;
 }
+
+.no-tasks-message {
+  justify-content: center;
+  color: red;
+  font-size: 1.5rem;
+}
