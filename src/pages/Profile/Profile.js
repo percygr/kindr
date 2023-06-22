@@ -5,6 +5,7 @@ import contact from "../../imgs/icons/contact.png";
 // import DOB from "../../imgs/icons/DOB.png";
 // import address from "../../imgs/icons/address.png";
 import "./Profile.css";
+import { v4 as uuidv4 } from "uuid";
 
 const supabase = createClient(
   process.env.REACT_APP_SUPABASE_URL,
@@ -18,6 +19,10 @@ function ProfilePage({ userInfo }) {
   const [postcode, setPostcode] = useState("");
   const [DOB, setDOB] = useState();
   const [address, setAddress] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [profileImage, setProfileImage] = useState(null);
+  const [imageUUID, setImageUUID] = useState(null);
 
   useEffect(() => {
     if (userInfo) {
@@ -27,10 +32,16 @@ function ProfilePage({ userInfo }) {
       setPostcode(userInfo.postcode);
       setDOB(userInfo.dob);
       setAddress(userInfo.address);
+      setProfileImage(userInfo.avatarUrl);
     }
   }, [userInfo]);
 
   async function handleSubmit() {
+    let fileName = "";
+    if (selectedFile) {
+      fileName = imageUUID;
+    }
+    setLoading(true);
     const { error } = await supabase
       .from("kindr_users")
       .update({
@@ -40,6 +51,7 @@ function ProfilePage({ userInfo }) {
         postcode: postcode,
         dob: DOB,
         address: address,
+        avatar_link: fileName,
       })
       .match({ supabase_id: userInfo.supabase_id });
     if (error) {
@@ -50,17 +62,58 @@ function ProfilePage({ userInfo }) {
       console.log("postcode", postcode);
       console.log("write error", error.message);
     }
+    setLoading(false);
   }
+
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
+
+  const handleUpload = async () => {
+    if (!selectedFile) {
+      console.log("No file selected.");
+      return;
+    }
+    setProfileImage(selectedFile);
+    console.log(profileImage);
+    // const fileName = selectedFile.name;
+    //const fileName = uuidv4();
+    const fileExtension = selectedFile.name.split(".").pop(); // Get the file extension
+    const fileName = `${uuidv4()}.${fileExtension}`; // Add the file extension to the user ID
+    setImageUUID(fileName);
+
+    try {
+      const { data, error } = await supabase.storage
+        .from("avatars")
+        .upload(fileName, selectedFile, {
+          cacheControl: "3600",
+          upsert: true,
+        });
+
+      if (error) {
+        console.error("Error uploading file:", error);
+      } else {
+        console.log("File uploaded successfully:", data);
+      }
+    } catch (error) {
+      console.error("Error uploading file:", error);
+    }
+  };
 
   return (
     <div>
       <div className="container">
-        <img className="image-overlay" src={Usericon} alt="avatar" />
+        <img className="image-overlay" src={profileImage} alt="avatar" />
+        <div>
+          <input type="file" onChange={handleFileChange} className="button" />
+          <button onClick={handleUpload} className="button">
+            Upload
+          </button>
+        </div>
         <h1>
-          {(userInfo && userInfo.firstname) ||
+          {(userInfo && firstname) ||
             "Hello, you must be new here! Please enter your user details below:"}
         </h1>
-
         <div className="inputs-container">
           <div className="profile-input-field">
             <img className="icon-size" src={Usericon} alt="user-icon"></img>
@@ -120,11 +173,12 @@ function ProfilePage({ userInfo }) {
             />
           </div>
         </div>
-
-        <button className="button-blue">Edit Profile</button>
+        {/* <button className="button-blue">Edit Profile</button> */}
         <button className="button-green" onClick={() => handleSubmit()}>
           Save changes
         </button>
+        {loading && <div>Saving...</div>}{" "}
+        {/* Display loading message while saving */}
       </div>
     </div>
   );

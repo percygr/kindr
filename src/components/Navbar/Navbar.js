@@ -3,9 +3,9 @@ import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import "./navbar.css";
 import logo from "../../imgs/logos/logo.png";
-import profilePic from "../../imgs/logos/profile.png";
+// import profilePic from "../../imgs/logos/profile.png";
 
-function Navbar({ handleLogout }) {
+function Navbar({ handleLogout, userInfo }) {
   const navRef = useRef();
 
   const showNavbar = () => {
@@ -51,7 +51,7 @@ function Navbar({ handleLogout }) {
           Log Out
         </button>
         <Link to="/my-profile" onClick={closeNavbar}>
-          <img src={profilePic} className="profile-pic" alt="Profile" />
+          <img src={userInfo.avatarUrl} className="profile-pic" alt="Profile" />
         </Link>
       </div>
       <button className="nav-btn" onClick={showNavbar}>
