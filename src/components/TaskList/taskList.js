@@ -93,7 +93,7 @@ function showTasks(
     );
   }
 
-  console.log("user info", userInfo);
+  //console.log("user info", userInfo);
   return filteredTasks.map((task) => (
     <FragmentWrapper key={task.id}>
       <TaskCard

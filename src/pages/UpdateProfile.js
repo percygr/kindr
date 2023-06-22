@@ -23,12 +23,12 @@ export default function UpdateProfilePage({ userInfo }) {
       })
       .match({ supabase_id: userInfo.supabase_id });
     if (error) {
-      console.log("user id ", userInfo.supabase_id);
-      console.log("firstname", firstname);
-      console.log("lastname", lastname);
-      console.log("contactnumber", contactnumber);
-      console.log("postcode", postcode);
-      console.log("write error", error.message);
+      // console.log("user id ", userInfo.supabase_id);
+      // console.log("firstname", firstname);
+      // console.log("lastname", lastname);
+      // console.log("contactnumber", contactnumber);
+      // console.log("postcode", postcode);
+      // console.log("write error", error.message);
     }
     // navigate(`/`);
     // redirect to home page
