@@ -29,8 +29,14 @@ export default function TaskInfo({
   const [selectPhone, setSelectPhone] = useState(false);
 
   useEffect(() => {
-    setIsDisabled(!title || !description || !location || !duration);
-  }, [title, description, location, duration]);
+    setIsDisabled(
+      !title ||
+        !description ||
+        !location ||
+        !duration ||
+        !(selectEmail || selectPhone)
+    );
+  }, [title, description, location, duration, selectEmail, selectPhone]);
 
   useEffect(() => {
     if (!isEditable) {
@@ -58,7 +64,7 @@ export default function TaskInfo({
       .single();
 
     if (error) {
-      //console.log("error", error);
+      console.log("error", error);
     } else if (data) {
       const { firstname, surname } = data;
       if (firstname !== null) {
@@ -84,7 +90,7 @@ export default function TaskInfo({
     });
 
     if (error) {
-      //console.log("error", error);
+      console.log("error", error);
     }
     // refresh task list
     getTasks();
@@ -101,7 +107,7 @@ export default function TaskInfo({
       })
       .match({ id: thisTask.id });
     if (error) {
-      //console.log("error", error);
+      console.log("error", error);
     }
     getTasks();
 
@@ -271,7 +277,7 @@ export default function TaskInfo({
         {isEditable && (
           <button
             onClick={() => writeTask()}
-            disabled={!title || !description || !location || !duration}
+            disabled={isDisabled}
             className={isDisabled ? "disable-button" : "button"}
           >
             Submit
