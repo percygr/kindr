@@ -1,10 +1,10 @@
-FAQ-title {
+.FAQ-title, p {
   padding: none;
   text-align: left;
   padding-top: 2%;
   margin-left: 2%;
   align-items: left;
-
+  font-size: 1.4rem;
 }
 
 .faqContainer {
@@ -12,7 +12,6 @@ FAQ-title {
   text-align: left;
   margin-left: 2%;
 }
-
 
 .faqItem {
   background: #ffffff;
@@ -90,6 +89,4 @@ FAQ-title {
     margin-left: 2%;
   }
 }
-
-
 
