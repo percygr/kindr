@@ -43,6 +43,7 @@ function App() {
   const [successPath, setSuccessPath] = useState("login");
   const [session, setSession] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
+  const [allUsers, setAllUsers] = useState(null);
 
   const getUsers = useCallback(
     async (session) => {
@@ -53,7 +54,6 @@ function App() {
       if (error) {
         console.log("error", error);
       }
-      // setUserInfo(data[0]);
       const user = data[0];
 
       // Fetch the public URL for user icon
@@ -75,6 +75,23 @@ function App() {
     },
     [userInfo]
   );
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data, error } = await supabase.from("kindr_users").select("*");
+        if (error) {
+          console.log("Error:", error);
+        } else {
+          setAllUsers(data);
+        }
+      } catch (error) {
+        console.log("Error:", error.message);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -199,6 +216,7 @@ function App() {
                     categoryIcons={categoryIcons}
                     categoryFilter={categoryFilter}
                     setCategoryFilter={setCategoryFilter}
+                    allUsers={allUsers}
                   />
                 }
               />
@@ -210,6 +228,7 @@ function App() {
                     setSelectedTask={setSelectedTask}
                     categoryIcons={categoryIcons}
                     userInfo={userInfo}
+                    allUsers={allUsers}
                   />
                 }
               />
@@ -244,6 +263,7 @@ function App() {
                     getTasks={getTasks}
                     setSuccessPath={setSuccessPath}
                     userInfo={userInfo}
+                    allUsers={allUsers}
                   />
                 }
               />

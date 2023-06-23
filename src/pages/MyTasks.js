@@ -5,6 +5,7 @@ export default function MyTasksPage({
   setSelectedTask,
   categoryIcons,
   userInfo,
+  allUsers,
 }) {
   return (
     <div className="br">
@@ -14,6 +15,7 @@ export default function MyTasksPage({
         setSelectedTask={setSelectedTask}
         categoryIcons={categoryIcons}
         userInfo={userInfo}
+        allUsers={allUsers}
       />
     </div>
   );

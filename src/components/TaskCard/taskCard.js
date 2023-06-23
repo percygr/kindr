@@ -1,39 +1,22 @@
 import { useNavigate } from "react-router-dom";
 import "./taskcard.css";
-import { createClient } from "@supabase/supabase-js";
-import { useState, useEffect } from "react";
 
-const supabase = createClient(
-  process.env.REACT_APP_SUPABASE_URL,
-  process.env.REACT_APP_SUPABASE_KEY
-);
-
-export default function TaskCard({ task, setSelectedTask, categoryIcons }) {
+export default function TaskCard({
+  task,
+  setSelectedTask,
+  categoryIcons,
+  allUsers,
+}) {
   const navigate = useNavigate();
-  const [creatorName, setCreatorName] = useState("");
 
-  useEffect(() => {
-    async function fetchCreatorName() {
-      const { data, error } = await supabase
-        .from("kindr_users")
-        .select("firstname, surname")
-        .eq("id", task.creator_id)
-        .single();
-
-      if (error) {
-        console.log("error", error);
-      } else if (data) {
-        const { firstname, surname } = data;
-        if (firstname !== null) {
-          setCreatorName(`${firstname} ${surname}`);
-        } else {
-          setCreatorName("");
-        }
-      }
+  function getCreatorName(creatorId) {
+    const creator = allUsers.find((user) => user.id === creatorId);
+    if (creator) {
+      return `${creator.firstname} ${creator.surname}`;
+    } else {
+      return "Anon";
     }
-
-    fetchCreatorName();
-  }, [task.creator_id]);
+  }
 
   function handleSelectTask(taskId) {
     return () => {
@@ -64,7 +47,7 @@ export default function TaskCard({ task, setSelectedTask, categoryIcons }) {
         </p>
         <p>
           <strong>Posted by: </strong>
-          {creatorName}
+          {getCreatorName(task.creator_id)}
         </p>
       </div>
     </div>
