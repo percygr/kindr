@@ -56,7 +56,7 @@ export default function TaskInfo({
     categoryID = category - 1;
   } else {
     thisTask = tasks.find((task) => task.id === selectedTask);
-    console.log("task object", thisTask);
+    //console.log("task object", thisTask);
     categoryID = thisTask.category_id - 1;
   }
 
