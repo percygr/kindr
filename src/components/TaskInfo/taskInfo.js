@@ -27,6 +27,8 @@ export default function TaskInfo({
   const [creatorName, setCreatorName] = useState("");
   const [selectEmail, setSelectEmail] = useState(false);
   const [selectPhone, setSelectPhone] = useState(false);
+  const [creatorEmail, setCreatorEmail] = useState("");
+  const [creatorPhone, setCreatorPhone] = useState("");
 
   useEffect(() => {
     setIsDisabled(
@@ -53,20 +55,25 @@ export default function TaskInfo({
     categoryID = category - 1;
   } else {
     thisTask = tasks.find((task) => task.id === selectedTask);
+    console.log("task object", thisTask);
     categoryID = thisTask.category_id - 1;
   }
 
   async function fetchCreatorName() {
     const { data, error } = await supabase
       .from("kindr_users")
-      .select("firstname, surname")
+      .select("firstname, surname, email, telephone")
       .eq("id", thisTask.creator_id)
       .single();
 
     if (error) {
       console.log("error", error);
     } else if (data) {
-      const { firstname, surname } = data;
+      const { firstname, surname, email, telephone } = data;
+
+      setCreatorEmail(email);
+      setCreatorPhone(telephone);
+
       if (firstname !== null) {
         setCreatorName(`${firstname} ${surname}`);
       } else {
@@ -241,8 +248,20 @@ export default function TaskInfo({
         {!isEditable &&
           thisTask.status_id === 2 && ( // contact info only displays on 'active' tasks
             <div className="info-container">
-              <strong>Contact Information: </strong>
-              <p> number / email</p>
+              <h3>Contact Information:</h3>
+              {thisTask.show_email && (
+                <div>
+                  <strong>Email: </strong>
+                  {creatorEmail}
+                </div>
+              )}
+              {thisTask.show_phone && (
+                <div>
+                  <strong>Telephone: </strong>
+                  {creatorPhone}
+                </div>
+              )}
+              <p></p>
             </div>
           )}
 
