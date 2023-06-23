@@ -133,6 +133,7 @@ function ProfilePage({ userInfo }) {
           </div>
 
           <div className="profile-input-field">
+          <img className="icon-size" src={Usericon} alt="user-icon"></img>
             <input
               type="text"
               placeholder="Last Name"
@@ -172,6 +173,7 @@ function ProfilePage({ userInfo }) {
           </div>
 
           <div className="profile-input-field">
+           <img className="icon-size" src={location} alt="address"></img>
             <input
               type="text"
               placeholder="Post Code"
