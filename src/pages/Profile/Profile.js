@@ -40,7 +40,10 @@ function ProfilePage({ userInfo }) {
     let fileName = "";
     if (selectedFile) {
       fileName = imageUUID;
+    } else {
+      fileName = userInfo.avatar_link;
     }
+
     setLoading(true);
     const { error } = await supabase
       .from("kindr_users")
