@@ -65,6 +65,10 @@ function ProfilePage({ userInfo }) {
     setLoading(false);
   }
 
+  function goHome() {
+    window.location.href = "/";
+  }
+
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
   };
@@ -105,7 +109,7 @@ function ProfilePage({ userInfo }) {
       <div className="container">
         <img className="image-overlay" src={profileImage} alt="avatar" />
         <div>
-          <input type="file" onChange={handleFileChange}  />
+          <input type="file" onChange={handleFileChange} />
           <button onClick={handleUpload} className="button">
             Upload
           </button>
@@ -176,6 +180,14 @@ function ProfilePage({ userInfo }) {
         {/* <button className="button-blue">Edit Profile</button> */}
         <button className="button-green" onClick={() => handleSubmit()}>
           Save changes
+        </button>
+        <button
+          onClick={() => {
+            goHome();
+          }}
+          className="button"
+        >
+          Home
         </button>
         {loading && <div>Saving...</div>}{" "}
         {/* Display loading message while saving */}
