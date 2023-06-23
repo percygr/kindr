@@ -34,7 +34,7 @@
 .images{
     height:100%;
     width: 100%;
-    min-width: 90px;
+    min-width: 100px;
 }
 
 
@@ -47,6 +47,7 @@
 .category-title{
     text-align: center;
     margin-top: 7px;
+    font-weight: bold;
 }
 /* 
 .selected{
