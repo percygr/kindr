@@ -44,6 +44,7 @@ export default function TaskInfo({
     if (!isEditable) {
       fetchCreatorName();
     }
+    // eslint-disable-next-line
   }, [selectedTask]);
 
   const navigate = useNavigate();
