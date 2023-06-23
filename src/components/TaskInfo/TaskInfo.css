@@ -32,20 +32,30 @@
     margin: 0 auto;
     margin-top: 1rem;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     /* background-color: var(--secondary-blue); */
     max-width: 500px;
     justify-content: center;
     align-items: center;
     text-align: left;
-  
-    
+ 
 }
 .category-logo {
     margin-bottom: 2rem;
     border: 10px solid transparent;
 }
 input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 1px solid var(--primary-blue);
+    background-color: var(--secondary-blue);
+    text-align: left;
+  }
+
+  input[type=checkbox] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -74,3 +84,8 @@ input[type=text] {
     margin-bottom: 1rem;
   }
 
+  .checkbox-container {
+    display: flex;
+    flex-direction: row;
+    padding: 2%;
+  }

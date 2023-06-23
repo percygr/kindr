@@ -24,9 +24,9 @@ export default function TaskInfo({
   const [location, setLocation] = useState("");
   const [duration, setDuration] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
-  //const [creatorName, setCreatorName] = useState("");
-  //const [contactNumber, setContactNumber] = useState("");
   const [creatorName, setCreatorName] = useState("");
+  const [selectEmail, setSelectEmail] = useState(true);
+  const [selectPhone, setSelectPhone] = useState(false);
 
   useEffect(() => {
     setIsDisabled(!title || !description || !location || !duration);
@@ -113,6 +113,14 @@ export default function TaskInfo({
       navigate(`/mytasks`);
     }
   }
+
+ function handleSelectEmail() {
+ setSelectEmail(!selectEmail);
+ }
+
+ function handleSelectPhone() {
+ setSelectPhone(!selectPhone);
+ }
 
   return (
     <div className="view-card-container">
@@ -220,12 +228,39 @@ export default function TaskInfo({
 
         {!isEditable && thisTask.status_id === 2 && ( // contact info only displays on 'active' tasks
         <div className="info-container">
-          <div>
             <strong>Contact Information: </strong>
+            <p> number / email</p>
           </div>
-          {isEditable ? <div> number / email</div> : <div> number / email</div>}
-        </div>
         )}
+
+        <div className = "info-container"> 
+        {isEditable ? ( 
+          <div>
+          <p> How would you like to be contacted? </p>
+          <div className = "checkbox-container">
+          <label for = "email"> Email </label>
+          <input 
+          type = "checkbox" 
+          id = "email" 
+          name = "email" 
+          value={selectEmail}  
+          onChange={(e) => handleSelectEmail(e.target.value)} 
+          />
+          <label for = "phone"> Phone </label>
+          <input 
+          type = "checkbox" 
+          id = "phone" 
+          name = "phone" 
+          value = {selectPhone} 
+          onChange={(e) => handleSelectPhone(e.target.value) } 
+          />
+          </div>
+          </div>
+           ) :
+           <div></div> }
+        </div> 
+  
+         
 
         {isEditable && (
           <button
