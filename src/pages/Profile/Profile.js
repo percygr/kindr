@@ -6,6 +6,7 @@ import dateOfBirth from "../../imgs/icons/birthday.png";
 import location from "../../imgs/icons/address.png";
 import "./Profile.css";
 import { v4 as uuidv4 } from "uuid";
+import avatar from "../../imgs/icons/user.png";
 
 const supabase = createClient(
   process.env.REACT_APP_SUPABASE_URL,
@@ -31,7 +32,13 @@ function ProfilePage({ userInfo, setUserInfo }) {
       setPostcode(userInfo.postcode);
       setDOB(userInfo.dob);
       setAddress(userInfo.address);
-      setProfileImage(userInfo.avatarUrl);
+      if (userInfo.avatar_link) {
+        setProfileImage(
+          `${process.env.REACT_APP_SUPABASE_IMAGE_URL}${userInfo.avatar_link}`
+        );
+      } else {
+        setProfileImage(avatar);
+      }
     }
   }, [userInfo]);
 

@@ -55,17 +55,6 @@ function App() {
         console.log("error", error);
       }
       const user = data[0];
-      // Fetch the public URL for user icon
-      const { data: publicUrlData, error: publicUrlError } =
-        await supabase.storage.from("avatars").getPublicUrl(user.avatar_link);
-      if (publicUrlError) {
-        console.log("error", publicUrlError);
-      }
-      // Add the public URL to the user object
-      if (publicUrlData && publicUrlData.publicUrl) {
-        user.avatarUrl = publicUrlData.publicUrl;
-      }
-      //console.log("user object", user);
       if (!userInfo) {
         setUserInfo(user);
       }
@@ -175,24 +164,12 @@ function App() {
             providers={["google", "facebook"]}
           />
         </div>
-        {/* <div className="illustrationsHome">
-          <img
-            className="illustrationPost"
-            src={illustrationPost}
-            alt="illustration"
-          />
-          <img
-            className="illustrationVolunteer"
-            src={illustrationVolunteer}
-            alt="illustration"
-          />
-        </div> */}
       </div>
     );
   } else if (!userInfo) {
     //console.log("loading user info");
     return <div>Loading user information...</div>;
-  } else if (userInfo.firstname === null || userInfo.firstname === "") {
+  } else if (!userInfo) {
     //console.log("user info loaded", userInfo.email);
     return <ProfilePage userInfo={userInfo} />;
   } else {
