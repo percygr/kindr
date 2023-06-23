@@ -100,7 +100,27 @@
     padding: 10px 20px;
   }
 
+  input[type=tel] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 1px solid var(--primary-blue);
+    background-color: var(--secondary-blue);
+    text-align: left;
+  }
 
+  input[type=date] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 1px solid var(--primary-blue);
+    background-color: var(--secondary-blue);
+    text-align: left;
+  }
   
   
   @media (min-width: 768px) {
