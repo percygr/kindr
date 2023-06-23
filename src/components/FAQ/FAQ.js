@@ -12,7 +12,13 @@ const FAQ = ({ faqs }) => {
   return (
     <div className="faq">
       <div className={styles.faqContainer}>
-        <p className="FAQ-title">Use this page to learn more about Kindr, click the boxes to expand the answer:</p>
+        <p
+          className="FAQ-title"
+          style={{ marginTop: "20px", marginLeft: "25px", fontSize: "20px" }}
+        >
+          Use this page to learn more about Kindr, click the boxes to expand the
+          answer:
+        </p>
         <br></br>
         {faqs.map((faq, index) => (
           <div
@@ -21,15 +27,14 @@ const FAQ = ({ faqs }) => {
               activeIndex === index ? styles.active : ""
             }`}
           >
-            <div
-              className={styles.question}
-              onClick={() => handleClick(index)}
-            >
+            <div className={styles.question} onClick={() => handleClick(index)}>
               {faq.question}
               {activeIndex === index ? (
                 <FaAngleUp className={`${styles.arrow} ${styles.arrowUp}`} />
               ) : (
-                <FaAngleDown className={`${styles.arrow} ${styles.arrowDown}`} />
+                <FaAngleDown
+                  className={`${styles.arrow} ${styles.arrowDown}`}
+                />
               )}
             </div>
             {activeIndex === index && (

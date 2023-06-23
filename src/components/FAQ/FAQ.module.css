@@ -1,10 +1,10 @@
-.FAQ-title p {
+.FAQ-title {
   padding: none;
   text-align: left;
   padding-top: 2%;
   margin-left: 2%;
-  align-items: left;
   font-size: 1.4rem;
+  color:red !important;
 }
 
 .faqContainer {
