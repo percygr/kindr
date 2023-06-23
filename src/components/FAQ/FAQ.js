@@ -14,7 +14,7 @@ const FAQ = ({ faqs }) => {
       <div className={styles.faqContainer}>
         <p
           className="FAQ-title"
-          style={{ marginTop: "20px", marginLeft: "25px", fontSize: "20px" }}
+          style={{ paddingTop: "20px", marginLeft: "25px", fontSize: "20px" }}
         >
           Use this page to learn more about Kindr, click the boxes to expand the
           answer:
