@@ -7,6 +7,7 @@ export default function BrowsePage({
   categoryIcons,
   categoryFilter,
   setCategoryFilter,
+  allUsers,
 }) {
   return (
     <div>
@@ -21,6 +22,7 @@ export default function BrowsePage({
         setSelectedTask={setSelectedTask}
         categoryIcons={categoryIcons}
         categoryFilter={categoryFilter}
+        allUsers={allUsers}
       />
     </div>
   );

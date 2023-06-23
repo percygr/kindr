@@ -18,17 +18,15 @@ export default function TaskInfo({
   getTasks, // function to refresh task list
   setSuccessPath, // function to set path for success page
   userInfo, // user info from supabase
+  allUsers, // array of all users from supabase
 }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
   const [duration, setDuration] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
-  const [creatorName, setCreatorName] = useState("");
   const [selectEmail, setSelectEmail] = useState(false);
   const [selectPhone, setSelectPhone] = useState(false);
-  const [creatorEmail, setCreatorEmail] = useState("");
-  const [creatorPhone, setCreatorPhone] = useState("");
 
   useEffect(() => {
     setIsDisabled(
@@ -40,13 +38,6 @@ export default function TaskInfo({
     );
   }, [title, description, location, duration, selectEmail, selectPhone]);
 
-  useEffect(() => {
-    if (!isEditable) {
-      fetchCreatorName();
-    }
-    // eslint-disable-next-line
-  }, [selectedTask]);
-
   const navigate = useNavigate();
 
   let categoryID = 0;
@@ -56,30 +47,15 @@ export default function TaskInfo({
     categoryID = category - 1;
   } else {
     thisTask = tasks.find((task) => task.id === selectedTask);
-    //console.log("task object", thisTask);
     categoryID = thisTask.category_id - 1;
   }
 
-  async function fetchCreatorName() {
-    const { data, error } = await supabase
-      .from("kindr_users")
-      .select("firstname, surname, email, telephone")
-      .eq("id", thisTask.creator_id)
-      .single();
-
-    if (error) {
-      console.log("error", error);
-    } else if (data) {
-      const { firstname, surname, email, telephone } = data;
-
-      setCreatorEmail(email);
-      setCreatorPhone(telephone);
-
-      if (firstname !== null) {
-        setCreatorName(`${firstname} ${surname}`);
-      } else {
-        setCreatorName("");
-      }
+  function getCreatorName(creatorId) {
+    const creator = allUsers.find((user) => user.id === creatorId);
+    if (creator) {
+      return `${creator.firstname} ${creator.surname}`;
+    } else {
+      return "";
     }
   }
 
@@ -142,6 +118,24 @@ export default function TaskInfo({
     setSelectPhone(!selectPhone);
   }
 
+  function getCreatorEmail(creatorId) {
+    const creator = allUsers.find((user) => user.id === creatorId);
+    if (creator) {
+      return creator.email;
+    } else {
+      return "";
+    }
+  }
+
+  function getCreatorPhone(creatorId) {
+    const creator = allUsers.find((user) => user.id === creatorId);
+    if (creator) {
+      return creator.telephone;
+    } else {
+      return "";
+    }
+  }
+
   return (
     <div className="view-card-container">
       <div className="all-info">
@@ -200,7 +194,6 @@ export default function TaskInfo({
         )}
 
         <div className="info-container">
-          {/* <div>Duration: </div> */}
           {isEditable ? (
             <div>
               <div>Duration: </div>
@@ -220,7 +213,6 @@ export default function TaskInfo({
         </div>
 
         <div className="info-container">
-          {/* <div>Location: </div> */}
           {isEditable ? (
             <div>
               <div>Location: </div>
@@ -242,7 +234,7 @@ export default function TaskInfo({
         {!isEditable && (
           <div>
             <strong>Posted by: </strong>
-            {creatorName}
+            {getCreatorName(thisTask.creator_id)}
           </div>
         )}
 
@@ -253,13 +245,13 @@ export default function TaskInfo({
               {thisTask.show_email && (
                 <div>
                   <strong>Email: </strong>
-                  {creatorEmail}
+                  {getCreatorEmail(thisTask.creator_id)}
                 </div>
               )}
               {thisTask.show_phone && (
                 <div>
                   <strong>Telephone: </strong>
-                  {creatorPhone}
+                  {getCreatorPhone(thisTask.creator_id)}
                 </div>
               )}
               <p></p>

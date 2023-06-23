@@ -15,6 +15,7 @@ export default function TaskList({
   categoryIcons,
   categoryFilter,
   userInfo,
+  allUsers,
 }) {
   return (
     <div className="browse-page">
@@ -26,7 +27,8 @@ export default function TaskList({
             setSelectedTask,
             categoryIcons,
             categoryFilter,
-            userInfo
+            userInfo,
+            allUsers
           )}
         </div>
       )}
@@ -44,7 +46,8 @@ export default function TaskList({
               setSelectedTask,
               categoryIcons,
               categoryFilter,
-              userInfo
+              userInfo,
+              allUsers
             )}
           </div>
 
@@ -58,7 +61,8 @@ export default function TaskList({
               setSelectedTask,
               categoryIcons,
               categoryFilter,
-              userInfo
+              userInfo,
+              allUsers
             )}
           </div>
         </>
@@ -75,7 +79,8 @@ function showTasks(
   setSelectedTask,
   categoryIcons,
   categoryFilter,
-  userInfo
+  userInfo,
+  allUsers
 ) {
   let filteredTasks;
 
@@ -91,10 +96,13 @@ function showTasks(
     filteredTasks = tasks.filter(
       (task) => task.status_id === statusId && task.helper_id === userInfo.id
     );
-  } if (filteredTasks.length === 0) {
-    return <div className="no-tasks-message">
-    Oh, it seems there are currently no tasks of this type available!
-    </div>;
+  }
+  if (filteredTasks.length === 0) {
+    return (
+      <div className="no-tasks-message">
+        Oh, it seems there are currently no tasks of this type available!
+      </div>
+    );
   }
 
   //console.log("user info", userInfo);
@@ -104,6 +112,7 @@ function showTasks(
         task={task}
         setSelectedTask={setSelectedTask}
         categoryIcons={categoryIcons}
+        allUsers={allUsers}
       />
     </FragmentWrapper>
   ));
