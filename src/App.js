@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { createClient } from "@supabase/supabase-js";
 import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import "./App.css";
 import HomePage from "./pages/Home";
 // import TopNav from "./components/TopNav/topNav";
@@ -44,6 +44,38 @@ function App() {
   const [session, setSession] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
 
+  const getUsers = useCallback(
+    async (session) => {
+      let { data, error } = await supabase
+        .from("kindr_users")
+        .select("*")
+        .filter("supabase_id", "eq", session.user.id);
+      if (error) {
+        console.log("error", error);
+      }
+      // setUserInfo(data[0]);
+      const user = data[0];
+
+      // Fetch the public URL for user icon
+      const { data: publicUrlData, error: publicUrlError } =
+        await supabase.storage.from("avatars").getPublicUrl(user.avatar_link);
+      if (publicUrlError) {
+        console.log("error", publicUrlError);
+      }
+
+      // Add the public URL to the user object
+      if (publicUrlData && publicUrlData.publicUrl) {
+        user.avatarUrl = publicUrlData.publicUrl;
+      }
+
+      //console.log("user object", user);
+      if (!userInfo) {
+        setUserInfo(user);
+      }
+    },
+    [userInfo]
+  );
+
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
@@ -66,7 +98,7 @@ function App() {
     });
 
     return () => subscription.unsubscribe();
-  }, []);
+  }, [getUsers]);
 
   function writeCategoryIcons() {
     setCategoryIcons([
@@ -92,33 +124,6 @@ function App() {
       console.log("error", error);
     }
     setTasks(data);
-  }
-
-  async function getUsers(session) {
-    let { data, error } = await supabase
-      .from("kindr_users")
-      .select("*")
-      .filter("supabase_id", "eq", session.user.id);
-    if (error) {
-      console.log("error", error);
-    }
-    // setUserInfo(data[0]);
-    const user = data[0];
-
-    // Fetch the public URL for user icon
-    const { data: publicUrlData, error: publicUrlError } =
-      await supabase.storage.from("avatars").getPublicUrl(user.avatar_link);
-    if (publicUrlError) {
-      console.log("error", publicUrlError);
-    }
-
-    // Add the public URL to the user object
-    if (publicUrlData && publicUrlData.publicUrl) {
-      user.avatarUrl = publicUrlData.publicUrl;
-    }
-
-    //console.log("user object", user);
-    setUserInfo(user);
   }
 
   if (!session) {
