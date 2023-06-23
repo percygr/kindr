@@ -12,7 +12,7 @@ const supabase = createClient(
   process.env.REACT_APP_SUPABASE_KEY
 );
 
-function ProfilePage({ userInfo }) {
+function ProfilePage({ userInfo, setUserInfo }) {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [contactnumber, setContactnumber] = useState("");
@@ -22,7 +22,6 @@ function ProfilePage({ userInfo }) {
   const [loading, setLoading] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [profileImage, setProfileImage] = useState(null);
-  const [imageUUID, setImageUUID] = useState(null);
 
   useEffect(() => {
     if (userInfo) {
@@ -37,34 +36,17 @@ function ProfilePage({ userInfo }) {
   }, [userInfo]);
 
   async function handleSubmit() {
+    setLoading(true);
     let fileName = "";
     if (selectedFile) {
-      fileName = imageUUID;
+      const fileExtension = selectedFile.name.split(".").pop(); // Get the file extension
+      fileName = `${uuidv4()}.${fileExtension}`; // Generate a random file name
+      await uploadImage(fileName);
     } else {
       fileName = userInfo.avatar_link;
     }
-
-    setLoading(true);
-    const { error } = await supabase
-      .from("kindr_users")
-      .update({
-        firstname: firstname,
-        surname: lastname,
-        telephone: contactnumber,
-        postcode: postcode,
-        dob: DOB,
-        address: address,
-        avatar_link: fileName,
-      })
-      .match({ supabase_id: userInfo.supabase_id });
-    if (error) {
-      console.log("user id ", userInfo.supabase_id);
-      console.log("firstname", firstname);
-      console.log("lastname", lastname);
-      console.log("contactnumber", contactnumber);
-      console.log("postcode", postcode);
-      console.log("write error", error.message);
-    }
+    const data = await updateProfile(fileName);
+    setUserInfo(data);
     setLoading(false);
   }
 
@@ -76,19 +58,26 @@ function ProfilePage({ userInfo }) {
     setSelectedFile(event.target.files[0]);
   };
 
-  const handleUpload = async () => {
-    if (!selectedFile) {
-      console.log("No file selected.");
-      return;
+  async function updateProfile(fileName) {
+    const { data, error } = await supabase
+      .from("kindr_users")
+      .update({
+        firstname: firstname,
+        surname: lastname,
+        telephone: contactnumber,
+        postcode: postcode,
+        dob: DOB,
+        address: address,
+        avatar_link: fileName,
+      })
+      .match({ id: userInfo.id });
+    if (error) {
+      console.log("error", error.message);
     }
-    setProfileImage(selectedFile);
-    console.log(profileImage);
-    // const fileName = selectedFile.name;
-    //const fileName = uuidv4();
-    const fileExtension = selectedFile.name.split(".").pop(); // Get the file extension
-    const fileName = `${uuidv4()}.${fileExtension}`; // Add the file extension to the user ID
-    setImageUUID(fileName);
+    return data;
+  }
 
+  const uploadImage = async (fileName) => {
     try {
       const { data, error } = await supabase.storage
         .from("avatars")
@@ -113,9 +102,6 @@ function ProfilePage({ userInfo }) {
         <img className="image-overlay" src={profileImage} alt="avatar" />
         <div>
           <input type="file" onChange={handleFileChange} />
-          <button onClick={handleUpload} className="button">
-            Upload
-          </button>
         </div>
         <h1>
           {(userInfo && firstname) ||
@@ -133,7 +119,7 @@ function ProfilePage({ userInfo }) {
           </div>
 
           <div className="profile-input-field">
-          <img className="icon-size" src={Usericon} alt="user-icon"></img>
+            <img className="icon-size" src={Usericon} alt="user-icon"></img>
             <input
               type="text"
               placeholder="Last Name"
@@ -144,7 +130,7 @@ function ProfilePage({ userInfo }) {
 
           <div className="profile-input-field">
             <img className="icon-size" src={dateOfBirth} alt="D.O.B"></img>
-            
+
             <input
               type="date"
               value={DOB}
@@ -173,7 +159,7 @@ function ProfilePage({ userInfo }) {
           </div>
 
           <div className="profile-input-field">
-           <img className="icon-size" src={location} alt="address"></img>
+            <img className="icon-size" src={location} alt="address"></img>
             <input
               type="text"
               placeholder="Post Code"
