@@ -16,21 +16,6 @@ function Navbar({ handleLogout, userInfo }) {
     navRef.current.classList.remove("responsive_nav");
   };
 
-  function getProfileImage() {
-    console.log("paulinho", userInfo);
-    if (!userInfo.avatar_link) {
-      return { avatar };
-    } else {
-      return (
-        <img
-          src={`${process.env.REACT_APP_SUPABASE_IMAGE_URL}${userInfo.avatar_link}`}
-          className="profile-pic"
-          alt="Profile"
-        />
-      );
-    }
-  }
-
   return (
     <header role="banner">
       <Link to="/" onClick={closeNavbar} aria-label="Navigate to Home Page">
@@ -85,11 +70,15 @@ function Navbar({ handleLogout, userInfo }) {
           onClick={closeNavbar}
           aria-label="Navigate to My Profile"
         >
-          <img
-            src={() => getProfileImage()}
-            className="profile-pic"
-            alt="Profile"
-          />
+          {userInfo.avatar_link ? (
+            <img
+              src={`${process.env.REACT_APP_SUPABASE_IMAGE_URL}${userInfo.avatar_link}`}
+              className="profile-pic"
+              alt="Profile"
+            />
+          ) : (
+            <img src={avatar} className="profile-pic" alt="Profile" />
+          )}
         </Link>
       </div>
       <button className="nav-btn" onClick={showNavbar} aria-label="Open Menu">
