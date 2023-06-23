@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { createClient } from "@supabase/supabase-js";
 import Usericon from "../../imgs/icons/user.png";
 import contact from "../../imgs/icons/contact.png";
-import dateOfBirth from "../../imgs/icons/DOB.png";
+import dateOfBirth from "../../imgs/icons/birthday.png";
 import location from "../../imgs/icons/address.png";
 import "./Profile.css";
 import { v4 as uuidv4 } from "uuid";
@@ -144,7 +144,7 @@ function ProfilePage({ userInfo }) {
 
           <div className="profile-input-field">
             <img className="icon-size" src={dateOfBirth} alt="D.O.B"></img>
-            <label for="date">D.O.B.</label>
+            
             <input
               type="date"
               value={DOB}
