@@ -56,15 +56,15 @@ function App() {
       }
       const user = data[0];
       // Fetch the public URL for user icon
-      const { data: publicUrlData, error: publicUrlError } =
-        await supabase.storage.from("avatars").getPublicUrl(user.avatar_link);
-      if (publicUrlError) {
-        console.log("error", publicUrlError);
-      }
-      // Add the public URL to the user object
-      if (publicUrlData && publicUrlData.publicUrl) {
-        user.avatarUrl = publicUrlData.publicUrl;
-      }
+      // const { data: publicUrlData, error: publicUrlError } =
+      //   await supabase.storage.from("avatars").getPublicUrl(user.avatar_link);
+      // if (publicUrlError) {
+      //   console.log("error", publicUrlError);
+      // }
+      // // Add the public URL to the user object
+      // if (publicUrlData && publicUrlData.publicUrl) {
+      //   user.avatarUrl = publicUrlData.publicUrl;
+      // }
       //console.log("user object", user);
       if (!userInfo) {
         setUserInfo(user);
