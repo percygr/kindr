@@ -12,10 +12,7 @@ const FAQ = ({ faqs }) => {
   return (
     <div className="faq">
       <div className={styles.faqContainer}>
-        <p
-          className="FAQ-title"
-          style={{ paddingTop: "20px", marginLeft: "25px", fontSize: "20px" }}
-        >
+        <p className={styles.FAQtitle}>
           Use this page to learn more about Kindr, click the boxes to expand the
           answer:
         </p>
