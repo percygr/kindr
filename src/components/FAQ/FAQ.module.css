@@ -1,9 +1,8 @@
-.FAQ-title, p {
+.FAQtitle {
   padding: none;
   text-align: left;
-  padding-top: 2%;
-  margin-left: 2%;
-  align-items: left;
+  padding-top: 3%;
+  margin-left: 4%;
   font-size: 1.4rem;
 }
 

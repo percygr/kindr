@@ -24,13 +24,27 @@ export default function TaskInfo({
   const [location, setLocation] = useState("");
   const [duration, setDuration] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
-  //const [creatorName, setCreatorName] = useState("");
-  //const [contactNumber, setContactNumber] = useState("");
   const [creatorName, setCreatorName] = useState("");
+  const [selectEmail, setSelectEmail] = useState(false);
+  const [selectPhone, setSelectPhone] = useState(false);
+  const [creatorEmail, setCreatorEmail] = useState("");
+  const [creatorPhone, setCreatorPhone] = useState("");
 
   useEffect(() => {
-    setIsDisabled(!title || !description || !location || !duration);
-  }, [title, description, location, duration]);
+    setIsDisabled(
+      !title ||
+        !description ||
+        !location ||
+        !duration ||
+        !(selectEmail || selectPhone)
+    );
+  }, [title, description, location, duration, selectEmail, selectPhone]);
+
+  useEffect(() => {
+    if (!isEditable) {
+      fetchCreatorName();
+    }
+  }, [selectedTask]);
 
   const navigate = useNavigate();
 
@@ -41,20 +55,25 @@ export default function TaskInfo({
     categoryID = category - 1;
   } else {
     thisTask = tasks.find((task) => task.id === selectedTask);
+    console.log("task object", thisTask);
     categoryID = thisTask.category_id - 1;
   }
 
   async function fetchCreatorName() {
     const { data, error } = await supabase
       .from("kindr_users")
-      .select("firstname, surname")
+      .select("firstname, surname, email, telephone")
       .eq("id", thisTask.creator_id)
       .single();
 
     if (error) {
       console.log("error", error);
     } else if (data) {
-      const { firstname, surname } = data;
+      const { firstname, surname, email, telephone } = data;
+
+      setCreatorEmail(email);
+      setCreatorPhone(telephone);
+
       if (firstname !== null) {
         setCreatorName(`${firstname} ${surname}`);
       } else {
@@ -62,8 +81,6 @@ export default function TaskInfo({
       }
     }
   }
-
-  fetchCreatorName();
 
   async function writeTask() {
     // write to database
@@ -75,6 +92,8 @@ export default function TaskInfo({
       creator_id: userInfo.id,
       category_id: category,
       status_id: 1,
+      show_email: selectEmail,
+      show_phone: selectPhone,
     });
 
     if (error) {
@@ -112,6 +131,14 @@ export default function TaskInfo({
       setSuccessPath("archived");
       navigate(`/mytasks`);
     }
+  }
+
+  function handleSelectEmail() {
+    setSelectEmail(!selectEmail);
+  }
+
+  function handleSelectPhone() {
+    setSelectPhone(!selectPhone);
   }
 
   return (
@@ -218,19 +245,58 @@ export default function TaskInfo({
           </div>
         )}
 
-        {!isEditable && thisTask.status_id === 2 && ( // contact info only displays on 'active' tasks
+        {!isEditable &&
+          thisTask.status_id === 2 && ( // contact info only displays on 'active' tasks
+            <div className="info-container">
+              <h3>Contact Information:</h3>
+              {thisTask.show_email && (
+                <div>
+                  <strong>Email: </strong>
+                  {creatorEmail}
+                </div>
+              )}
+              {thisTask.show_phone && (
+                <div>
+                  <strong>Telephone: </strong>
+                  {creatorPhone}
+                </div>
+              )}
+              <p></p>
+            </div>
+          )}
+
         <div className="info-container">
-          <div>
-            <strong>Contact Information: </strong>
-          </div>
-          {isEditable ? <div> number / email</div> : <div> number / email</div>}
+          {isEditable ? (
+            <div>
+              <p> How would you like to be contacted? </p>
+              <div className="checkbox-container">
+                <label htmlFor="email"> Email </label>
+                <input
+                  type="checkbox"
+                  id="email"
+                  name="email"
+                  value={selectEmail}
+                  onChange={(e) => handleSelectEmail(e.target.value)}
+                />
+                <label htmlFor="phone"> Phone </label>
+                <input
+                  type="checkbox"
+                  id="phone"
+                  name="phone"
+                  value={selectPhone}
+                  onChange={(e) => handleSelectPhone(e.target.value)}
+                />
+              </div>
+            </div>
+          ) : (
+            <div></div>
+          )}
         </div>
-        )}
 
         {isEditable && (
           <button
             onClick={() => writeTask()}
-            disabled={!title || !description || !location || !duration}
+            disabled={isDisabled}
             className={isDisabled ? "disable-button" : "button"}
           >
             Submit
