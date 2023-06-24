@@ -10,10 +10,6 @@
     background-color: #f5f5f5;
   }
   
-  h1 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
   
   .users-list {
     display: flex;
@@ -29,11 +25,7 @@
     margin-bottom: 20px;
   }
   
-  p {
-    margin-bottom: 10px;
-  }
-  
-  img {
+  .user-profile-pic {
     width: 100px;
     height: 100px;
     object-fit: cover;

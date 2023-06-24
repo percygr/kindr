@@ -19,9 +19,10 @@ export default function UsersPage({ allUsers }) {
                 <img
                   src={`${process.env.REACT_APP_SUPABASE_IMAGE_URL}${user.avatar_link}`}
                   alt="Profile"
+                  className="user-profile-pic"
                 />
               ) : (
-                <img src={avatar} alt="Profile" />
+                <img src={avatar} alt="Profile" className="user-profile-pic" />
               )}
               <p>{user.username}</p>
             </div>
