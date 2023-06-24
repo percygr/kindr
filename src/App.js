@@ -71,6 +71,7 @@ function App() {
           console.log("Error:", error);
         } else {
           setAllUsers(data);
+          console.log("all users", data);
         }
       } catch (error) {
         console.log("Error:", error.message);
@@ -248,7 +249,9 @@ function App() {
               /> */}
               <Route
                 path="/users"
-                element={<UsersPage allUsers={allUsers} />}
+                element={
+                  <UsersPage allUsers={allUsers} setAllUsers={setAllUsers} />
+                }
               />
               <Route
                 path="/my-profile"

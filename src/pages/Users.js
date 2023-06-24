@@ -2,6 +2,10 @@ import "./Users.css";
 import avatar from "../imgs/icons/user.png";
 
 export default function UsersPage({ allUsers }) {
+  // Check if allUsers is null or empty
+  if (!allUsers || allUsers.length === 0) {
+    return <div>Loading users...</div>;
+  }
   // list all users with their profile picture
   return (
     <div className="users-container">
