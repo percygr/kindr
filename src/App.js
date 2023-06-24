@@ -71,7 +71,6 @@ function App() {
           console.log("Error:", error);
         } else {
           setAllUsers(data);
-          console.log("all users", data);
         }
       } catch (error) {
         console.log("Error:", error.message);
