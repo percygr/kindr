@@ -13,6 +13,7 @@ import ViewTaskPage from "./pages/ViewTask";
 import SuccessPage from "./pages/Success";
 import MyTasksPage from "./pages/MyTasks";
 import ProfilePage from "./pages/Profile/Profile.js";
+import UsersPage from "./pages/Users";
 // import UpdateProfilePage from "./pages/UpdateProfile";
 import tyreIcon from "../src/imgs/icons/tire.png";
 import gardenIcon from "../src/imgs/icons/gardening.png";
@@ -245,6 +246,10 @@ function App() {
                 path="/editprofile"
                 element={<UpdateProfilePage userInfo={userInfo} />}
               /> */}
+              <Route
+                path="/users"
+                element={<UsersPage allUsers={allUsers} />}
+              />
               <Route
                 path="/my-profile"
                 element={
