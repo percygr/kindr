@@ -37,10 +37,9 @@
   .image-overlay {
     margin-top: 5rem;
     border-radius: 50%;
-    object-fit: cover;
-    min-width: 25%;
-    max-width: 28%;
-    height: 50%;
+    /* object-fit: cover; */
+    width: 30%;
+    height: 30%;
     /* aspect-ratio: 1/1; */
   }
   
