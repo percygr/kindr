@@ -16,12 +16,12 @@
     font-style: normal;
     font-size: 11pt;
     height: 80%;
-    max-width: 90%;
+    width: 80%;
     /* padding: 5%; */
     box-shadow: 3px 5px 10px rgb(0 0 0 / 0.2);
     background-color: white;
     margin-top: 3rem;
-    @media screen and (min-width: 950px) {
+    @media screen and (min-width: 900px) {
       width: 40%
   }
 }
