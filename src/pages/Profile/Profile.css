@@ -27,7 +27,6 @@ border-radius: 10px;
 }
 
 textarea{
-
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -35,8 +34,7 @@ textarea{
   border-radius: 10px;
   border: 1px solid var(--primary-blue);
   background-color: var(--secondary-blue);
-  text-align: left;
-  
+  text-align: left; 
 }
 
 .profile-input-field {

@@ -28,15 +28,35 @@ export default function TaskList({
             categoryIcons,
             categoryFilter,
             userInfo,
-            allUsers
+            allUsers,
+            false
           )}
         </div>
       )}
+
       {!onlyAvailable && (
         <>
+          {/* only show my posted tasks that have the creator_id of my ID */}
+          {tasks.some(
+            (task) => task.status_id === 1 || task.status_id === 2
+          ) && <div className="browse-title">Posted Tasks:</div>}
+
+          <div className="browse-container">
+            {showTasks(
+              tasks,
+              2,
+              setSelectedTask,
+              categoryIcons,
+              categoryFilter,
+              userInfo,
+              allUsers,
+              true
+            )}
+          </div>
+
           {/* only show title if there are some tasks of that status */}
           {tasks.some((task) => task.status_id === 2) && (
-            <div className="browse-title">Active Tasks:</div>
+            <div className="browse-title">Accepted Tasks:</div>
           )}
 
           <div className="browse-container">
@@ -47,7 +67,8 @@ export default function TaskList({
               categoryIcons,
               categoryFilter,
               userInfo,
-              allUsers
+              allUsers,
+              false
             )}
           </div>
 
@@ -62,7 +83,8 @@ export default function TaskList({
               categoryIcons,
               categoryFilter,
               userInfo,
-              allUsers
+              allUsers,
+              false
             )}
           </div>
         </>
@@ -80,7 +102,8 @@ function showTasks(
   categoryIcons,
   categoryFilter,
   userInfo,
-  allUsers
+  allUsers,
+  posted
 ) {
   let filteredTasks;
 
@@ -90,15 +113,24 @@ function showTasks(
       (task) => task.status_id === 1 && task.category_id === categoryFilter
     );
   } else if (categoryFilter === 0) {
+    // this shows all available tasks
     filteredTasks = tasks.filter((task) => task.status_id === 1);
+  } else if (posted) {
+    // show only tasks that I have posted and are available or active
+    filteredTasks = tasks.filter(
+      (task) =>
+        task.creator_id === userInfo.id &&
+        (task.status_id === 1 || task.status_id === 2)
+    );
   } else {
-    // this bit might be for just status 2 and 3
+    // this bit is just status 2 and 3 by default
     filteredTasks = tasks.filter(
       (task) => task.status_id === statusId && task.helper_id === userInfo.id
     );
   }
   if (filteredTasks.length === 0) {
     return (
+      // this is the message that shows when there are no tasks of this type
       <div className="no-tasks-message">
         Oh, it seems there are currently no tasks of this type available!
       </div>

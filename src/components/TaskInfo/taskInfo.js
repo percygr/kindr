@@ -299,8 +299,7 @@ export default function TaskInfo({
           <button
             onClick={() => writeTask()}
             disabled={isDisabled}
-            className={isDisabled ? "disable-button" : "button"}
-          >
+            className={isDisabled ? "disable-button" : "button"}>
             Submit
           </button>
         )}
@@ -311,8 +310,8 @@ export default function TaskInfo({
           </button>
         )}
         {!isEditable && thisTask.status_id === 2 && (
-          <button className="button" onClick={() => updateStatusID(3)}>
-            Completed!
+          <button className="button complete-button"  onClick={() => updateStatusID(3)}>
+            Mark as Complete
           </button>
         )}
         {!isEditable && thisTask.status_id === 3 && (
@@ -324,3 +323,7 @@ export default function TaskInfo({
     </div>
   );
 }
+
+
+// add edit button to the the not-editable version of the TaskInfo component
+// applies to tasks that have statuses 1, 2 and 3 (doesn't need to be in 3, but should make our lives easier)
