@@ -88,3 +88,7 @@ input[type=text] {
     flex-direction: row;
     padding: 2%;
   }
+
+  .complete-button {
+    font-size: 1rem;
+  }

@@ -302,8 +302,8 @@ export default function TaskInfo({
           </button>
         )}
         {!isEditable && thisTask.status_id === 2 && (
-          <button className="button" onClick={() => updateStatusID(3)}>
-            Completed!
+          <button className="button complete-button"  onClick={() => updateStatusID(3)}>
+            Mark as Complete
           </button>
         )}
         {!isEditable && thisTask.status_id === 3 && (
