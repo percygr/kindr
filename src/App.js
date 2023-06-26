@@ -128,7 +128,108 @@ function App() {
     if (error) {
       console.log("error", error);
     }
+
+    for (let i = 0; i < data.length; i++) {
+      let creator = null;
+      if (allUsers) {
+        creator = allUsers.find((user) => user.id === data[i].creator_id);
+      }
+
+      if (creator && userInfo) {
+        if (!isUKPostcode(creator.postcode)) {
+          data[i].distance = "N/A";
+          continue;
+        } else {
+          const distance = await getDistance(
+            creator.postcode,
+            userInfo.postcode,
+            "M"
+          );
+          // check if distance is valid number
+          if (isNaN(distance)) {
+            data[i].distance = "N/A";
+            continue;
+          } else {
+            data[i].distance = distance.toFixed(2);
+          }
+        }
+      }
+    }
     setTasks(data);
+    //console.log("tasks", data);
+  }
+  async function getDistance(originPostcode, destinationPostcode, unit) {
+    try {
+      const response = await fetch(
+        `https://api.postcodes.io/postcodes/${originPostcode}`
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch postcode data");
+      }
+
+      const data = await response.json();
+      const originLatitude = data.result.latitude;
+      const originLongitude = data.result.longitude;
+
+      const destinationResponse = await fetch(
+        `https://api.postcodes.io/postcodes/${destinationPostcode}`
+      );
+
+      if (!destinationResponse.ok) {
+        throw new Error("Failed to fetch destination postcode data");
+      }
+
+      const destinationData = await destinationResponse.json();
+      const destinationLatitude = destinationData.result.latitude;
+      const destinationLongitude = destinationData.result.longitude;
+
+      const distance = calculateDistance(
+        originLatitude,
+        originLongitude,
+        destinationLatitude,
+        destinationLongitude,
+        unit
+      );
+
+      return distance;
+    } catch (error) {
+      console.error(error);
+      return "N/A";
+    }
+  }
+
+  // Helper function to calculate distance between two sets of coordinates
+  function calculateDistance(lat1, lon1, lat2, lon2, unit) {
+    const radlat1 = (Math.PI * lat1) / 180;
+    const radlat2 = (Math.PI * lat2) / 180;
+    const theta = lon1 - lon2;
+    const radtheta = (Math.PI * theta) / 180;
+    let distance =
+      Math.sin(radlat1) * Math.sin(radlat2) +
+      Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+    distance = Math.acos(distance);
+    distance = (distance * 180) / Math.PI;
+    distance = distance * 60 * 1.1515; // Distance in miles
+
+    if (unit === "K") {
+      distance = distance * 1.609344; // Convert miles to kilometers
+    } else if (unit === "N") {
+      distance = distance * 0.8684; // Convert miles to nautical miles
+    }
+    return distance;
+  }
+
+  function isUKPostcode(postcode) {
+    // Remove all whitespace characters from the postcode
+    if (!postcode) {
+      return false;
+    }
+    postcode = postcode.replace(/\s/g, "");
+    // Regular expression pattern for UK postcode validation
+    var pattern =
+      /^(GIR 0AA|[A-PR-UWYZ](?:[0-9]{1,2}|([A-HK-Y][0-9]|[A-HK-Y][0-9](?:[0-9]|[ABEHMNPRV-Y]))|[0-9][A-HJKPS-UW])(?:[0-9][ABD-HJLNP-UW-Z]{2}))$/i;
+    return pattern.test(postcode);
   }
 
   if (!session) {

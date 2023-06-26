@@ -49,6 +49,10 @@ export default function TaskCard({
           <strong>Posted by: </strong>
           {getCreatorName(task.creator_id)}
         </p>
+        <p>
+          <strong>Distance: </strong>
+          {task.distance} miles
+        </p>
       </div>
     </div>
   );
