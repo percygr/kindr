@@ -5,7 +5,7 @@ import "./navbar.css";
 import logo from "../../imgs/logos/logo.png";
 import avatar from "../../imgs/icons/user.png";
 
-function Navbar({ handleLogout, userInfo }) {
+function Navbar({ handleLogout, userInfo, setShowProfileID }) {
   const navRef = useRef();
 
   const showNavbar = () => {
@@ -15,6 +15,11 @@ function Navbar({ handleLogout, userInfo }) {
   const closeNavbar = () => {
     navRef.current.classList.remove("responsive_nav");
   };
+
+  function unsetProfileChoice() {
+    setShowProfileID(null);
+    closeNavbar();
+  }
 
   return (
     <header role="banner">
@@ -47,7 +52,7 @@ function Navbar({ handleLogout, userInfo }) {
         </CustomLink>
         <CustomLink
           to="/profile"
-          onClick={closeNavbar}
+          onClick={() => unsetProfileChoice()}
           aria-label="My Profile page"
         >
           My Profile
@@ -67,7 +72,7 @@ function Navbar({ handleLogout, userInfo }) {
         </button>
         <Link
           to="/profile"
-          onClick={closeNavbar}
+          onClick={() => unsetProfileChoice()}
           aria-label="Navigate to My Profile"
         >
           {userInfo.avatar_link ? (

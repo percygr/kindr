@@ -240,10 +240,10 @@ export default function TaskInfo({
 
         {!isEditable && (
           <div onClick={() => handleCreatorClick()}>
-            <p className="creator-name">
-              <strong>Posted by: </strong>
+            <strong>Posted by: </strong>
+            <span className="creator-name">
               {getCreatorName(thisTask.creator_id)}
-            </p>
+            </span>
           </div>
         )}
 

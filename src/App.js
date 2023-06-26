@@ -179,7 +179,11 @@ function App() {
     return (
       <div className="App">
         <BrowserRouter>
-          <Navbar handleLogout={handleLogout} userInfo={userInfo} />
+          <Navbar
+            handleLogout={handleLogout}
+            userInfo={userInfo}
+            setShowProfileID={setShowProfileID}
+          />
           <div>
             <Routes>
               <Route path="/" element={<HomePage userInfo={userInfo} />} />
@@ -261,6 +265,7 @@ function App() {
                     userInfo={userInfo}
                     setUserInfo={setUserInfo}
                     showProfileID={showProfileID}
+                    allUsers={allUsers}
                   />
                 }
               />

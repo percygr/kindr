@@ -89,8 +89,11 @@ input[type=text] {
     padding: 2%;
   }
 
-  .creator-name {
+  .creator-name{
     margin-bottom: 1rem;
     cursor: pointer;
+  }
+
+  .creator-name:hover{  
     text-decoration: underline;
   }
