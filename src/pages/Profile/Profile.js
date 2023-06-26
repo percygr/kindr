@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useState, useEffect } from "react";
 import { createClient } from "@supabase/supabase-js";
 import Usericon from "../../imgs/icons/user.png";
 import contact from "../../imgs/icons/contact.png";
@@ -13,7 +13,7 @@ const supabase = createClient(
   process.env.REACT_APP_SUPABASE_KEY
 );
 
-function ProfilePage({ userInfo, setUserInfo, showProfileID, allUsers }) {
+function ProfilePage({ userInfo, setUserInfo, allUsers, showProfileID }) {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [contactnumber, setContactnumber] = useState("");
@@ -120,91 +120,93 @@ function ProfilePage({ userInfo, setUserInfo, showProfileID, allUsers }) {
     }
   };
 
+
+  
+     
   return (
     <div>
       <div className="container">
         <img className="image-overlay" src={profileImage} alt="avatar" />
         {!showProfileID && (
-          <div>
-            <input type="file" onChange={handleFileChange} />
-          </div>
+          <input type="file" onChange={handleFileChange} />
         )}
+
         <h1>
           {(userInfo && `${firstname} ${lastname}`) ||
             "Hello, you must be new here! Please enter your user details below:"}
         </h1>
-        <div className="inputs-container">
-          {!showProfileID && (
-            <div className="profile-input-field">
-              <img className="icon-size" src={Usericon} alt="user-icon"></img>
-              <input
-                type="text"
-                placeholder="First Name"
-                value={firstname}
-                onChange={(e) => setFirstname(e.target.value)}
-              />
-              <img className="icon-size" src={Usericon} alt="user-icon"></img>
-              <input
-                type="text"
-                placeholder="Last Name"
-                value={lastname}
-                onChange={(e) => setLastname(e.target.value)}
-              />
-            </div>
-          )}
 
-          {!showProfileID && (
-            <div>
-              <div className="profile-input-field">
-                <img className="icon-size" src={dateOfBirth} alt="D.O.B"></img>
-
-                <input
-                  type="date"
-                  value={DOB}
-                  onChange={(e) => setDOB(e.target.value)}
-                />
-              </div>
-
-              <div className="profile-input-field">
-                <img className="icon-size" src={contact} alt="contact"></img>
-                <input
-                  type="tel"
-                  placeholder="Contact number"
-                  value={contactnumber}
-                  onChange={(e) => setContactnumber(e.target.value)}
-                />
-              </div>
-
-              <div className="profile-input-field">
-                <img className="icon-size" src={location} alt="address"></img>
-                <input
-                  type="text"
-                  placeholder="Address"
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
-                />
-              </div>
-
-              <div className="profile-input-field">
-                <img className="icon-size" src={location} alt="address"></img>
-                <input
-                  type="text"
-                  placeholder="Post Code"
-                  value={postcode}
-                  onChange={(e) => setPostcode(e.target.value)}
-                />
-              </div>
-            </div>
-          )}
-        </div>
-        {/* <button className="button-blue">Edit Profile</button> */}
         {!showProfileID && (
-          <div>
-            <button className="button-green" onClick={() => handleSubmit()}>
-              Save changes
-            </button>
+        <div className="inputs-container">
+          <div className="profile-input-field">
+            <img className="icon-size" src={Usericon} alt="user-icon"></img>
+            <input
+              type="text"
+              placeholder="First Name"
+              value={firstname}
+              onChange={(e) => setFirstname(e.target.value)}
+            />
           </div>
+
+          <div className="profile-input-field">
+            <img className="icon-size" src={Usericon} alt="user-icon"></img>
+            <input
+              type="text"
+              placeholder="Last Name"
+              value={lastname}
+              onChange={(e) => setLastname(e.target.value)}
+            />
+          </div>
+
+          <div className="profile-input-field">
+            <img className="icon-size" src={dateOfBirth} alt="D.O.B"></img>
+
+            <input
+              type="date"
+              value={DOB}
+              onChange={(e) => setDOB(e.target.value)}
+            />
+          </div>
+
+          <div className="profile-input-field">
+            <img className="icon-size" src={contact} alt="contact"></img>
+            <input
+              type="tel"
+              placeholder="Contact number"
+              value={contactnumber}
+              onChange={(e) => setContactnumber(e.target.value)}
+            />
+          </div>
+
+          <div className="profile-input-field">
+            <img className="icon-size" src={location} alt="address"></img>
+            <input
+              type="text"
+              placeholder="Address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+            />
+          </div>
+
+          <div className="profile-input-field">
+            <img className="icon-size" src={location} alt="address"></img>
+            <input
+              type="text"
+              placeholder="Post Code"
+              value={postcode}
+              onChange={(e) => setPostcode(e.target.value)}
+            />
+          </div>
+        </div>
         )}
+       
+        {!showProfileID && (
+        <button className="button-green" onClick={() => handleSubmit()}>
+          Save changes
+        </button>
+        )
+        }
+
         <button
           onClick={() => {
             goHome();
