@@ -13,7 +13,7 @@ const supabase = createClient(
   process.env.REACT_APP_SUPABASE_KEY
 );
 
-function ProfilePage({ userInfo, setUserInfo }) {
+function ProfilePage({ userInfo, setUserInfo, showProfileID }) {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [contactnumber, setContactnumber] = useState("");
@@ -25,6 +25,7 @@ function ProfilePage({ userInfo, setUserInfo }) {
   const [profileImage, setProfileImage] = useState(null);
 
   useEffect(() => {
+    console.log(showProfileID);
     if (userInfo) {
       setFirstname(userInfo.firstname);
       setLastname(userInfo.surname);

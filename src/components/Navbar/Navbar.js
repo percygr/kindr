@@ -46,7 +46,7 @@ function Navbar({ handleLogout, userInfo }) {
           FAQ Page
         </CustomLink>
         <CustomLink
-          to="/my-profile"
+          to="/profile"
           onClick={closeNavbar}
           aria-label="My Profile page"
         >
@@ -66,7 +66,7 @@ function Navbar({ handleLogout, userInfo }) {
           Log Out
         </button>
         <Link
-          to="/my-profile"
+          to="/profile"
           onClick={closeNavbar}
           aria-label="Navigate to My Profile"
         >
