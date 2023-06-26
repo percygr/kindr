@@ -19,6 +19,7 @@ export default function TaskInfo({
   setSuccessPath, // function to set path for success page
   userInfo, // user info from supabase
   allUsers, // array of all users from supabase
+  setShowProfileID, // function to set profile ID for use on the profile page
 }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -136,6 +137,12 @@ export default function TaskInfo({
     }
   }
 
+  function handleCreatorClick() {
+    // set a setstate to set the creator id
+    setShowProfileID(thisTask.creator_id);
+    navigate("/profile");
+  }
+
   return (
     <div className="view-card-container">
       <div className="all-info">
@@ -232,9 +239,11 @@ export default function TaskInfo({
         </div>
 
         {!isEditable && (
-          <div>
+          <div onClick={() => handleCreatorClick()}>
             <strong>Posted by: </strong>
-            {getCreatorName(thisTask.creator_id)}
+            <span className="creator-name">
+              {getCreatorName(thisTask.creator_id)}
+            </span>
           </div>
         )}
 

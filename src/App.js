@@ -45,6 +45,7 @@ function App() {
   const [session, setSession] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
   const [allUsers, setAllUsers] = useState(null);
+  const [showProfileID, setShowProfileID] = useState(false);
 
   const getUsers = useCallback(
     async (session) => {
@@ -178,7 +179,11 @@ function App() {
     return (
       <div className="App">
         <BrowserRouter>
-          <Navbar handleLogout={handleLogout} userInfo={userInfo} />
+          <Navbar
+            handleLogout={handleLogout}
+            userInfo={userInfo}
+            setShowProfileID={setShowProfileID}
+          />
           <div>
             <Routes>
               <Route path="/" element={<HomePage userInfo={userInfo} />} />
@@ -239,6 +244,7 @@ function App() {
                     setSuccessPath={setSuccessPath}
                     userInfo={userInfo}
                     allUsers={allUsers}
+                    setShowProfileID={setShowProfileID}
                   />
                 }
               />
@@ -253,9 +259,14 @@ function App() {
                 }
               />
               <Route
-                path="/my-profile"
+                path="/profile"
                 element={
-                  <ProfilePage userInfo={userInfo} setUserInfo={setUserInfo} />
+                  <ProfilePage
+                    userInfo={userInfo}
+                    setUserInfo={setUserInfo}
+                    showProfileID={showProfileID}
+                    allUsers={allUsers}
+                  />
                 }
               />
               <Route

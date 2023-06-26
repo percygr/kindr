@@ -89,6 +89,16 @@ input[type=text] {
     padding: 2%;
   }
 
+  .creator-name{
+    margin-bottom: 1rem;
+    cursor: pointer;
+  }
+
+  .creator-name:hover{  
+    text-decoration: underline;
+}
+
   .complete-button {
     font-size: 1rem;
+
   }
