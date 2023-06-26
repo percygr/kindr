@@ -23,7 +23,7 @@ function ProfilePage({ userInfo, setUserInfo, allUsers, showProfileID }) {
   const [loading, setLoading] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [profileImage, setProfileImage] = useState(null);
-
+  const [bio, setBio] = useState("");
   useEffect(() => {
     //console.log("show profile id", showProfileID);
     if (showProfileID) {
@@ -35,6 +35,7 @@ function ProfilePage({ userInfo, setUserInfo, allUsers, showProfileID }) {
       setPostcode(thisProfile[0].postcode);
       setDOB(thisProfile[0].dob);
       setAddress(thisProfile[0].address);
+      setBio(thisProfile[0].bio);
       if (thisProfile[0].avatar_link) {
         setProfileImage(
           `${process.env.REACT_APP_SUPABASE_IMAGE_URL}${thisProfile[0].avatar_link}`
@@ -49,6 +50,7 @@ function ProfilePage({ userInfo, setUserInfo, allUsers, showProfileID }) {
       setPostcode(userInfo.postcode);
       setDOB(userInfo.dob);
       setAddress(userInfo.address);
+      setBio(userInfo.bio)
       if (userInfo.avatar_link) {
         setProfileImage(
           `${process.env.REACT_APP_SUPABASE_IMAGE_URL}${userInfo.avatar_link}`
@@ -60,6 +62,7 @@ function ProfilePage({ userInfo, setUserInfo, allUsers, showProfileID }) {
   }, [userInfo, showProfileID]);
 
   async function handleSubmit() {
+    console.log(bio)
     setLoading(true);
     let fileName = "";
     if (selectedFile) {
@@ -93,6 +96,7 @@ function ProfilePage({ userInfo, setUserInfo, allUsers, showProfileID }) {
         dob: DOB,
         address: address,
         avatar_link: fileName,
+        bio: bio
       })
       .match({ id: userInfo.id });
     if (error) {
@@ -135,6 +139,9 @@ function ProfilePage({ userInfo, setUserInfo, allUsers, showProfileID }) {
           {(userInfo && `${firstname} ${lastname}`) ||
             "Hello, you must be new here! Please enter your user details below:"}
         </h1>
+
+        {showProfileID  && (
+          <p> {bio} </p>)}
 
         {!showProfileID && (
         <div className="inputs-container">
@@ -197,6 +204,15 @@ function ProfilePage({ userInfo, setUserInfo, allUsers, showProfileID }) {
               onChange={(e) => setPostcode(e.target.value)}
             />
           </div>
+
+          <div className="bio">
+            <textarea
+              placeholder="A little about me..."
+              value = {bio}
+              onChange={(e) => setBio(e.target.value)}
+            />
+          </div>
+
         </div>
         )}
        
