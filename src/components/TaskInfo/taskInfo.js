@@ -29,6 +29,11 @@ export default function TaskInfo({
   const [selectEmail, setSelectEmail] = useState(false);
   const [selectPhone, setSelectPhone] = useState(false);
 
+  const navigate = useNavigate();
+
+  let categoryID = 0;
+  let thisTask = {};
+
   useEffect(() => {
     setIsDisabled(
       !title ||
@@ -39,13 +44,29 @@ export default function TaskInfo({
     );
   }, [title, description, location, duration, selectEmail, selectPhone]);
 
-  const navigate = useNavigate();
-
-  let categoryID = 0;
-  let thisTask = {};
+  useEffect(() => {
+    if (selectedTask) {
+      console.log("hello");
+      const task = tasks.find((task) => task.id === selectedTask);
+      setTitle(task.title);
+      setDescription(task.description);
+      setLocation(task.location);
+      setDuration(task.duration);
+      setSelectEmail(task.show_email);
+      setSelectPhone(task.show_phone);
+    }
+    console.log("showemail", selectEmail);
+    console.log("showphone", selectPhone);
+  }, [selectedTask, tasks]);
 
   if (isEditable) {
-    categoryID = category - 1;
+    if (selectedTask) {
+      categoryID = tasks.find((task) => task.id === selectedTask).category_id;
+      console.log("thistask2", thisTask);
+      console.log("categoryID", categoryID);
+    } else {
+      categoryID = category - 1;
+    }
   } else {
     thisTask = tasks.find((task) => task.id === selectedTask);
     categoryID = thisTask.category_id - 1;
@@ -84,11 +105,11 @@ export default function TaskInfo({
   }
 
   function editTask() {
-      isEditable = true;
-      setSelectedTask(thisTask.id);
-      console.log(thisTask)
-      console.log(isEditable)
-      navigate('/edit')
+    isEditable = true;
+    setSelectedTask(thisTask.id);
+    //console.log(thisTask);
+    //console.log(isEditable);
+    navigate("/edit");
   }
 
   async function updateStatusID(newStatusID) {
@@ -277,7 +298,7 @@ export default function TaskInfo({
                   type="checkbox"
                   id="email"
                   name="email"
-                  value={selectEmail}
+                  checked={selectEmail}
                   onChange={(e) => handleSelectEmail(e.target.value)}
                 />
                 <label htmlFor="phone"> Phone </label>
@@ -285,7 +306,7 @@ export default function TaskInfo({
                   type="checkbox"
                   id="phone"
                   name="phone"
-                  value={selectPhone}
+                  checked={selectPhone}
                   onChange={(e) => handleSelectPhone(e.target.value)}
                 />
               </div>
@@ -299,23 +320,33 @@ export default function TaskInfo({
           <button
             onClick={() => writeTask()}
             disabled={isDisabled}
-            className={isDisabled ? "disable-button" : "button"}>
+            className={isDisabled ? "disable-button" : "button"}
+          >
             Submit
           </button>
         )}
 
         {!isEditable && thisTask.status_id === 1 && (
-          <button className="button accept-button" onClick={() => updateStatusID(2)}>
+          <button
+            className="button accept-button"
+            onClick={() => updateStatusID(2)}
+          >
             Accept
           </button>
         )}
         {!isEditable && thisTask.status_id === 2 && (
-          <button className="button complete-button"  onClick={() => updateStatusID(3)}>
+          <button
+            className="button complete-button"
+            onClick={() => updateStatusID(3)}
+          >
             Mark as Complete
           </button>
         )}
         {!isEditable && thisTask.status_id === 3 && (
-          <button className="button delete-button" onClick={() => updateStatusID(4)}>
+          <button
+            className="button delete-button"
+            onClick={() => updateStatusID(4)}
+          >
             Delete
           </button>
         )}
@@ -328,7 +359,6 @@ export default function TaskInfo({
     </div>
   );
 }
-
 
 // add edit button to the the not-editable version of the TaskInfo component
 // applies to tasks that have statuses 1, 2 and 3 (doesn't need to be in 3, but should make our lives easier)
