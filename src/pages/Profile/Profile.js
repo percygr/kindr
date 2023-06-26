@@ -7,6 +7,7 @@ import location from "../../imgs/icons/address.png";
 import "./Profile.css";
 import { v4 as uuidv4 } from "uuid";
 import avatar from "../../imgs/icons/user.png";
+import StarRating from "../../components/StarRating/StarRating.js";
 
 const supabase = createClient(
   process.env.REACT_APP_SUPABASE_URL,
@@ -132,7 +133,14 @@ function ProfilePage({ userInfo, setUserInfo, allUsers, showProfileID }) {
           {(userInfo && `${firstname} ${lastname}`) ||
             "Hello, you must be new here! Please enter your user details below:"}
         </h1>
-        {showProfileID && <p className="user-bio"> {bio} </p>}
+        
+        {showProfileID  && (
+          <div >
+          <p className="user-bio"> {bio} </p>
+          <StarRating />
+          </div>)
+          }
+
         {!showProfileID && (
           <div className="inputs-container">
             <div className="profile-input-field">
