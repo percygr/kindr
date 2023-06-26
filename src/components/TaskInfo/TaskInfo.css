@@ -96,4 +96,9 @@ input[type=text] {
 
   .creator-name:hover{  
     text-decoration: underline;
+}
+
+  .complete-button {
+    font-size: 1rem;
+
   }
