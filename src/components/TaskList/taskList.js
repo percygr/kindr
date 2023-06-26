@@ -32,11 +32,34 @@ export default function TaskList({
           )}
         </div>
       )}
+
+      {(
+        <>
+            {/* only show my posted tasks that have the creator_id of my ID */}
+        {tasks.some((task) => task.creator_id) && (
+          <div className="browse-title">Posted Tasks:</div>
+          )}
+
+          <div className="browse-container">
+            {showTasks(
+              tasks,
+              2,
+              setSelectedTask,
+              categoryIcons,
+              categoryFilter,
+              userInfo,
+              allUsers
+            )}
+          </div> 
+          </>
+      )}
+       
+      
       {!onlyAvailable && (
         <>
           {/* only show title if there are some tasks of that status */}
           {tasks.some((task) => task.status_id === 2) && (
-            <div className="browse-title">Active Tasks:</div>
+            <div className="browse-title">Accepted Tasks:</div>
           )}
 
           <div className="browse-container">
@@ -91,13 +114,12 @@ function showTasks(
     );
   } else if (categoryFilter === 0) {
     filteredTasks = tasks.filter((task) => task.status_id === 1);
-  } else {
+  }  else {
     // this bit might be for just status 2 and 3
     filteredTasks = tasks.filter(
-      (task) => task.status_id === statusId && task.helper_id === userInfo.id
+      (task) => task.status_id === statusId && task.helper_id === userInfo.id && task.creator_id === userInfo.id
     );
-  }
-  if (filteredTasks.length === 0) {
+  }  if (filteredTasks.length === 0) {
     return (
       <div className="no-tasks-message">
         Oh, it seems there are currently no tasks of this type available!

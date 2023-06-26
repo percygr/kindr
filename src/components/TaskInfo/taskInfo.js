@@ -290,8 +290,7 @@ export default function TaskInfo({
           <button
             onClick={() => writeTask()}
             disabled={isDisabled}
-            className={isDisabled ? "disable-button" : "button"}
-          >
+            className={isDisabled ? "disable-button" : "button"}>
             Submit
           </button>
         )}
@@ -315,3 +314,7 @@ export default function TaskInfo({
     </div>
   );
 }
+
+
+// add edit button to the the not-editable version of the TaskInfo component
+// applies to tasks that have statuses 1, 2 and 3 (doesn't need to be in 3, but should make our lives easier)
