@@ -7,21 +7,21 @@ function StarRating() {
   // Catch Rating value
   const handleRating = (rate) => {
     setRating(rate);
-
+console.log(rating)
     // other logic
   };
 
   // Optional callback functions
-  const onPointerEnter = () => console.log('Enter');
-  const onPointerLeave = () => console.log('Leave');
+//   const onPointerEnter = () => console.log('Enter');
+//   const onPointerLeave = () => console.log('Leave');
   const onPointerMove = (value, index) => console.log(value, index);
 
   return (
     <div className='star-rating'>
       <Rating
         onClick={handleRating}
-        onPointerEnter={onPointerEnter}
-        onPointerLeave={onPointerLeave}
+        // onPointerEnter={onPointerEnter}
+        // onPointerLeave={onPointerLeave}
         onPointerMove={onPointerMove}
         /* Available Props */
       />
