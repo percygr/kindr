@@ -59,7 +59,7 @@ function ProfilePage({ userInfo, setUserInfo, allUsers, showProfileID }) {
         setProfileImage(avatar);
       }
     }
-  }, [userInfo, showProfileID]);
+  }, [userInfo, showProfileID, allUsers]);
 
   async function handleSubmit() {
     console.log(bio)
