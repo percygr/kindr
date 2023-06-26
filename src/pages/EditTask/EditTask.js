@@ -1,9 +1,8 @@
-import TaskInfo from "../components/TaskInfo/taskInfo";
+import TaskInfo from "../../components/TaskInfo/taskInfo"
 
-export default function ViewTaskPage({
+export default function EditTaskPage({
   categoryIcons,
   selectedTask,
-  setSelectedTask,
   tasks,
   getTasks,
   setSuccessPath,
@@ -11,12 +10,11 @@ export default function ViewTaskPage({
   allUsers,
 }) {
   return (
-    <div className="view-task">
+    <div className="create-task">
       <TaskInfo
-        isEditable={false}
+        isEditable={true}
         categoryIcons={categoryIcons}
         selectedTask={selectedTask}
-        setSelectedTask={setSelectedTask}
         tasks={tasks}
         getTasks={getTasks}
         setSuccessPath={setSuccessPath}

@@ -14,6 +14,7 @@ export default function TaskInfo({
   categoryIcons, // array of icon links, indexed 0-5
   category, // the category chosen in categoryTiles - used when creating a new task
   selectedTask, // task ID of clicked TaskCard - used when viewing a task
+  setSelectedTask, // function to set selectedTask
   tasks, // array of all tasks, only used when isEditable is false
   getTasks, // function to refresh task list
   setSuccessPath, // function to set path for success page
@@ -80,6 +81,14 @@ export default function TaskInfo({
     getTasks();
     setSuccessPath("created");
     navigate(`/success`);
+  }
+
+  function editTask() {
+      isEditable = true;
+      setSelectedTask(thisTask.id);
+      console.log(thisTask)
+      console.log(isEditable)
+      navigate('/edit')
   }
 
   async function updateStatusID(newStatusID) {
@@ -296,7 +305,7 @@ export default function TaskInfo({
         )}
 
         {!isEditable && thisTask.status_id === 1 && (
-          <button className="button" onClick={() => updateStatusID(2)}>
+          <button className="button accept-button" onClick={() => updateStatusID(2)}>
             Accept
           </button>
         )}
@@ -306,8 +315,13 @@ export default function TaskInfo({
           </button>
         )}
         {!isEditable && thisTask.status_id === 3 && (
-          <button className="button" onClick={() => updateStatusID(4)}>
+          <button className="button delete-button" onClick={() => updateStatusID(4)}>
             Delete
+          </button>
+        )}
+        {!isEditable && thisTask.creator_id === userInfo.id && (
+          <button className="button edit-button" onClick={() => editTask()}>
+            Edit
           </button>
         )}
       </div>
