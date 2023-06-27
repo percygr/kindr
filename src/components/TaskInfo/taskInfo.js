@@ -318,9 +318,8 @@ export default function TaskInfo({
           </div>
         )}
 
-{!isEditable && (
-          <div 
-          onClick={() => handleHelperClick()}>
+        {!isEditable && (
+          <div onClick={() => handleHelperClick()}>
             <strong>Accepted by: </strong>
             <span className="creator-name">
               {getHelperName(thisTask.helper_id)}
@@ -402,15 +401,17 @@ export default function TaskInfo({
               Accept
             </button>
           )}
-        {!isEditable && thisTask.status_id === 2 && !(thisTask.creator_id === userInfo.id) && (
-          <button
-            className="button delete-button"
-            onClick={() => updateStatusID(1)}
-          >
-            Cancel
-          </button>
-        )}
-        {!isEditable && thisTask.status_id === 2 &&  (
+        {!isEditable &&
+          thisTask.status_id === 2 &&
+          !(thisTask.creator_id === userInfo.id) && (
+            <button
+              className="button delete-button"
+              onClick={() => updateStatusID(1)}
+            >
+              Cancel
+            </button>
+          )}
+        {!isEditable && thisTask.status_id === 2 && (
           <button
             className="button complete-button"
             onClick={() => updateStatusID(3)}
