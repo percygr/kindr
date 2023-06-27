@@ -56,13 +56,13 @@ export default function TaskInfo({
       setSelectEmail(task.show_email);
       setSelectPhone(task.show_phone);
       setSelectCategory(task.category_id);
-      console.log("category ID", task.category_id)
     }
   }, [selectedTask, tasks]);
 
   if (isEditable) {
     if (selectedTask) {
-      categoryID = tasks.find((task) => task.id === selectedTask).category_id;
+      categoryID =
+        tasks.find((task) => task.id === selectedTask).category_id - 1;
     } else {
       categoryID = category - 1;
     }
@@ -114,7 +114,8 @@ export default function TaskInfo({
   async function updateStatusID(newStatusID) {
     let user = null;
     if (newStatusID !== 1) {
-      user = userInfo.id;} 
+      user = userInfo.id;
+    }
     const { error } = await supabase
       .from("tasks")
       .update({
@@ -356,14 +357,16 @@ export default function TaskInfo({
           </button>
         )}
 
-        {!isEditable && thisTask.status_id === 1 && !(thisTask.creator_id === userInfo.id) && (
-          <button
-            className="button accept-button"
-            onClick={() => updateStatusID(2)}
-          >
-            Accept
-          </button>
-        )}
+        {!isEditable &&
+          thisTask.status_id === 1 &&
+          !(thisTask.creator_id === userInfo.id) && (
+            <button
+              className="button accept-button"
+              onClick={() => updateStatusID(2)}
+            >
+              Accept
+            </button>
+          )}
         {!isEditable && thisTask.status_id === 2 && (
           <button
             className="button delete-button"
@@ -380,7 +383,8 @@ export default function TaskInfo({
             Mark as Complete
           </button>
         )}
-        {((!isEditable && thisTask.status_id === 3) || (thisTask.creator_id === userInfo.id)) && (
+        {((!isEditable && thisTask.status_id === 3) ||
+          thisTask.creator_id === userInfo.id) && (
           <button
             className="button delete-button"
             onClick={() => updateStatusID(4, "myTasks")}
