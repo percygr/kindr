@@ -72,6 +72,15 @@ export default function TaskInfo({
     categoryID = thisTask.category_id - 1;
   }
 
+  function getHelperName(helperId) {
+    const helper = allUsers.find((user) => user.id === helperId);
+    if (helper) {
+      return `${helper.firstname} ${helper.surname}`;
+    } else {
+      return "";
+    }
+  }
+
   function getCreatorName(creatorId) {
     const creator = allUsers.find((user) => user.id === creatorId);
     if (creator) {
@@ -199,6 +208,12 @@ export default function TaskInfo({
     navigate("/profile");
   }
 
+  function handleHelperClick() {
+    // set a setstate to set the creator id
+    setShowProfileID(thisTask.helper_id);
+    navigate("/profile");
+  }
+
   return (
     <div className="view-card-container">
       <div className="all-info">
@@ -299,6 +314,16 @@ export default function TaskInfo({
             <strong>Posted by: </strong>
             <span className="creator-name">
               {getCreatorName(thisTask.creator_id)}
+            </span>
+          </div>
+        )}
+
+{!isEditable && (
+          <div 
+          onClick={() => handleHelperClick()}>
+            <strong>Accepted by: </strong>
+            <span className="creator-name">
+              {getHelperName(thisTask.helper_id)}
             </span>
           </div>
         )}
