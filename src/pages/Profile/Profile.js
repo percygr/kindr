@@ -128,7 +128,7 @@ function ProfilePage({ userInfo, setUserInfo, allUsers, showProfileID }) {
     <div>
       <div className="container">
         <div className="image-container2">
-          <img className="profile-img" src={profileImage} alt="avatar" />
+          <img src={profileImage} alt="avatar" />
         </div>
         {!showProfileID && <input type="file" onChange={handleFileChange} />}
         <h1>

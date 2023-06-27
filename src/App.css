@@ -65,6 +65,7 @@ background-size: cover;
   --secondary-blue: #caf1f9;
   --in-progress: #fdb645;
   --text-colour: #000000;
+  --link-color: #015e72;
 
   --gradient: linear-gradient(
     90deg,
