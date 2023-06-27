@@ -64,6 +64,81 @@ function App() {
     [userInfo]
   );
 
+  const getDistance = useCallback(
+    async (originPostcode, destinationPostcode, unit) => {
+      try {
+        const response = await fetch(
+          `https://api.postcodes.io/postcodes/${originPostcode}`
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch postcode data", originPostcode);
+        }
+
+        const data = await response.json();
+        const originLatitude = data.result.latitude;
+        const originLongitude = data.result.longitude;
+
+        const destinationResponse = await fetch(
+          `https://api.postcodes.io/postcodes/${destinationPostcode}`
+        );
+
+        if (!destinationResponse.ok) {
+          throw new Error(
+            "Failed to fetch destination postcode data",
+            destinationPostcode
+          );
+        }
+
+        const destinationData = await destinationResponse.json();
+        const destinationLatitude = destinationData.result.latitude;
+        const destinationLongitude = destinationData.result.longitude;
+
+        const distance = calculateDistance(
+          originLatitude,
+          originLongitude,
+          destinationLatitude,
+          destinationLongitude,
+          unit
+        );
+
+        return distance;
+      } catch (error) {
+        console.error(error);
+        return "N/A";
+      }
+    },
+    []
+  );
+
+  // Helper function to calculate distance between two sets of coordinates
+  function calculateDistance(lat1, lon1, lat2, lon2) {
+    const radlat1 = (Math.PI * lat1) / 180;
+    const radlat2 = (Math.PI * lat2) / 180;
+    const theta = lon1 - lon2;
+    const radtheta = (Math.PI * theta) / 180;
+    let distance =
+      Math.sin(radlat1) * Math.sin(radlat2) +
+      Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+    distance = Math.acos(distance);
+    distance = (distance * 180) / Math.PI;
+    distance = distance * 60 * 1.1515; // Distance in miles
+
+    return distance;
+  }
+
+  function isUKPostcode(postcode) {
+    // Remove all whitespace characters from the postcode
+    if (!postcode) {
+      return false;
+    }
+    postcode = postcode.replace(/\s/g, "");
+    // Regular expression pattern for UK postcode validation
+    var pattern =
+      /^(GIR 0AA|[A-PR-UWYZ](?:[0-9]{1,2}|([A-HK-Y][0-9]|[A-HK-Y][0-9](?:[0-9]|[ABEHMNPRV-Y]))|[0-9][A-HJKPS-UW])(?:[0-9][ABD-HJLNP-UW-Z]{2}))$/i;
+    return pattern.test(postcode);
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -71,15 +146,31 @@ function App() {
         if (error) {
           console.log("Error:", error);
         } else {
+          for (let i = 0; i < data.length; i++) {
+            const userPostcode = data[i].postcode;
+            if (isUKPostcode(userPostcode)) {
+              const distance = await getDistance(
+                userPostcode,
+                userInfo?.postcode
+              );
+              //check if distance is a number
+              if (isNaN(distance)) {
+                data[i].distance = "N/A";
+              } else {
+                data[i].distance = distance.toFixed(1);
+              }
+            }
+          }
           setAllUsers(data);
         }
       } catch (error) {
         console.log("Error:", error.message);
       }
     };
-
-    fetchData();
-  }, [userInfo]);
+    if (userInfo) {
+      fetchData();
+    }
+  }, [userInfo, getDistance]);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -90,7 +181,6 @@ function App() {
         getUsers(session);
       }
     });
-
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
@@ -101,7 +191,6 @@ function App() {
         getUsers(session);
       }
     });
-
     return () => subscription.unsubscribe();
   }, [getUsers]);
 
@@ -129,6 +218,7 @@ function App() {
       console.log("error", error);
     }
     setTasks(data);
+    //console.log("tasks", data);
   }
 
   if (!session) {
