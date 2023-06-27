@@ -336,6 +336,7 @@ function App() {
                     setSuccessPath={setSuccessPath}
                     userInfo={userInfo}
                     allUsers={allUsers}
+                    setShowProfileID={setShowProfileID}
                   />
                 }
               />
