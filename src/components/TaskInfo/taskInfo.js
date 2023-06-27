@@ -377,7 +377,7 @@ export default function TaskInfo({
               Accept
             </button>
           )}
-        {!isEditable && thisTask.status_id === 2 && (
+        {!isEditable && thisTask.status_id === 2 && !(thisTask.creator_id === userInfo.id) && (
           <button
             className="button delete-button"
             onClick={() => updateStatusID(1)}
@@ -385,7 +385,7 @@ export default function TaskInfo({
             Cancel
           </button>
         )}
-        {!isEditable && thisTask.status_id === 2 && (
+        {!isEditable && thisTask.status_id === 2 &&  (
           <button
             className="button complete-button"
             onClick={() => updateStatusID(3)}
