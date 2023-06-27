@@ -1,6 +1,6 @@
 //import { is } from "@babel/types";
 import { createClient } from "@supabase/supabase-js";
-import { useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./TaskInfo.css";
 
@@ -22,7 +22,6 @@ export default function TaskInfo({
   allUsers, // array of all users from supabase
   editMode,
   setShowProfileID, // function to set profile ID for use on the profile page
-
 }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -171,7 +170,6 @@ export default function TaskInfo({
     }
   }
 
-
   async function updateTask() {
     //update supabase task id id selectedTask
     const { error } = await supabase
@@ -192,6 +190,7 @@ export default function TaskInfo({
     }
     // refresh task list
     getTasks();
+    navigate("/view");
   }
 
   function handleCreatorClick() {
