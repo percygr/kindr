@@ -25,6 +25,8 @@ function ProfilePage({ userInfo, setUserInfo, allUsers, showProfileID }) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [profileImage, setProfileImage] = useState(null);
   const [bio, setBio] = useState("");
+  const [isDisabled, setIsDisabled] = useState(true);
+
   useEffect(() => {
     //console.log("show profile id", showProfileID);
     if (showProfileID) {
@@ -62,7 +64,12 @@ function ProfilePage({ userInfo, setUserInfo, allUsers, showProfileID }) {
     }
   }, [userInfo, showProfileID, allUsers]);
 
+  useEffect(() => {
+    setIsDisabled(!firstname || !postcode || !lastname || !DOB);
+  }, [firstname, lastname, postcode, DOB]);
+
   async function handleSubmit() {
+    console.log("userInfo", userInfo);
     setLoading(true);
     let fileName = "";
     if (selectedFile) {
@@ -132,7 +139,7 @@ function ProfilePage({ userInfo, setUserInfo, allUsers, showProfileID }) {
         </div>
         {!showProfileID && <input type="file" onChange={handleFileChange} />}
         <h1>
-          {(userInfo && `${firstname} ${lastname}`) ||
+          {(userInfo.firstname && `${firstname} ${lastname}`) ||
             "Hello, you must be new here! Please enter your user details below:"}
         </h1>
         {showProfileID && (
@@ -213,7 +220,11 @@ function ProfilePage({ userInfo, setUserInfo, allUsers, showProfileID }) {
           </div>
         )}
         {!showProfileID && (
-          <button className="button-green" onClick={() => handleSubmit()}>
+          <button
+            onClick={() => handleSubmit()}
+            disabled={isDisabled}
+            className={isDisabled ? "disable-button" : "save-changes-button"}
+          >
             Save changes
           </button>
         )}
@@ -221,7 +232,7 @@ function ProfilePage({ userInfo, setUserInfo, allUsers, showProfileID }) {
           onClick={() => {
             goHome();
           }}
-          className="button"
+          className="button "
         >
           Home
         </button>

@@ -91,6 +91,10 @@ input::file-selector-button{
 }
 
 
+.save-changes-button {
+  width: 150px;
+  height: 37px; 
+}
 
 
 .button-blue {
@@ -110,11 +114,10 @@ input::file-selector-button{
   height: 50px;
   background: var(--primary-green);
   border-radius: 30px;
+  margin: 10px;
   border: none;
-  color: #000;
+  color: black;
   font-size: 16pt;
-  margin-top: 1.5rem;
-  margin-left: 0%;
 }
 
 .profile-input-field {

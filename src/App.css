@@ -192,29 +192,7 @@ h2 {
   margin-top: 3rem;
 }
 
-.button-blue {
-  width: 250px;
-  height: 50px;
-  background: var(--primary-blue);
-  border-radius: 30px;
-  border: none;
-  color: #000;
-  font-size: 16pt;
-  margin-left: 0%;
-}
-
-.button-green {
-  width: 250px;
-  height: 50px;
-  background: var(--primary-green);
-  border-radius: 30px;
-  border: none;
-  color: #000;
-  font-size: 16pt;
-  margin-top: 2rem;
-  margin-left: 0%;
-}
-
+ 
 .illustrationsHome {
   height: 100vh;
   margin-top: 1rem;
