@@ -10,12 +10,24 @@ export default function TaskCard({
   const navigate = useNavigate();
 
   function getCreatorName(creatorId) {
-    const creator = allUsers.find((user) => user.id === creatorId);
-    if (creator) {
-      return `${creator.firstname} ${creator.surname}`;
-    } else {
-      return "Anon";
+    if (allUsers && allUsers.length > 0) {
+      const creator = allUsers.find((user) => user.id === creatorId);
+      if (creator) {
+        return `${creator.firstname} ${creator.surname}`;
+      } else {
+        return "Anon";
+      }
     }
+  }
+
+  function getDistance(creatorId) {
+    if (allUsers && allUsers.length > 0) {
+      const creator = allUsers.find((user) => user.id === creatorId);
+      if (creator && creator.distance && creator.distance !== "N/A") {
+        return `${creator.distance} miles`;
+      }
+    }
+    return "unknown";
   }
 
   function handleSelectTask(taskId) {
@@ -38,20 +50,17 @@ export default function TaskCard({
       <div className="card-info">
         <h2 className="task-title-container">{task.title}</h2>
         <p>
-          <strong>Duration: </strong>
-          {task.duration}
-        </p>
-        <p>
-          <strong>Location: </strong>
-          {task.location}
-        </p>
-        <p>
           <strong>Posted by: </strong>
           {getCreatorName(task.creator_id)}
         </p>
         <p>
-          <strong>Distance: </strong>
-          {task.distance} miles
+          <strong>Duration: </strong>
+          {task.duration}
+        </p>
+
+        <p>
+          <strong>Location: </strong>
+          {`${task.location} (${getDistance(task.creator_id)} away)`}
         </p>
       </div>
     </div>

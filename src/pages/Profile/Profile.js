@@ -127,20 +127,20 @@ function ProfilePage({ userInfo, setUserInfo, allUsers, showProfileID }) {
   return (
     <div>
       <div className="container">
-        <img className="image-overlay" src={profileImage} alt="avatar" />
+        <div className="image-container2">
+          <img className="profile-img" src={profileImage} alt="avatar" />
+        </div>
         {!showProfileID && <input type="file" onChange={handleFileChange} />}
         <h1>
           {(userInfo && `${firstname} ${lastname}`) ||
             "Hello, you must be new here! Please enter your user details below:"}
         </h1>
-        
-        {showProfileID  && (
-          <div >
-          <p className="user-bio"> {bio} </p>
-          <StarRating />
-          </div>)
-          }
-
+        {showProfileID && (
+          <div>
+            <p className="user-bio"> {bio} </p>
+            <StarRating />
+          </div>
+        )}
         {!showProfileID && (
           <div className="inputs-container">
             <div className="profile-input-field">
