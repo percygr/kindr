@@ -368,7 +368,7 @@ export default function TaskInfo({
             Mark as Complete
           </button>
         )}
-        {!isEditable && thisTask.status_id === 3 && (
+        {((!isEditable && thisTask.status_id === 3) || (thisTask.creator_id === userInfo.id)) && (
           <button
             className="button delete-button"
             onClick={() => updateStatusID(4)}
