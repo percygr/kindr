@@ -1,6 +1,6 @@
 //import { is } from "@babel/types";
 import { createClient } from "@supabase/supabase-js";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./TaskInfo.css";
 
