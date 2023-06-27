@@ -22,6 +22,7 @@ export default function ViewTaskPage({
         setSuccessPath={setSuccessPath}
         userInfo={userInfo}
         allUsers={allUsers}
+        editMode={false}
       />
     </div>
   );

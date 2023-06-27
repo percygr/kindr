@@ -20,6 +20,7 @@ export default function TaskInfo({
   setSuccessPath, // function to set path for success page
   userInfo, // user info from supabase
   allUsers, // array of all users from supabase
+  editMode,
 }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -28,6 +29,7 @@ export default function TaskInfo({
   const [isDisabled, setIsDisabled] = useState(true);
   const [selectEmail, setSelectEmail] = useState(false);
   const [selectPhone, setSelectPhone] = useState(false);
+  const [selectCategory, setSelectCategory] = useState(false);
 
   const navigate = useNavigate();
 
@@ -46,7 +48,6 @@ export default function TaskInfo({
 
   useEffect(() => {
     if (selectedTask) {
-      console.log("hello");
       const task = tasks.find((task) => task.id === selectedTask);
       setTitle(task.title);
       setDescription(task.description);
@@ -54,16 +55,13 @@ export default function TaskInfo({
       setDuration(task.duration);
       setSelectEmail(task.show_email);
       setSelectPhone(task.show_phone);
+      setSelectCategory(task.category_id);
     }
-    console.log("showemail", selectEmail);
-    console.log("showphone", selectPhone);
   }, [selectedTask, tasks]);
 
   if (isEditable) {
     if (selectedTask) {
       categoryID = tasks.find((task) => task.id === selectedTask).category_id;
-      console.log("thistask2", thisTask);
-      console.log("categoryID", categoryID);
     } else {
       categoryID = category - 1;
     }
@@ -105,7 +103,7 @@ export default function TaskInfo({
   }
 
   function editTask() {
-    isEditable = true;
+    isEditable = true; // delete this line
     setSelectedTask(thisTask.id);
     //console.log(thisTask);
     //console.log(isEditable);
@@ -164,6 +162,28 @@ export default function TaskInfo({
     } else {
       return "";
     }
+  }
+
+  async function updateTask() {
+    //update supabase task id id selectedTask
+    const { error } = await supabase
+      .from("tasks")
+      .update({
+        title: title,
+        description: description,
+        location: location,
+        duration: duration,
+        show_email: selectEmail,
+        show_phone: selectPhone,
+        category_id: selectCategory,
+      })
+      .match({ id: selectedTask });
+
+    if (error) {
+      console.log("error", error);
+    }
+    // refresh task list
+    getTasks();
   }
 
   return (
@@ -316,13 +336,19 @@ export default function TaskInfo({
           )}
         </div>
 
-        {isEditable && (
+        {isEditable && !editMode && (
           <button
             onClick={() => writeTask()}
             disabled={isDisabled}
             className={isDisabled ? "disable-button" : "button"}
           >
             Submit
+          </button>
+        )}
+
+        {editMode && (
+          <button className="button" onClick={() => updateTask()}>
+            Update
           </button>
         )}
 

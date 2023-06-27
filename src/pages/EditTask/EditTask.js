@@ -1,4 +1,4 @@
-import TaskInfo from "../../components/TaskInfo/taskInfo"
+import TaskInfo from "../../components/TaskInfo/taskInfo";
 
 export default function EditTaskPage({
   categoryIcons,
@@ -20,6 +20,7 @@ export default function EditTaskPage({
         setSuccessPath={setSuccessPath}
         userInfo={userInfo}
         allUsers={allUsers}
+        editMode={true}
       />
     </div>
   );

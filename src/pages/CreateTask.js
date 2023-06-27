@@ -1,13 +1,12 @@
 import TaskInfo from "../components/TaskInfo/taskInfo";
 
-export default function CreateTaskPage({ 
-  category, 
-  categoryIcons, 
+export default function CreateTaskPage({
+  category,
+  categoryIcons,
   getTasks,
   setSuccessPath,
-  userInfo 
+  userInfo,
 }) {
-
   return (
     <div className="create-task">
       <TaskInfo
@@ -17,6 +16,7 @@ export default function CreateTaskPage({
         getTasks={getTasks}
         setSuccessPath={setSuccessPath}
         userInfo={userInfo}
+        editMode={false}
       />
     </div>
   );
