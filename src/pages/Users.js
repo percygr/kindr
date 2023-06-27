@@ -13,7 +13,7 @@ export default function UsersPage({ allUsers }) {
         <h1>Users</h1>
         <div className="users-list">
           {allUsers.map((user) => (
-            <div className="user">
+            <div className="user" key={user.id}>
               <p>{`${user.firstname} ${user.surname}`}</p>
               {user.avatar_link ? (
                 <img

@@ -89,8 +89,18 @@ input[type=text] {
     padding: 2%;
   }
 
+  .creator-name{
+    margin-bottom: 1rem;
+    cursor: pointer;
+  }
+
+  .creator-name:hover{  
+    text-decoration: underline;
+}
+
   .complete-button {
     font-size: 1rem;
+
     background-color: var(--primary-green);
     color: black;
   }
@@ -102,5 +112,4 @@ input[type=text] {
 
   .delete-button {
     background-color: rgba(255, 0, 0, 0.588);
-
   }

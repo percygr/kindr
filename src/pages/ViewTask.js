@@ -9,6 +9,7 @@ export default function ViewTaskPage({
   setSuccessPath,
   userInfo,
   allUsers,
+  setShowProfileID,
 }) {
   return (
     <div className="view-task">
@@ -23,6 +24,7 @@ export default function ViewTaskPage({
         userInfo={userInfo}
         allUsers={allUsers}
         editMode={false}
+        setShowProfileID={setShowProfileID}
       />
     </div>
   );

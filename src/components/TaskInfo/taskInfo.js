@@ -21,6 +21,8 @@ export default function TaskInfo({
   userInfo, // user info from supabase
   allUsers, // array of all users from supabase
   editMode,
+  setShowProfileID, // function to set profile ID for use on the profile page
+
 }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -169,6 +171,7 @@ export default function TaskInfo({
     }
   }
 
+
   async function updateTask() {
     //update supabase task id id selectedTask
     const { error } = await supabase
@@ -189,6 +192,12 @@ export default function TaskInfo({
     }
     // refresh task list
     getTasks();
+  }
+
+  function handleCreatorClick() {
+    // set a setstate to set the creator id
+    setShowProfileID(thisTask.creator_id);
+    navigate("/profile");
   }
 
   return (
@@ -287,9 +296,11 @@ export default function TaskInfo({
         </div>
 
         {!isEditable && (
-          <div>
+          <div onClick={() => handleCreatorClick()}>
             <strong>Posted by: </strong>
-            {getCreatorName(thisTask.creator_id)}
+            <span className="creator-name">
+              {getCreatorName(thisTask.creator_id)}
+            </span>
           </div>
         )}
 

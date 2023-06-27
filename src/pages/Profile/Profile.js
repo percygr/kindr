@@ -7,13 +7,14 @@ import location from "../../imgs/icons/address.png";
 import "./Profile.css";
 import { v4 as uuidv4 } from "uuid";
 import avatar from "../../imgs/icons/user.png";
+import StarRating from "../../components/StarRating/StarRating.js";
 
 const supabase = createClient(
   process.env.REACT_APP_SUPABASE_URL,
   process.env.REACT_APP_SUPABASE_KEY
 );
 
-function ProfilePage({ userInfo, setUserInfo }) {
+function ProfilePage({ userInfo, setUserInfo, allUsers, showProfileID }) {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [contactnumber, setContactnumber] = useState("");
@@ -23,15 +24,34 @@ function ProfilePage({ userInfo, setUserInfo }) {
   const [loading, setLoading] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [profileImage, setProfileImage] = useState(null);
-
+  const [bio, setBio] = useState("");
   useEffect(() => {
-    if (userInfo) {
+    //console.log("show profile id", showProfileID);
+    if (showProfileID) {
+      const thisProfile = allUsers.filter((user) => user.id === showProfileID);
+      //console.log("profile name", thisProfile[0].firstname);
+      setFirstname(thisProfile[0].firstname);
+      setLastname(thisProfile[0].surname);
+      setContactnumber(thisProfile[0].telephone);
+      setPostcode(thisProfile[0].postcode);
+      setDOB(thisProfile[0].dob);
+      setAddress(thisProfile[0].address);
+      setBio(thisProfile[0].bio);
+      if (thisProfile[0].avatar_link) {
+        setProfileImage(
+          `${process.env.REACT_APP_SUPABASE_IMAGE_URL}${thisProfile[0].avatar_link}`
+        );
+      } else {
+        setProfileImage(avatar);
+      }
+    } else if (userInfo) {
       setFirstname(userInfo.firstname);
       setLastname(userInfo.surname);
       setContactnumber(userInfo.telephone);
       setPostcode(userInfo.postcode);
       setDOB(userInfo.dob);
       setAddress(userInfo.address);
+      setBio(userInfo.bio);
       if (userInfo.avatar_link) {
         setProfileImage(
           `${process.env.REACT_APP_SUPABASE_IMAGE_URL}${userInfo.avatar_link}`
@@ -40,7 +60,7 @@ function ProfilePage({ userInfo, setUserInfo }) {
         setProfileImage(avatar);
       }
     }
-  }, [userInfo]);
+  }, [userInfo, showProfileID, allUsers]);
 
   async function handleSubmit() {
     setLoading(true);
@@ -76,6 +96,7 @@ function ProfilePage({ userInfo, setUserInfo }) {
         dob: DOB,
         address: address,
         avatar_link: fileName,
+        bio: bio,
       })
       .match({ id: userInfo.id });
     if (error) {
@@ -106,79 +127,96 @@ function ProfilePage({ userInfo, setUserInfo }) {
   return (
     <div>
       <div className="container">
-        <img className="image-overlay" src={profileImage} alt="avatar" />
-        <div>
-          <input type="file" onChange={handleFileChange} />
+        <div className="image-container2">
+          <img className="profile-img" src={profileImage} alt="avatar" />
         </div>
+        {!showProfileID && <input type="file" onChange={handleFileChange} />}
         <h1>
-          {(userInfo && firstname) ||
+          {(userInfo && `${firstname} ${lastname}`) ||
             "Hello, you must be new here! Please enter your user details below:"}
         </h1>
-        <div className="inputs-container">
-          <div className="profile-input-field">
-            <img className="icon-size" src={Usericon} alt="user-icon"></img>
-            <input
-              type="text"
-              placeholder="First Name"
-              value={firstname}
-              onChange={(e) => setFirstname(e.target.value)}
-            />
+        {showProfileID && (
+          <div>
+            <p className="user-bio"> {bio} </p>
+            <StarRating />
           </div>
+        )}
+        {!showProfileID && (
+          <div className="inputs-container">
+            <div className="profile-input-field">
+              <img className="icon-size" src={Usericon} alt="user-icon"></img>
+              <input
+                type="text"
+                placeholder="First Name"
+                value={firstname}
+                onChange={(e) => setFirstname(e.target.value)}
+              />
+            </div>
 
-          <div className="profile-input-field">
-            <img className="icon-size" src={Usericon} alt="user-icon"></img>
-            <input
-              type="text"
-              placeholder="Last Name"
-              value={lastname}
-              onChange={(e) => setLastname(e.target.value)}
-            />
+            <div className="profile-input-field">
+              <img className="icon-size" src={Usericon} alt="user-icon"></img>
+              <input
+                type="text"
+                placeholder="Last Name"
+                value={lastname}
+                onChange={(e) => setLastname(e.target.value)}
+              />
+            </div>
+
+            <div className="profile-input-field">
+              <img className="icon-size" src={dateOfBirth} alt="D.O.B"></img>
+
+              <input
+                type="date"
+                value={DOB}
+                onChange={(e) => setDOB(e.target.value)}
+              />
+            </div>
+
+            <div className="profile-input-field">
+              <img className="icon-size" src={contact} alt="contact"></img>
+              <input
+                type="tel"
+                placeholder="Contact number"
+                value={contactnumber}
+                onChange={(e) => setContactnumber(e.target.value)}
+              />
+            </div>
+
+            <div className="profile-input-field">
+              <img className="icon-size" src={location} alt="address"></img>
+              <input
+                type="text"
+                placeholder="Address"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+              />
+            </div>
+
+            <div className="profile-input-field">
+              <img className="icon-size" src={location} alt="address"></img>
+              <input
+                type="text"
+                placeholder="Post Code"
+                value={postcode}
+                onChange={(e) => setPostcode(e.target.value)}
+              />
+            </div>
+
+            <div className="bio">
+              <textarea
+                placeholder="A little about me..."
+                value={bio}
+                onChange={(e) => setBio(e.target.value)}
+              />
+            </div>
           </div>
-
-          <div className="profile-input-field">
-            <img className="icon-size" src={dateOfBirth} alt="D.O.B"></img>
-
-            <input
-              type="date"
-              value={DOB}
-              onChange={(e) => setDOB(e.target.value)}
-            />
-          </div>
-
-          <div className="profile-input-field">
-            <img className="icon-size" src={contact} alt="contact"></img>
-            <input
-              type="tel"
-              placeholder="Contact number"
-              value={contactnumber}
-              onChange={(e) => setContactnumber(e.target.value)}
-            />
-          </div>
-
-          <div className="profile-input-field">
-            <img className="icon-size" src={location} alt="address"></img>
-            <input
-              type="text"
-              placeholder="Address"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-            />
-          </div>
-
-          <div className="profile-input-field">
-            <img className="icon-size" src={location} alt="address"></img>
-            <input
-              type="text"
-              placeholder="Post Code"
-              value={postcode}
-              onChange={(e) => setPostcode(e.target.value)}
-            />
-          </div>
-        </div>
-        {/* <button className="button-blue">Edit Profile</button> */}
-        <button className="button-green" onClick={() => handleSubmit()}>
-          Save changes
-        </button>
+        )}
+        {!showProfileID && (
+          <button className="button-green" onClick={() => handleSubmit()}>
+            Save changes
+          </button>
+        )}
         <button
           onClick={() => {
             goHome();
