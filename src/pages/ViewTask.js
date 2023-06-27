@@ -3,6 +3,7 @@ import TaskInfo from "../components/TaskInfo/taskInfo";
 export default function ViewTaskPage({
   categoryIcons,
   selectedTask,
+  setSelectedTask,
   tasks,
   getTasks,
   setSuccessPath,
@@ -16,11 +17,13 @@ export default function ViewTaskPage({
         isEditable={false}
         categoryIcons={categoryIcons}
         selectedTask={selectedTask}
+        setSelectedTask={setSelectedTask}
         tasks={tasks}
         getTasks={getTasks}
         setSuccessPath={setSuccessPath}
         userInfo={userInfo}
         allUsers={allUsers}
+        editMode={false}
         setShowProfileID={setShowProfileID}
       />
     </div>

@@ -101,4 +101,15 @@ input[type=text] {
   .complete-button {
     font-size: 1rem;
 
+    background-color: var(--primary-green);
+    color: black;
+  }
+
+  .accept-button {
+    background-color: var(--primary-green);
+    color: black;
+  }
+
+  .delete-button {
+    background-color: rgba(255, 0, 0, 0.588);
   }

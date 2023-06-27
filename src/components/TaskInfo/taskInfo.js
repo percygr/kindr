@@ -14,12 +14,15 @@ export default function TaskInfo({
   categoryIcons, // array of icon links, indexed 0-5
   category, // the category chosen in categoryTiles - used when creating a new task
   selectedTask, // task ID of clicked TaskCard - used when viewing a task
+  setSelectedTask, // function to set selectedTask
   tasks, // array of all tasks, only used when isEditable is false
   getTasks, // function to refresh task list
   setSuccessPath, // function to set path for success page
   userInfo, // user info from supabase
   allUsers, // array of all users from supabase
+  editMode,
   setShowProfileID, // function to set profile ID for use on the profile page
+
 }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -28,6 +31,12 @@ export default function TaskInfo({
   const [isDisabled, setIsDisabled] = useState(true);
   const [selectEmail, setSelectEmail] = useState(false);
   const [selectPhone, setSelectPhone] = useState(false);
+  const [selectCategory, setSelectCategory] = useState(false);
+
+  const navigate = useNavigate();
+
+  let categoryID = 0;
+  let thisTask = {};
 
   useEffect(() => {
     setIsDisabled(
@@ -39,13 +48,26 @@ export default function TaskInfo({
     );
   }, [title, description, location, duration, selectEmail, selectPhone]);
 
-  const navigate = useNavigate();
-
-  let categoryID = 0;
-  let thisTask = {};
+  useEffect(() => {
+    if (selectedTask) {
+      const task = tasks.find((task) => task.id === selectedTask);
+      setTitle(task.title);
+      setDescription(task.description);
+      setLocation(task.location);
+      setDuration(task.duration);
+      setSelectEmail(task.show_email);
+      setSelectPhone(task.show_phone);
+      setSelectCategory(task.category_id);
+    }
+  }, [selectedTask, tasks]);
 
   if (isEditable) {
-    categoryID = category - 1;
+    if (selectedTask) {
+      categoryID =
+        tasks.find((task) => task.id === selectedTask).category_id - 1;
+    } else {
+      categoryID = category - 1;
+    }
   } else {
     thisTask = tasks.find((task) => task.id === selectedTask);
     categoryID = thisTask.category_id - 1;
@@ -83,12 +105,24 @@ export default function TaskInfo({
     navigate(`/success`);
   }
 
+  function editTask() {
+    isEditable = true; // delete this line
+    setSelectedTask(thisTask.id);
+    //console.log(thisTask);
+    //console.log(isEditable);
+    navigate("/edit");
+  }
+
   async function updateStatusID(newStatusID) {
+    let user = null;
+    if (newStatusID !== 1) {
+      user = userInfo.id;
+    }
     const { error } = await supabase
       .from("tasks")
       .update({
         status_id: newStatusID,
-        helper_id: userInfo.id,
+        helper_id: user,
       })
       .match({ id: thisTask.id });
     if (error) {
@@ -98,7 +132,7 @@ export default function TaskInfo({
 
     if (newStatusID === 1) {
       setSuccessPath("created");
-      navigate(`/success`);
+      navigate(`/mytasks`);
     } else if (newStatusID === 2) {
       setSuccessPath("accepted");
       navigate(`/success`);
@@ -135,6 +169,29 @@ export default function TaskInfo({
     } else {
       return "";
     }
+  }
+
+
+  async function updateTask() {
+    //update supabase task id id selectedTask
+    const { error } = await supabase
+      .from("tasks")
+      .update({
+        title: title,
+        description: description,
+        location: location,
+        duration: duration,
+        show_email: selectEmail,
+        show_phone: selectPhone,
+        category_id: selectCategory,
+      })
+      .match({ id: selectedTask });
+
+    if (error) {
+      console.log("error", error);
+    }
+    // refresh task list
+    getTasks();
   }
 
   function handleCreatorClick() {
@@ -277,7 +334,7 @@ export default function TaskInfo({
                   type="checkbox"
                   id="email"
                   name="email"
-                  value={selectEmail}
+                  checked={selectEmail}
                   onChange={(e) => handleSelectEmail(e.target.value)}
                 />
                 <label htmlFor="phone"> Phone </label>
@@ -285,7 +342,7 @@ export default function TaskInfo({
                   type="checkbox"
                   id="phone"
                   name="phone"
-                  value={selectPhone}
+                  checked={selectPhone}
                   onChange={(e) => handleSelectPhone(e.target.value)}
                 />
               </div>
@@ -295,35 +352,66 @@ export default function TaskInfo({
           )}
         </div>
 
-        {isEditable && (
+        {isEditable && !editMode && (
           <button
             onClick={() => writeTask()}
             disabled={isDisabled}
-            className={isDisabled ? "disable-button" : "button"}>
+            className={isDisabled ? "disable-button" : "button"}
+          >
             Submit
           </button>
         )}
 
-        {!isEditable && thisTask.status_id === 1 && (
-          <button className="button" onClick={() => updateStatusID(2)}>
-            Accept
+        {editMode && (
+          <button className="button" onClick={() => updateTask()}>
+            Update
+          </button>
+        )}
+
+        {!isEditable &&
+          thisTask.status_id === 1 &&
+          !(thisTask.creator_id === userInfo.id) && (
+            <button
+              className="button accept-button"
+              onClick={() => updateStatusID(2)}
+            >
+              Accept
+            </button>
+          )}
+        {!isEditable && thisTask.status_id === 2 && (
+          <button
+            className="button delete-button"
+            onClick={() => updateStatusID(1)}
+          >
+            Cancel
           </button>
         )}
         {!isEditable && thisTask.status_id === 2 && (
-          <button className="button complete-button"  onClick={() => updateStatusID(3)}>
+          <button
+            className="button complete-button"
+            onClick={() => updateStatusID(3)}
+          >
             Mark as Complete
           </button>
         )}
-        {!isEditable && thisTask.status_id === 3 && (
-          <button className="button" onClick={() => updateStatusID(4)}>
+        {((!isEditable && thisTask.status_id === 3) ||
+          thisTask.creator_id === userInfo.id) && (
+          <button
+            className="button delete-button"
+            onClick={() => updateStatusID(4, "myTasks")}
+          >
             Delete
+          </button>
+        )}
+        {!isEditable && thisTask.creator_id === userInfo.id && (
+          <button className="button edit-button" onClick={() => editTask()}>
+            Edit
           </button>
         )}
       </div>
     </div>
   );
 }
-
 
 // add edit button to the the not-editable version of the TaskInfo component
 // applies to tasks that have statuses 1, 2 and 3 (doesn't need to be in 3, but should make our lives easier)

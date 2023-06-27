@@ -14,6 +14,7 @@ import SuccessPage from "./pages/Success";
 import MyTasksPage from "./pages/MyTasks";
 import ProfilePage from "./pages/Profile/Profile.js";
 import UsersPage from "./pages/Users";
+import EditTaskPage from "./pages/EditTask/EditTask";
 // import UpdateProfilePage from "./pages/UpdateProfile";
 import tyreIcon from "../src/imgs/icons/tire.png";
 import gardenIcon from "../src/imgs/icons/gardening.png";
@@ -329,6 +330,22 @@ function App() {
                   <ViewTaskPage
                     categoryIcons={categoryIcons}
                     selectedTask={selectedTask}
+                    setSelectedTask={setSelectedTask}
+                    tasks={tasks}
+                    getTasks={getTasks}
+                    setSuccessPath={setSuccessPath}
+                    userInfo={userInfo}
+                    allUsers={allUsers}
+                  />
+                }
+              />
+              <Route
+                path="/edit"
+                element={
+                  <EditTaskPage
+                    categoryIcons={categoryIcons}
+                    selectedTask={selectedTask}
+                    setSelectedTask={setSelectedTask}
                     tasks={tasks}
                     getTasks={getTasks}
                     setSuccessPath={setSuccessPath}

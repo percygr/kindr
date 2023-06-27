@@ -1,22 +1,26 @@
-import TaskInfo from "../components/TaskInfo/taskInfo";
+import TaskInfo from "../../components/TaskInfo/taskInfo";
 
-export default function CreateTaskPage({
-  category,
+export default function EditTaskPage({
   categoryIcons,
+  selectedTask,
+  tasks,
   getTasks,
   setSuccessPath,
   userInfo,
+  allUsers,
 }) {
   return (
     <div className="create-task">
       <TaskInfo
         isEditable={true}
-        category={category}
         categoryIcons={categoryIcons}
+        selectedTask={selectedTask}
+        tasks={tasks}
         getTasks={getTasks}
         setSuccessPath={setSuccessPath}
         userInfo={userInfo}
-        editMode={false}
+        allUsers={allUsers}
+        editMode={true}
       />
     </div>
   );
