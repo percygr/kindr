@@ -56,6 +56,7 @@ export default function TaskInfo({
       setSelectEmail(task.show_email);
       setSelectPhone(task.show_phone);
       setSelectCategory(task.category_id);
+      console.log("category ID", task.category_id)
     }
   }, [selectedTask, tasks]);
 
@@ -111,11 +112,14 @@ export default function TaskInfo({
   }
 
   async function updateStatusID(newStatusID) {
+    let user = null;
+    if (newStatusID !== 1) {
+      user = userInfo.id;} 
     const { error } = await supabase
       .from("tasks")
       .update({
         status_id: newStatusID,
-        helper_id: userInfo.id,
+        helper_id: user,
       })
       .match({ id: thisTask.id });
     if (error) {
@@ -125,7 +129,7 @@ export default function TaskInfo({
 
     if (newStatusID === 1) {
       setSuccessPath("created");
-      navigate(`/success`);
+      navigate(`/mytasks`);
     } else if (newStatusID === 2) {
       setSuccessPath("accepted");
       navigate(`/success`);
@@ -362,6 +366,14 @@ export default function TaskInfo({
         )}
         {!isEditable && thisTask.status_id === 2 && (
           <button
+            className="button delete-button"
+            onClick={() => updateStatusID(1)}
+          >
+            Cancel
+          </button>
+        )}
+        {!isEditable && thisTask.status_id === 2 && (
+          <button
             className="button complete-button"
             onClick={() => updateStatusID(3)}
           >
@@ -371,7 +383,7 @@ export default function TaskInfo({
         {((!isEditable && thisTask.status_id === 3) || (thisTask.creator_id === userInfo.id)) && (
           <button
             className="button delete-button"
-            onClick={() => updateStatusID(4)}
+            onClick={() => updateStatusID(4, "myTasks")}
           >
             Delete
           </button>
