@@ -74,30 +74,15 @@ input::file-selector-button{
   /* margin-left: -60px;  */
 }
 
-
-
-.button-blue {
-  width: 250px;
-  height: 50px;
-  background: var(--primary-blue);
-  border-radius: 30px;
-  border: none;
-  color: #000;
-  font-size: 16pt;
-  margin-left: 0%;
-  margin-top: 0rem;
-}
-
-.button-green {
-  width: 250px;
-  height: 50px;
+.save-changes-button {
+  width: 150px;
+  height: 37px; 
   background: var(--primary-green);
   border-radius: 30px;
+  margin: 10px;
   border: none;
-  color: #000;
+  color: black;
   font-size: 16pt;
-  margin-top: 1.5rem;
-  margin-left: 0%;
 }
 
 .profile-input-field {
