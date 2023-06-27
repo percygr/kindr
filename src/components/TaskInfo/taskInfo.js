@@ -352,7 +352,7 @@ export default function TaskInfo({
           </button>
         )}
 
-        {!isEditable && thisTask.status_id === 1 && (
+        {!isEditable && thisTask.status_id === 1 && !(thisTask.creator_id === userInfo.id) && (
           <button
             className="button accept-button"
             onClick={() => updateStatusID(2)}
