@@ -84,11 +84,13 @@ export default function TaskInfo({
   function getCreatorName(creatorId) {
     // console.log("creator id", creatorId);
     // console.log("all users", allUsers);
-    const creator = allUsers.find((user) => user.id === creatorId);
-    if (creator) {
-      return `${creator.firstname} ${creator.surname}`;
-    } else {
-      return "";
+    if (allUsers) {
+      const creator = allUsers.find((user) => user.id === creatorId);
+      if (creator) {
+        return `${creator.firstname} ${creator.surname}`;
+      } else {
+        return "";
+      }
     }
   }
 
