@@ -265,9 +265,9 @@ function App() {
   } else if (!userInfo) {
     //console.log("loading user info");
     return <div>Loading user information...</div>;
-  } else if (!userInfo) {
+  } else if (!userInfo.firstname) {
     //console.log("user info loaded", userInfo.email);
-    return <ProfilePage userInfo={userInfo} />;
+    return <ProfilePage userInfo={userInfo} setUserInfo={setUserInfo} />;
   } else {
     //console.log("user first name", userInfo.firstname);
     return (

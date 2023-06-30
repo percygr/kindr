@@ -19,7 +19,7 @@ function ProfilePage({ userInfo, setUserInfo, allUsers, showProfileID }) {
   const [lastname, setLastname] = useState("");
   const [contactnumber, setContactnumber] = useState("");
   const [postcode, setPostcode] = useState("");
-  const [DOB, setDOB] = useState();
+  const [DOB, setDOB] = useState("1990-01-01");
   const [address, setAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
@@ -47,13 +47,15 @@ function ProfilePage({ userInfo, setUserInfo, allUsers, showProfileID }) {
         setProfileImage(avatar);
       }
     } else if (userInfo) {
-      setFirstname(userInfo.firstname);
-      setLastname(userInfo.surname);
-      setContactnumber(userInfo.telephone);
-      setPostcode(userInfo.postcode);
-      setDOB(userInfo.dob);
-      setAddress(userInfo.address);
-      setBio(userInfo.bio);
+      if (userInfo.firstname) {
+        setFirstname(userInfo.firstname);
+        setLastname(userInfo.surname);
+        setContactnumber(userInfo.telephone);
+        setPostcode(userInfo.postcode);
+        setDOB(userInfo.dob);
+        setAddress(userInfo.address);
+        setBio(userInfo.bio);
+      }
       if (userInfo.avatar_link) {
         setProfileImage(
           `${process.env.REACT_APP_SUPABASE_IMAGE_URL}${userInfo.avatar_link}`
@@ -69,7 +71,6 @@ function ProfilePage({ userInfo, setUserInfo, allUsers, showProfileID }) {
   }, [firstname, lastname, postcode, DOB]);
 
   async function handleSubmit() {
-    console.log("userInfo", userInfo);
     setLoading(true);
     let fileName = "";
     if (selectedFile) {
@@ -82,6 +83,7 @@ function ProfilePage({ userInfo, setUserInfo, allUsers, showProfileID }) {
     const data = await updateProfile(fileName);
     setUserInfo(data);
     setLoading(false);
+    goHome();
   }
 
   function goHome() {
@@ -235,7 +237,7 @@ function ProfilePage({ userInfo, setUserInfo, allUsers, showProfileID }) {
         >
           Home
         </button>
-        {loading && <div>Saving...</div>}{" "}
+        {loading && <div>Saving...</div>}
         {/* Display loading message while saving */}
       </div>
     </div>

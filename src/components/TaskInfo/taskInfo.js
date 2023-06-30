@@ -82,6 +82,8 @@ export default function TaskInfo({
   }
 
   function getCreatorName(creatorId) {
+    // console.log("creator id", creatorId);
+    // console.log("all users", allUsers);
     const creator = allUsers.find((user) => user.id === creatorId);
     if (creator) {
       return `${creator.firstname} ${creator.surname}`;
@@ -318,7 +320,7 @@ export default function TaskInfo({
           </div>
         )}
 
-        {!isEditable && (
+        {!isEditable && thisTask.helper_id && (
           <div onClick={() => handleHelperClick()}>
             <strong>Accepted by: </strong>
             <span className="creator-name">
