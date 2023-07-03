@@ -83,7 +83,9 @@ function ProfilePage({ userInfo, setUserInfo, allUsers, showProfileID }) {
     const data = await updateProfile(fileName);
     setUserInfo(data);
     setLoading(false);
-    goHome();
+    if (!selectedFile) {
+      goHome();
+    }
   }
 
   function goHome() {
