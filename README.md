@@ -1,30 +1,36 @@
-
 # Kindr
+
 ​
 Have you ever wanted to volunteer in your community? Have you ever need help from your community?
 ​
 Kindr aims to connect people within their communities, linking volunteers to the people who need help the most.
 ​
 ​
+
 ## Features​
+
 - Post tasks to your community
-- Browse and volunteer for any tasks 
+- Browse and volunteer for any tasks
 - Filter tasks by category type
 - Create a profile - upload an image, add bio and personal information
 - Mobile and desktop layouts
-- FAQ page 
-​
-​
-​
+- FAQ page
+  ​
+  ​
+  ​
+
 ## Authors​
+
 - [Naomi Crisp](https://github.com/naomicrisp)
 - [Paul Greenfield](https://github.com/percygr)
 - [Bryony Shepherd](https://github.com/bryonyShep)
 - [Tom Burns-Tinkler](https://github.com/Tomuos)
 - [James Attrill](https://github.com/attrill20)
 - [Christian Willcox](https://github.com/lastcastleofbowser)
-​
+  ​
+
 ## Tech Stack
+
 ​
 **Frontend:**
 
@@ -42,38 +48,35 @@ Kindr aims to connect people within their communities, linking volunteers to the
 ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)
 ​
 
-**Testing:**  
+**Testing:**
 
 ​
 ![Jest](https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white)
 ​
 
-**Planning/Design:**  
+**Planning/Design:**
 
 ​
 ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
 ​
 
-**Hosted:**  
+**Hosted:**
 
 ​
 ![Netlify](https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7)
 ​
 ​​
 
-​Watch the video:
-
+**Click the logo to watch the video:**
 
 [​![Kindr Screenshot](/src/imgs/logos/blue_text.png)](https://www.youtube.com/watch?v=Fc4mhUFAl10)
 
+**Screenshots:**
 
+![Screenshot2](/src/imgs/screenshots/Image2.jpg)
 
+![Screenshot4](/src/imgs/screenshots/Image4.jpg)
 
+![Screenshot1](/src/imgs/screenshots/Image1.png)
 
-
-
-
-
-
-
-
+![Screenshot3](/src/imgs/screenshots/Image3.jpg)
