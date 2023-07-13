@@ -62,6 +62,7 @@ Kindr aims to connect people within their communities, linking volunteers to the
 ​​
 ​Watch the video
 
+
 [​![Kindr Screenshot](/src/imgs/logos/blue_text.png)](https://www.youtube.com/watch?v=Fc4mhUFAl10)
 
 
