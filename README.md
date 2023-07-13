@@ -45,16 +45,19 @@ Kindr aims to connect people within their communities, linking volunteers to the
 ​
 
 **Testing:**  
+
 ​
 ![Jest](https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white)
 ​
 
 **Planning/Design:**  
+
 ​
 ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
 ​
 
 **Hosted:**  
+
 ​
 ![Netlify](https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7)
 ​
