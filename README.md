@@ -38,6 +38,7 @@ Kindr aims to connect people within their communities, linking volunteers to the
 ​
 
 **Backend/Authentication:**  
+
 ​
 ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)
 ​
