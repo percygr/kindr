@@ -60,12 +60,8 @@ Kindr aims to connect people within their communities, linking volunteers to the
 ![Netlify](https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7)
 ​
 ​​
-​
-- Watch the video
-[​![Kindr Screenshot](https://github.com/jsonandthearguments/kindr/assets/21970527/a04084d1-c4e5-4ada-8c3f-5228af85363c)](https://www.youtube.com/watch?v=Fc4mhUFAl10)
-
-
-
+​Watch the video
+[​![Kindr Screenshot](/assets/21970527/a04084d1-c4e5-4ada-8c3f-5228af85363c 'Kindr Screenshot')](https://www.youtube.com/watch?v=Fc4mhUFAl10)
 
 
 
