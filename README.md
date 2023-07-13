@@ -61,8 +61,8 @@ Kindr aims to connect people within their communities, linking volunteers to the
 ​
 ​​
 ​
-## Demo
+- Watch the video
+<a href=https://www.youtube.com/watch?v=Fc4mhUFAl10>
+​<img width="1226" alt="Kindr Screenshot" src="https://github.com/jsonandthearguments/kindr/assets/21970527/a04084d1-c4e5-4ada-8c3f-5228af85363c">
+​</a>
 ​
-​
-​
-[![Watch the video](urlhere)](https://www.youtube.com/watch?v=Fc4mhUFAl10)
