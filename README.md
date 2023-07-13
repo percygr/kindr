@@ -17,8 +17,7 @@ Kindr aims to connect people within their communities, linking volunteers to the
 ​
 ​
 ​
-## Authors
-​
+## Authors​
 - [Naomi Crisp](https://github.com/naomicrisp)
 - [Paul Greenfield](https://github.com/percygr)
 - [Bryony Shepherd](https://github.com/bryonyShep)
