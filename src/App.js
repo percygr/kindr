@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { createClient } from "@supabase/supabase-js";
-import { Auth } from "@supabase/auth-ui-react";
-import { ThemeSupa } from "@supabase/auth-ui-shared";
+// import { Auth } from "@supabase/auth-ui-react";
+// import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { useState, useEffect, useCallback } from "react";
 import "./App.css";
 import HomePage from "./pages/Home";
@@ -26,7 +26,7 @@ import otherIcon from "../src/imgs/icons/other2.png";
 import Navbar from "./components/Navbar/Navbar";
 // import Footer from "./components/Footer/Footer";
 import FAQPage from "./pages/FAQpage";
-import WhiteLogo from "../src/imgs/logos/white_text.png";
+// import WhiteLogo from "../src/imgs/logos/white_text.png";
 // import illustrationPost from "../src/imgs/illustrations/post.png";
 // import illustrationVolunteer from "../src/imgs/illustrations/joy.png";
 
@@ -43,10 +43,24 @@ function App() {
   const [selectedTask, setSelectedTask] = useState(0);
   const [categoryFilter, setCategoryFilter] = useState(0);
   const [successPath, setSuccessPath] = useState("login");
-  const [session, setSession] = useState(null);
+  // const [session, setSession] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
   const [allUsers, setAllUsers] = useState(null);
   const [showProfileID, setShowProfileID] = useState(false);
+
+  useEffect(() => {
+    getTasks();
+    writeCategoryIcons();
+    // Replace the database fetch with hardcoded user info
+    const user = {
+      id: 1,
+      firstname: "Guest",
+      surname: "User",
+      // Add any other properties you need to set
+    };
+
+    setUserInfo(user);
+  }, []);
 
   const getUsers = useCallback(
     async (session) => {
@@ -178,21 +192,21 @@ function App() {
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
+      //setSession(session);
       if (session) {
         getTasks();
         writeCategoryIcons();
-        getUsers(session);
+        //getUsers(session);
       }
     });
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
+      //setSession(session);
       if (session) {
         getTasks();
         writeCategoryIcons();
-        getUsers(session);
+        //getUsers(session);
       }
     });
     return () => subscription.unsubscribe();
@@ -225,44 +239,46 @@ function App() {
     //console.log("tasks", data);
   }
 
-  if (!session) {
-    return (
-      <div className="login-page">
-        <img src={WhiteLogo} alt="logo" className="homepage-logo" />
+  // if (!session) {
+  //   return (
+  //     <div className="login-page">
+  //       <img src={WhiteLogo} alt="logo" className="homepage-logo" />
 
-        <div className="login-container">
-          <h2 className="login-title">
-            Kindr connects people to volunteer for tasks in your local
-            community.
-          </h2>
-          <Auth
-            //redirectTo={window.location.href}
-            supabaseClient={supabase}
-            appearance={{
-              theme: ThemeSupa,
-              variables: {
-                default: {
-                  colors: {
-                    brand: "#01BBE4",
-                    brandAccent: "#0177E4", // hover button and button border colour
-                    messageText: "black",
-                    inputText: "black",
-                    inputLabelText: "black",
-                    inputPlaceholder: "black",
-                    anchorTextColor: "black",
-                    anchorTextHoverColor: "#0177E4",
-                    inputBackground: "#E8f0fe",
-                  },
-                },
-              },
-            }}
-            onSignOut={() => setSession(null)}
-            providers={["google", "facebook"]}
-          />
-        </div>
-      </div>
-    );
-  } else if (!userInfo) {
+  //       <div className="login-container">
+  //         <h2 className="login-title">
+  //           Kindr connects people to volunteer for tasks in your local
+  //           community.
+  //         </h2>
+  //         <Auth
+  //           //redirectTo={window.location.href}
+  //           supabaseClient={supabase}
+  //           appearance={{
+  //             theme: ThemeSupa,
+  //             variables: {
+  //               default: {
+  //                 colors: {
+  //                   brand: "#01BBE4",
+  //                   brandAccent: "#0177E4", // hover button and button border colour
+  //                   messageText: "black",
+  //                   inputText: "black",
+  //                   inputLabelText: "black",
+  //                   inputPlaceholder: "black",
+  //                   anchorTextColor: "black",
+  //                   anchorTextHoverColor: "#0177E4",
+  //                   inputBackground: "#E8f0fe",
+  //                 },
+  //               },
+  //             },
+  //           }}
+  //           onSignOut={() => setSession(null)}
+  //           providers={["google", "facebook"]}
+  //         />
+  //       </div>
+  //     </div>
+  //   );
+  // } else
+
+  if (!userInfo) {
     //console.log("loading user info");
     return <div>Loading user information...</div>;
   } else if (!userInfo.firstname) {
