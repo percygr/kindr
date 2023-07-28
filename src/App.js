@@ -53,7 +53,7 @@ function App() {
     writeCategoryIcons();
     // Replace the database fetch with hardcoded user info
     const user = {
-      id: 1,
+      id: 26,
       firstname: "Guest",
       surname: "User",
       // Add any other properties you need to set
