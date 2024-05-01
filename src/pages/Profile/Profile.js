@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { createClient } from "@supabase/supabase-js";
+// import { createClient } from "@supabase/supabase-js";
 import Usericon from "../../imgs/icons/user.png";
 import contact from "../../imgs/icons/contact.png";
 import dateOfBirth from "../../imgs/icons/birthday.png";
@@ -9,10 +9,10 @@ import { v4 as uuidv4 } from "uuid";
 import avatar from "../../imgs/icons/user.png";
 // import StarRating from "../../components/StarRating/StarRating.js";
 
-const supabase = createClient(
-  process.env.REACT_APP_SUPABASE_URL,
-  process.env.REACT_APP_SUPABASE_KEY
-);
+// const supabase = createClient(
+//   process.env.REACT_APP_SUPABASE_URL,
+//   process.env.REACT_APP_SUPABASE_KEY
+// );
 
 function ProfilePage({ userInfo, setUserInfo, allUsers, showProfileID }) {
   const [firstname, setFirstname] = useState("");
@@ -39,13 +39,14 @@ function ProfilePage({ userInfo, setUserInfo, allUsers, showProfileID }) {
       setDOB(thisProfile[0].dob);
       setAddress(thisProfile[0].address);
       setBio(thisProfile[0].bio);
-      if (thisProfile[0].avatar_link) {
-        setProfileImage(
-          `${process.env.REACT_APP_SUPABASE_IMAGE_URL}${thisProfile[0].avatar_link}`
-        );
-      } else {
-        setProfileImage(avatar);
-      }
+
+      // if (thisProfile[0].avatar_link) {
+      //   setProfileImage(
+      //     `${process.env.REACT_APP_SUPABASE_IMAGE_URL}${thisProfile[0].avatar_link}`
+      //   );
+      // } else {
+      setProfileImage(avatar);
+      // }
     } else if (userInfo) {
       if (userInfo.firstname) {
         setFirstname(userInfo.firstname);
@@ -56,13 +57,13 @@ function ProfilePage({ userInfo, setUserInfo, allUsers, showProfileID }) {
         setAddress(userInfo.address);
         setBio(userInfo.bio);
       }
-      if (userInfo.avatar_link) {
-        setProfileImage(
-          `${process.env.REACT_APP_SUPABASE_IMAGE_URL}${userInfo.avatar_link}`
-        );
-      } else {
-        setProfileImage(avatar);
-      }
+      // if (userInfo.avatar_link) {
+      //   setProfileImage(
+      //     `${process.env.REACT_APP_SUPABASE_IMAGE_URL}${userInfo.avatar_link}`
+      //   );
+      // } else {
+      setProfileImage(avatar);
+      // }
     }
   }, [userInfo, showProfileID, allUsers]);
 
@@ -76,7 +77,7 @@ function ProfilePage({ userInfo, setUserInfo, allUsers, showProfileID }) {
     if (selectedFile) {
       const fileExtension = selectedFile.name.split(".").pop(); // Get the file extension
       fileName = `${uuidv4()}.${fileExtension}`; // Generate a random file name
-      await uploadImage(fileName);
+      //await uploadImage(fileName);
     } else {
       fileName = userInfo.avatar_link;
     }
@@ -96,44 +97,78 @@ function ProfilePage({ userInfo, setUserInfo, allUsers, showProfileID }) {
     setSelectedFile(event.target.files[0]);
   };
 
+  // async function updateProfile(fileName) {
+  //   const { data, error } = await supabase
+  //     .from("kindr_users")
+  //     .update({
+  //       firstname: firstname,
+  //       surname: lastname,
+  //       telephone: contactnumber,
+  //       postcode: postcode,
+  //       dob: DOB,
+  //       address: address,
+  //       avatar_link: fileName,
+  //       bio: bio,
+  //     })
+  //     .match({ id: userInfo.id });
+  //   if (error) {
+  //     console.log("error", error.message);
+  //   }
+  //   return data;
+  // }
+
   async function updateProfile(fileName) {
-    const { data, error } = await supabase
-      .from("kindr_users")
-      .update({
-        firstname: firstname,
-        surname: lastname,
-        telephone: contactnumber,
-        postcode: postcode,
-        dob: DOB,
-        address: address,
-        avatar_link: fileName,
-        bio: bio,
-      })
-      .match({ id: userInfo.id });
-    if (error) {
-      console.log("error", error.message);
+    try {
+      // Make a PUT request to the API endpoint
+      const response = await fetch(
+        `http://localhost:3000/profile/${userInfo.id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            firstname: firstname,
+            surname: lastname,
+            telephone: contactnumber,
+            postcode: postcode,
+            dob: DOB,
+            address: address,
+            avatar_link: fileName,
+            bio: bio,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to update profile");
+      }
+
+      // Return the updated profile data
+      return await response.json();
+    } catch (error) {
+      console.error("Error updating user profile:", error);
     }
-    return data;
   }
 
-  const uploadImage = async (fileName) => {
-    try {
-      const { data, error } = await supabase.storage
-        .from("avatars")
-        .upload(fileName, selectedFile, {
-          cacheControl: "3600",
-          upsert: true,
-        });
+  // const uploadImage = async (fileName) => {
+  //   try {
+  //     const { data, error } = await supabase.storage
+  //       .from("avatars")
+  //       .upload(fileName, selectedFile, {
+  //         cacheControl: "3600",
+  //         upsert: true,
+  //       });
 
-      if (error) {
-        console.error("Error uploading file:", error);
-      } else {
-        console.log("File uploaded successfully:", data);
-      }
-    } catch (error) {
-      console.error("Error uploading file:", error);
-    }
-  };
+  //     if (error) {
+  //       console.error("Error uploading file:", error);
+  //     } else {
+  //       console.log("File uploaded successfully:", data);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error uploading file:", error);
+  //   }
+  // };
 
   return (
     <div>

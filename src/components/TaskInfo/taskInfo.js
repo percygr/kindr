@@ -1,13 +1,13 @@
 //import { is } from "@babel/types";
-import { createClient } from "@supabase/supabase-js";
+// import { createClient } from "@supabase/supabase-js";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./TaskInfo.css";
 
-const supabase = createClient(
-  process.env.REACT_APP_SUPABASE_URL,
-  process.env.REACT_APP_SUPABASE_KEY
-);
+// const supabase = createClient(
+//   process.env.REACT_APP_SUPABASE_URL,
+//   process.env.REACT_APP_SUPABASE_KEY
+// );
 
 export default function TaskInfo({
   isEditable, // false if view only, true if new task
@@ -94,27 +94,63 @@ export default function TaskInfo({
     }
   }
 
-  async function writeTask() {
-    // write to database
-    const { error } = await supabase.from("tasks").insert({
-      title: title,
-      description: description,
-      location: location,
-      duration: duration,
-      creator_id: userInfo.id,
-      category_id: category,
-      status_id: 1,
-      show_email: selectEmail,
-      show_phone: selectPhone,
-    });
+  // async function writeTask() {
+  //   // write to database
+  //   const { error } = await supabase.from("tasks").insert({
+  //     title: title,
+  //     description: description,
+  //     location: location,
+  //     duration: duration,
+  //     creator_id: userInfo.id,
+  //     category_id: category,
+  //     status_id: 1,
+  //     show_email: selectEmail,
+  //     show_phone: selectPhone,
+  //   });
 
-    if (error) {
-      console.log("error", error);
+  //   if (error) {
+  //     console.log("error", error);
+  //   }
+  //   // refresh task list
+  //   getTasks();
+  //   setSuccessPath("created");
+  //   navigate(`/success`);
+  // }
+
+  async function writeTask() {
+    try {
+      // Make an HTTP POST request to your API endpoint
+      const response = await fetch("http://localhost:3000/tasks", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title: title,
+          description: description,
+          location: location,
+          duration: duration,
+          creator_id: userInfo.id,
+          category_id: category,
+          status_id: 1,
+          show_email: selectEmail,
+          show_phone: selectPhone,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to create task");
+      }
+
+      // Refresh task list
+      getTasks();
+
+      // Navigate to success page
+      setSuccessPath("created");
+      navigate(`/success`);
+    } catch (error) {
+      console.error("Error creating task:", error);
     }
-    // refresh task list
-    getTasks();
-    setSuccessPath("created");
-    navigate(`/success`);
   }
 
   function editTask() {
@@ -126,21 +162,47 @@ export default function TaskInfo({
   }
 
   async function updateStatusID(newStatusID) {
-    let user = null;
-    if (newStatusID !== 1) {
-      user = userInfo.id;
+    // let user = null;
+    // if (newStatusID !== 1) {
+    //   user = userInfo.id;
+    // }
+    // const { error } = await supabase
+    //   .from("tasks")
+    //   .update({
+    //     status_id: newStatusID,
+    //     helper_id: user,
+    //   })
+    //   .match({ id: thisTask.id });
+    // if (error) {
+    //   console.log("error", error);
+    // }
+    // getTasks();
+
+    try {
+      const taskId = thisTask.id;
+      const userId = newStatusID !== 1 ? userInfo.id : null;
+
+      // Make a PUT request to the API endpoint
+      const response = await fetch(
+        `http://localhost:3000/tasks/${taskId}/status`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ statusId: newStatusID, userId: userId }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to update task status");
+      }
+
+      // Refresh task list
+      getTasks();
+    } catch (error) {
+      console.error("Error updating task status:", error);
     }
-    const { error } = await supabase
-      .from("tasks")
-      .update({
-        status_id: newStatusID,
-        helper_id: user,
-      })
-      .match({ id: thisTask.id });
-    if (error) {
-      console.log("error", error);
-    }
-    getTasks();
 
     if (newStatusID === 1) {
       setSuccessPath("created");
@@ -183,27 +245,61 @@ export default function TaskInfo({
     }
   }
 
-  async function updateTask() {
-    //update supabase task id id selectedTask
-    const { error } = await supabase
-      .from("tasks")
-      .update({
-        title: title,
-        description: description,
-        location: location,
-        duration: duration,
-        show_email: selectEmail,
-        show_phone: selectPhone,
-        category_id: selectCategory,
-      })
-      .match({ id: selectedTask });
+  // async function updateTask() {
+  //   //update supabase task id id selectedTask
+  //   const { error } = await supabase
+  //     .from("tasks")
+  //     .update({
+  //       title: title,
+  //       description: description,
+  //       location: location,
+  //       duration: duration,
+  //       show_email: selectEmail,
+  //       show_phone: selectPhone,
+  //       category_id: selectCategory,
+  //     })
+  //     .match({ id: selectedTask });
 
-    if (error) {
-      console.log("error", error);
+  //   if (error) {
+  //     console.log("error", error);
+  //   }
+  //   // refresh task list
+  //   getTasks();
+  //   navigate("/view");
+  // }
+
+  async function updateTask() {
+    try {
+      // Make a PUT request to the API endpoint
+      const response = await fetch(
+        `http://localhost:3000/tasks/${selectedTask}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title: title,
+            description: description,
+            location: location,
+            duration: duration,
+            show_email: selectEmail,
+            show_phone: selectPhone,
+            category_id: selectCategory,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to update task");
+      }
+
+      // Refresh task list
+      getTasks();
+      navigate("/view");
+    } catch (error) {
+      console.error("Error updating task:", error);
     }
-    // refresh task list
-    getTasks();
-    navigate("/view");
   }
 
   function handleCreatorClick() {

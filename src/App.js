@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { createClient } from "@supabase/supabase-js";
-// import { Auth } from "@supabase/auth-ui-react";
-// import { ThemeSupa } from "@supabase/auth-ui-shared";
+// import { createClient } from "@supabase/supabase-js";
+// // import { Auth } from "@supabase/auth-ui-react";
+// // import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { useState, useEffect, useCallback } from "react";
 import "./App.css";
 import HomePage from "./pages/Home";
@@ -30,10 +30,10 @@ import FAQPage from "./pages/FAQpage";
 // import illustrationPost from "../src/imgs/illustrations/post.png";
 // import illustrationVolunteer from "../src/imgs/illustrations/joy.png";
 
-const supabase = createClient(
-  process.env.REACT_APP_SUPABASE_URL,
-  process.env.REACT_APP_SUPABASE_KEY
-);
+// const supabase = createClient(
+//   process.env.REACT_APP_SUPABASE_URL,
+//   process.env.REACT_APP_SUPABASE_KEY
+// );
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -62,22 +62,22 @@ function App() {
     setUserInfo(user);
   }, []);
 
-  const getUsers = useCallback(
-    async (session) => {
-      let { data, error } = await supabase
-        .from("kindr_users")
-        .select("*")
-        .filter("supabase_id", "eq", session.user.id);
-      if (error) {
-        console.log("error", error);
-      }
-      const user = data[0];
-      if (!userInfo) {
-        setUserInfo(user);
-      }
-    },
-    [userInfo]
-  );
+  // const getUsers = useCallback(
+  //   async (session) => {
+  //     let { data, error } = await supabase
+  //       .from("kindr_users")
+  //       .select("*")
+  //       .filter("supabase_id", "eq", session.user.id);
+  //     if (error) {
+  //       console.log("error", error);
+  //     }
+  //     const user = data[0];
+  //     if (!userInfo) {
+  //       setUserInfo(user);
+  //     }
+  //   },
+  //   [userInfo]
+  // );
 
   const getDistance = useCallback(
     async (originPostcode, destinationPostcode, unit) => {
@@ -154,63 +154,63 @@ function App() {
     return pattern.test(postcode);
   }
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const { data, error } = await supabase.from("kindr_users").select("*");
-        if (error) {
-          console.log("Error:", error);
-        } else {
-          for (let i = 0; i < data.length; i++) {
-            const userPostcode = data[i].postcode;
-            if (
-              isUKPostcode(userPostcode) &&
-              isUKPostcode(userInfo?.postcode)
-            ) {
-              const distance = await getDistance(
-                userPostcode,
-                userInfo?.postcode
-              );
-              //check if distance is a number
-              if (isNaN(distance)) {
-                data[i].distance = "N/A";
-              } else {
-                data[i].distance = distance.toFixed(1);
-              }
-            }
-          }
-          setAllUsers(data);
-        }
-      } catch (error) {
-        console.log("Error:", error.message);
-      }
-    };
-    if (userInfo) {
-      fetchData();
-    }
-  }, [userInfo, getDistance]);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const { data, error } = await supabase.from("kindr_users").select("*");
+  //       if (error) {
+  //         console.log("Error:", error);
+  //       } else {
+  //         for (let i = 0; i < data.length; i++) {
+  //           const userPostcode = data[i].postcode;
+  //           if (
+  //             isUKPostcode(userPostcode) &&
+  //             isUKPostcode(userInfo?.postcode)
+  //           ) {
+  //             const distance = await getDistance(
+  //               userPostcode,
+  //               userInfo?.postcode
+  //             );
+  //             //check if distance is a number
+  //             if (isNaN(distance)) {
+  //               data[i].distance = "N/A";
+  //             } else {
+  //               data[i].distance = distance.toFixed(1);
+  //             }
+  //           }
+  //         }
+  //         setAllUsers(data);
+  //       }
+  //     } catch (error) {
+  //       console.log("Error:", error.message);
+  //     }
+  //   };
+  //   if (userInfo) {
+  //     fetchData();
+  //   }
+  // }, [userInfo, getDistance]);
 
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      //setSession(session);
-      if (session) {
-        getTasks();
-        writeCategoryIcons();
-        //getUsers(session);
-      }
-    });
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      //setSession(session);
-      if (session) {
-        getTasks();
-        writeCategoryIcons();
-        //getUsers(session);
-      }
-    });
-    return () => subscription.unsubscribe();
-  }, [getUsers]);
+  // useEffect(() => {
+  //   supabase.auth.getSession().then(({ data: { session } }) => {
+  //     //setSession(session);
+  //     if (session) {
+  //       getTasks();
+  //       writeCategoryIcons();
+  //       //getUsers(session);
+  //     }
+  //   });
+  //   const {
+  //     data: { subscription },
+  //   } = supabase.auth.onAuthStateChange((_event, session) => {
+  //     //setSession(session);
+  //     if (session) {
+  //       getTasks();
+  //       writeCategoryIcons();
+  //       //getUsers(session);
+  //     }
+  //   });
+  //   return () => subscription.unsubscribe();
+  // }, [getUsers]);
 
   function writeCategoryIcons() {
     setCategoryIcons([
@@ -223,20 +223,38 @@ function App() {
     ]);
   }
 
-  const handleLogout = async () => {
-    await supabase.auth.signOut();
-  };
+  // const handleLogout = async () => {
+  //   await supabase.auth.signOut();
+  // };
+
+  // async function getTasks() {
+  //   let { data, error } = await supabase
+  //     .from("tasks")
+  //     .select("*")
+  //     .order("id", { ascending: false });
+  //   if (error) {
+  //     console.log("error", error);
+  //   }
+  //   setTasks(data);
+  //   //console.log("tasks", data);
+  // }
 
   async function getTasks() {
-    let { data, error } = await supabase
-      .from("tasks")
-      .select("*")
-      .order("id", { ascending: false });
-    if (error) {
-      console.log("error", error);
+    try {
+      // Make an HTTP GET request to your API endpoint
+      const response = await fetch("http://localhost:3000//tasks");
+      if (!response.ok) {
+        throw new Error("Failed to fetch tasks");
+      }
+
+      // Extract the JSON data from the response
+      const data = await response.json();
+
+      // Update the tasks state with the fetched data
+      setTasks(data);
+    } catch (error) {
+      console.error("Error fetching tasks:", error);
     }
-    setTasks(data);
-    //console.log("tasks", data);
   }
 
   // if (!session) {
@@ -290,7 +308,7 @@ function App() {
       <div className="App">
         <BrowserRouter>
           <Navbar
-            handleLogout={handleLogout}
+            // handleLogout={handleLogout}
             userInfo={userInfo}
             setShowProfileID={setShowProfileID}
           />
