@@ -121,7 +121,7 @@ function ProfilePage({ userInfo, setUserInfo, allUsers, showProfileID }) {
     try {
       // Make a PUT request to the API endpoint
       const response = await fetch(
-        `http://localhost:3000/profile/${userInfo.id}`,
+        `https://api.percydb.co.uk/profile/${userInfo.id}`,
         {
           method: "PUT",
           headers: {

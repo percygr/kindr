@@ -73,11 +73,14 @@ export default function TaskInfo({
   }
 
   function getHelperName(helperId) {
+    if (!allUsers || allUsers.length === 0) {
+      return "unknown";
+    }
     const helper = allUsers.find((user) => user.id === helperId);
     if (helper) {
       return `${helper.firstname} ${helper.surname}`;
     } else {
-      return "";
+      return "unknown";
     }
   }
 
@@ -89,7 +92,7 @@ export default function TaskInfo({
       if (creator) {
         return `${creator.firstname} ${creator.surname}`;
       } else {
-        return "";
+        return "unknown";
       }
     }
   }
@@ -120,7 +123,7 @@ export default function TaskInfo({
   async function writeTask() {
     try {
       // Make an HTTP POST request to your API endpoint
-      const response = await fetch("http://localhost:3000/tasks", {
+      const response = await fetch("https://api.percydb.co.uk/tasks", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -184,7 +187,7 @@ export default function TaskInfo({
 
       // Make a PUT request to the API endpoint
       const response = await fetch(
-        `http://localhost:3000/tasks/${taskId}/status`,
+        `https://api.percydb.co.uk/tasks/${taskId}/status`,
         {
           method: "PUT",
           headers: {
@@ -272,7 +275,7 @@ export default function TaskInfo({
     try {
       // Make a PUT request to the API endpoint
       const response = await fetch(
-        `http://localhost:3000/tasks/${selectedTask}`,
+        `https://api.percydb.co.uk/tasks/${selectedTask}`,
         {
           method: "PUT",
           headers: {

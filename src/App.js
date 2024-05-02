@@ -242,7 +242,7 @@ function App() {
   async function getTasks() {
     try {
       // Make an HTTP GET request to your API endpoint
-      const response = await fetch("http://localhost:3000//tasks");
+      const response = await fetch("https://api.percydb.co.uk/tasks");
       if (!response.ok) {
         throw new Error("Failed to fetch tasks");
       }
